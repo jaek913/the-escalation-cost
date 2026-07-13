@@ -161,6 +161,6 @@ Posture: ZERO-DROP. Every source element is KEEP or TRANSFORM; program history (
 
 ## Author sign-off
 
-> Every element of the source is dispositioned above; each DROP is justified (none exist); every KEEP/TRANSFORM maps to an OUTLINE.md node; the shape ledger source baseline is computed and the rebuild column is deferred to Phase 4 per template. This ledger is complete and accurate as of commit [pending Phase-1 pre-registration commit].
+> Every element of the source is dispositioned above; each DROP is justified (none exist); every KEEP/TRANSFORM maps to an OUTLINE.md node; the shape ledger source baseline is computed and the rebuild column is deferred to Phase 4 per template. This ledger is complete and accurate as of commit 7593a1ab0cdb01f73e42319c5d657ad1a7584e65.
 
-**Signed:** [pending author sign-off at Phase-1 gate] - **Date:** [pending]
+**Signed:** Jae Kim (ORCID 0009-0005-3260-7880) - **Date:** 2026-07-13

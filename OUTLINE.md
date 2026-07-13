@@ -238,6 +238,6 @@ Roles: prior-art / motivating-anomaly / method-precedent / corroboration / contr
 
 ## Author sign-off
 
-> The roadmap captures the paper's full argument, every citation, every load-bearing finding, every figure/table/equation, the assumptions/scope, and the conclusions; every node has a status and (where applicable) a manuscript anchor; (rebuild) every COVERAGE keep maps to a node; no values are hard-coded. Accurate as of commit [pending Phase-1 pre-registration commit], outline v0.1.
+> The roadmap captures the paper's full argument, every citation, every load-bearing finding, every figure/table/equation, the assumptions/scope, and the conclusions; every node has a status and (where applicable) a manuscript anchor; (rebuild) every COVERAGE keep maps to a node; no values are hard-coded. Accurate as of commit 7593a1ab0cdb01f73e42319c5d657ad1a7584e65, outline v0.1.
 
-**Signed:** [pending author sign-off at Phase-1 gate] - **Date:** [pending]
+**Signed:** Jae Kim (ORCID 0009-0005-3260-7880) - **Date:** 2026-07-13
