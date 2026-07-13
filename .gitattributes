@@ -1,0 +1,25 @@
+# Normalize all text to LF on commit so file hashes are stable across machines.
+* text=auto eol=lf
+
+# Explicitly treat committed text artifacts as LF text.
+*.md    text eol=lf
+*.py    text eol=lf
+*.txt   text eol=lf
+*.lock  text eol=lf
+*.yaml  text eol=lf
+*.yml   text eol=lf
+*.tex   text eol=lf
+*.cff   text eol=lf
+.gitignore    text eol=lf
+.gitattributes text eol=lf
+
+# Binary artifacts (never normalized).
+*.pdf   binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.xlsx  binary
+*.xls   binary
+*.zip   binary
+*.parquet binary

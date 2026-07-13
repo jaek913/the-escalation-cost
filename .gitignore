@@ -1,0 +1,33 @@
+# The Escalation Cost - repository ignore rules
+#
+# The project-local data store lives OUTSIDE this repo, git-ignored by location:
+#   C:\Users\jaek9\Documents\LaggingTruth\The-Escalation-Cost
+# Raw data is never committed. The repo data layer (data/SOURCES.md, data/pull.py)
+# is documentation-only. analysis/outputs/*.json ARE committed (do not ignore them).
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.ipynb_checkpoints/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Raw data formats (never committed; live in the project-local store)
+*.csv
+*.xls
+*.xlsx
+*.parquet
+data/raw/
+
+# Local scratch
+scratch/
+tmp/
+review_package_the_escalation_cost.zip
