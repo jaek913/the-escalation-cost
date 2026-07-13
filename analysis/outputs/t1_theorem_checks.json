@@ -1,0 +1,34 @@
+{
+  "experiment": "T1",
+  "date": "2026-07-13",
+  "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
+  "symbolic": {
+    "S1_charpoly_identity": true,
+    "S2_dsma_convex": true,
+    "S3_thm1_induction_tau4": true,
+    "S4_loss_convex": true,
+    "S5_interiority_condition": true,
+    "S6_lambertw_solves_foc": true,
+    "S7a_g_phi_positive": true,
+    "S7b_g_a_positive": true,
+    "S7c_g_ce_negative": true,
+    "S8_thm3_log_identity": true,
+    "all_pass": true
+  },
+  "numeric": {
+    "n_cells": 440,
+    "n_indomain": 35,
+    "mono_phi_fail": 0,
+    "mono_bg_fail": 0,
+    "counterexamples": [],
+    "noisy_exceed_frac_mean": 0.0,
+    "all_pass": true
+  },
+  "estimator_comparison": {
+    "ols_mean": 0.8170991417292447,
+    "yw_mean": 0.7817918714625745,
+    "true_phi": 0.95,
+    "ols_less_biased": true
+  },
+  "verdict": "SUPPORT"
+}

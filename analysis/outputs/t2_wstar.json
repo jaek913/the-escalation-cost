@@ -1,0 +1,12 @@
+{
+  "experiment": "T2",
+  "date": "2026-07-13",
+  "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
+  "interior_cells": 105,
+  "interior_match": 105,
+  "match_rate": 1.0,
+  "boundary_cells": 0,
+  "unimodal_failures": 0,
+  "mismatches": [],
+  "verdict": "SUPPORT"
+}
