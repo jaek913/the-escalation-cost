@@ -94,7 +94,8 @@ def gen_series(rng, instability: float, n=N_PERIODS, sig=0.03, mu=1.5,
 
 
 def leg3_sort_and_smoke() -> bool:
-    # real run_ranking over a coarse instability spread must sort descending
+    # real run_ranking over a coarse instability spread must sort descending by
+    # the AMENDED primary key (mean_exceedance)
     rng = np.random.default_rng(54)
     levels = {f"S{i:02d}": lv for i, lv in enumerate(
         [0.9, 0.7, 0.5, 0.3, 0.1, 0.0])}
@@ -105,30 +106,86 @@ def leg3_sort_and_smoke() -> bool:
         res = e5.run_ranking([(sid, sid) for sid in levels])
     finally:
         e5.load_series = orig
-    pcts = [r["pct_months_above_1"] for r in res["ranking_R"]]
-    sorted_ok = all(pcts[i] >= pcts[i + 1] for i in range(len(pcts) - 1))
+    exc = [r["mean_exceedance"] for r in res["ranking_R"]]
+    sorted_ok = all(exc[i] >= exc[i + 1] for i in range(len(exc) - 1))
 
     # engine smoke: real sector_rho_stats deterministic + valid range
     ya = gen_series(np.random.default_rng(9), 0.6)
     yb = gen_series(np.random.default_rng(9), 0.6)
     sa = sector_rho_stats(ya, 12, 3.0)
     sb = sector_rho_stats(yb, 12, 3.0)
-    det = (abs(sa["pct_months_above_1"] - sb["pct_months_above_1"]) < 1e-12
-           and math.isfinite(sa["peak_rho"]))
-    rng_valid = 0.0 <= sa["pct_months_above_1"] <= 1.0
-    ok = sorted_ok and det and rng_valid
-    print(f"LEG 3 sort+smoke: descending-sort={sorted_ok}, det={det}, "
-          f"pct in [0,1]={rng_valid} -> {'PASS' if ok else 'FAIL'}")
+    det = (abs(sa["mean_exceedance"] - sb["mean_exceedance"]) < 1e-12
+           and math.isfinite(sa["peak_rho"]) and math.isfinite(sa["mean_exceedance"]))
+    valid = sa["mean_exceedance"] >= 0.0 and 0.0 <= sa["pct_months_above_1"] <= 1.0
+    ok = sorted_ok and det and valid
+    print(f"LEG 3 sort+smoke: descending-sort(mean_exc)={sorted_ok}, det={det}, "
+          f"valid={valid} -> {'PASS' if ok else 'FAIL'}")
+    return ok
+
+
+def _constant_phi_series(rng, phi_true: float, n=N_PERIODS, sig=0.03, mu=1.5,
+                         clamp=2.5):
+    """AR(1) series at a constant target persistence (no spells). A steady high
+    phi keeps rolling rho above 1 for essentially the whole sample, so the old
+    '% months rho > 1' key pegs to 1.0 (saturates) while mean_exceedance still
+    varies with phi - the exact contrast the redesign fixes."""
+    y = np.empty(n)
+    x = 0.0
+    for t in range(n):
+        x = phi_true * x + sig * rng.standard_normal()
+        x = max(-clamp, min(clamp, x))
+        y[t] = mu + x
+    return y
+
+
+def leg4_non_saturation() -> bool:
+    """Core purpose of the 2026-07-13 redesign: the primary key must NOT
+    saturate where the old '% months rho > 1' key did. Build four sectors at
+    steady high persistence (phi 0.995/0.99/0.985/0.98) that ALL peg the old
+    binary key at exactly 1.0 (100% months above the boundary - reproducing the
+    six-way-tie defect from the first real run), and confirm (a) the old key
+    ties them at 100% while (b) mean_exceedance gives them DISTINCT, strictly
+    ordered values - i.e. the ruler now has dynamic range at the top where the
+    old one had none."""
+    phis = [0.995, 0.99, 0.985, 0.98]   # descending instability, all saturating
+    # average the statistic over several seeds per phi: the real test uses one
+    # long 34-year series per sector (noise averages out), so the instrument
+    # property (monotone in phi, non-saturating) is what must hold - a single
+    # short synthetic draw carries enough sampling noise to reorder adjacent
+    # near-identical phis, which is a generator artifact, not a key defect.
+    def avg_stats(phi_true, seeds=8):
+        pcts, excs = [], []
+        for s in range(seeds):
+            st = sector_rho_stats(
+                _constant_phi_series(np.random.default_rng(100 + s), phi_true),
+                12, 3.0)
+            pcts.append(st["pct_months_above_1"])
+            excs.append(st["mean_exceedance"])
+        return float(np.mean(pcts)), float(np.mean(excs))
+    agg = [avg_stats(p) for p in phis]
+    pcts = [a[0] for a in agg]
+    excs = [a[1] for a in agg]
+    # (a) old binary key saturates: all tied at exactly 1.0
+    old_key_saturates = (max(pcts) - min(pcts) < 1e-9) and min(pcts) > 0.999
+    # (b) mean_exceedance strictly orders them (distinguishable, not float noise)
+    new_key_orders = all(excs[i] > excs[i + 1] + 1e-5 for i in range(len(excs) - 1))
+    new_key_spread = (max(excs) - min(excs)) > 1e-3
+    ok = old_key_saturates and new_key_orders and new_key_spread
+    print(f"LEG 4 non-saturation: old %>1 ties@100%={old_key_saturates} "
+          f"(pcts={[round(p, 4) for p in pcts]}); mean_exc strictly-orders="
+          f"{new_key_orders} + spread={new_key_spread} "
+          f"(excs={[round(e, 4) for e in excs]}) -> {'PASS' if ok else 'FAIL'}")
     return ok
 
 
 def main() -> int:
-    print(f"E5 suite: graded-rule branch coverage + ranking machinery "
-          f"(n=17, roll_win={ROLL_WIN})")
+    print(f"E5 suite: graded-rule branch coverage + ranking machinery + "
+          f"non-saturation (n=17, roll_win={ROLL_WIN})")
     r1 = leg1_graded_rule()
     r2 = leg2_topquartile_math()
     r3 = leg3_sort_and_smoke()
-    all_pass = r1 and r2 and r3
+    r4 = leg4_non_saturation()
+    all_pass = r1 and r2 and r3 and r4
     print(f"\nALL PASS: {all_pass}")
     return 0 if all_pass else 1
 

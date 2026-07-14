@@ -1,0 +1,344 @@
+{
+  "experiment": "E5",
+  "date": "2026-07-13",
+  "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
+  "spec_R": {
+    "name": "SPEC-R",
+    "W": 12,
+    "bg": 3.0
+  },
+  "spec_M": {
+    "name": "SPEC-M",
+    "W": 8,
+    "bg": 0.05
+  },
+  "roll_win": 60,
+  "top_quartile_cut": 5,
+  "ranking_R": [
+    {
+      "sector": "AMTMIS",
+      "title": "Total Manufacturing I/S",
+      "peak_rho": 1.2206724443003882,
+      "mean_rho": 1.0643795174219342,
+      "pct_months_above_1": 1.0,
+      "n_months": 353,
+      "rank": 1
+    },
+    {
+      "sector": "AMDMIS",
+      "title": "Durable Goods I/S",
+      "peak_rho": 1.242987376635511,
+      "mean_rho": 1.0566374271602876,
+      "pct_months_above_1": 1.0,
+      "n_months": 353,
+      "rank": 2
+    },
+    {
+      "sector": "AMNMIS",
+      "title": "Nondurable Goods I/S",
+      "peak_rho": 1.1540054942194216,
+      "mean_rho": 1.0619046434657757,
+      "pct_months_above_1": 1.0,
+      "n_months": 353,
+      "rank": 3
+    },
+    {
+      "sector": "A34SIS",
+      "title": "Computers and Electronic Products I/S",
+      "peak_rho": 1.0956628979934904,
+      "mean_rho": 1.0599009552813006,
+      "pct_months_above_1": 1.0,
+      "n_months": 353,
+      "rank": 4
+    },
+    {
+      "sector": "A31SIS",
+      "title": "Primary Metals I/S [2026-07-13 amendment]",
+      "peak_rho": 1.1524140918065577,
+      "mean_rho": 1.0683780656072135,
+      "pct_months_above_1": 1.0,
+      "n_months": 353,
+      "rank": 5
+    },
+    {
+      "sector": "R4233IM163SCEN",
+      "title": "Wholesale Lumber/Construction I/S",
+      "peak_rho": 1.0908674017218378,
+      "mean_rho": 1.0471649657710616,
+      "pct_months_above_1": 1.0,
+      "n_months": 353,
+      "rank": 6
+    },
+    {
+      "sector": "R4234IM163SCEN",
+      "title": "Wholesale Professional/Commercial Equipment I/S",
+      "peak_rho": 1.0804345952146102,
+      "mean_rho": 1.0516176425509816,
+      "pct_months_above_1": 1.0,
+      "n_months": 353,
+      "rank": 7
+    },
+    {
+      "sector": "R4238IM163SCEN",
+      "title": "Wholesale Machinery I/S",
+      "peak_rho": 1.1390939935283035,
+      "mean_rho": 1.0637140663582436,
+      "pct_months_above_1": 1.0,
+      "n_months": 353,
+      "rank": 8
+    },
+    {
+      "sector": "R423IRM163SCEN",
+      "title": "Wholesale Total Durables I/S",
+      "peak_rho": 1.1576159082991322,
+      "mean_rho": 1.061603729640777,
+      "pct_months_above_1": 1.0,
+      "n_months": 353,
+      "rank": 9
+    },
+    {
+      "sector": "MRTSIR452USS",
+      "title": "Retail General Merchandise I/S",
+      "peak_rho": 1.0883998783501216,
+      "mean_rho": 1.0650400372303102,
+      "pct_months_above_1": 1.0,
+      "n_months": 352,
+      "rank": 10
+    },
+    {
+      "sector": "R4236IM163SCEN",
+      "title": "Wholesale Electrical/Electronics I/S",
+      "peak_rho": 1.0962584382972886,
+      "mean_rho": 1.0487502933332458,
+      "pct_months_above_1": 0.9943342776203966,
+      "n_months": 353,
+      "rank": 11
+    },
+    {
+      "sector": "MRTSIR441USS",
+      "title": "Retail Motor Vehicle Dealers I/S",
+      "peak_rho": 1.1007213938239169,
+      "mean_rho": 1.0506381064222696,
+      "pct_months_above_1": 0.9943181818181818,
+      "n_months": 352,
+      "rank": 12
+    },
+    {
+      "sector": "A35SIS",
+      "title": "Electrical Equipment, Appliances and Components I/S",
+      "peak_rho": 1.0914571602870582,
+      "mean_rho": 1.0516652131672761,
+      "pct_months_above_1": 0.9915014164305949,
+      "n_months": 353,
+      "rank": 13
+    },
+    {
+      "sector": "MRTSIR444USS",
+      "title": "Retail Building Materials I/S",
+      "peak_rho": 1.0887786776705723,
+      "mean_rho": 1.047108017290989,
+      "pct_months_above_1": 0.9886363636363636,
+      "n_months": 352,
+      "rank": 14
+    },
+    {
+      "sector": "R4232IM163SCEN",
+      "title": "Wholesale Furniture I/S",
+      "peak_rho": 1.0940891413005354,
+      "mean_rho": 1.04000535896012,
+      "pct_months_above_1": 0.9858356940509915,
+      "n_months": 353,
+      "rank": 15
+    },
+    {
+      "sector": "A36SIS",
+      "title": "Transportation Equipment I/S",
+      "peak_rho": 1.368606214239971,
+      "mean_rho": 1.0393199480546302,
+      "pct_months_above_1": 0.9461756373937678,
+      "n_months": 353,
+      "rank": 16
+    },
+    {
+      "sector": "R4231IM163SCEN",
+      "title": "Wholesale Motor Vehicles I/S",
+      "peak_rho": 1.2296898251979196,
+      "mean_rho": 1.0403717983944805,
+      "pct_months_above_1": 0.9461756373937678,
+      "n_months": 353,
+      "rank": 17
+    }
+  ],
+  "ranking_M": [
+    {
+      "sector": "AMDMIS",
+      "title": "Durable Goods I/S",
+      "peak_rho": 1.469408500433592,
+      "mean_rho": 0.775938015281654,
+      "pct_months_above_1": 0.028328611898016998,
+      "n_months": 353,
+      "rank": 1
+    },
+    {
+      "sector": "AMTMIS",
+      "title": "Total Manufacturing I/S",
+      "peak_rho": 1.4044478201723678,
+      "mean_rho": 0.803407525656999,
+      "pct_months_above_1": 0.0226628895184136,
+      "n_months": 353,
+      "rank": 2
+    },
+    {
+      "sector": "A31SIS",
+      "title": "Primary Metals I/S [2026-07-13 amendment]",
+      "peak_rho": 1.1984632056441686,
+      "mean_rho": 0.8124835958630291,
+      "pct_months_above_1": 0.019830028328611898,
+      "n_months": 353,
+      "rank": 3
+    },
+    {
+      "sector": "R423IRM163SCEN",
+      "title": "Wholesale Total Durables I/S",
+      "peak_rho": 1.2151277755274479,
+      "mean_rho": 0.8003700840313669,
+      "pct_months_above_1": 0.014164305949008499,
+      "n_months": 353,
+      "rank": 4
+    },
+    {
+      "sector": "R4231IM163SCEN",
+      "title": "Wholesale Motor Vehicles I/S",
+      "peak_rho": 1.4307076749352488,
+      "mean_rho": 0.735864974918227,
+      "pct_months_above_1": 0.0113314447592068,
+      "n_months": 353,
+      "rank": 5
+    },
+    {
+      "sector": "AMNMIS",
+      "title": "Nondurable Goods I/S",
+      "peak_rho": 1.2035907335156268,
+      "mean_rho": 0.7941723355754611,
+      "pct_months_above_1": 0.0056657223796034,
+      "n_months": 353,
+      "rank": 6
+    },
+    {
+      "sector": "A36SIS",
+      "title": "Transportation Equipment I/S",
+      "peak_rho": 1.84748313082648,
+      "mean_rho": 0.7362347655593015,
+      "pct_months_above_1": 0.0056657223796034,
+      "n_months": 353,
+      "rank": 7
+    },
+    {
+      "sector": "MRTSIR441USS",
+      "title": "Retail Motor Vehicle Dealers I/S",
+      "peak_rho": 1.0069688624876336,
+      "mean_rho": 0.750189247686724,
+      "pct_months_above_1": 0.002840909090909091,
+      "n_months": 352,
+      "rank": 8
+    },
+    {
+      "sector": "R4238IM163SCEN",
+      "title": "Wholesale Machinery I/S",
+      "peak_rho": 1.1543487074800565,
+      "mean_rho": 0.7971505565084861,
+      "pct_months_above_1": 0.0028328611898017,
+      "n_months": 353,
+      "rank": 9
+    },
+    {
+      "sector": "A34SIS",
+      "title": "Computers and Electronic Products I/S",
+      "peak_rho": 0.9835688646630292,
+      "mean_rho": 0.7997159294264399,
+      "pct_months_above_1": 0.0,
+      "n_months": 353,
+      "rank": 10
+    },
+    {
+      "sector": "A35SIS",
+      "title": "Electrical Equipment, Appliances and Components I/S",
+      "peak_rho": 0.9628834736961822,
+      "mean_rho": 0.7537164961300716,
+      "pct_months_above_1": 0.0,
+      "n_months": 353,
+      "rank": 11
+    },
+    {
+      "sector": "R4232IM163SCEN",
+      "title": "Wholesale Furniture I/S",
+      "peak_rho": 0.9759739828464842,
+      "mean_rho": 0.7322266916439891,
+      "pct_months_above_1": 0.0,
+      "n_months": 353,
+      "rank": 12
+    },
+    {
+      "sector": "R4233IM163SCEN",
+      "title": "Wholesale Lumber/Construction I/S",
+      "peak_rho": 0.9598774867352542,
+      "mean_rho": 0.742359408275118,
+      "pct_months_above_1": 0.0,
+      "n_months": 353,
+      "rank": 13
+    },
+    {
+      "sector": "R4234IM163SCEN",
+      "title": "Wholesale Professional/Commercial Equipment I/S",
+      "peak_rho": 0.9006716619137662,
+      "mean_rho": 0.7558822607007933,
+      "pct_months_above_1": 0.0,
+      "n_months": 353,
+      "rank": 14
+    },
+    {
+      "sector": "R4236IM163SCEN",
+      "title": "Wholesale Electrical/Electronics I/S",
+      "peak_rho": 0.9864011752302373,
+      "mean_rho": 0.7512074696122327,
+      "pct_months_above_1": 0.0,
+      "n_months": 353,
+      "rank": 15
+    },
+    {
+      "sector": "MRTSIR444USS",
+      "title": "Retail Building Materials I/S",
+      "peak_rho": 0.9489938181380322,
+      "mean_rho": 0.7471554783006614,
+      "pct_months_above_1": 0.0,
+      "n_months": 352,
+      "rank": 16
+    },
+    {
+      "sector": "MRTSIR452USS",
+      "title": "Retail General Merchandise I/S",
+      "peak_rho": 0.9469777410887485,
+      "mean_rho": 0.8055616616047324,
+      "pct_months_above_1": 0.0,
+      "n_months": 352,
+      "rank": 17
+    }
+  ],
+  "chips_sectors": [
+    "A34SIS",
+    "R4238IM163SCEN"
+  ],
+  "chips_ranks_R": {
+    "A34SIS": 4,
+    "R4238IM163SCEN": 8
+  },
+  "chips_ranks_M": {
+    "A34SIS": 10,
+    "R4238IM163SCEN": 9
+  },
+  "chips_both_top2_R": false,
+  "chips_both_topquartile_R": false,
+  "chips_both_topquartile_M": false,
+  "chips_verdict": "DROPPED",
+  "reproduced": true
+}

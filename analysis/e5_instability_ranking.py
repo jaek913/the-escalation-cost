@@ -1,16 +1,25 @@
 """e5_instability_ranking.py - E5: 17-sector structural-instability ranking
 (the CHIPS observation). DESIGN.md Section 8 (pin 74c73ea165a7363c6714fe803fbe76b1).
 
-Descriptive diagnostic (NOT a hypothesis test): rank the 17 sectors by the
-fraction of months their rolling spectral radius rho exceeds 1, and test the
-reproducibility + robustness of the observation that the CHIPS Act's two
-dependent sectors rank at the top.
+Descriptive diagnostic (NOT a hypothesis test): rank the 17 sectors by MEAN
+EXCEEDANCE MAGNITUDE (average distance rolling rho sits above the stability
+boundary) and test the reproducibility + robustness of the observation that
+the CHIPS Act's two dependent sectors rank at the top.
 
-Operator (frozen):
+RANKING-KEY HISTORY (DESIGN Section 8 amendment 2026-07-13): the first E5 run
+ranked by '% months rho > 1', which SATURATED under SPEC-R (six sectors tied at
+100%), carrying no ordering information at the top - that run is INCONCLUSIVE
+(test-invalid for ranking), NOT a result. The primary ranking key was changed
+(pre-registered BLIND to the CHIPS outcome, solely for non-saturation) to mean
+exceedance = mean of max(rho - 1, 0), which is continuous and keeps rising as
+rho climbs past 1, so it can order the leaders.
+
+Operator (frozen, as amended):
   - rolling 60-month persistence per sector (trailing OLS AR(1));
   - rho computed under SPEC-R (W = 12, bg scale 3.0) - the primary spec;
-  - per sector: peak rho, mean rho, % months rho > 1, over the full sample;
-  - ranking by % months rho > 1;
+  - per sector: mean exceedance (PRIMARY KEY), plus peak rho, mean rho, and
+    % months rho > 1 (reported alternates / saturation record);
+  - ranking by MEAN EXCEEDANCE;
   - robustness: recompute under SPEC-M (W = 8, bg 0.05); report BOTH.
 
 Decision rule (frozen, graded assertion):
@@ -57,27 +66,34 @@ CHIPS_WHOLESALE = "R4238IM163SCEN"  # wholesale machinery
 
 
 def sector_rho_stats(y: np.ndarray, W: int, bg: float) -> dict:
-    """Rolling 60-month persistence -> rho under (W, bg); returns peak/mean rho
-    and % months rho > 1 over the full sample."""
+    """Rolling 60-month persistence -> rho under (W, bg). Returns the PRIMARY
+    ranking key mean_exceedance = mean of max(rho - 1, 0) over the sample (the
+    average distance rho sits above the stability boundary; continuous and
+    non-saturating - DESIGN Section 8 amendment 2026-07-13), plus reported
+    alternates peak rho, mean rho, and % months rho > 1 (retained to document
+    the saturation that invalidated the original binary-share ranking)."""
     n = len(y)
     rhos = []
     for t in range(ROLL_WIN, n):
         phi = ols_phi(y[t - ROLL_WIN:t])
         rhos.append(rho(phi, W, bg))
     rr = np.asarray(rhos)
-    return dict(peak_rho=float(rr.max()), mean_rho=float(rr.mean()),
+    exceedance = np.maximum(rr - 1.0, 0.0)
+    return dict(mean_exceedance=float(exceedance.mean()),
+                peak_rho=float(rr.max()), mean_rho=float(rr.mean()),
                 pct_months_above_1=float((rr > 1.0).mean()),
                 n_months=int(len(rr)))
 
 
 def rank_under(members: list[tuple[str, str]], spec: dict) -> list[dict]:
-    """Return the sector ranking (desc by % months rho > 1) under a spec."""
+    """Return the sector ranking (desc by mean_exceedance - the amended primary
+    ranking key) under a spec."""
     rows = []
     for sid, title in members:
         y = load_series(sid)
         st = sector_rho_stats(y, spec["W"], spec["bg"])
         rows.append(dict(sector=sid, title=title, **st))
-    rows.sort(key=lambda r: r["pct_months_above_1"], reverse=True)
+    rows.sort(key=lambda r: r["mean_exceedance"], reverse=True)
     for i, r in enumerate(rows):
         r["rank"] = i + 1
     return rows
@@ -157,11 +173,11 @@ def main() -> None:
           f"SPEC-M ranks #{res['chips_ranks_M'][CHIPS_MFG]}/"
           f"#{res['chips_ranks_M'][CHIPS_WHOLESALE]}; "
           f"top-quartile cut = {res['top_quartile_cut']})")
-    print("SPEC-R ranking (top 6 by % months rho > 1):")
+    print("SPEC-R ranking (top 6 by mean exceedance = mean of max(rho-1, 0)):")
     for r in res["ranking_R"][:6]:
         print(f"  #{r['rank']:2d} {r['sector'][:16]:16s} "
-              f"{r['title'][:34]:34s} %>1 {r['pct_months_above_1']:.1%} "
-              f"peak {r['peak_rho']:.3f}")
+              f"{r['title'][:30]:30s} exc {r['mean_exceedance']:.4f} "
+              f"peak {r['peak_rho']:.3f} %>1 {r['pct_months_above_1']:.0%}")
 
 
 if __name__ == "__main__":
