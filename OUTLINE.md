@@ -6,10 +6,12 @@
 - **Archetype:** theory-with-proofs (empirics co-primary; author-ratified 2026-07-13)
 - **Source pin (rebuild):** C:\Users\jaek9\Documents\LaggingTruth\05-13-2026\Paper 9\Paper9_The_General_Measurement_Trap_v16.md, MD5 93135760b92cc195da36eb3c2b785ded, SHA256 c4fee62f2b48f8f5a84cf22f5b3d01fe139cc59810db9f11e29d800ed7c648a5
 - **Standard:** v1.9.5 (template v1.8)
-- **Outline version:** v0.3 - 2026-07-13
+- **Outline version:** v0.4 - 2026-07-13
 - **Status:** draft
 
 ## Changelog
+
+- v0.4 2026-07-13 - E3 (COVID episode, expected-null boundary) RESULT LANDED: CONSISTENT-WITH-BOUNDARY (the supporting outcome). Spearman(D, realized) +0.0760, p = 0.3933 (null, as pre-registered); persistence dropped in 14/17 sectors (majority, the falsifiable direction confirmed). Clean domain-boundary mapping - the mechanism correctly excludes compound shocks. ARG-12 / LB-E3 nodes -> DONE. Three experiments now thesis-consistent (E1 SUPPORT, E2 SUPPORT, E3 boundary confirmed).
 
 - v0.3 2026-07-13 - E2 (GFC episode, corroborating) RESULT LANDED: SUPPORT. Spearman(D, realized) +0.3456, p = 0.0775 (marginal, corroborating, n = 17); combined D beats both components (rho_crisis -0.159, |delta phi| +0.316) - the compound thesis borne out in the one large dated episode. ARG-11 / LB-E2 nodes -> DONE/SUPPORT.
 
@@ -38,7 +40,7 @@ Title/subtitle: CORRECTED - source title "The General Measurement Trap" retired;
 | ARG-09 | Operating below the pi^2/2 limit is optimal under regime-change risk; safety factor k* < 1 | 4.6 | ARG-05, ARG-02 | LB-T3-kstar, EQ-5, EQ-6, Kim-MeasurementTrap | TRANSFORM |
 | ARG-10 | The damage bound gives the adaptation-tax framework its transition-cost foundation | 4.7 | ARG-05, ARG-07 | Kim-AdaptationTax (foundation) | TRANSFORM (de-seriesed cross-reference) |
 | ARG-11 | GFC episode: pre-crisis predicted damage ranking aligns with realized crisis damage; combined D at least comparable to components (corroborating, n stated). RESULT 2026-07-13: SUPPORT (corroborating), Spearman(D, realized) +0.3456, permutation p = 0.0775 (< 0.10, marginal), n = 17; combined D >= both components (rho_crisis -0.159, |delta phi| +0.316) - compound beats parts. | 5.1 | ARG-05 | LB-E2-gfc, LB-E2-components, TBL-1, Udenio-2015 | DONE (SUPPORT) |
-| ARG-12 | COVID episode: null result, consistent with the theorem's stated domain (persistence dropped; compound shock outside step-change model) | 5.2 | ARG-05 | LB-E3-covid, LB-E3-persistence-direction | TRANSFORM |
+| ARG-12 | COVID episode: null result, consistent with the theorem's stated domain (persistence dropped; compound shock outside step-change model). RESULT 2026-07-13: CONSISTENT-WITH-BOUNDARY, Spearman(D, realized) +0.0760, permutation p = 0.3933 (null, as pre-registered), n = 17; persistence dropped in 14/17 sectors (majority - falsifiable direction confirmed). Clean domain-boundary mapping, not confirmatory weight. | 5.2 | ARG-05 | LB-E3-covid, LB-E3-persistence-direction | DONE (boundary confirmed) |
 | ARG-13 | PRIMARY (falsifier): rolling out-of-sample D predicts subsequent I/S deviation at the PANEL level across regime-oscillating sectors [amended rule B - pooled statistic, not per-sector majority]. RESULT 2026-07-13: SUPPORT, pooled mean Spearman +0.1505, joint block-bootstrap panel p = 0.0090 (< 0.01), 9 oscillating sectors, all 9 positive; verdict rests on the pooled statistic (per-sector inference noisy at this resolution). | 5.3 | ARG-05 | LB-E1-panel, LB-E1-range, TBL-2 | DONE (SUPPORT) |
 | ARG-14 | Acting on the diagnostic saves cost: spectral-radius tool beats an ERP baseline in the Beer Game Monte Carlo; full theorem adds a further edge | 5.4 | ARG-09 | LB-E4-erp, LB-E4-tool, LB-E4-full, LB-E4-winrate, TBL-3, Oroojlooyjadid-2022 | TRANSFORM |
 | ARG-15 | Measured sector I/S persistence is high enough that standard order-up-to policies sit at or over the stability boundary | 6.1 | ARG-02 | LB-E5-persistence, Lee-1997a, Chen-2000 | TRANSFORM |
@@ -148,8 +150,8 @@ Roles: prior-art / motivating-anomaly / method-precedent / corroboration / contr
 | LB-E1-range | Per-sector Spearman range in the rolling test (descriptive, alpha 0.05 line). VALUE 2026-07-13: oscillating sectors +0.023 to +0.273 (strongest wholesale motor vehicles +0.273, primary metals A31SIS +0.232); never-crossing sectors near zero. | ARG-13 | DONE |
 | LB-E2-gfc | GFC episode Spearman for combined D (with exact p, n). VALUE 2026-07-13: +0.3456, permutation p = 0.0775, n = 17. | ARG-11 | DONE |
 | LB-E2-components | Component bake-off correlations (rho alone; delta-phi; tau). VALUE 2026-07-13: rho_crisis -0.159, |delta phi| +0.316, tau n/a (constant); combined D +0.3456 beats both. | ARG-11 | DONE |
-| LB-E3-covid | COVID episode correlation (expected null) | ARG-12 | TRANSFORM |
-| LB-E3-persistence-direction | Count of sectors where persistence dropped during COVID | ARG-12 | TRANSFORM |
+| LB-E3-covid | COVID episode correlation (expected null). VALUE 2026-07-13: Spearman +0.0760, permutation p = 0.3933 (null), n = 17. | ARG-12 | DONE |
+| LB-E3-persistence-direction | Count of sectors where persistence dropped during COVID. VALUE 2026-07-13: 14/17 dropped (majority - confirms the falsifiable boundary prediction). | ARG-12 | DONE |
 | LB-E4-naive | Beer Game mean cost, naive policy | ARG-14 | TRANSFORM |
 | LB-E4-erp | Beer Game mean cost, ERP baseline | ARG-14 | TRANSFORM |
 | LB-E4-tool | Beer Game mean cost, spectral-radius tool + relative reduction vs ERP | ARG-14 | TRANSFORM |

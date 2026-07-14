@@ -171,3 +171,15 @@ GATE: no rule defect. ONE code-only suite FP-leg fix (firewall held - rule untou
 NEXT (v1.9.5 sequence): author freeze commit (E3 script + suite) -> Stage 1 official suite run, paste ALL PASS -> Stage 2 real-run command only after confirmed ALL PASS -> real data touched once. Expected real outcome: CONSISTENT-WITH-BOUNDARY (null correlation + majority persistence drop) - a null is the SUPPORTING result here.
 
 ---
+
+**2026-07-13 - E3 OFFICIAL REAL RUN: CONSISTENT-WITH-BOUNDARY (the supporting result). COVID maps cleanly as a compound shock outside the domain. Freeze commit 3124fe5; suite official ALL PASS; two-stage handoff honored.**
+
+TWO-STAGE HANDOFF: E3 gate committed in 3124fe5f (collapsed with the E2 result into one git add -A - both landed together, second commit correctly found nothing to add); Stage 1 official suite ALL PASS (LEG 1 boundary CONSISTENT-WITH-BOUNDARY; LEG 2 anomaly-A positive-significant ANOMALY S +0.961 p 0.0005; LEG 3 anomaly-B persistence-rose ANOMALY; LEG 4 FP control boundary-call 0.895 in band + positive-anomaly false-fire 0.1045 ~ nominal alpha) - verbatim match to container QA; Stage 2 real-run command issued only after the pasted ALL PASS; real data touched once.
+
+E3 REAL RESULT: CONSISTENT-WITH-BOUNDARY (the pre-registered thesis-consistent outcome for a compound shock). Spearman(D, realized) = +0.0760, one-sided permutation p = 0.3933 (NULL - not significant, as expected), n = 17; persistence DROPPED in 14/17 sectors (majority-dropped: True - the falsifiable direction the pre-registration specified, confirmed). COVID behaves as the canonical compound shock the theorem explicitly does NOT model: no spurious positive correlation flattering the metric (which would have been reported as an anomaly, not a win), and the concrete persistence-drop prediction holds. This is clean DOMAIN-BOUNDARY MAPPING - it strengthens the paper's honesty (the mechanism knows where it applies) rather than adding confirmatory weight to E1/E2. Result JSON analysis/outputs/e3_covid_episode.json committed.
+
+THREE EXPERIMENTS, THREE THESIS-CONSISTENT OUTCOMES: E1 (panel falsifier SUPPORT, pooled S +0.1505 p 0.0090), E2 (GFC corroborating SUPPORT, S +0.3456 p 0.0775, compound beats components), E3 (COVID boundary CONFIRMED, null correlation + 14/17 persistence drop). The pattern is coherent: the mechanism predicts where damage compounds (E1/E2) AND correctly excludes where it does not (E3).
+
+NEXT: commit E3 result + JSON; update OUTLINE (ARG-12 / LB-E3 nodes -> boundary confirmed); proceed to E4 (Beer Game Monte Carlo - does ACTING on the diagnostic save cost? a simulation experiment, not an episode; the theorem tool tiers with the FLAG-2 W* boundary clamp), same gate + two-stage discipline.
+
+---
