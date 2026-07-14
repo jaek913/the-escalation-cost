@@ -1,0 +1,162 @@
+{
+  "experiment": "E1",
+  "date": "2026-07-13",
+  "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
+  "spec": {
+    "W": 8,
+    "bg": 0.05,
+    "kappa": 0.75,
+    "tau": 6.0,
+    "base_win": 60,
+    "recent_win": 12,
+    "fwd_win": 12,
+    "block": 24,
+    "B": 2000,
+    "alpha": 0.05,
+    "chronic_frac": 0.4,
+    "seed": 20260713
+  },
+  "sectors": [
+    {
+      "sector": "AMTMIS (Total Manufacturing I/S)",
+      "klass": "oscillating",
+      "n_obs": 341,
+      "spearman": 0.10581002272802932,
+      "p_one_sided_descriptive": 0.20789605197401298,
+      "frac_months_above_1": 0.0226628895184136
+    },
+    {
+      "sector": "AMDMIS (Durable Goods I/S)",
+      "klass": "oscillating",
+      "n_obs": 341,
+      "spearman": 0.13432477173613697,
+      "p_one_sided_descriptive": 0.12993503248375812,
+      "frac_months_above_1": 0.028328611898016998
+    },
+    {
+      "sector": "AMNMIS (Nondurable Goods I/S)",
+      "klass": "oscillating",
+      "n_obs": 341,
+      "spearman": 0.07227664642025973,
+      "p_one_sided_descriptive": 0.255872063968016,
+      "frac_months_above_1": 0.0056657223796034
+    },
+    {
+      "sector": "A34SIS (Computers and Electronic Products I/S)",
+      "klass": "never-crossing",
+      "n_obs": 341,
+      "spearman": -0.017444292117217316,
+      "p_one_sided_descriptive": 0.568215892053973,
+      "frac_months_above_1": 0.0
+    },
+    {
+      "sector": "A35SIS (Electrical Equipment, Appliances and Components I/S)",
+      "klass": "never-crossing",
+      "n_obs": 341,
+      "spearman": 0.038614649440575737,
+      "p_one_sided_descriptive": 0.3778110944527736,
+      "frac_months_above_1": 0.0
+    },
+    {
+      "sector": "A36SIS (Transportation Equipment I/S)",
+      "klass": "oscillating",
+      "n_obs": 341,
+      "spearman": 0.16870341283604043,
+      "p_one_sided_descriptive": 0.10294852573713144,
+      "frac_months_above_1": 0.0056657223796034
+    },
+    {
+      "sector": "A31SIS (Primary Metals I/S [2026-07-13 amendment])",
+      "klass": "oscillating",
+      "n_obs": 341,
+      "spearman": 0.23189066334976652,
+      "p_one_sided_descriptive": 0.021989005497251374,
+      "frac_months_above_1": 0.019830028328611898
+    },
+    {
+      "sector": "R4231IM163SCEN (Wholesale Motor Vehicles I/S)",
+      "klass": "oscillating",
+      "n_obs": 341,
+      "spearman": 0.27283107717542954,
+      "p_one_sided_descriptive": 0.020989505247376312,
+      "frac_months_above_1": 0.0113314447592068
+    },
+    {
+      "sector": "R4232IM163SCEN (Wholesale Furniture I/S)",
+      "klass": "never-crossing",
+      "n_obs": 341,
+      "spearman": -0.024562311419397208,
+      "p_one_sided_descriptive": 0.5577211394302849,
+      "frac_months_above_1": 0.0
+    },
+    {
+      "sector": "R4233IM163SCEN (Wholesale Lumber/Construction I/S)",
+      "klass": "never-crossing",
+      "n_obs": 341,
+      "spearman": -0.13209191687170316,
+      "p_one_sided_descriptive": 0.8910544727636182,
+      "frac_months_above_1": 0.0
+    },
+    {
+      "sector": "R4234IM163SCEN (Wholesale Professional/Commercial Equipment I/S)",
+      "klass": "never-crossing",
+      "n_obs": 341,
+      "spearman": -0.007578329989195863,
+      "p_one_sided_descriptive": 0.5347326336831584,
+      "frac_months_above_1": 0.0
+    },
+    {
+      "sector": "R4236IM163SCEN (Wholesale Electrical/Electronics I/S)",
+      "klass": "never-crossing",
+      "n_obs": 341,
+      "spearman": 0.20813366865499094,
+      "p_one_sided_descriptive": 0.044977511244377814,
+      "frac_months_above_1": 0.0
+    },
+    {
+      "sector": "R4238IM163SCEN (Wholesale Machinery I/S)",
+      "klass": "oscillating",
+      "n_obs": 341,
+      "spearman": 0.1847549700540812,
+      "p_one_sided_descriptive": 0.07146426786606697,
+      "frac_months_above_1": 0.0028328611898017
+    },
+    {
+      "sector": "R423IRM163SCEN (Wholesale Total Durables I/S)",
+      "klass": "oscillating",
+      "n_obs": 341,
+      "spearman": 0.160969830129922,
+      "p_one_sided_descriptive": 0.08345827086456771,
+      "frac_months_above_1": 0.014164305949008499
+    },
+    {
+      "sector": "MRTSIR441USS (Retail Motor Vehicle Dealers I/S)",
+      "klass": "oscillating",
+      "n_obs": 341,
+      "spearman": 0.023334816254021288,
+      "p_one_sided_descriptive": 0.4172913543228386,
+      "frac_months_above_1": 0.002840909090909091
+    },
+    {
+      "sector": "MRTSIR444USS (Retail Building Materials I/S)",
+      "klass": "never-crossing",
+      "n_obs": 341,
+      "spearman": -0.0020697335887588557,
+      "p_one_sided_descriptive": 0.5007496251874063,
+      "frac_months_above_1": 0.0
+    },
+    {
+      "sector": "MRTSIR452USS (Retail General Merchandise I/S)",
+      "klass": "never-crossing",
+      "n_obs": 341,
+      "spearman": 0.0006570246558262138,
+      "p_one_sided_descriptive": 0.5087456271864068,
+      "frac_months_above_1": 0.0
+    }
+  ],
+  "n_oscillating": 9,
+  "n_chronic": 0,
+  "pooled_mean_spearman": 0.15054402340929854,
+  "p_panel": 0.008995502248875561,
+  "verdict": "SUPPORT"
+}
