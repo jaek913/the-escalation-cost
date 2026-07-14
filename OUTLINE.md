@@ -6,10 +6,12 @@
 - **Archetype:** theory-with-proofs (empirics co-primary; author-ratified 2026-07-13)
 - **Source pin (rebuild):** C:\Users\jaek9\Documents\LaggingTruth\05-13-2026\Paper 9\Paper9_The_General_Measurement_Trap_v16.md, MD5 93135760b92cc195da36eb3c2b785ded, SHA256 c4fee62f2b48f8f5a84cf22f5b3d01fe139cc59810db9f11e29d800ed7c648a5
 - **Standard:** v1.9.5 (template v1.8)
-- **Outline version:** v0.1 - 2026-07-13
+- **Outline version:** v0.2 - 2026-07-13
 - **Status:** draft
 
 ## Changelog
+
+- v0.2 2026-07-13 - E1 (primary falsifier) RESULT LANDED: SUPPORT. Rule amended pre-run (dated DESIGN Section 4 amendment, author-ratified rule B: pooled panel statistic replaces per-sector majority after the v1.9.5 suite measured ~0 power in the original rule; falsifier is now panel-level). ARG-13 and LB-E1 nodes updated to DONE/SUPPORT with the pooled figure. Sector-composition note: primary metals = A31SIS per the 2026-07-13 data-layer amendment (source A25SIS mislabel corrected).
 
 - v0.1 2026-07-13 - initial roadmap built from the pinned v16 source, restructured for the retitled standalone rebuild; experiment ids reference DESIGN.md (T1-T3, E1-E12).
 
@@ -35,7 +37,7 @@ Title/subtitle: CORRECTED - source title "The General Measurement Trap" retired;
 | ARG-10 | The damage bound gives the adaptation-tax framework its transition-cost foundation | 4.7 | ARG-05, ARG-07 | Kim-AdaptationTax (foundation) | TRANSFORM (de-seriesed cross-reference) |
 | ARG-11 | GFC episode: pre-crisis predicted damage ranking aligns with realized crisis damage; combined D at least comparable to components (corroborating, n stated) | 5.1 | ARG-05 | LB-E2-gfc, LB-E2-components, TBL-1, Udenio-2015 | TRANSFORM |
 | ARG-12 | COVID episode: null result, consistent with the theorem's stated domain (persistence dropped; compound shock outside step-change model) | 5.2 | ARG-05 | LB-E3-covid, LB-E3-persistence-direction | TRANSFORM |
-| ARG-13 | PRIMARY: rolling out-of-sample D predicts subsequent I/S deviation in a majority of regime-oscillating sectors (the falsifier) | 5.3 | ARG-05 | LB-E1-panel, LB-E1-range, TBL-2 | TRANSFORM |
+| ARG-13 | PRIMARY (falsifier): rolling out-of-sample D predicts subsequent I/S deviation at the PANEL level across regime-oscillating sectors [amended rule B - pooled statistic, not per-sector majority]. RESULT 2026-07-13: SUPPORT, pooled mean Spearman +0.1505, joint block-bootstrap panel p = 0.0090 (< 0.01), 9 oscillating sectors, all 9 positive; verdict rests on the pooled statistic (per-sector inference noisy at this resolution). | 5.3 | ARG-05 | LB-E1-panel, LB-E1-range, TBL-2 | DONE (SUPPORT) |
 | ARG-14 | Acting on the diagnostic saves cost: spectral-radius tool beats an ERP baseline in the Beer Game Monte Carlo; full theorem adds a further edge | 5.4 | ARG-09 | LB-E4-erp, LB-E4-tool, LB-E4-full, LB-E4-winrate, TBL-3, Oroojlooyjadid-2022 | TRANSFORM |
 | ARG-15 | Measured sector I/S persistence is high enough that standard order-up-to policies sit at or over the stability boundary | 6.1 | ARG-02 | LB-E5-persistence, Lee-1997a, Chen-2000 | TRANSFORM |
 | ARG-16 | The spectral-radius ordering tool is a practitioner rule taking observed demand persistence as input; novelty positioned against stability-region inversions and ARMA eigenvalue work | 6.2 | ARG-14, ARG-15 | Warburton-2004, Wang-2013, Udenio-2017, Gaalman-Disney-2009, Boute-2006 | RETAINED |
@@ -140,8 +142,8 @@ Roles: prior-art / motivating-anomaly / method-precedent / corroboration / contr
 | LB-T2-wstar | Closed-form W* matches brute-force argmin; cost curve unimodal | ARG-06 | TRANSFORM |
 | LB-T2-statics | Comparative-static signs of W* confirmed numerically | ARG-08 | CORRECTED (re-derivation) |
 | LB-T3-kstar | Expected-cost argmin below the pi^2/2 limit; manufacturing-parameter k* range | ARG-09 | TRANSFORM |
-| LB-E1-panel | Count of regime-oscillating sectors with significant positive Spearman (block-bootstrap) | ARG-13 | TRANSFORM |
-| LB-E1-range | Range of per-sector Spearman correlations in the rolling test | ARG-13 | TRANSFORM |
+| LB-E1-panel | Pooled mean Spearman over regime-oscillating sectors + joint block-bootstrap panel p (amended rule B). VALUE 2026-07-13: +0.1505, p = 0.0090, 9 oscillating sectors, 0 chronic. | ARG-13 | DONE |
+| LB-E1-range | Per-sector Spearman range in the rolling test (descriptive, alpha 0.05 line). VALUE 2026-07-13: oscillating sectors +0.023 to +0.273 (strongest wholesale motor vehicles +0.273, primary metals A31SIS +0.232); never-crossing sectors near zero. | ARG-13 | DONE |
 | LB-E2-gfc | GFC episode Spearman for combined D (with exact p, n) | ARG-11 | TRANSFORM |
 | LB-E2-components | Component bake-off correlations (rho alone; delta-phi; tau) | ARG-11 | TRANSFORM |
 | LB-E3-covid | COVID episode correlation (expected null) | ARG-12 | TRANSFORM |
