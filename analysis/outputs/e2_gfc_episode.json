@@ -1,0 +1,55 @@
+{
+  "experiment": "E2",
+  "date": "2026-07-13",
+  "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
+  "spec": {
+    "W": 8,
+    "bg": 0.05,
+    "kappa": 0.75,
+    "tau": 6.0,
+    "pre": [
+      "2003-01",
+      "2006-12"
+    ],
+    "crisis": [
+      "2008-01",
+      "2009-12"
+    ],
+    "peak": [
+      "2007-01",
+      "2010-12"
+    ],
+    "alpha": 0.1,
+    "B": 2000,
+    "seed": 20260713
+  },
+  "n": 17,
+  "spearman_D": 0.34558823529411764,
+  "p_one_sided": 0.07746126936531735,
+  "components": {
+    "rho_crisis": -0.15931372549019607,
+    "abs_delta_phi": 0.3161764705882353,
+    "tau": null
+  },
+  "combined_ge_components": true,
+  "verdict": "SUPPORT",
+  "sectors": [
+    "AMTMIS (Total Manufacturing I/S)",
+    "AMDMIS (Durable Goods I/S)",
+    "AMNMIS (Nondurable Goods I/S)",
+    "A34SIS (Computers and Electronic Products I/S)",
+    "A35SIS (Electrical Equipment, Appliances and Components I/S)",
+    "A36SIS (Transportation Equipment I/S)",
+    "A31SIS (Primary Metals I/S [2026-07-13 amendment])",
+    "R4231IM163SCEN (Wholesale Motor Vehicles I/S)",
+    "R4232IM163SCEN (Wholesale Furniture I/S)",
+    "R4233IM163SCEN (Wholesale Lumber/Construction I/S)",
+    "R4234IM163SCEN (Wholesale Professional/Commercial Equipment I/S)",
+    "R4236IM163SCEN (Wholesale Electrical/Electronics I/S)",
+    "R4238IM163SCEN (Wholesale Machinery I/S)",
+    "R423IRM163SCEN (Wholesale Total Durables I/S)",
+    "MRTSIR441USS (Retail Motor Vehicle Dealers I/S)",
+    "MRTSIR444USS (Retail Building Materials I/S)",
+    "MRTSIR452USS (Retail General Merchandise I/S)"
+  ]
+}
