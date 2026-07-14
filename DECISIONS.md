@@ -197,3 +197,13 @@ CONTAINER QA (informational): LEG 1 planted cheaper SUPPORT (p 0.0005); LEG 2 pl
 NEXT (v1.9.5 sequence): author freeze commit (E4 script + suite) -> Stage 1 official suite run, paste ALL PASS -> Stage 2 real-run command only after confirmed ALL PASS -> the simulation runs once (synthetic; seeds committed).
 
 ---
+
+**2026-07-13 - E4 JSON-SERIALIZATION FIX + suite hardened (leg 5 end-to-end). Real-run main() hit a numpy bool_ TypeError the container suite had missed; fixed the result-dict types and added a suite leg that exercises the main() JSON-dump path so the class of bug cannot recur. Re-froze.**
+
+DEFECT (surfaced at Stage 2 real run, computation succeeded, only the write failed): main() raised TypeError: Object of type bool_ is not JSON serializable - the verdict-dict fields full_le_spectral and spectral_cheaper_than_basestock were numpy bool_ (from array-mean comparisons), which json.dumps rejects. The container QA missed it because the suite exercised run_montecarlo() (which returns the dict) but never the main() path that serializes it to disk. Root-cause class: testing the compute function but not the IO boundary.
+
+FIX (code only, firewall intact - no rule/threshold change): wrapped the two comparison results in bool() and coerced n_runs/phi_engagement/cap_mult to int/float in the result dict. HARDENED the suite with LEG 5 (json roundtrip): monkeypatches N_RUNS small, calls the real e4.main(), reparses the written JSON, and asserts experiment=='E4', full_le_spectral is a native bool, verdict is str, mean_cost present - so any future numpy-type leak in the output is caught by the suite, not by Jae at real-run time. Re-QA ALL PASS (LEG 1 SUPPORT; LEG 2 REFUTE + FP 0/1000; LEG 3 REFUTE; LEG 4 engine smoke det/no-harm/differentiation; LEG 5 json roundtrip verdict=SUPPORT reparsed OK). Full-suite E4 main() line during QA also printed the real-scale verdict: SUPPORT (spectral vs base-stock p 0.0005, rel reduction +0.2%, full<=spectral win 72.2%). New hashes: analysis/e4_beer_game.py MD5 5d546f69d02db573b56c77b623252b6b; analysis/suites/e4_suite.py MD5 96dd6330a2bf40173c108cf8b4aec511 (repo copies MD5-identical to QA-tested). Supersedes the prior freeze (bfb981b script/suite hashes 4a09cfd9.../52cadc1a...).
+
+NEXT: RE-FREEZE commit (fixed script + hardened suite) -> Stage 1 official suite run, paste ALL PASS -> Stage 2 real run (the JSON write now succeeds).
+
+---

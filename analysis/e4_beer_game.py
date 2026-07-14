@@ -251,16 +251,16 @@ def run_montecarlo(n_runs: int = N_RUNS, base_seed: int = BASE_SEED) -> dict:
 
     p_spec = paired_p(costs["spectral"], costs["basestock"])
     rr_m, rr_lo, rr_hi = rr_ci(costs["spectral"], costs["basestock"])
-    full_le = costs["full"].mean() <= costs["spectral"].mean()
+    full_le = bool(costs["full"].mean() <= costs["spectral"].mean())
     win_full = float((costs["full"] < costs["spectral"]).mean())
 
-    cheaper = (costs["spectral"].mean() < costs["basestock"].mean()
-               and p_spec < 0.01 and rr_lo > 0)
+    cheaper = bool(costs["spectral"].mean() < costs["basestock"].mean()
+                   and p_spec < 0.01 and rr_lo > 0)
     verdict = "SUPPORT" if cheaper and full_le else (
         "SUPPORT-PARTIAL" if cheaper else "REFUTE")
 
     return dict(
-        n_runs=n_runs, phi_engagement=PHI_ENG, cap_mult=CAP_MULT,
+        n_runs=int(n_runs), phi_engagement=float(PHI_ENG), cap_mult=float(CAP_MULT),
         mean_cost={a: float(costs[a].mean()) for a in algos},
         p_spectral_vs_basestock=p_spec,
         rel_reduction_mean=rr_m, rel_reduction_ci=[rr_lo, rr_hi],

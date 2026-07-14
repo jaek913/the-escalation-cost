@@ -160,6 +160,31 @@ def leg4_engine_smoke() -> bool:
     return ok
 
 
+def leg5_json_roundtrip() -> bool:
+    """End-to-end: run the real main() at small n and confirm it writes valid,
+    JSON-serializable output (guards the numpy bool_/float serialization path
+    that run_montecarlo-only testing misses)."""
+    import json
+    import e4_beer_game as e4
+    orig = e4.N_RUNS
+    try:
+        e4.N_RUNS = 40
+        e4.main()
+        data = json.loads(e4.OUT.read_text())
+        ok = (data["experiment"] == "E4"
+              and isinstance(data["full_le_spectral"], bool)
+              and isinstance(data["verdict"], str)
+              and "mean_cost" in data)
+    except Exception as exc:  # noqa: BLE001
+        print(f"LEG 5 json roundtrip: EXCEPTION {exc!r} -> FAIL")
+        return False
+    finally:
+        e4.N_RUNS = orig
+    print(f"LEG 5 json roundtrip: wrote + reparsed {e4.OUT.name}, "
+          f"verdict={data['verdict']} -> {'PASS' if ok else 'FAIL'}")
+    return ok
+
+
 def main() -> int:
     print(f"E4 suite: verdict machinery at n={N_PAIRED} paired + engine smoke "
           f"(phi_eng={PHI_ENG:.3f})")
@@ -167,7 +192,8 @@ def main() -> int:
     r2 = leg2_tie()
     r3 = leg3_worse()
     r4 = leg4_engine_smoke()
-    all_pass = r1 and r2 and r3 and r4
+    r5 = leg5_json_roundtrip()
+    all_pass = r1 and r2 and r3 and r4 and r5
     print(f"\nALL PASS: {all_pass}")
     return 0 if all_pass else 1
 
