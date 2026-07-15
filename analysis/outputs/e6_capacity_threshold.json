@@ -1,0 +1,92 @@
+{
+  "experiment": "E6",
+  "date": "2026-07-13",
+  "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
+  "primary_spec_R": {
+    "n_paired": 353,
+    "bins": [
+      {
+        "label": "<75",
+        "lo": null,
+        "hi": 75.0,
+        "n": 136,
+        "mean_rho": 1.049927156376094
+      },
+      {
+        "label": "75-85",
+        "lo": 75.0,
+        "hi": 85.0,
+        "n": 155,
+        "mean_rho": 1.0654856823951868
+      },
+      {
+        "label": "85-90",
+        "lo": 85.0,
+        "hi": 90.0,
+        "n": 46,
+        "mean_rho": 1.0642647074860938
+      },
+      {
+        "label": ">=90",
+        "lo": 90.0,
+        "hi": null,
+        "n": 16,
+        "mean_rho": 1.0780304144710064
+      }
+    ],
+    "monotone": false,
+    "crossing_bin": "<75",
+    "crossing_at_knee": false,
+    "spec": {
+      "name": "SPEC-R",
+      "W": 12,
+      "bg": 3.0
+    },
+    "current_utilization": 75.3502,
+    "current_utilization_month": "2026-05"
+  },
+  "robustness_spec_M": {
+    "n_paired": 353,
+    "bins": [
+      {
+        "label": "<75",
+        "lo": null,
+        "hi": 75.0,
+        "n": 136,
+        "mean_rho": 0.7599141691702421
+      },
+      {
+        "label": "75-85",
+        "lo": 75.0,
+        "hi": 85.0,
+        "n": 155,
+        "mean_rho": 0.8226483005679023
+      },
+      {
+        "label": "85-90",
+        "lo": 85.0,
+        "hi": 90.0,
+        "n": 46,
+        "mean_rho": 0.8117490765035654
+      },
+      {
+        "label": ">=90",
+        "lo": 90.0,
+        "hi": null,
+        "n": 16,
+        "mean_rho": 0.8812782483244663
+      }
+    ],
+    "monotone": false,
+    "crossing_bin": null,
+    "crossing_at_knee": false,
+    "spec": {
+      "name": "SPEC-M",
+      "W": 8,
+      "bg": 0.05
+    },
+    "current_utilization": 75.3502,
+    "current_utilization_month": "2026-05"
+  },
+  "verdict": "REFUTE"
+}
