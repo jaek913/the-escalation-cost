@@ -441,6 +441,131 @@ BUILD STRATEGY - now decidable on evidence, but SIX CIC CLASSES REMAIN. CIC-1 an
 
 NEXT (E8): (1) CIC classes 2-6 on phase2_7_validation_runner.py, phase2_7_pricing_manager.py, phase2_7_demand_response.py and phase2_7_pricing_policies.py - CIC-4 (look-ahead) matters most, since the pricing policy consults a rolling persistence estimate at each review; (2) decide the build strategy on the completed CIC; (3) then build.
 
+**AMENDMENT 2026-07-16c (PRE-BUILD; CIC COMPLETE and BUILD STRATEGY; author-ratified; Standard v1.9.9). All seven CIC classes CLEAR on the pricing code. E8 carries TWO CLAIMS requiring TWO DIFFERENT COMPARISONS, and v16 conflates them - that conflation is the experiment's central finding.**
+
+CIC COMPLETE - ALL SEVEN CLASSES CLEAR (phase2_7_validation_runner.py, phase2_7_pricing_manager.py, phase2_7_pricing_policies.py, phase2_7_demand_response.py):
+  (1) RE-EXECUTES TO THE CLAIM: all five published figures recompute from the 1,800
+      RAW trial records at 13-21 sigma (see 2026-07-16b).
+  (2) INDEX/ROW ALIGNMENT: cost sums over range(warmup_periods, num_periods) =
+      range(52, 260); revenue sums over rev_per_period[warmup_periods:] = [52:];
+      both are 208 periods and both divide by measured_periods = num_periods -
+      warmup_periods = 208. SAME WINDOW, SAME DIVISOR - which is load-bearing,
+      because net_value = revenue - cost SUBTRACTS them, so a one-off in either
+      would corrupt every figure. The code's own comment states the intent:
+      "Revenue is restricted to post-warmup periods to match the cost window."
+  (3) NaN AND GAP HANDLING: except Exception -> success=False plus a full traceback;
+      the aggregator counts successes; 0 of 1,800 failed, so no failed record
+      reaches any figure. OBSERVATION, inert here and recorded rather than assumed:
+      extract_chain_costs carries the same silent-truncation guard as the sweep
+      (`if t < len(node.state_vars)`), which would drop periods from the cost sum
+      while measured_periods stays 208 - understating cost_per_period with no error
+      raised. It never fires in this run.
+  (4) NO LOOK-AHEAD: VERIFIED AT THE CALL SITE, not merely from the docstring. In
+      apply_pricing_to_retailer_streams the loop appends period t's aggregate to
+      the history, and only then, at a review boundary, calls
+      policy.decide_price(period=t+1, demand_history=aggregated_demand_history,
+      current_price=current_price). The history contains periods 0..t; the returned
+      price governs t+1 onward. The policy never sees demand it is about to
+      influence. The docstring's contract ("up to (but not including) the current
+      period") is honoured by the caller.
+  (5) OVERLAP vs NON-OVERLAPPING SUBSAMPLE: disjoint BY CONSTRUCTION. Per
+      PricingPolicyConfig, "the baseline is the recent_window-to-(recent_window +
+      baseline_window) period range, so it does not overlap with the recent window"
+      - recent 20 periods, baseline the 60 before it.
+  (6) RECORD BOUNDARIES: costs accrue per node over range(52, 260) and are then
+      totalled; no computation spans a node boundary; per-tier accounting is a
+      separate roll-up, not a re-slice.
+  (7) INPUT INTEGRITY: cleared in 2026-07-16b - deterministic demand list makes
+      rand_seed=42 inert; the "identical environments" are one no-shift control
+      under two names.
+ADJUDICATION: THE PRICING CODE IS CORRECT. Provenance (method 1) and correctness
+(the CIC) are both established, separately and in that order - earned, not asserted.
+The architecture explains the CIC-7 result structurally rather than coincidentally:
+the pricing layer is a PURE UPSTREAM TRANSFORMATION ("the entire realized demand
+stream can be pre-computed BEFORE running the inventory simulation"), which is WHY
+the demand handed to stockpyl is a deterministic list.
+
+BUILD STRATEGY: VENDOR, as in E7 (14e), and for the same reason - the CIC cleared,
+so the source's construction is safe to adopt, and re-implementing FROM their code
+would be transcription rather than independence. Ours remains the runner and the
+analysis. The vendoring scope is LARGER than E7's three modules: the pricing runner
+additionally imports phase2_3_stage1_network (SKU_SPECS), phase2_3_stage3_policy_comparison
+(apply_capacity_constraints), phase2_3_stage2_demand, phase2_6_serial_network,
+phase2_6_policy_scenarios, phase2_7_demand_response, phase2_7_pricing_policies and
+phase2_7_pricing_manager. Every vendored module is MD5-asserted by the suite; the
+exact set and hashes are recorded at vendor time. The same claim limits apply: E8
+MAY say it audited the source's implementation against the 7-point CIC and re-ran
+it; it MAY NOT claim independent re-implementation.
+
+THE STRUCTURAL FINDING - E8 CARRIES TWO CLAIMS, AND THEY NEED DIFFERENT COMPARISONS.
+This experiment's frozen purpose reads: "Test whether THE PERSISTENCE CALCULATION
+gives useful guidance on a second lever (price), AND re-earn THE ASYMMETRIC FINDING
+(raises help under strain; cuts are uniformly negative)." Those are two distinct
+claims about two distinct things:
+  CLAIM A - THE FORMULA'S VALUE. Does the persistence gate improve pricing guidance?
+    Admissible comparison: phi_gated_asymmetric vs NAIVE_REACTIVE (and
+    phi_gated_symmetric vs naive_reactive). The naive policy already reacts to
+    demand shifts; the gate is the only difference between the arms, so the
+    difference IS the formula's contribution. The source's own code says exactly
+    this, in PricingPolicy's docstring: "Comparing against this baseline ISOLATES
+    THE VALUE OF THE FORMULA'S PERSISTENCE-DISCRIMINATION CAPABILITY beyond the
+    value of dynamic pricing in general." They built the right comparator.
+  CLAIM B - THE ASYMMETRY OF PRICING REACTION. Do price raises help under strain and
+    price cuts hurt, uniformly? This is a claim about REACTING TO SHIFTS AT ALL, not
+    about the formula. Admissible comparison: no_pricing vs naive_reactive.
+V16 CONFLATES THEM: it reports CLAIM B's number (+$10,142/period, no_pricing vs
+naive_reactive) as the evidence for CLAIM A ("whether the formula gives useful
+guidance"). Measured from the raw records, in that SAME environment
+(level_shift_up_persistent): Claim B = +10141.86 (se 630.19, 16.1 sigma, RESOLVED);
+Claim A = +13.01 (se 21.52, 0.6 sigma, UNRESOLVED) - 0.13% of the number it is
+credited with. Across all five level-shift environments Claim A has exactly ONE
+resolved win: low_phi_shift_down, +137.20 (se 31.41, 4.4 sigma). E8 THEREFORE
+REPORTS BOTH CLAIMS, SEPARATELY AND NEVER SUBSTITUTED FOR ONE ANOTHER. This is not
+a re-framing of the source's result; it is the source's own comparator set, used as
+its own code says it should be.
+
+CLASSIFICATION (v1.9.7), revised to the two-claim structure. E8 is a BLEND of:
+  (a) HYPOTHESIS TEST - CLAIM A, the formula's value: phi_gated_* vs naive_reactive.
+      Genuine null (the gate adds nothing), real fail condition. Arms are distinct
+      (2026-07-16b), so the comparison has dynamic range. Report form: VERDICT per
+      environment IF severity clears at the chosen n; otherwise the honest report is
+      an ESTIMATE with its uncertainty, and an unresolved cell is reported
+      UNRESOLVED - never as a null, and never as "the formula works."
+  (b) HYPOTHESIS TEST - CLAIM B, the asymmetry of pricing reaction: no_pricing vs
+      naive_reactive, against the frozen assert/partial/drop rule above. Severity is
+      NOT in doubt: all five environments resolve at 13-21 sigma in the source's own
+      50-seed data.
+  (c) ROBUSTNESS / SENSITIVITY - the capacity leg (1.3x vs 1.8x/2.4x/3.0x, whose
+      output files are also on disk) and the elasticity leg (0.5/1.5/3.0). Qualifies
+      (a) and (b); NO standalone verdict.
+There is no calibration leg: with the construction recovered and vendored,
+comparison to the source's numbers is a regression assertion, not evidence (the E7
+lesson).
+
+SEVERITY AND SAMPLE SIZE - to be settled on MEASURED cost before any run, per the
+14f precedent. From the source's own 50-seed standard errors, the seeds needed to
+resolve CLAIM A at 95% per environment: level_shift_down_persistent ~115;
+mid_phi_shift_down ~195; level_shift_up_persistent ~525 (its effect is +13.01, so
+resolving it requires se < 6.64). low_phi_shift_down (4.4 sigma) and low_phi_shift_up
+(2.3 sigma) already resolve at 50. NOTE WHAT RESOLUTION BUYS HERE, AND WHAT IT DOES
+NOT: whether level_shift_up_persistent resolves at +13.01 +/- 5 or stays
+"unresolved," BOTH support the same conclusion - the formula's contribution in the
+paper's headline environment is negligible. Resolution converts "not distinguishable
+from zero" into "pinned at 0.13% of the headline," which is a stronger and more
+honest statement, but it does not change the direction of the finding. The runtime
+must be measured before the seed count is fixed: the source's own record reports
+1,800 trials in 82.9 minutes across 12 fleet workers (~16 hours single-machine at 50
+seeds), which would make a 525-seed full grid infeasible on one machine. The scope
+question (five level-shift environments, or all nine including the controls) is
+settled by the operator: FIVE.
+
+NEXT (E8, in order): (1) vendor the pricing module set, MD5-recorded; (2) measure
+throughput on the vendored engine; (3) fix the seed count on that measurement as a
+dated amendment, with the self-penalizing check recorded; (4) build the runner +
+suite (vendor integrity, the two-claim comparison logic, resolution logic, JSON
+boundary); (5) container QA; (6) freeze; (7) Stage 1; (8) Stage 2; (9)
+stop-and-review.
+
 **Inputs:** none external.
 
 ## 12. E9 - Customer-hysteresis sensitivity sweep
