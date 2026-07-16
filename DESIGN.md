@@ -593,6 +593,50 @@ NOTE ON phase2_6_sterman_policy.py. It enters the closure through phase2_6_polic
 
 NEXT: measure throughput on the vendored engine, then fix the seed count on that measurement as a dated amendment before any build.
 
+**AMENDMENT 2026-07-16e (PRE-BUILD; NO RE-RUN; author-ratified; Standard v1.9.9). E8 is an ANALYSIS of the source's committed artifacts, not a re-execution. The seed-count question is dissolved rather than answered: the finding is a BOUND, and their 50-seed data already carries it.**
+
+THROUGHPUT, MEASURED on the author's machine against the vendored engine (not the container - E7 established the container is the wrong yardstick, having projected 8.5h for a run that took 11.6h): 19.04 s per trial. Projected for the operator's scope of five level-shift environments x four scenarios: 50 seeds = 5.3h; 115 = 12.2h; 195 = 20.6h; 250 = 26.5h; 526 = 55.5h. This is consistent with the source's own record - 1,800 trials in 82.9 minutes across a 12-worker fleet, i.e. roughly 16h single-machine at 50 seeds - and is why they used a fleet.
+
+WHY NO RE-RUN. Taken claim by claim, a re-execution buys nothing that the source's own verified artifact does not already provide.
+  CLAIM B (the asymmetry of pricing reaction; no_pricing vs naive_reactive) is ALREADY SETTLED in their 50-seed data: all five environments resolve at 13-21 sigma, and CIC-1 confirms every published figure recomputes from the 1,800 raw records. More seeds add nothing to a 16-sigma result.
+  CLAIM A (the formula's value; phi_gated vs naive_reactive) was the only reason to run - and the reasoning that motivated a run was MINE AND IT WAS WRONG. I framed it as a VERDICT question ("is the formula's contribution non-zero?"), which is the exact error Standard v1.9.7 exists to catch: forcing an estimation question through a pass/fail gate. Powering to detect +13.01 is also CIRCULAR - +13.01 is itself a 0.60-sigma reading, an estimate we do not trust, so powering to it ASSUMES IT IS REAL; if the true effect is zero, no sample size ever resolves it and 55 hours would purchase the word "unresolved."
+
+THE FINDING IS A BOUND, AND THEIR 50 SEEDS ALREADY CARRY IT. The honest report form for Claim A is an ESTIMATE WITH UNCERTAINTY, and the estimate is decisive as it stands. Claim A's 95% CI per environment, computed from the 1,800 raw records, against each environment's own Claim B headline:
+  level_shift_up_persistent    [ -29.17,  +55.19]  =  [-0.29%,  +0.54%] of +10141.86
+  low_phi_shift_up             [  +2.86,  +35.98]  =  [+0.17%,  +2.18%] of  +1646.78
+  level_shift_down_persistent  [ -60.89,  +12.33]  =  [-2.63%,  +0.53%] of  -2315.25
+  low_phi_shift_down           [ +75.64, +198.76]  =  [+13.01%, +34.19%] of -581.36
+  mid_phi_shift_down           [ -72.67,  +23.57]  =  [-5.87%,  +1.90%] of -1238.29
+IN THE ENVIRONMENT CARRYING THE PAPER'S HEADLINE, THE FORMULA CANNOT BE CONTRIBUTING MORE THAN 0.54% OF WHAT IT IS CREDITED WITH, at 95% confidence, from the source's own data. That is not "we could not tell" - it is a hard ceiling, and it is resolved. The bound is also indifferent to the circularity above: it does not care whether the true effect is 0 or +13; it says the effect is under 0.54% either way. Conversely low_phi_shift_down is a GENUINE, RESOLVED WIN whose lower bound is well clear of zero - the formula's one real success, worth 13-34% of that environment's total, and absent from the paper's framing.
+
+A 60-SEED RUN WAS CONSIDERED AND REJECTED ON ARITHMETIC. SE scales as sqrt(50/60) = 0.913, a 9% reduction; no cell changes status (0.60 -> 0.66 sigma; 1.30 -> 1.42; 1.00 -> 1.10). Six hours for an identical answer. Recorded because the proposal was reasonable and the refusal must be auditable.
+
+WHAT E8 THEREFORE IS. Not a re-execution. An ANALYSIS, resting on verification already earned: (i) the source's pricing code is CORRECT - all seven CIC classes clear (2026-07-16c); (ii) its artifact is authentic and its published figures recompute from it exactly (CIC-1); (iii) the vendored closure is MD5-asserted (2026-07-16d) so the audited bytes are the bytes on record. Our contribution is the ANALYSIS: computing both claims separately from the raw records, with bounds, and reporting them without substitution.
+
+CONSEQUENCE - E8 NOW HAS EXTERNAL INPUTS, AND THIS SECTION'S "Inputs: none external" IS FALSE. The source's committed artifacts become E8's DATA. Per the Standard's contract they must be hashed and recorded in SOURCES.md, and per the repo rule raw data is never committed - the artifacts are copied to the project-local store with their SHA256 recorded. The inputs are:
+  C:\ResearchShare\phase27_validation_50seed\aggregated_phase27_validation_50seed.json  (1,800 raw trials; the primary)
+  C:\ResearchShare\phase27_capsweep_18x\aggregated_phase27_capsweep_18x.json            (robustness: capacity)
+  C:\ResearchShare\phase27_capsweep_24x\aggregated_phase27_capsweep_24x.json
+  C:\ResearchShare\phase27_capsweep_30x\aggregated_phase27_capsweep_30x.json
+  C:\ResearchShare\phase27_elasticity_05\aggregated_phase27_elasticity_05.json          (robustness: elasticity)
+  C:\ResearchShare\phase27_elasticity_30\aggregated_phase27_elasticity_30.json
+The vendored modules remain committed and MD5-asserted: they are what the CIC cleared and what produced these artifacts, so they are part of the evidence chain even though E8 does not execute them.
+
+REPORT FORMS, revised (supersedes 16c's classification on Claim A only):
+  CLAIM A - the formula's value: ESTIMATE WITH UNCERTAINTY per environment, reported
+    as a CI in absolute terms AND as a percentage of that environment's Claim B
+    headline. NOT a verdict: the question is "how large is it," and the answer is a
+    bound. Where the CI excludes zero (low_phi_shift_down, low_phi_shift_up) that is
+    reported as a resolved positive with its magnitude; where it includes zero, the
+    BOUND is the finding, never "the formula works" and never "the formula does
+    nothing."
+  CLAIM B - the asymmetry of pricing reaction: VERDICT against the frozen
+    assert/partial/drop rule. Severity is not in doubt at 13-21 sigma.
+  ROBUSTNESS - the capacity and elasticity legs, from their own artifacts. Stability
+    statement; no standalone verdict.
+
+NEXT (E8): (1) copy the six artifacts to the project-local store and record their SHA256 in SOURCES.md; (2) build the analysis script + suite (input-hash assertion, the two-claim separation, the bound arithmetic, resolution logic, JSON boundary); (3) container QA; (4) freeze; (5) Stage 1; (6) run the analysis; (7) stop-and-review.
+
 **Inputs:** none external.
 
 ## 12. E9 - Customer-hysteresis sensitivity sweep
