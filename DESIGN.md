@@ -208,6 +208,67 @@ CROSS-SOURCE TENSION (documented; E7 can adjudicate it): the supporting draft re
 
 CORRECTED CLASSIFICATION (supersedes the type list in the 2026-07-14 classification amendment): E7 = BLEND of (a) ROBUSTNESS / SENSITIVITY (dominant; stability statement; no standalone verdict), (c) BOUNDARY-CONDITION / DOMAIN-MAPPING (the crossover map with its resolution), and (d) MODEL-FIT / CALIBRATION (estimate-vs-source on the three point-predictions). Leg (b) REPLICATION is WITHDRAWN. Report forms for (a) and (c) are unchanged; (d) reports estimate-vs-source with uncertainty. E7 still carries NO standalone SUPPORT/REFUTE verdict; its output QUALIFIES E4.
 
+**AMENDMENT 2026-07-14d (post-run REMEDIATION; author-ratified; Standard v1.9.9). THE 2026-07-14 REAL RUN IS INVALID AND E7 IS REBUILT. The build violated this operator; the source is faithful. Full dossier: verification/Discrepancy_Register.md DISC-05.**
+
+WHAT WENT WRONG. This operator reads "Operator (frozen; SOURCE CALIBRATION)". The 2026-07-14 build used E4's calibration instead - a BUILD defect, not a design defect. Divergences: engine (E4's hand-rolled base-stock vs the source's stockpyl.serial_system); demand (base 100 / sigma 10 vs mean 10 / std 2); stockout:holding (4:1 vs 10:1); horizon (120 periods, no warmup, vs 260 with 52 warmup); estimator cold-start prior (0.30, copied from E4, vs the source's 0.5); comparison (spectral vs basestock, rather than sr_paper9_ols vs sr_disabled); variant count (2 vs the 5 this operator's own "9,000 simulations total" implies: 36 cells x 50 seeds x 5 variants = 9,000 exactly). The stockout-to-holding ratio ALONE can flip the sign, because the tool works by suppressing orders - costly at a 10:1 stockout penalty, cheap at 4:1. AMENDMENT 2026-07-14c IS THE PROXIMATE CAUSE: it froze the four demand ENVIRONMENTS from the source, declared the source check complete, and never checked engine, demand scale, cost ratio, warmup, or prior - while stating, in that same document, "the E4 lesson: calibration must trace to the source, never to the adjacent script." The rule was written and violated in one breath. The 2026-07-14 result (36 cells, 29/36 resolved, 0 harm / 29 benefit, "the source's calibration fails on all three points") is WITHDRAWN: it measures an unauthorized construction and re-earns nothing. Its measurements were real; they answered a question nobody asked.
+
+THE SOURCE IS FAITHFUL AND ITS CODE CLEARS THE CIC. Source recovery (playbook method 1, ground truth) located the original artifacts on disk: the sweep script at "C:\Users\jaek9\OneDrive\Desktop\Werner Research Paper\Beer Game Simulator\phase2_6_chain_length_sweep.py" (MD5 cbc6bfa327150ca4e64acf2b63df0172), its policy/estimator module phase2_6_spectral_radius.py (MD5 e530ae06c57a15a6680419cbe245ec30), and its committed output "C:\ResearchShare\aggregated_chain_length_sweep.json" (MD5 6ecfc6fec0b1e490febea64ef36cd058, 9,000 trial records). The 7-point CIC was run on the source's own code and ALL SEVEN CLASSES CLEAR - recorded in full in DISC-05. Decisively, CIC-1 (re-executes to the claim): recomputing the paired per-seed pct difference (sr_paper9_ols vs sr_disabled, ar1_high x 2.4x) directly from their 9,000 raw records returns +0.439% (L=4), +0.137% (L=6), -0.141% (L=8) - matching v16's stated +0.44 / +0.14 / -0.14 to three decimals. v16 -> their experimental record -> their raw trial data is faithful at every hop. ORIGINAL CORRECT is therefore EARNED (provenance AND correctness established separately), not asserted from a summary. Their construction is safe to adopt.
+
+FROZEN CONSTRUCTION FOR THE REBUILD - read from the source's code, not from a summary and not from the adjacent script:
+  engine      stockpyl.serial_system, single-SKU, retailer at the highest node index
+  demand      DEMAND_MEAN = 10, DEMAND_STD = 2; gen_periods = num_periods + 20
+              (the 20-period tail is generated and unused; retained for fidelity)
+  costs       holding = 1.0, stockout = 10.0, shipment_lt = 2
+  horizon     260 periods, 52 warmup -> 208 measured; cost summed over
+              range(52, 260) across all nodes (holding + stockout + in-transit)
+  estimator   OLS on per-period demand recovered by differencing stockpyl's
+              cumulative demand_cumul over a trailing lookback window, reading
+              periods STRICTLY BEFORE the current one; min_observations = 10 ->
+              neutral prior 0.5; near-constant guard (denominator < 1e-6) -> 0.95;
+              clip [0, 0.999]. Documented Hurwicz bias: true phi 0.95 -> est ~0.67.
+  variants    FIVE: sr_paper9_ols, sr_oracle_local, sr_disabled, sr_naive_damp,
+              sr_numerical
+  envs        iid_control; ar1_moderate phi=0.6; ar1_high phi=0.85;
+              drift_canonical phi 0.3 -> 0.95 -> 0.4
+  grid        chain lengths {4, 6, 8} x capacities {1.3x, 1.8x, 2.4x} x 4 envs
+  comparison  sr_paper9_ols vs sr_disabled, PAIRED per seed (all variants run on
+              the same seed - common random numbers)
+  seeds       the source used 3000-3049 (50 distinct, verified in their artifact)
+
+THE 2-SCENARIO SCOPING OF AMENDMENT 2026-07-14c IS WITHDRAWN. It reduced the sweep to base-stock vs all-tier spectral on the reasoning that the oracle and fixed-alpha variants "carry E12's claim" and could be deferred. That was wrong on the source's own record: E12's recipe-level non-stationarity finding was DISCOVERED VIA THE THREE-VARIANT DIAGNOSTIC IN THIS SAME SWEEP (the oracle harms in drift_canonical at every cell despite zero estimation error, while fixed-alpha damping produces large benefit at long chains - which is what proves the defect is in the recipe, not the estimator). E7 and E12 share one run by construction; the scoping severed that. All five variants are restored.
+
+LIBRARY PARITY (precondition for the fidelity leg): stockpyl sim.py on the author's machine (48,114 bytes, dated 2026-04-22) is BIT-IDENTICAL to the container's stockpyl 1.0.2 - MD5 5a1ba4e1ff4f84800a06b4a317d4d8a3 on both sides. A faithful rebuild can therefore be expected to reproduce the source's per-cell numbers on the source's own seeds, and can be container-QA'd before any author-local run.
+
+SEEDS (this supersedes the seed clause of amendment 2026-07-14b while preserving its ratified intent). Real run: seeds 3000-3999 (1000 per cell). This CONTAINS the source's own 3000-3049 as its first 50, so the fidelity leg is a strict subset of the real run rather than a separate execution. The 50 -> 1000 increase stands and is now DOUBLY justified: (i) as originally ratified, on power; (ii) because the CIC established that THE SOURCE'S OWN DESIGN IS UNDER-POWERED - their measured SEs are 0.072 / 0.078 / 0.081 against effects of +0.439 / +0.137 / -0.141, so L=4 resolves at 6.1 sigma but L=6 (1.8 sigma) and L=8 (1.7 sigma) DO NOT resolve at 95%. v16 asserts a chain-length threshold where the formula "crosses from harm to benefit"; the only resolved point in their data is L=4's harm, and the crossover itself rests on two points indistinguishable from zero. At 1000 seeds the SE falls to roughly 0.016, which settles the crossover in either direction. The rebuild can adjudicate a claim the source's own design could not.
+
+CORRECTED CLASSIFICATION (supersedes the classification in 2026-07-14c). E7 = BLEND of:
+  (a) REPLICATION - does the rebuild reproduce the source's per-cell means on the
+      source's own seeds (3000-3049)? Report form: REGENERATED / NOT-REGENERATED
+      plus HOW CLOSELY (per-cell delta against their artifact). This REPLACES the
+      withdrawn MODEL-FIT/CALIBRATION leg: once we build the source's construction,
+      comparison to their numbers IS a replication, not a calibration against an
+      external prediction. A fidelity failure here means our rebuild is wrong and
+      stops the line - it is never evidence about the source.
+  (b) BOUNDARY-CONDITION / DOMAIN-MAPPING (primary) - where, across chain length and
+      capacity, does sr_paper9_ols cross from harm to benefit relative to
+      sr_disabled? Report form: a MAP with its resolution; a boundary whose adjacent
+      cells are statistically indistinguishable is reported as UNRESOLVED, never as
+      a crossing. Expected-null polarity is stated: finding NO crossover is a
+      legitimate outcome and is reported as found.
+  (c) ROBUSTNESS / SENSITIVITY - the gradient across chain length and capacity, and
+      the three-variant diagnostic (paper9_ols vs oracle_local vs naive_damp).
+      Report form: a STABILITY STATEMENT. No standalone verdict.
+E7 carries NO standalone SUPPORT/REFUTE verdict. It no longer "qualifies E4": E4 is
+a different construction (hand-rolled base-stock, different scale and cost ratio),
+so the two are not commensurable and E7 makes no claim about E4.
+
+REPORTING COMMITMENT (pre-registered): the fidelity result per cell against the
+source's artifact; every cell's paired mean pct difference with its uncertainty and
+achieved MDD; the crossover map with its resolution; the stability statement; and
+the three-variant diagnostic. ALL cells reported regardless of direction. No cell
+dropped. Where our 1000-seed result resolves a cell the source's 50 seeds could not,
+both are reported side by side.
+
 **Inputs:** none external.
 
 ## 11. E8 - Pricing-mechanism analysis (asymmetry)
