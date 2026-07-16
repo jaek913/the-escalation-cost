@@ -357,6 +357,72 @@ REPORT FORM. (a) Asymmetry: VERDICT (ASSERTED / PARTIAL / DROPPED per the frozen
 
 REPORTING COMMITMENT (pre-registered): every cell's per-period pricing value vs the no-pricing baseline with its uncertainty and achieved MDD; the sign pattern across all five environments; the free-parameter invariance sweep; and the 1.3x-vs-1.8x capacity statement. ALL cells reported regardless of direction; no cell dropped.
 
+**AMENDMENT 2026-07-16 (PRE-BUILD; the 2026-07-15 amendment above is WITHDRAWN as DISPROVEN; author-ratified; Standard v1.9.9). E8 re-opens at its classification gate on RECOVERED FACTS. Nothing has been built or run.**
+
+THE 2026-07-15 AMENDMENT IS WITHDRAWN. It dispositioned the source's pricing dollar levels DROP - "not replicable in prior form" - on the stated grounds that the source specifies "NEITHER the level-shift magnitude, NOR its timing, NOR the pricing gain, NOR the velocity target, NOR the trailing window," and declared them "DECLARED FREE PARAMETERS... the source specifies none of them." ALL OF THAT IS FALSE. The DROP was asserted as an OPENING ASSUMPTION with the discrepancy ladder never run - the exact inversion the Standard forbids ("not replicable in prior form is a conclusion the ladder REACHES, never an opening assumption"). Withdrawn in DECISIONS 2026-07-15; withdrawn here; the COVERAGE row is corrected by the same date. The amendment stands above, unerased, as the record of the error.
+
+WHAT THE LADDER ACTUALLY RECOVERED (playbook methods 1 and 3, GROUND TRUTH - see DISC-01 and DISC-02). The source's pricing code is ON DISK and was read directly, not summarized: phase2_7_validation_runner.py, phase2_7_pricing_manager.py, phase2_7_demand_response.py, phase2_7_pricing_policies.py, phase2_3_stage1_network.py (SKU_SPECS). Its committed OUTPUT is also on disk: C:\ResearchShare\phase27_validation_50seed\aggregated_phase27_validation_50seed.json, plus the capacity sweep (18x/24x/30x) and elasticity sweep (05/30) files. EVERY parameter the withdrawn amendment called unspecified is recovered:
+  architecture      4-stage serial, 1.3x capacity, summed_at_retailer demand,
+                    all_sr inventory scenario
+  demand            12 SKUs (SKU_SPECS: mean demands 200/200/200/100/100/100/
+                    40/40/40/10/10/2; unit costs $1-$100), summed x6 -> ~1,042
+                    units/period at the retailer
+  elasticity        1.5; reference_price = 1.0; revenue = price x quantity_sold
+  horizon           DEFAULT_NUM_PERIODS = 260, DEFAULT_WARMUP_PERIODS = 52
+                    -> 208 measured periods
+  shift             +/-20% level shift at t = 130; shift_magnitude =
+                    shift_fraction * 6.0 * sku.mean_demand
+  review interval   20 periods
+  estimator         OLS, W = 40 (the source's own window-size diagnostic found 40
+                    dominates 20 and 100: same false-alarm rate as 20, better
+                    legitimate-detection rate; 100 extends break contamination)
+  thresholds        symmetric: phi > 0.60 both directions.
+                    ASYMMETRIC: raise if phi > 0.60; cut only if phi > 0.75 -
+                    "the asymmetric formula damps the dangerous direction more
+                    than the safe direction"
+  scenarios         no_pricing, naive_reactive, phi_gated_symmetric,
+                    phi_gated_asymmetric
+  metric            net_value = revenue - cost; the runner emits BOTH per-period
+                    fields (cost_per_period, mean_revenue_per_period) AND a
+                    cumulative one (net_value_post_warmup)
+RISK 2 OF THE WITHDRAWN AMENDMENT IS THEREFORE MOOT. It proposed sweeping "free parameters" to guard against parameter-manufactured signs. There are no free parameters: the construction is fully recovered. The guard was a solution to a problem created by not looking.
+
+DISC-02 (RESOLVED, ground truth): the source's five dollar figures are CORRECT, PER-PERIOD, and correctly labelled. Computing mean_revenue_per_period_mean - cost_per_period_mean per environment from their own committed output, then no_pricing vs naive_reactive: level_shift_up_persistent +10,141.86 (source +$10,142); low_phi_shift_up +1,646.78 (+$1,647); level_shift_down_persistent -2,315.25 (-$2,315); low_phi_shift_down -581.36 (-$581); mid_phi_shift_down -1,238.29 (-$1,238). All five reproduce exactly. The cumulative/relabel hypothesis raised twice against these figures is DEAD; both raisings rested on a magnitude check against E4, which is the WRONG REFERENCE SYSTEM (E4 is a single-product 4-echelon chain; this is 12 SKUs summed x6).
+
+DISC-01 (RESOLVED, ground truth): the withdrawn amendment's "three mutually exclusive values for the 1.8x cell ($845 / $5,200 / $133)" is REVERSED. v16 IS FAITHFUL and the supporting DRAFT is the corrupted document. The source's own experimental record reads 1.3x +$10,142, 1.8x +$842, 2.4x +$777, 3.0x +$775, ">>> 12x collapse from 1.3x to 1.8x" - so v16's "under $900 at 1.8x" and "collapses by 12x at 1.8x" are BOTH exactly right. The draft's $5,200 and $2,100 exist in NO record; its "approximately $4,000 ... roughly forty percent of the upward benefit" is arithmetic on its own misreading of the record's "40% REDUCTION ACROSS CAPACITY RANGE" (-$2,316 -> -$1,374); and its "$122-$144 at 1.8x" is the asymmetric-vs-symmetric ADVANTAGE in low_phi_shift_down at 1.3x - a different quantity from a different row. There is a coherent prior target after all, and v16 is it.
+
+DISC-03 - THE FRAMING GATE FINDING, and it governs everything E8 does (playbook method 8: run FIRST; its power is disconfirmation, and it rejects a route regardless of what that route reproduces). v16 frames this section as testing whether the PERSISTENCE FORMULA gives useful guidance on price, and reports +$10,142/period as its headline. THAT FIGURE IS THE no_pricing vs NAIVE_REACTIVE COMPARISON. In the source's own committed output, naive_reactive, phi_gated_symmetric and phi_gated_asymmetric all return cost_per_period_mean = 10942.385082660967 - BIT-IDENTICAL. The source's own record states the mechanism plainly: "PHI-GATING DOES NOT DIFFERENTIATE FROM NAIVE ... The persistence test always passes so phi-gated reduces to naive_reactive." THE $10,142 IS THE VALUE OF REACTING TO DEMAND SHIFTS AT ALL - not the value of the formula. The formula's own measured contribution is $144/period (asymmetric vs symmetric in low_phi_shift_down), 1.4% of the headline. This is the Paper-4 ratio-operator pattern: reproducible, and INADMISSIBLE for the sentence attached to it. It is independent of DISC-01 and DISC-02 - it holds even though every number is correct. CONSEQUENCE FOR THE GATE: the admissible primary comparison for a claim ABOUT THE FORMULA is phi_gated_* vs naive_reactive, NOT vs no_pricing. Any E8 result reported against no_pricing measures reaction, not persistence guidance, and may not be attributed to the formula.
+
+DISC-04 - OPEN, AND IT BLOCKS THE BUILD STRATEGY. E7's build strategy (14e) vendored the source's construction because its code cleared all seven CIC classes. THAT PRECONDITION IS NOT ESTABLISHED HERE, and there is positive evidence against it: in the source's own pricing output, ar1_high and ar1_high_no_shift - DIFFERENT demand environments - return identical cost_per_period_mean, identical mean_revenue_per_period_mean and identical standard deviations to 15 significant figures; and phase2_7_validation_runner.py calls simulation(net, num_periods=..., rand_seed=42, progress_bar=False) with the seed HARD-CODED rather than threaded from trial_seed. DISC-05's CIC established that the same hard-coding is INERT in the chain-length sweep, because that script hands stockpyl an explicit deterministic demand list (DemandSource type='D'); the hypothesis to test is that the pricing runner instead hands over a STOCHASTIC demand source, which rand_seed=42 would then freeze identically across every trial. PROVENANCE IS NOT CORRECTNESS: the pricing code's authenticity is established, its correctness is NOT. THE 7-POINT CIC MUST RUN ON phase2_7_validation_runner.py BEFORE any decision about vendoring, and its outcome determines the build:
+  CIC CLEARS  -> vendor as in E7, drive with our runner, re-run at higher n.
+  CIC FAILS   -> the source's construction is defective and MUST NOT be vendored;
+                 adjudication becomes RECONSTRUCTION CORRECT / ORIGINAL IN ERROR
+                 (an authentic computation that reproduces its number through a
+                 silent defect is adjudicated original-in-error, never "original
+                 correct"), the affected cells are dossiered, and the build path is
+                 re-decided on the ladder - not assumed.
+No build decision is taken in this amendment. The CIC runs first.
+
+CLASSIFICATION (v1.9.7), re-derived from the recovered facts rather than from the withdrawn amendment's assumptions. E8 is a BLEND of:
+  (a) HYPOTHESIS TEST (primary) - the asymmetry claim, which has a genuine null and
+      a real fail condition. But the DISC-03 gate rescopes it: the claim under test
+      is that THE PERSISTENCE GATE improves pricing guidance, so the comparison is
+      phi_gated_asymmetric vs naive_reactive (and phi_gated_symmetric vs
+      naive_reactive), NOT vs no_pricing. Severity is NOT yet established - see
+      below. Report form: VERDICT only if severity clears.
+  (b) REPLICATION - do the source's five per-period figures regenerate? Under
+      vendoring this is a regression assertion, not evidence (the E7 lesson);
+      under a rebuild it is a genuine replication leg. Deferred until the CIC
+      decides the build path.
+  (c) ROBUSTNESS / SENSITIVITY - the capacity leg (1.3x vs 1.8x/2.4x/3.0x, whose
+      output files are also on disk). Qualifies (a); NO standalone verdict.
+There is no calibration leg: with the construction recovered, comparison to the
+source's numbers is replication (b), not calibration.
+
+SEVERITY - THE CENTRAL RISK, AND IT IS NOT THE ONE THE WITHDRAWN AMENDMENT NAMED. If phi_gated is BIT-IDENTICAL to naive_reactive in the source's own run, then a test of "does the gate help?" on those environments has NO DYNAMIC RANGE: the two arms are the same computation, the difference is exactly zero, and no sample size resolves it. That is the E5 saturation disease in its purest form - a comparison between two arms that are not distinct. The source itself diagnosed why: OLS structural-break inflation pushes the persistence estimate above BOTH thresholds (0.60 and 0.75) in essentially all trials of the high-persistence environments, so both gates always open and both variants reduce to naive. THE GATE ONLY DISCRIMINATES WHERE THE ESTIMATE STRADDLES A THRESHOLD - which the source's record locates in low_phi_shift_down (naive 2.8 -> symmetric 2.4 -> asymmetric 1.8 price changes; $144/period advantage) and mid_phi_shift_down (3.0 -> 2.8 -> 2.7). E8's severity check must therefore establish, BEFORE the real run and per environment, whether the two arms are distinct AT ALL - by measuring the engagement/threshold-straddle rate, which is a property of the instrument and the environment, not of the result. An environment where the arms are identical yields INCONCLUSIVE for the gate claim, never a null, and never a verdict.
+
+NEXT (E8, in order; no build decision until the CIC lands): (1) run the 7-point CIC on phase2_7_validation_runner.py and its modules - DISC-04 is the first point and the seed/demand-source question is CIC-7 (input integrity); (2) adjudicate DISC-04 on that evidence; (3) re-derive the build strategy from the outcome; (4) complete the severity check (arm-distinctness per environment); (5) then, and only then, build.
+
 **Inputs:** none external.
 
 ## 12. E9 - Customer-hysteresis sensitivity sweep
