@@ -334,8 +334,61 @@ pattern - reproducible, but inadmissible for the sentence attached to it.
 
 ## DISC-04 - the pricing runner's hard-coded seed; two environments identical
 
-**Kind:** computational. **State:** OPEN. **Awaits:** the 7-point CIC on
-phase2_7_validation_runner.py. **NOT WORKED HERE - belongs to E8.**
+**Kind:** computational. **State:** RESOLVED 2026-07-16 - **NO DEFECT.** Both
+limbs of the suspicion were wrong. **Bears on:** E8 (the build strategy it was
+blocking is now unblocked on this count).
+
+**As found.** In the source's committed pricing output, ar1_high and
+ar1_high_no_shift - apparently DIFFERENT demand environments - return identical
+cost_per_period_mean, identical mean_revenue_per_period_mean, and identical standard
+deviations to 15 significant figures. Separately,
+phase2_7_validation_runner.py calls simulation(net, num_periods=..., rand_seed=42,
+progress_bar=False) with the seed HARD-CODED rather than threaded from trial_seed.
+The hypothesis was that the runner hands stockpyl a STOCHASTIC demand source, which
+rand_seed=42 would then freeze identically across every trial - making the control
+environments worthless and casting doubt on the whole pricing battery.
+
+**RESOLVED by reading the code (playbook method 1, ground truth). BOTH LIMBS FAIL.**
+
+(1) THE SEED IS INERT, exactly as in the chain-length sweep. The runner's
+assign_realized_streams_to_retailer() sets
+    demand_sources[ret_prod.index] = DemandSource(
+        type='D',                       # DETERMINISTIC
+        demand_list=realized_streams[sku.sku_id].tolist(),
+    )
+    retailer.demand_source = demand_sources
+The demand is pre-generated per trial and handed over as an explicit list, leaving
+rand_seed=42 nothing to randomise. Identical mechanism, identical harmlessness, to
+DISC-05's CIC-7 finding on the sweep. The hard-coded 42 is untidy, not defective.
+
+(2) THE TWO ENVIRONMENTS ARE THE SAME DEMAND PROCESS UNDER TWO NAMES. From
+get_validation_environments():
+    'ar1_high_no_shift': schedule = constant_schedule(0.85),
+                         level_shift_fraction = 0.0,   # "no shift = control"
+    'ar1_high'         : schedule = constant_schedule(0.85)   # no shift key at all
+One is the legacy Phase-2.6 persistence-only environment; the other was added
+2026-04-29 as the pricing control. Both are stationary AR(1) at phi = 0.85 with no
+level shift. Same schedule, same seed, deterministic list -> IDENTICAL DEMAND ->
+identical cost. The 15-significant-figure agreement is CORRECT BEHAVIOUR and is in
+fact weak positive evidence that the pipeline is deterministic and wired properly.
+It is a naming duplication in the environment table, not a computational defect.
+
+**METHOD FAILURE RECORDED AGAINST OURSELVES.** This is the THIRD time in this
+verification effort that a defect was INFERRED FROM A PATTERN rather than read from
+the code, and the third time the inference was wrong: (i) the magnitude check
+against E4 as the reference system (DISC-02) - the pattern was real, E4 was the
+wrong yardstick; (ii) the cumulative/relabel hypothesis for the dollar figures
+(DISC-02) - raised twice, wrong twice; (iii) this. In every case the ANOMALY WAS
+REAL and the DIAGNOSIS was invented. The pattern is the signal to go and read the
+code; it is not itself evidence of what is wrong. Method 9 (stated-value triage) is
+DISCONFIRMATION-ONLY by design for exactly this reason, and it was repeatedly used
+to diagnose, which exceeds its licence.
+
+**Consequence for E8.** DISC-04 no longer blocks the build on the seed question:
+CIC-7 (input integrity) CLEARS for the pricing runner. The remaining six CIC classes
+are still outstanding and must run before any vendoring decision - provenance is not
+correctness, and this dossier's closure establishes only that these two specific
+suspicions were unfounded, not that the code is sound.
 
 In the source's committed output file, ar1_high and ar1_high_no_shift - different
 demand environments - return identical cost_per_period_mean, identical
