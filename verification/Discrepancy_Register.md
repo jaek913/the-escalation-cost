@@ -96,14 +96,110 @@ committed output file. (e) The 50 -> 1000 seed amendment (2026-07-14b) STANDS:
 dated, pre-run, author-ratified, self-penalizing, and it does not alter the
 construction.
 
-**CIC status (on the source's script, required before adoption).**
-  - Point 1, input integrity / seed handling: CLEARED. The script hard-codes
-    `rand_seed=42` at line 370, the same defect class as DISC-04. Here it is
-    INERT: configure_demand() pre-generates the demand array with seed=trial_seed
-    and hands stockpyl an explicit deterministic list (DemandSource type='D',
-    demand_list=...), leaving rand_seed nothing to randomise. Confirmed by
-    reading the code, not the drawer.
-  - Points 2-7: NOT YET RUN.
+**CIC status (on the source's script - COMPLETE 2026-07-15; ALL SEVEN CLEAR).**
+The seven classes are quoted from the Phase-3 checklist ("The 7 CIC classes"),
+read rather than recalled. NOTE A LABEL CORRECTION: the seed/demand-generation
+check recorded earlier in this dossier as "point 1" is CIC-7 (input integrity),
+not CIC-1. Asserted from memory; corrected on reading the canonical list.
+  - (1) RE-EXECUTES TO THE CLAIM: CLEAR, and this is the decisive one. Their
+    committed output C:\ResearchShare\aggregated_chain_length_sweep.json (MD5
+    6ecfc6fec0b1e490febea64ef36cd058, 3.97 MB, 2026-05-01) carries all 9,000
+    individual trial records. Recomputing the paired per-seed pct difference
+    (sr_paper9_ols vs sr_disabled, ar1_high x 2.4x) directly from those records:
+      L=4  n=50 paired  +0.439%  (se 0.072)   record/v16 claim: +0.44%
+      L=6  n=50 paired  +0.137%  (se 0.078)   record/v16 claim: +0.14%
+      L=8  n=50 paired  -0.141%  (se 0.081)   record/v16 claim: -0.14%
+    All three reproduce to three decimals from the artifact. v16 -> their
+    experimental record -> their raw trial data: faithful at every hop.
+  - (2) INDEX/ROW ALIGNMENT: CLEAR. Warmup slice is `for t in range(warmup_periods,
+    num_periods)` = range(52, 260) with `measured_periods = num_periods -
+    warmup_periods` = 208; slice and divisor agree. ONE OBSERVATION, not a defect
+    here: the loop carries a silent-truncation guard `if t < len(node.state_vars)`
+    which would drop periods from the cost sum WITHOUT reducing the 208 divisor,
+    understating cost_per_period with no error raised. It never fires in this run
+    (0 of 9,000 failed), so it is inert; it is recorded because it would be
+    silently wrong if it ever did.
+  - (3) NaN AND GAP HANDLING: CLEAR. Exceptions return NaN costs with
+    success=False, plus an early-abort guard if the first 10 trials all fail.
+    The artifact shows 9,000 successful, 0 failed - no NaN reaches aggregation.
+  - (4) NO LOOK-AHEAD: CLEAR, and explicitly so. _read_demand_history(up_to_period)
+    documents "Return demand for periods strictly before this one" and implements
+    `for t_past in range(start, up_to_period)` - half-open, excluding the current
+    period. The estimator itself (estimate_ar1_persistence) does no forward
+    indexing; it runs OLS on whatever slice it is handed.
+  - (5) OVERLAP vs NON-OVERLAPPING SUBSAMPLE CONSISTENT WITH CONTROLS: CLEAR.
+    run_one_seed_all_variants runs ALL FIVE variants on ONE seed - common random
+    numbers, properly paired; the rolling estimator's window overlap affects every
+    variant identically.
+  - (6) NO COMPUTATION ACROSS RECORD BOUNDARIES: CLEAR. Per-period demand is a
+    diff of stockpyl's cumulative demand_cumul; at t_past == 0 sv_prev is None and
+    d_prev defaults to 0.0, so period 0 yields d_now - 0, which is correct because
+    cumulative demand starts at zero. No diff spans a record boundary.
+  - (7) INPUT INTEGRITY vs CLAIM: CLEAR. The artifact matches the stated design
+    exactly: 9,000 trials, 5 variants (sr_paper9_ols, sr_oracle_local, sr_disabled,
+    sr_naive_damp, sr_numerical), 4 environments, chain lengths {4,6,8}, capacities
+    {1.3, 1.8, 2.4}, 50 DISTINCT seeds (3000-3049). The hard-coded `rand_seed=42`
+    at line 370 - the same defect class as DISC-04 - is INERT here: configure_demand()
+    pre-generates the demand array with seed=trial_seed and hands stockpyl an
+    explicit deterministic list (DemandSource type='D', demand_list=...), leaving
+    rand_seed nothing to randomise. Established by reading the code, not the drawer.
+
+**ADJUDICATION COMPLETES: ORIGINAL CORRECT.** Provenance was established by source
+recovery; CORRECTNESS is now established separately by the CIC clearing all seven
+classes on the original's own code. "Original correct" is therefore EARNED, not
+asserted - which is precisely the error made earlier in this session, when the same
+verdict was reached on the strength of a MemPalace drawer with no CIC run at all.
+Provenance is not correctness; both are now in hand.
+
+**A SEPARATE FINDING FROM THE SAME CHECK - the source's design is UNDER-POWERED.**
+The measured standard errors are 0.072 / 0.078 / 0.081 against effects of +0.439 /
++0.137 / -0.141:
+    L=4  +0.439% / 0.072 = 6.1 sigma  -> RESOLVED
+    L=6  +0.137% / 0.078 = 1.8 sigma  -> NOT resolved at 95%
+    L=8  -0.141% / 0.081 = 1.7 sigma  -> NOT resolved at 95%
+v16 states a chain-length threshold at which the formula "crosses from harm to
+benefit." The ONLY resolved point is L=4's harm; the crossover itself rests on two
+points neither of which is distinguishable from zero at 50 seeds. This is not an
+error - their numbers are correct and reproduce exactly - it is an under-powered
+design, and it is exactly what the 50 -> 1000 seed amendment (2026-07-14b, made
+blind and pre-build) was for. At 1000 seeds the SE falls to roughly 0.016, which
+settles the crossover in either direction. The rebuild can therefore adjudicate a
+claim the source's own design could not.
+
+**CONSTRUCTION CONFIRMED FOR THE REBUILD, read from the source's code (not a
+summary, and not the adjacent script):**
+    engine     stockpyl.serial_system, single-SKU, retailer at chain end
+    demand     DEMAND_MEAN=10, DEMAND_STD=2; gen_periods = num_periods + 20
+    costs      holding=1.0, stockout=10.0, shipment_lt=2
+    horizon    260 periods, 52 warmup -> 208 measured
+    estimator  OLS on demand_cumul diffs over a lookback window;
+               min_observations=10 -> neutral prior 0.5 (NOT E4's 0.30);
+               near-constant guard (denominator < 1e-6) -> 0.95;
+               clip [0, 0.999]; documented Hurwicz bias (true 0.95 -> est ~0.67)
+    variants   sr_paper9_ols, sr_oracle_local, sr_disabled, sr_naive_damp,
+               sr_numerical (5 - the operator's "9,000 simulations total" implies
+               exactly this; the 2-scenario scoping of amendment 2026-07-14c is
+               withdrawn, and it had severed E12, whose recipe-level finding was
+               discovered via the three-variant diagnostic in this same sweep)
+    envs       iid_control, ar1_moderate 0.6, ar1_high 0.85,
+               drift_canonical 0.3->0.95->0.4
+    grid       3 lengths x 3 capacities x 4 envs; seeds 3000-3049 (theirs)
+    comparison sr_paper9_ols vs sr_disabled, paired per seed
+
+**LIBRARY PARITY ESTABLISHED (a precondition for any fidelity check).** stockpyl
+sim.py on the author's machine (C:\Users\jaek9\AppData\Local\Programs\Python\
+Python312\Lib\site-packages\stockpyl\sim.py, 48,114 bytes, dated 2026-04-22) is
+BIT-IDENTICAL to the container's stockpyl 1.0.2: MD5 5a1ba4e1ff4f84800a06b4a317d4d8a3
+on both. A faithful rebuild can therefore be expected to reproduce their per-cell
+numbers on their own seeds, and can be container-QA'd before any author-local run.
+
+**Fix specified.** (a) WITHDRAW E7's calibration leg and its "source fails"
+finding - DONE, see DECISIONS 2026-07-15. (b) RE-SCOPE E7's stability statement and
+gradient map - DONE. (c) CIC the source's script BEFORE adopting its construction -
+DONE, all seven clear. (d) REBUILD E7 to the CIC-cleared construction above, 5
+variants, with a FIDELITY LEG on the source's own seeds (3000-3049) required to
+reproduce their per-cell means, then the real run at 1000 seeds to resolve L=6 and
+L=8. (e) The 50 -> 1000 seed amendment STANDS and is now doubly justified.
 
 ---
 
