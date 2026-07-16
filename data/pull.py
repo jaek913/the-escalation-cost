@@ -135,6 +135,78 @@ SOURCES = (
                   "a committed analysis uses it (promotion = dated DESIGN "
                   "amendment)."),
     ]
+    # --- E8 pricing artifacts (DESIGN Section 11 amendment 2026-07-16e) ---
+    # NOT pulled. These are the SOURCE's own committed simulation outputs,
+    # produced by the pricing code vendored at analysis/vendor/ and cleared on
+    # all seven CIC classes (DESIGN 2026-07-16c). E8 is an ANALYSIS of these
+    # artifacts rather than a re-execution (16e), so they are E8's DATA and the
+    # contract requires them hashed here.
+    #
+    # kind="local" hashes in place and NEVER fetches: there is no upstream to
+    # re-pull from and a "fresh pull" is meaningless for a fixed artifact. That
+    # makes them the one input class for which --verify and a normal run are the
+    # same operation, which is the correct behaviour, not a shortcut.
+    #
+    # The primary (validation_50seed) carries 1,800 raw trial records. Every E8
+    # finding to date was computed against THESE EXACT BYTES: CIC-1 (all five
+    # published figures reproduce at 13-21 sigma), DISC-03 (+13.01 formula
+    # contribution vs the +10141.86 headline it is credited with), DISC-04 (the
+    # two "identical" environments are one no-shift control under two names), and
+    # the Claim A bound [-29.17, +55.19]. The hash pins the evidence; it is not a
+    # formality.
+    + [
+        dict(id="phase27_validation_50seed", kind="local",
+             fname="phase27/aggregated_phase27_validation_50seed.json",
+             vendor="in-house (source's Phase 2.7 run, 2026-04-29)",
+             symbol="aggregated_phase27_validation_50seed.json",
+             freq="1,800 trials (9 envs x 4 scenarios x 50 seeds)",
+             used_by="E8 primary (Claim A + Claim B)",
+             tol=("None. A fixed artifact, not a live series: a replicator gets "
+                  "these exact bytes or a different file. Regenerating it from "
+                  "the vendored code is deterministic but costs ~16h "
+                  "single-machine (19.04 s/trial, measured)."),
+             note=("The source's own committed output. Its code clears all seven "
+                   "CIC classes; its five published per-period figures recompute "
+                   "from these raw records to under one unit. E8 analyses it "
+                   "rather than re-running it (16e): Claim B is already resolved "
+                   "at 13-21 sigma here, and Claim A's finding is a BOUND these "
+                   "50 seeds already carry.")),
+        dict(id="phase27_capsweep_18x", kind="local",
+             fname="phase27/aggregated_phase27_capsweep_18x.json",
+             vendor="in-house (source's Phase 2.7 capacity sweep, 2026-04-30)",
+             symbol="aggregated_phase27_capsweep_18x.json",
+             freq="1,800 trials @ 1.8x capacity",
+             used_by="E8 robustness (capacity leg)",
+             tol="None. Fixed artifact.", note=None),
+        dict(id="phase27_capsweep_24x", kind="local",
+             fname="phase27/aggregated_phase27_capsweep_24x.json",
+             vendor="in-house (source's Phase 2.7 capacity sweep, 2026-04-30)",
+             symbol="aggregated_phase27_capsweep_24x.json",
+             freq="1,800 trials @ 2.4x capacity",
+             used_by="E8 robustness (capacity leg)",
+             tol="None. Fixed artifact.", note=None),
+        dict(id="phase27_capsweep_30x", kind="local",
+             fname="phase27/aggregated_phase27_capsweep_30x.json",
+             vendor="in-house (source's Phase 2.7 capacity sweep, 2026-04-30)",
+             symbol="aggregated_phase27_capsweep_30x.json",
+             freq="1,800 trials @ 3.0x capacity",
+             used_by="E8 robustness (capacity leg)",
+             tol="None. Fixed artifact.", note=None),
+        dict(id="phase27_elasticity_05", kind="local",
+             fname="phase27/aggregated_phase27_elasticity_05.json",
+             vendor="in-house (source's Phase 2.7 elasticity sweep, 2026-04-30)",
+             symbol="aggregated_phase27_elasticity_05.json",
+             freq="1,800 trials @ elasticity 0.5",
+             used_by="E8 robustness (elasticity leg)",
+             tol="None. Fixed artifact.", note=None),
+        dict(id="phase27_elasticity_30", kind="local",
+             fname="phase27/aggregated_phase27_elasticity_30.json",
+             vendor="in-house (source's Phase 2.7 elasticity sweep, 2026-04-30)",
+             symbol="aggregated_phase27_elasticity_30.json",
+             freq="1,800 trials @ elasticity 3.0",
+             used_by="E8 robustness (elasticity leg)",
+             tol="None. Fixed artifact.", note=None),
+    ]
 )
 
 
@@ -161,7 +233,10 @@ def pull_one(src: dict, verify_only: bool) -> dict:
     dest = RAW / src["fname"]
     rec["store_path"] = str(dest)
     try:
-        if not verify_only:
+        # kind="local" is never fetched: it is a fixed artifact already in the
+        # store, with no upstream to pull from. It is hashed in place, and a
+        # missing file is a hard FAILED - never silently skipped.
+        if not verify_only and src["kind"] != "local":
             if src["kind"] == "fred":
                 data = fetch(FRED_CSV.format(sid=src["sid"]))
             elif src["kind"] == "http":
