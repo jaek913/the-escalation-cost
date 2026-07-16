@@ -23,8 +23,38 @@ retrospective tidy-up. Where a step was skipped or run out of order, it says so.
 
 ## DISC-05 - E7 chain-length sweep does not reproduce the source's three values
 
-**Kind:** computational. **State:** RESOLVED (cause). **Bears on:** ARG-19,
-LB-E7-gradient, LB-E7-calibration, TBL-7, Section 6.5, Appendix F.
+**Kind:** computational. **State:** RESOLVED (2026-07-15; cause established, fix
+applied, rebuild run and harness verified). **Bears on:** ARG-19, LB-E7-gradient,
+LB-E7-calibration, TBL-7, Section 6.5, Appendix F.
+
+**CLOSURE (2026-07-15).** Adjudication ORIGINAL CORRECT / RECONSTRUCTION IN ERROR,
+both halves now earned rather than asserted. The source's code cleared all seven CIC
+classes and its published values recompute exactly from its own artifact
+(provenance AND correctness, established separately). Our build was the defect. The
+rebuild (DESIGN 14d/14e/14f; freeze 2a20877) vendored the source's construction
+unmodified, drove it with our own runner and analysis, and ran 36 cells x 250 seeds
+x 5 variants = 45,000 trials in 11.6h with 0 failures. THE HARNESS IS VERIFIED:
+verification/e7_regression_check.py runs the SOURCE'S OWN seeds (3000-3049, the
+first fifty of our 3000-3249) through OUR driver and reproduces their per-cell means
+exactly on this deterministic construction - L=4 +0.4391% vs +0.4391% (delta
++0.000048), L=6 +0.1371% vs +0.1371% (delta +0.000002), L=8 -0.1412% vs -0.1412%
+(delta -0.000043), 3/3 MATCH (commit 4f9636b). RESULT: the source's chain-length
+claim is CONFIRMED and better supported by our run than by theirs - their L=8
+benefit sat at 1.7 sigma and was never resolved; ours resolves it at ~8 sigma. The
+effect is CONDITIONAL ON CAPACITY, which the paper does not say: at 1.3x the tool
+harms at every chain length and worsens with length. Full result: DECISIONS
+2026-07-15; OUTLINE v1.2.
+
+**A DEFECT OF OURS, RECORDED AGAINST OURSELVES.** Amendment 14e promised the
+withdrawn fidelity leg would be "kept in the suite as a REGRESSION assertion ... it
+proves the vendored copy is unmodified and the harness wires it correctly." IT WAS
+NEVER IMPLEMENTED. Suite LEG 1 proved the vendored BYTES were unmodified; nothing
+proved OUR DRIVER wired them correctly. An earlier container attempt at that check
+TIMED OUT and was abandoned WITHOUT the gap being recorded, so the 11.6-hour real run
+completed with its harness unverified, and the gap was only noticed at the
+stop-and-review. It should have been caught BEFORE the run. It passed; "it passed"
+is not the standard. The check is self-penalizing by construction - it can only void
+our own run, never the source - which is exactly why it was worth 11 minutes.
 
 **As found (2026-07-14).** E7's real run measured, at ar1_high x 2.4x capacity,
 all-tier vs base-stock: -0.6767% (L=4), -0.9369% (L=6), -1.6783% (L=8). The
