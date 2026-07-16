@@ -344,3 +344,63 @@ mechanism, and (c) v16's headline "~30% cost reduction relative to a modern
 ERP-style forecasting baseline" - E4 implements NO such comparator, so E4 cannot
 speak to that claim, and LB-E4-erp is named "erp" while holding a base-stock
 value.
+
+---
+
+## DISC-07 - E4 and the source's chain-length sweep use DIFFERENT damping rules
+
+**Kind:** computational. **State:** OPEN. **Bears on:** E4's construction
+fidelity, ARG-14, LB-E4-tool, LB-E4-full. **NOT WORKED HERE** - E4 is closed and
+E7 is the open unit; logged at discovery per the rule that a discrepancy is never
+silently dropped. To be worked when E4's audit is opened, not before.
+
+**As found (2026-07-15),** while reading the source's chain-length sweep code to
+specify E7's rebuild. The two constructions compute the tool's damping factor
+alpha by different means:
+
+  THE SOURCE'S SWEEP (phase2_6_spectral_radius.py, compute_alpha_pi_squared_over_two,
+  damping_mode DAMPING_PAPER9) uses a CLOSED FORM:
+      S         = (1 - phi^W) / (1 - phi)        [cumulative_persistence_memory]
+      alpha_max = (pi^2 / 2) / S
+      alpha_op  = alpha_max * k_star,  k_star = 0.90
+      then clipped to [alpha_floor, alpha_ceiling]
+  There is no engagement gate: alpha is computed analytically at every period and
+  simply clips at the ceiling when it would exceed it.
+
+  E4's REBUILD (analysis/e4_beer_game.py, alpha_spectral) uses BISECTION:
+      if phi_hat <= phi_eng: return 1.0          [an explicit engagement GATE]
+      else bisect bg in [1e-3, bg_policy] for rho(phi_hat, W_mon, bg) = 1.0
+      alpha = clip(bg_target / bg_policy, 0.05, 1.0)
+  with phi_eng ~ 0.83 itself derived by bisection on rho(., W_mon, bg_policy) = 1.
+
+These are not the same rule. The source's is an analytic pi^2/2 bound; E4's is a
+numerical search for the rho = 1 boundary, gated below an engagement threshold.
+
+**Why this is NOT yet a finding about either.** The two may legitimately come from
+different source sections describing different constructions - E4's rebuild traced
+phi ~ 0.83 to the source's OWN STATED engagement boundary (recorded 2026-07-13,
+"Path A", matching the source's stated value exactly by bisection), which is
+evidence its construction was traced to something real. Note also that the source's
+own code carries a variant named sr_numerical using pi^2/S with k_star = 1.0 and no
+safety margin, described in its docstring as "the pre-correction numerical rule ...
+preserved specifically to document that the threshold change matters" - so the
+source itself distinguishes an analytic rule from a numerical one, and an April-22
+correction moved it from the numerical threshold to the closed-form Paper 7 bound.
+Whether E4's bisection corresponds to the pre-correction numerical rule, to a
+different source section, or to a mis-read is exactly what this dossier must
+establish - and it cannot be established by inspection alone.
+
+**Ladder: NOT RUN.** When opened, it starts at (8) the framing gate - which
+construction was E4's operator actually specifying? - then (1) source recovery
+against the Phase 2.6 Beer Game source section and any committed Beer Game script
+on disk, then (10) version reconciliation across the source documents, before any
+reconstruction. It must NOT be adjudicated from this Register's inspection notes:
+that would be the exact error made against DISC-01/02 earlier in this session,
+where a summary was mistaken for the artifact.
+
+**Provisional impact if E4's rule proves mis-read.** E4's verdict (spectral beats
+base-stock, p = 0.0005) is a comparison between two policies E4 itself defines, so
+it remains internally valid whatever the rule's provenance; what would be at risk is
+E4's claim to have re-earned the SOURCE's Beer Game construction, and with it the
+source-fidelity of LB-E4-tool and LB-E4-full. Recorded now so the question cannot
+be lost.
