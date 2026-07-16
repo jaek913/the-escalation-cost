@@ -314,21 +314,77 @@ regenerate-or-escalate rule now forbids. The escalation is withdrawn.
 
 ## DISC-03 - v16 attributes to the persistence formula a benefit the formula did not produce
 
-**Kind:** consistency / attribution. **State:** OPEN (CONFIRMED). **NOT WORKED
-HERE - belongs to E8, which does not open until E7 is closed.**
+**Kind:** consistency / attribution. **State:** OPEN (CONFIRMED, and CORRECTED
+2026-07-16 - the finding stands and is now BETTER evidenced; the severity concern
+attached to it was MINE and is WITHDRAWN). **Bears on:** E8's primary comparison,
+Section 7 / the pricing section, and v16's abstract.
 
-v16 frames its pricing section as testing whether the persistence formula could
-provide useful guidance, and reports +$10,142/period as its headline. That figure
-is the no_pricing vs NAIVE_REACTIVE comparison. In the source's own output file,
-naive_reactive, phi_gated_symmetric and phi_gated_asymmetric return
-cost_per_period_mean = 10942.385082660967 - BIT-IDENTICAL. The source's own
-record states the mechanism: "PHI-GATING DOES NOT DIFFERENTIATE FROM NAIVE ...
-The persistence test always passes so phi-gated reduces to naive_reactive."
-The $10,142 is the value of reacting to demand shifts at all. The formula's own
-measured contribution is $144/period (asymmetric vs symmetric in
-low_phi_shift_down), 1.4% of the headline. Independent of DISC-01 and DISC-02:
-it holds even though every number is correct. This is the Paper 4 ratio-operator
-pattern - reproducible, but inadmissible for the sentence attached to it.
+**THE FINDING (confirmed from the source's 1,800 RAW trial records, not the
+summary).** v16 frames its pricing section as testing whether the PERSISTENCE
+FORMULA gives useful guidance on price, and reports +$10,142/period as its headline.
+That figure is the no_pricing vs NAIVE_REACTIVE comparison - it measures the value
+of REACTING TO DEMAND SHIFTS AT ALL, not the value of the formula. Recomputed per
+seed from the raw records (mean_revenue_per_period - cost_per_period, paired):
+    level_shift_up_persistent    no_pricing vs naive  +10141.86  (se 630.19, 16.1 sigma)
+and in that SAME environment, the formula's own contribution:
+    level_shift_up_persistent    phi_gated_asymmetric vs naive  +13.01  (se 21.52, 0.6 sigma)
+                                                                 -> UNRESOLVED
+The formula adds an amount INDISTINGUISHABLE FROM ZERO - 0.13% of the headline it is
+credited with. Across all five level-shift environments the formula has exactly ONE
+resolved win:
+    low_phi_shift_down           phi_gated_asymmetric vs naive  +137.20 (se 31.41, 4.4 sigma)
+                                                                 -> RESOLVED
+(this is the source's own "$144/period asymmetric advantage" finding, confirmed at
+4.4 sigma). The other three are unresolved: low_phi_shift_up +19.42 (2.3 sigma,
+resolved at 95% but small), level_shift_down_persistent -24.28 (1.3 sigma),
+mid_phi_shift_down -24.55 (1.0 sigma). This is the Paper-4 ratio-operator pattern:
+reproducible, and INADMISSIBLE for the sentence attached to it. It is independent of
+DISC-01 and DISC-02 - it holds even though every number is correct, and CIC-1
+confirms every number IS correct (all five published figures reproduce from the raw
+records at 13-21 sigma).
+
+**CORRECTION 2026-07-16 - A SEVERITY CLAIM OF MINE, WITHDRAWN.** This dossier
+previously asserted that naive_reactive, phi_gated_symmetric and phi_gated_asymmetric
+return cost_per_period_mean = 10942.385082660967 BIT-IDENTICAL, and DESIGN's
+2026-07-16 E8 amendment built a severity argument on it: that the two arms are "the
+same computation," the difference "exactly zero," and "no sample size resolves it" -
+the E5 saturation disease. THAT IS WRONG. Checked against the raw records, the arms
+are NOT identical in any of the five level-shift environments (sym==naive False,
+asym==naive False in all five). The bit-identity occurs ONLY in ar1_high_no_shift -
+and ar1_high, which DISC-04 established is THE SAME no-shift control under a second
+name. In a no-shift control there is nothing to react to, so every reactive policy
+does nothing and all three arms coincide: that is CORRECT BEHAVIOUR, not saturation.
+The error's origin: the summary key 'ar1_high|phi_gated_asymmetric' was read as if
+'ar1_high' were the headline environment; it is the legacy control. The source's own
+record ("PHI-GATING DOES NOT DIFFERENTIATE FROM NAIVE ... the persistence test always
+passes so phi-gated reduces to naive_reactive") describes a real and documented
+estimator property - OLS structural-break inflation pushing the estimate above both
+thresholds - but it manifests as a SMALL UNRESOLVED difference, not as arithmetic
+identity.
+
+**CONSEQUENCE: the severity concern is withdrawn and E8 is RUNNABLE.** The arms are
+distinct, the comparison has dynamic range, and the test can adjudicate in either
+direction. What survives - and is strengthened by being measured rather than argued -
+is the ATTRIBUTION finding: in the environment carrying the paper's headline, the
+formula's measured contribution is unresolved at 0.6 sigma while the paper credits it
+with the whole $10,142.
+
+**METHOD FAILURE RECORDED AGAINST OURSELVES - the FOURTH of this kind.** A defect was
+again INFERRED FROM A PATTERN (identical summary values) rather than read from the
+records, and again the inference was wrong: (i) the magnitude check against E4 as the
+reference system; (ii) the cumulative/relabel hypothesis, raised twice; (iii)
+DISC-04's seed/environment suspicion; (iv) this. In every case the ANOMALY WAS REAL
+and the DIAGNOSIS WAS INVENTED. Note the specific trap here: the same naming
+duplication that produced DISC-04's false alarm produced this one, one dossier later -
+the lesson did not transfer because the second instance arrived wearing different
+clothes. The general rule: an identical-values pattern is a signal to open the raw
+records, never evidence of what caused it.
+
+**Remaining for E8:** the primary comparison for any claim ABOUT THE FORMULA is
+phi_gated_* vs naive_reactive, NEVER vs no_pricing. Any result reported against
+no_pricing measures reaction, not persistence guidance, and may not be attributed to
+the formula. That gate stands unchanged.
+
 
 ---
 
