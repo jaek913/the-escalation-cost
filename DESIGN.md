@@ -566,6 +566,33 @@ suite (vendor integrity, the two-claim comparison logic, resolution logic, JSON
 boundary); (5) container QA; (6) freeze; (7) Stage 1; (8) Stage 2; (9)
 stop-and-review.
 
+**AMENDMENT 2026-07-16d (VENDORED SET RECORDED; author-ratified). The E8 pricing closure is vendored into analysis/vendor/ - 12 modules, resolved by AST walk rather than by guesswork, copied byte-exact and never retyped.**
+
+HOW THE SET WAS DETERMINED. The closure was resolved MECHANICALLY, not by reading import lines and hoping: a throwaway script walked the AST of phase2_7_validation_runner.py, followed every local import transitively, and copied what it found. This matters because the direct imports alone (eight) are NOT the closure - phase2_6_sterman_policy and phase2_3_stage2_demand arrive only through second-order imports and would have been missed by inspection. Non-local imports, correctly NOT vendored: argparse, collections, concurrent, copy, dataclasses, json, numpy, stockpyl, time, traceback, typing.
+
+VENDORED SET - analysis/vendor/, 13 unique modules (E8's 12 plus E7's chain_length_sweep). MD5s asserted by each experiment's suite; any drift is a hard fail, because the CIC cleared THESE bytes:
+  phase2_3_stage1_network.py             28408 B  9a59f2e2e432f967d73ecf2296e157c2
+  phase2_3_stage2_demand.py              20829 B  605e9fb9ec40c62b8eabc2d497f9ed07
+  phase2_3_stage3_policy_comparison.py   36310 B  508f080332ba3fe42559f0454fce5e25
+  phase2_6_chain_length_sweep.py         (E7)     cbc6bfa327150ca4e64acf2b63df0172
+  phase2_6_policy_scenarios.py           26198 B  ee52c2923aa97f190b13914c1461b4ff
+  phase2_6_serial_network.py              9813 B  2eedff408e63d620045525f9667a9d1c
+  phase2_6_spectral_radius.py            34026 B  e530ae06c57a15a6680419cbe245ec30
+  phase2_6_sterman_policy.py             30000 B  98a2a10eaad392647d2cb861914c9fa4
+  phase2_6_timevarying_demand.py         35351 B  e681e0c451457335ae66663b2a8b0e09
+  phase2_7_demand_response.py            15721 B  013540f272d0574cf5bf7c489ade4593
+  phase2_7_pricing_manager.py            27035 B  52945aeab2a55e452689d07cb436ed88
+  phase2_7_pricing_policies.py           36802 B  b7a108875f3c257c99cc1508bd806f0f
+  phase2_7_validation_runner.py          39231 B  2b3fc842139e33d9fab5952930477883
+
+A CROSS-CHECK THAT FELL OUT FOR FREE. E7 and E8 share two modules - phase2_6_spectral_radius.py and phase2_6_timevarying_demand.py - and the E8 closure resolved them to MD5s IDENTICAL to E7's independently-vendored copies (e530ae06... and e681e0c4...). Two vendorings, performed at different times from the same source tree by different routes, agree byte-for-byte. That is independent confirmation that neither copy drifted.
+
+CONSOLIDATED INTO ONE DIRECTORY, and why. The closure was first written to a separate analysis/vendor_e8/, which duplicated those two shared modules across two trees. That is precisely the file-soup the Standard forbids ("one current version per script ... never analysis_v2_FINAL.py file-soup") and precisely the drift hazard the MD5 assertions exist to catch: two copies of spectral_radius.py can diverge silently and then nobody knows which one ran. Everything was merged into analysis/vendor/ and the duplicate tree deleted. E7's suite was RE-RUN on the merged directory and is still ALL PASS (6 legs), with LEG 1 confirming its three hashes untouched - the consolidation disturbed nothing. E7's suite asserts only its own three filenames, so the additional modules alongside them are ignored by it; E8's suite will assert its own twelve.
+
+NOTE ON phase2_6_sterman_policy.py. It enters the closure through phase2_6_policy_scenarios and is the chaotic-ordering baseline the SOURCE's own large percentages (88-95% cost reductions vs all_sterman) are measured against. It is vendored because the closure requires it to import; whether E8 USES it is a separate question the operator's scope does not currently include, and it is not to be smuggled into E8's comparison set without a dated amendment. Recorded because DISC-06 already found E4 carrying an "ERP-style baseline" that was never built: the Sterman comparator EXISTS here, and that fact should not be lost.
+
+NEXT: measure throughput on the vendored engine, then fix the seed count on that measurement as a dated amendment before any build.
+
 **Inputs:** none external.
 
 ## 12. E9 - Customer-hysteresis sensitivity sweep
