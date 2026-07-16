@@ -269,6 +269,56 @@ the three-variant diagnostic. ALL cells reported regardless of direction. No cel
 dropped. Where our 1000-seed result resolves a cell the source's 50 seeds could not,
 both are reported side by side.
 
+**AMENDMENT 2026-07-14e (pre-build, BUILD STRATEGY; author-ratified; Standard v1.9.9). The source's construction is VENDORED unmodified rather than re-implemented; the fidelity leg of 14d is WITHDRAWN as vacuous and REPLACED by a theorem-conformance check; the source's self-under-specification is recorded as a finding.**
+
+WHY NOT RE-IMPLEMENT. The obvious reading of "re-earn" is to write fresh code from the source's spec and prove it reproduces. On inspection that buys almost nothing here and costs a great deal. RE-IMPLEMENTING FROM THE SOURCE'S CODE IS TRANSCRIPTION, NOT INDEPENDENCE: the operator would read compute_alpha_pi_squared_over_two and retype it into this repo, faithfully reproducing any logic defect it contains while ADDING transcription risk on top. The errors stay correlated; only the typo surface grows. Genuine independence would require re-implementing from the PAPER'S METHODS PROSE, and that is IMPOSSIBLE for this experiment - see the finding below. Weighed against that, bit-identity would additionally require matching the source's numpy RNG call order exactly, and a near-miss there is INDISTINGUISHABLE from a real difference - which is precisely the failure mode that produced the 2026-07-14 invalid run and its "the source fails" mis-finding.
+
+FINDING (completeness gap; reported in the methods note and flagged for the Phase-5a Methods-code fidelity pass): THE PAPER CANNOT BE RE-IMPLEMENTED FROM ITS OWN TEXT. v16's chain-length sweep specification gives the grid (3 lengths x 3 capacities), the four environments, the seed count, and the headline values. It does NOT give: k_star = 0.90; INITIAL_BS_MULTIPLIER = 1.5 (initial base stock = DEMAND_MEAN * SHIPMENT_LEAD_TIME * 1.5 = 30); SHIPMENT_LEAD_TIME = 2; HOLDING_COST = 1.0; STOCKOUT_COST = 10.0; DEMAND_MEAN = 10.0; DEMAND_STD = 2.0; the estimator's min_observations = 10 and its 0.5 neutral prior; the near-constant guard returning 0.95; the alpha_floor / alpha_ceiling clip; the estimator lookback window; sr_naive_damp's fixed_alpha = 0.6; sr_numerical's k_star = 1.0; or drift_canonical's breakpoint schedule (seg = num_periods/5; (0,0.30) (52,0.30) (104,0.95) (156,0.95) (208,0.40) (259,0.40), piecewise linear). Every one of these materially determines the result. This is a property of the source, not of our rebuild, and it stands whichever build path is taken. NOTE AGAINST THIS AMENDMENT'S OWN PREDECESSOR: amendment 2026-07-14c declared drift_canonical's interpolation shape an "under-determined residue" and recorded a "frozen choice, mirroring E4's canonical ramp timing." That was FALSE - the schedule is specified exactly in the source's code, as are the estimator prior and the environment parameterisations. Three parameters were declared unknowable without looking; the not-looking was then documented as a design decision. The lesson is the same one this dossier keeps recording: the source is the ARTIFACT, not the prose about it.
+
+BUILD STRATEGY (ratified). The source's modules are VENDORED into analysis/vendor/ UNMODIFIED, byte-for-byte, with their MD5s recorded in this amendment and asserted by the suite. This repo then carries the committed code that regenerates every number, satisfying the Standard's contract. Our own committed code is the RUNNER and the ANALYSIS - the grid driver, the paired comparison, the resolution logic, the crossover locator, and the report - which is where this experiment's contribution lives. Justification: the 7-point CIC (DISC-05) read the source's code line by line and cleared all seven classes; THAT READING IS THE INDEPENDENT VERIFICATION OF THE LOGIC. Vendoring also makes the paper MORE reproducible than the present arrangement, in which the numbers live in this repo and the code lives on a desktop outside it.
+
+WHAT THE PAPER MAY CLAIM, and may not. It may say: we audited the source's implementation against the 7-point CIC and against the paper's own proven theorem, vendored it unmodified, and re-ran it at 20x the seed count to resolve what the original design could not. It may NOT say: we independently re-implemented the experiment and confirmed it. The distinction is recorded here so the manuscript cannot drift into the stronger claim.
+
+THE 14d FIDELITY LEG IS WITHDRAWN AS VACUOUS. Under vendoring, running the source's code on the source's seeds MUST reproduce the source's numbers - it is the same computation. That is a tautology, not evidence, and reporting it as a replication would be theatre. (It retains one narrow use, kept in the suite as a REGRESSION assertion rather than a finding: it proves the vendored copy is unmodified and the harness wires it correctly.)
+
+REPLACED BY A THEOREM-CONFORMANCE CHECK - the check that actually buys independence. The source's damping rule IS this paper's theorem: S = (1 - phi^W)/(1 - phi); alpha_max = (pi^2/2)/S; alpha_op = alpha_max * k_star. T1/T2/T3 were verified independently in this repo (symbolic + numeric, green before any empirical work, DECISIONS 2026-07-13). The suite therefore asserts that the VENDORED CODE'S ALPHA RULE AGREES WITH THE AS-PROVEN THEOREM across a grid of phi and W, computed from this repo's own theory_lib rather than from the vendored module. This is the theory-first rule (v1.9.6) applied to a vendored operator: re-check the experiment's operator against the as-proven statements. It is aimed at the science rather than the plumbing, and it is the check that would catch the class of defect DISC-07 asks about. A conformance failure is a finding about the source's implementation, NOT a licence to modify the vendored code: the vendored copy stays byte-identical and the discrepancy is dossiered.
+
+CLASSIFICATION IMPACT. Leg (a) REPLICATION is withdrawn (vacuous under vendoring; the regression assertion moves into the suite and is not a report form). E7's report forms are unchanged and are now exactly two: (b) BOUNDARY-CONDITION / DOMAIN-MAPPING - the crossover map with its resolution, expected-null polarity stated; and (c) ROBUSTNESS / SENSITIVITY - the stability statement across chain length and capacity, plus the three-variant diagnostic. E7 still carries NO standalone SUPPORT/REFUTE verdict.
+
+VENDORED FILES (MD5s asserted by the suite; any drift is a hard fail):
+  analysis/vendor/phase2_6_chain_length_sweep.py   cbc6bfa327150ca4e64acf2b63df0172
+  analysis/vendor/phase2_6_spectral_radius.py      e530ae06c57a15a6680419cbe245ec30
+  analysis/vendor/phase2_6_timevarying_demand.py   e681e0c451457335ae66663b2a8b0e09
+Vendored 2026-07-15 by direct file copy (NOT retyped - emitting 1,500 lines through
+an edit tool would reintroduce exactly the transcription risk this amendment rejects);
+all three MD5s verified equal on both sides after the copy.
+Third-party: stockpyl 1.0.2, sim.py MD5 5a1ba4e1ff4f84800a06b4a317d4d8a3, verified
+bit-identical between the author's machine and the QA container.
+
+A HAZARD FOUND WHILE VENDORING, to be asserted by the suite rather than assumed:
+phase2_6_timevarying_demand.py defines BOTH phase2_6_drift_schedule() AND
+phase2_6_drift_schedule_DEPRECATED_DUPLICATE(), and the sweep script calls NEITHER -
+it defines its own make_phase2_6_drift_schedule() locally. Three drift schedules are
+therefore in scope. Reading says the sweep uses its local one and the two
+module-level definitions are dead code here, but that is a CIC-7 (input integrity)
+hazard of exactly the kind that bites silently, so the suite ASSERTS which schedule
+reaches the demand generator instead of trusting the reading.
+
+**AMENDMENT 2026-07-14f (pre-run, MEASURED-COST; author-ratified; Standard v1.9.9). SEEDS 1000 -> 250 PER CELL. Made after the rebuild was wired to the vendored engine and its throughput MEASURED, before any real run, and blind to every cell's outcome.**
+
+WHY. Amendment 2026-07-14b raised seeds 50 -> 1000 for POWER, and 14d re-affirmed it. That ratification was made against E4's variance, before the source's construction was recovered - the rebuild's true cost was unknown at the time. Measured in the QA container against the vendored engine (5 variants per seed): L=4 2.29 s/seed, L=6 3.42 s/seed, L=8 4.50 s/seed. The frozen grid is 3 lengths x 3 capacities x 4 environments = 36 cells, so the full grid at 1000 seeds projects to roughly 7.6 h (L=4) + 11.4 h (L=6) + 15.0 h (L=8) = ABOUT 34 HOURS single-machine. That is consistent with the source's own record - they ran 50 seeds in 15.3 minutes distributed across a 12-14 worker fleet, i.e. some hours single-machine, and 20x that is not a sitting. The author has a fleet, but it lives outside this repo and routing the run through it would complicate the Phase-5b clean-room reproduction gate.
+
+THE POWER ARITHMETIC (the amendment's ratified INTENT was to resolve what the source's 50 seeds could not; this is what actually delivers it). From the source's MEASURED standard errors at 50 seeds (0.072 / 0.078 / 0.081, mean ~0.077), SE scales as 0.077 * sqrt(50/n):
+    n =   50 (theirs)  SE 0.077   L=6 (+0.137) = 1.8 sigma   UNRESOLVED
+    n =  100           SE 0.054   L=6 = 2.5 sigma            resolved
+    n =  250           SE 0.034   L=6 = 4.0 sigma, L=8 (-0.141) = 4.1 sigma   RESOLVED
+    n = 1000           SE 0.017   L=6 = 8.0 sigma            resolved (overkill)
+250 seeds resolves BOTH previously-unresolved points at ~4 sigma - five times the source's power - for about 8.5 hours instead of 34. 1000 buys 8 sigma where 4 settles the question.
+
+SELF-PENALIZING CHECK (mandatory, because REDUCING a sample size is the direction in which a defect could hide). The Standard's re-design test: would this change be made if it pushed the result the other way? A seed reduction is inadmissible if it lets an inconvenient cell fall back into "unresolved" and thereby avoids a finding. At 250 seeds the two cells the source could not resolve - L=6 (+0.137) and L=8 (-0.141) - BOTH resolve, at 4.0 and 4.1 sigma. The reduction therefore does NOT purchase an escape from any finding: the crossover is still adjudicated in whichever direction the data falls. Had 250 left either point unresolved, the reduction would have been refused and the 34 hours accepted. Recorded so this reasoning is auditable rather than assumed.
+
+WHAT IS UNCHANGED. Seeds now 3000-3249. The source's own 3000-3049 remain the FIRST FIFTY of this range, so the regression assertion (that the vendored copy is unmodified and the harness wires it correctly, per 14e) still needs no separate execution. The grid, the construction, the 5 variants, the comparison, and both report forms are unchanged. The 50 -> 1000 -> 250 history stands in full: 14b's reasoning was sound on the information then available, and this amendment narrows it on measured cost, not on any result.
+
 **Inputs:** none external.
 
 ## 11. E8 - Pricing-mechanism analysis (asymmetry)
