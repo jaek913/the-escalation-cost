@@ -839,6 +839,83 @@ part of this amendment's execution.
 
 **Validity reviews.** E10/E11: bg values are assumption-driven proxies, not estimates - exactly why the decision rules lock SUGGESTIVE framing and the paper says so; the experiments test internal coherence of the reading, not causal claims. E12: the oracle design isolates recipe-vs-estimator attribution by construction (perfect information removes the estimator from the causal path).
 
+**AMENDMENT 2026-07-17 (E12 PRE-ANALYSIS classification gate; Standard v1.9.9. E12 is an ANALYSIS - zero new simulation.)**
+
+EVIDENCE PATHS, both already in hand. LEG A (primary, 250 seeds): OUR OWN committed
+E7 rebuild artifact analysis/outputs/e7_chain_sweep.json (MD5
+fdb79fd32566d4129226eea422c356cb, pinned) - the rebuild ran ALL FIVE variants
+(36 cells x 250 seeds x 5 = 45,000 trials; harness regression-verified 3/3
+exact on the source's own seeds at E7), and every cell carries the three-variant
+diagnostic (sr_paper9_ols / sr_oracle_local / sr_naive_damp, each paired
+within-seed against sr_disabled, with CI, achieved MDD, and resolution). LEG B
+(corroboration + paired contrasts, 50 seeds): the source's raw sweep artifact
+C:\ResearchShare\aggregated_chain_length_sweep.json (MD5
+6ecfc6fec0b1e490febea64ef36cd058 - matching the E7/DISC-05 record exactly -
+SHA256 ea95218b2193b5ad0f174d380c13da358a9b365044cf2668fa243b34b0539e49; 9,000
+per-trial records; code CIC-cleared at E7). LEG A's aggregates cannot yield
+variant-vs-variant standard errors (per-seed values were not persisted); LEG B's
+raw records yield PROPERLY PAIRED per-seed contrasts (oracle-OLS, fixed-oracle,
+fixed-OLS, scaled by the same seed's baseline cost) with real SEs at the
+source's n. A re-run to persist our own per-seed values is strictly dominated
+(the ordering claims resolve conservatively from LEG A via CI disjointness, and
+LEG B supplies the paired inference) and is REJECTED.
+
+RECORD CORRECTION, logged here rather than dossiered because it consumes no
+number: amendment 2026-07-14 (14d) described the source's 9,000-trial
+decomposition as "base-stock, sr_paper9_ols, sr_oracle, sr_naive_damp,
+all_sterman." The artifact's ground truth is sr_disabled / sr_paper9_ols /
+sr_oracle_local / sr_naive_damp / SR_NUMERICAL (1,800 each) - the fifth variant
+is the source's deliberately preserved PRE-CORRECTION rule, not a Sterman arm.
+No E7 or E12 quantity touches the fifth variant; E12's LEG B will report
+sr_numerical vs sr_disabled in the drift row as CONTEXT ONLY (clearly labeled
+non-claim-carrying - the repudiated rule's actual performance, of interest to
+the Phase-5a review of the Section 5.4 finding).
+
+CLASSIFICATION (v1.9.7). E12 is a CHARACTERIZATION - pre-registered LIMITATION
+DOCUMENTATION with attribution-by-construction (the operator above already
+states it CANNOT support the thesis). Report form: the three-variant map over
+the drift_canonical row (claim-carrying) with the three stationary rows as
+CONTROLS, plus the frozen expected/unexpected rule governing how the limitation
+section is framed. The DISC-03 lesson generalizes: every contrast is named by
+its two arms; no contrast is attributed to anything its arms do not isolate.
+
+SEVERITY - measured from data in hand, and DISCLOSED: LEG A's aggregates were
+publicly committed at the E7 close (they are already part of the record), so
+the rule below is the operator's own wording made precise, not tuned to unseen
+data; LEG B's paired contrasts remain uncomputed at this gate. From LEG A: the
+oracle-vs-baseline question resolves in ALL NINE drift cells; the fixed-alpha
+benefit question resolves at the long-chain headroom cells; the instrument can
+find the ordering in either direction (fixed is resolved-benefit in some cells
+and oracle resolved-harm in all - had the reverse held, the same map would show
+it). Achieved MDDs are carried per cell in the artifact.
+
+DECISION RULE, formalized from the operator (frozen before the analysis run):
+claim locus = drift_canonical at long chains with headroom (L in {6,8} x cap in
+{1.8, 2.4}), where the source's record claims "fixed-alpha damping produces
+large benefit at long chains."
+  EXPECTED-CONFIRMED (limitation documented as RECIPE-LEVEL) iff (i) oracle vs
+  baseline is resolved-HARM in all 9 drift cells, AND (ii) at the L=8 headroom
+  cells fixed vs baseline is resolved-BENEFIT with its 95% CI disjoint-below
+  BOTH the oracle's and the OLS's CIs (conservative ordering from LEG A), AND
+  (iii) LEG B's properly-paired fixed-oracle and fixed-OLS contrasts resolve
+  negative at those cells.
+  ORACLE-WINS (limitation rewritten as RESOLVED, dated amendment) iff oracle vs
+  baseline is resolved-BENEFIT with CI disjoint-below both other variants at
+  the claim locus.
+  Otherwise AS-FOUND characterization, all cells reported.
+Only the tested trajectory shape (0.30 -> 0.95 -> 0.40) is claimed; drift,
+square-wave, and one-shot shapes remain named future work per the operator.
+
+N NOTE: the operator pre-registered 50 seeds; LEG A carries 250 (the E7 rebuild
+supersession - a power upgrade, not a spec change; the operator's 50 survives
+as LEG B's n by construction).
+
+INPUTS CORRECTION: E12's "none external" is SUPERSEDED - the source's sweep
+artifact becomes a registered local input (pull.py kind="local", id
+phase26_chain_sweep_50seed) as LEG B's corroboration data. Copy-to-store and
+SOURCES.md regeneration are part of this amendment's execution. LEG A's input
+is our own committed artifact, pinned by MD5 above.
+
 **Inputs:** E10 - JST R6. E11 - ETA 539 (+ context series). E12 - none external.
 
 ---

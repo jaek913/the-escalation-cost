@@ -221,6 +221,24 @@ SOURCES = (
                    "and must reproduce these cells per the pre-registered "
                    "fidelity tiers; this artifact is the CROSS-CHECK TARGET, "
                    "not the evidence - the evidence is our own run.")),
+        dict(id="phase26_chain_sweep_50seed", kind="local",
+             fname="phase26/aggregated_chain_length_sweep.json",
+             vendor="in-house (source's Phase 2.6 chain-length sweep, 2026-05-01)",
+             symbol="aggregated_chain_length_sweep.json",
+             freq="9,000 trials (4 envs x 9 cells x 5 variants x 50 seeds)",
+             used_by="E12 LEG B (paired variant contrasts + corroboration); E7 regression record",
+             tol="None. Fixed artifact.",
+             note=("The source's committed sweep output whose code cleared the "
+                   "full CIC at E7 (DISC-05): recomputing sr_paper9_ols vs "
+                   "sr_disabled on ar1_high x 2.4x from these raw records "
+                   "returns v16's +0.44/+0.14/-0.14 to three decimals. E12 uses "
+                   "the raw per-trial records for PROPERLY PAIRED per-seed "
+                   "variant-vs-variant contrasts (oracle-OLS, fixed-oracle, "
+                   "fixed-OLS) at 50 seeds, corroborating LEG A's 250-seed "
+                   "aggregates from our own rebuild. Fifth variant is "
+                   "sr_numerical, the source's preserved pre-correction rule "
+                   "(DESIGN Section 13 amendment 2026-07-17 record correction); "
+                   "context-only, never claim-carrying.")),
     ]
 )
 
