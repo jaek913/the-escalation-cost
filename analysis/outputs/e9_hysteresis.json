@@ -1,0 +1,197 @@
+{
+  "experiment": "E9",
+  "date": "2026-07-16",
+  "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
+  "smoke": false,
+  "construction": {
+    "num_periods": 260,
+    "warmup_periods": 52,
+    "capacity_multiplier": 1.3,
+    "inventory_scenario": "all_sr",
+    "elasticity": 1.5,
+    "review_interval": 20,
+    "intensities": [
+      0.0,
+      0.1,
+      0.3,
+      0.6
+    ],
+    "seeds": [
+      2000,
+      2019
+    ],
+    "scenarios": [
+      "no_pricing",
+      "phi_gated_asymmetric"
+    ],
+    "comparison": "phi_gated_asymmetric vs no_pricing (Claim-B family; not attributable to the formula)"
+  },
+  "n_trials": 320,
+  "n_failures": 0,
+  "elapsed_seconds": 8051.236736297607,
+  "cells": [
+    {
+      "env": "level_shift_up_persistent",
+      "h": 0.0,
+      "benefit_mean": 8401.301149517853,
+      "benefit_se": 813.4223425882219,
+      "sigma": 10.32833831781141,
+      "status": "resolved",
+      "pool_mean": 1.0,
+      "n": 20
+    },
+    {
+      "env": "level_shift_up_persistent",
+      "h": 0.1,
+      "benefit_mean": 8628.034644204323,
+      "benefit_se": 841.8257233861378,
+      "sigma": 10.249193395396782,
+      "status": "resolved",
+      "pool_mean": 0.7721753778089353,
+      "n": 20
+    },
+    {
+      "env": "level_shift_up_persistent",
+      "h": 0.3,
+      "benefit_mean": 7808.206711302277,
+      "benefit_se": 901.9673756016139,
+      "sigma": 8.656861570069747,
+      "status": "resolved",
+      "pool_mean": 0.6626775431023635,
+      "n": 20
+    },
+    {
+      "env": "level_shift_up_persistent",
+      "h": 0.6,
+      "benefit_mean": 5855.077618001674,
+      "benefit_se": 947.8837273726305,
+      "sigma": 6.1769998248951214,
+      "status": "resolved",
+      "pool_mean": 0.45225138531822956,
+      "n": 20
+    },
+    {
+      "env": "low_phi_shift_up",
+      "h": 0.0,
+      "benefit_mean": 1407.261085983325,
+      "benefit_se": 178.39809957622762,
+      "sigma": 7.888318818004097,
+      "status": "resolved",
+      "pool_mean": 1.0,
+      "n": 20
+    },
+    {
+      "env": "low_phi_shift_up",
+      "h": 0.1,
+      "benefit_mean": 496.3712629941003,
+      "benefit_se": 213.8905966274888,
+      "sigma": 2.320678285163601,
+      "status": "resolved",
+      "pool_mean": 0.7699144168353177,
+      "n": 20
+    },
+    {
+      "env": "low_phi_shift_up",
+      "h": 0.3,
+      "benefit_mean": -540.5837281160061,
+      "benefit_se": 222.08804650451637,
+      "sigma": -2.4340964614005594,
+      "status": "resolved",
+      "pool_mean": 0.6717069537400918,
+      "n": 20
+    },
+    {
+      "env": "low_phi_shift_up",
+      "h": 0.6,
+      "benefit_mean": -3320.4536279264803,
+      "benefit_se": 274.27619223264173,
+      "sigma": -12.106240796540092,
+      "status": "resolved",
+      "pool_mean": 0.45162729045121636,
+      "n": 20
+    }
+  ],
+  "decision": {
+    "verdict": "RETAIN-WITH-SPLIT-FRAMING",
+    "hp_h030": {
+      "mean": 7808.206711302277,
+      "se": 901.9673756016139,
+      "status": "resolved"
+    },
+    "hp_h060": {
+      "mean": 5855.077618001674,
+      "se": 947.8837273726305,
+      "status": "resolved"
+    }
+  },
+  "crossover": {
+    "level_shift_up_persistent": {
+      "cells": [
+        {
+          "h": 0.0,
+          "mean": 8401.301149517853,
+          "se": 813.4223425882219,
+          "status": "resolved"
+        },
+        {
+          "h": 0.1,
+          "mean": 8628.034644204323,
+          "se": 841.8257233861378,
+          "status": "resolved"
+        },
+        {
+          "h": 0.3,
+          "mean": 7808.206711302277,
+          "se": 901.9673756016139,
+          "status": "resolved"
+        },
+        {
+          "h": 0.6,
+          "mean": 5855.077618001674,
+          "se": 947.8837273726305,
+          "status": "resolved"
+        }
+      ],
+      "crossing_bracket": null,
+      "boundary": "none-in-range"
+    },
+    "low_phi_shift_up": {
+      "cells": [
+        {
+          "h": 0.0,
+          "mean": 1407.261085983325,
+          "se": 178.39809957622762,
+          "status": "resolved"
+        },
+        {
+          "h": 0.1,
+          "mean": 496.3712629941003,
+          "se": 213.8905966274888,
+          "status": "resolved"
+        },
+        {
+          "h": 0.3,
+          "mean": -540.5837281160061,
+          "se": 222.08804650451637,
+          "status": "resolved"
+        },
+        {
+          "h": 0.6,
+          "mean": -3320.4536279264803,
+          "se": 274.27619223264173,
+          "status": "resolved"
+        }
+      ],
+      "crossing_bracket": [
+        0.1,
+        0.3
+      ],
+      "boundary": "resolved"
+    }
+  },
+  "fidelity": {
+    "tier": "TIER-EXACT",
+    "max_rel_diff": 0.0,
+    "n_compared": 320
+  }
+}
