@@ -276,6 +276,45 @@ def main() -> None:
     print("    the formula   (Claim A)   = [%+.2f, %+.2f]  -> at most %.2f%% of it"
           % (hc["ci"][0], hc["ci"][1], hc["ci_pct_of_claim_b"][1]))
 
+    # ROBUSTNESS - the capacity and elasticity legs. These were computed but never
+    # displayed in the first cut of this script, which was a reporting defect: the
+    # pre-registered commitment requires the capacity leg REPORTED, and it is the
+    # leg carrying genuinely new information (the source's own "12x collapse at
+    # 1.8x" - where DISC-01 began).
+    print()
+    print("ROBUSTNESS - capacity leg (Claim B, the reaction's value, per capacity)")
+    base_up = b["cells"][STRAINED_UP]["mean"]
+    base_dn = b["cells"]["level_shift_down_persistent"]["mean"]
+    print("    %-14s %14s %14s %10s %s"
+          % ("capacity", "up-benefit", "down-harm", "ratio", "net"))
+    print("    %-14s %14.2f %14.2f %10s %s"
+          % ("1.3x (base)", base_up, base_dn, "-",
+             "WINNER" if base_up + base_dn > 0 else "NET LOSER"))
+    for label in ("capacity 1.8x", "capacity 2.4x", "capacity 3.0x"):
+        leg = rob.get(label, {})
+        u = leg.get(STRAINED_UP, {}).get("mean")
+        d = leg.get("level_shift_down_persistent", {}).get("mean")
+        if u is None or d is None:
+            print("    %-14s artifact unavailable" % label)
+            continue
+        print("    %-14s %14.2f %14.2f %9.2fx %s"
+              % (label, u, d, base_up / u if u else float("nan"),
+                 "WINNER" if u + d > 0 else "NET LOSER (down-harm exceeds up-benefit)"))
+    print("    NOTE: 'net' presumes a business faces upward and downward shifts at")
+    print("    comparable rates. The COMPONENTS are measured; the netting is a framing.")
+    print()
+    print("ROBUSTNESS - elasticity leg (Claim B, per elasticity)")
+    print("    %-16s %14s %14s" % ("elasticity", "up-benefit", "down-harm"))
+    print("    %-16s %14.2f %14.2f" % ("1.5 (base)", base_up, base_dn))
+    for label in ("elasticity 0.5", "elasticity 3.0"):
+        leg = rob.get(label, {})
+        u = leg.get(STRAINED_UP, {}).get("mean")
+        d = leg.get("level_shift_down_persistent", {}).get("mean")
+        if u is None or d is None:
+            print("    %-16s artifact unavailable" % label)
+            continue
+        print("    %-16s %14.2f %14.2f" % (label, u, d))
+
 
 if __name__ == "__main__":
     main()

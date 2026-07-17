@@ -314,10 +314,78 @@ regenerate-or-escalate rule now forbids. The escalation is withdrawn.
 
 ## DISC-03 - v16 attributes to the persistence formula a benefit the formula did not produce
 
-**Kind:** consistency / attribution. **State:** OPEN (CONFIRMED, and CORRECTED
-2026-07-16 - the finding stands and is now BETTER evidenced; the severity concern
-attached to it was MINE and is WITHDRAWN). **Bears on:** E8's primary comparison,
-Section 7 / the pricing section, and v16's abstract.
+**Kind:** consistency / attribution. **State:** RESOLVED 2026-07-16 - **CONFIRMED, and
+it is E8's central finding.** Adjudication: **ORIGINAL IN ERROR** on the attribution,
+while the original's arithmetic is exact and its asymmetry claim survives intact.
+**Bears on:** E8, LB-E8-up, LB-E8-down, ARG-19, Section 7 / the pricing section, and
+v16's abstract.
+
+**CLOSURE (2026-07-16).** Computed from the source's 1,800 raw trial records
+(SHA256-registered, asserted before any arithmetic) via analysis/e8_pricing.py, whose
+suite LEG 2 proves our code cannot itself commit this substitution. The finding is
+MEASURED, not argued:
+    CLAIM B - reacting at all (naive_reactive vs no_pricing), level_shift_up_persistent:
+        +10141.86/period  [+8906.72, +11377.00]  16.1 sigma  RESOLVED
+    CLAIM A - the formula (phi_gated_asymmetric vs naive_reactive), SAME environment:
+        +13.01/period  [-29.17, +55.18]  0.6 sigma
+        = [-0.29%, +0.54%] OF THE NUMBER IT IS CREDITED WITH
+v16 frames its pricing section as testing whether the PERSISTENCE FORMULA gives useful
+guidance and reports +$10,142/period as the evidence. That figure is Claim B. The
+formula's own ceiling in that environment is 0.54% of it. This is not "we could not
+tell" - it is a hard bound, resolved, and indifferent to whether the true effect is 0
+or +13.
+
+**THE SOURCE'S OWN CODE STATES THE CORRECT COMPARATOR.** PricingPolicy's docstring:
+"NaiveReactivePolicy ... Comparing against this baseline ISOLATES THE VALUE OF THE
+FORMULA'S PERSISTENCE-DISCRIMINATION CAPABILITY beyond the value of dynamic pricing in
+general." They built the right comparator and reported the wrong one. This is therefore
+not an outside reframing: it is the source's own comparator set, used as the source's
+own code says it should be used.
+
+**WHY THE FORMULA DOES NOTHING THERE - the source diagnosed it themselves.** Their
+record: "PHI-GATING DOES NOT DIFFERENTIATE FROM NAIVE ... The persistence test always
+passes so phi-gated reduces to naive_reactive." OLS structural-break inflation pushes
+the persistence estimate above BOTH thresholds (0.60 and 0.75) in essentially all
+trials of the high-persistence environments, so both gates always open. The mechanism
+is documented, real, and known to them.
+
+**THE FORMULA'S ONE GENUINE WIN, and it is absent from the paper.** low_phi_shift_down:
++137.20 [+75.65, +198.76], 4.4 sigma RESOLVED = 13-34% of that environment's value -
+noisy demand falling, where the asymmetric gate correctly REFUSES to cut. That is the
+source's own "$144/period asymmetric advantage," confirmed. The honest replacement
+claim is available and is better than the one being withdrawn: the formula's
+demonstrated domain is noisy-downward, not the high-persistence upward case the
+framing is built around. Remaining cells: low_phi_shift_up +19.42 (2.3 sigma, resolved
+but small), level_shift_down_persistent -24.28 (1.3 sigma), mid_phi_shift_down -24.55
+(1.0 sigma).
+
+**INDEPENDENT OF DISC-01 AND DISC-02, AND UNDAMAGED BY THEM.** It holds even though
+every number is correct - and CIC-1 confirms every number IS correct: all five
+published figures recompute from the raw records at 13-21 sigma, and the capacity
+sweep confirms v16's "under $900 at 1.8x" (+842.20) and "12x collapse" (12.04x)
+exactly. The source's arithmetic is impeccable. The sentence attached to it is not.
+This is the Paper-4 ratio-operator pattern: reproducible, and INADMISSIBLE for the
+claim it supports.
+
+**FIX SPECIFIED.** (a) The pricing section reports BOTH claims, separately, never
+substituted - Claim B as the asymmetry verdict (ASSERTED, keep as written), Claim A as
+a bound. (b) The sentence crediting the formula with +$10,142 is WITHDRAWN. (c) The
+replacement claim (the formula's domain is low_phi_shift_down, 13-34%) is available and
+should be made. (d) v16's abstract is affected: "cutting prices in response to demand
+decreases is uniformly negative across every environment we tested" is CLAIM B and
+SURVIVES at 17-21 sigma - it is about reacting, not about the formula, and is the
+paper's most defensible contribution here.
+
+**A CORRECTION AGAINST MYSELF, retained.** This dossier previously asserted that
+phi_gated is BIT-IDENTICAL to naive and built a severity argument on it ("the arms are
+the same computation ... no sample size resolves it"). That was FALSE and was withdrawn
+2026-07-16: the arms are distinct in all five level-shift environments; the identity
+occurs only in ar1_high_no_shift, the no-shift control, where every reactive policy
+correctly does nothing. I had read the summary key 'ar1_high' as the headline
+environment; it is the legacy control - the same naming duplication DISC-04 had exposed
+one dossier earlier. The finding survived the correction and is stronger for being
+measured rather than inferred.
+
 
 **THE FINDING (confirmed from the source's 1,800 RAW trial records, not the
 summary).** v16 frames its pricing section as testing whether the PERSISTENCE
