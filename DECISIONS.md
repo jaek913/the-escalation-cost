@@ -518,3 +518,23 @@ BUILD: analysis/e12_nonstationarity.py (MD5 ae04baa4fc42db4fb88b9aeb574cc680) an
 NEXT, IN ORDER: store copy + SOURCES.md regen (44/44 expected) -> freeze commit -> Stage 1 (suite on Jae's machine) -> Stage 2 (analysis run, seconds) -> mandatory stop-and-review on the result, authorization awaited before closure.
 
 ---
+
+**2026-07-17 - E12 RESULT (author-reviewed and authorized): EXPECTED-CONFIRMED-RECIPE-LEVEL, every frozen condition met at 5-9 sigma. THE SIMULATION BATTERY IS COMPLETE - ARG-19 goes fully DONE (E7 + E8 + E9 + E12).**
+
+RUN: analysis-only (seconds), Jae's machine, on the two hash-pinned legs; Stage 1 suite ALL PASS (6 legs, incl. the raw-record regression to the E7-verified triple) preceded it; freeze 055ca4f. Registry correction for the record: SOURCES.md landed at 43/43 (prior 42 + 1 new entry) - the freeze entry's "44/44 expected" was an arithmetic slip in the prediction, not a registry defect.
+
+THE RESULT, all three frozen conditions: (i) the ORACLE - true phi every period, zero estimation error - resolved-HARM in ALL NINE drift cells (+0.253 to +0.408); (ii) FIXED-ALPHA resolved-BENEFIT at the claim locus (-0.693 at L8x1.8, -1.121 at L8x2.4), CI-disjoint below both adaptive variants; (iii) LEG B properly-paired: fixed beats oracle -1.069 (7.3 sigma) / -1.513 (9.5 sigma), fixed beats OLS -0.871 (5.1 sigma) / -1.197 (6.6 sigma). The ORACLE-WINS reversal branch was live and mechanically checked (oracle_wins_check False).
+
+BEYOND THE PRE-REGISTRATION, from the committed record: THE PERFECT-INFORMATION PARADOX - oracle-minus-OLS properly paired is resolved POSITIVE in 7 of 9 drift cells (+0.162 to +0.329): the error-laden estimator BEATS perfect information, because estimation error functions as ACCIDENTAL REGULARIZATION (the OLS window lags the drifting phi and engages the tool less; the oracle tracks the 0.95 peak faithfully and damps hardest exactly when damping hurts most). CONTROLS PRISTINE: the oracle is EXACTLY inert (0.000, se 0.000) in ar1_moderate and iid_control - harm appears ONLY where persistence moves; the attribution to non-stationarity is by construction AND by control. CONTEXT (never claim-carrying): sr_numerical, the source's preserved pre-correction rule, is EXACTLY inert in all nine drift cells - the repudiated rule never engaged in this environment; filed to the Phase-5a Section-5.4 dossier.
+
+ADJUDICATION CONFIRMED BOTH DIRECTIONS: severity was pre-measured at the gate from already-public LEG A; the instrument demonstrably detects resolved benefit in these same cells (fixed shows it), so a genuine oracle win was findable; the genuinely-unseen leg (paired contrasts) landed at 5-9 sigma. Limits: one trajectory shape claimed; L-03 binds the model; sign convention positive = harm.
+
+MANUSCRIPT CONSEQUENCES: the limitation section is confirmed AND sharpened into a contribution - the defect is IN THE RECIPE (re-damping each period against instantaneous rho); no estimator, up to and including a perfect one, can fix it, and a perfect one makes it worse; under suspected drift, constant damping dominates at long chains. A thesis-coherent interpretation is offered AS INTERPRETATION, never as proof: under drift the adaptive tool becomes the very pathology the theorems describe - a fast controller chasing a transient signal. Dovetails with E7's recorded engagement-falls-as-benefit-rises pattern.
+
+CLOSURE: OUTLINE -> v1.6 (LB-E12-oracle DONE; ARG-19 DONE all four legs; TBL-7 DONE all four legs); ClickUp evidence comment on 86bawqj0k; MemPalace drawer + diary; result artifact analysis/outputs/e12_nonstationarity.json committed. TEN EXPERIMENTS + AUDIT: E1 SUPPORT - E2 SUPPORT - E3 boundary - E4 SUPPORT (model-bound) - E5 characterization - E6 characterization - E7 characterization - E8 verdict + bounds - E9 qualification + TIER-EXACT fidelity - E12 limitation confirmed recipe-level. Register 0 open. DECISIONS 35 entries.
+
+ALSO LOGGED THIS DATE (author decision, outside the pipeline): laggingtruth.com self-service pricing diagnostic tool - ClickUp task 86bazgvv2 with full spec incl. integrity guardrails (capacity question mandatory; flags labeled diagnostic replay never dollar claims; optional stickiness input surfaces the E9 split) and the service-business scope (any demand series qualifies; the chain-damping tool does NOT transfer; hiring-as-ordering named future work). Dependencies: Section 10 constants (Phase 4 LB-FP-diagnostic) + REPLICATION.md. Phase-4 note: consider a service-domain paragraph in Section 10 or 9.
+
+NEXT: E10 (sovereign ratings, suggestive tier) under its MANDATORY GROUND-UP RE-VERIFICATION - the v14 fatal-error site; then E11 (UI). REPLICATION.md queued. Then Phase-2 gate close.
+
+---
