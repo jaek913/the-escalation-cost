@@ -206,6 +206,21 @@ SOURCES = (
              freq="1,800 trials @ elasticity 3.0",
              used_by="E8 robustness (elasticity leg)",
              tol="None. Fixed artifact.", note=None),
+        dict(id="phase27_hysteresis_20seed", kind="local",
+             fname="phase27/phase2_7_hysteresis_results.json",
+             vendor="in-house (source's Phase 2.7 hysteresis sweep, 2026-05-01)",
+             symbol="phase2_7_hysteresis_results.json",
+             freq="320 trials (2 envs x 2 scenarios x 4 intensities x 20 seeds)",
+             used_by="E9 fidelity target (spec-derived re-implementation cross-check)",
+             tol="None. Fixed artifact.",
+             note=("The source's committed hysteresis output, seeds 2000-2019. "
+                   "All four Appendix F hysteresis numbers recompute from these "
+                   "records exactly (+8401.30/+5855.08/-540.58/-3320.45; "
+                   "retention 69.7%). E9 re-implements the hysteresis layer "
+                   "from specification (DESIGN Section 12 amendment 2026-07-16) "
+                   "and must reproduce these cells per the pre-registered "
+                   "fidelity tiers; this artifact is the CROSS-CHECK TARGET, "
+                   "not the evidence - the evidence is our own run.")),
     ]
 )
 

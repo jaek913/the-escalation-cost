@@ -705,6 +705,128 @@ NEXT (E8): (1) copy the six artifacts to the project-local store and record thei
 
 **Validity review.** Referent: hysteresis-as-attrition is the standard first-order model of the objection. 20 seeds/cell is smaller than E8's 50 - pre-registered consequence: cell means carry wider CIs; any cell mean within 1 SE of zero is reported as indeterminate rather than signed.
 
+**AMENDMENT 2026-07-16 (PRE-BUILD classification gate + build strategy; author-ratified Option B; Standard v1.9.9. Made before any E9 code exists.)**
+
+TRIANGLE TEST - PASSED (the Section-5.4 test, run FIRST). The source's hysteresis
+experiment survives the check that Section 5.4 failed: script on disk
+(phase2_7_hysteresis.py MD5 14a9de160c5ce159ec5d331a283f7df7;
+phase2_7_pricing_manager_hyst.py 41550517a42a244f83ff529624c98bd6;
+phase2_7_hysteresis_sweep_runner.py 5118bdee175ae7e69e5005f7bd652ed1;
+dispatch wrapper phase2_7_pricing_manager_wrapper.py 0640558e1adcd4263b4191131a8de3d7)
+-> committed artifact (phase2_7_hysteresis_results.json, MD5
+765364e7120c3d59a84a5e7925fdf00f, SHA256
+e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b, 320 trials,
+0 failures, seeds 2000-2019) -> Appendix F: ALL FOUR published numbers recompute
+EXACTLY (+8401.30 baseline; +5855.08 heavy, retention 69.7% ~ "70%"; -540.58
+moderate-noisy; -3320.45 heavy-noisy). Post-correction era (2026-05-01); none of
+Section 5.4's anatomy is present.
+
+CLASSIFICATION (v1.9.7). E9 is a BLEND of (a) ROBUSTNESS / SENSITIVITY
+(dominant) - it QUALIFIES E8's ASSERTED Claim-B raise verdict; the frozen
+retain/downgrade rule above executes as a QUALIFICATION of E8's claim retention,
+not a standalone verdict - and (b) BOUNDARY-CONDITION / DOMAIN-MAPPING - where
+along the hysteresis axis the pricing benefit crosses from benefit to harm, per
+environment; report form a MAP with its resolution. DISC-03 GATE COMPLIANCE: the
+measured benefit is phi_gated_asymmetric vs no_pricing - the CLAIM-B FAMILY (the
+value of the raise strategy), matching the claim E9 qualifies. NOTHING in E9 may
+be attributed to the persistence formula; the naive arm is absent by design.
+
+SEVERITY - MEASURED PRE-BUILD from the source's own artifact, and it CLEARS.
+Per-cell paired benefit (mean, SE, sigma) at 20 seeds:
+  level_shift_up_persistent  h=0.0 +8401.30 (813.42, 10.3) / h=0.1 +8628.03
+  (841.83, 10.2) / h=0.3 +7808.21 (901.97, 8.7) / h=0.6 +5855.08 (947.88, 6.2)
+  low_phi_shift_up           h=0.0 +1407.26 (178.40, 7.9) / h=0.1 +496.37
+  (213.89, 2.3) / h=0.3 -540.58 (222.09, -2.4) / h=0.6 -3320.45 (274.28, -12.1)
+EVERY decision-rule cell resolves at 20 seeds: the retention condition (hp at
+0.60) at 6.2 sigma; the downgrade trigger (hp at 0.30) at 8.7 sigma - so the
+rule could have fired in EITHER direction; both noisy-env crossings resolve.
+INSTRUMENT ENGAGEMENT verified: pools decay (0.772 / 0.663 / 0.452 across
+intensities) while the baseline arm is provably INERT (every no_pricing trial
+ends with pool exactly 1.0 and zero price changes - the h-axis cannot
+contaminate the comparator). Note for the record: at h=0.1 in hp the benefit
+point estimate EXCEEDS h=0 (+8628 vs +8401) - within noise, reported as found.
+CIC spot-checks on the new surface: CIC-2 clears at the runner (cost
+range(52,260)/208 and revenue [52:]/208 - same window, same divisor, verified in
+code AND arithmetically in the artifact); CIC-4's call-site pattern matches the
+cleared base manager (history 0..t, price governs t+1); rand_seed=42 is the
+known-inert deterministic-list pattern. OBSERVATION, recorded: the policy
+observes POST-HYSTERESIS demand (its own past prices erode the signal it
+estimates from) - realistic feedback, identical in kind to the base manager's
+post-elasticity feed; a property, not a defect.
+
+CONSTRUCTION - FROZEN FROM THE SOURCE'S CODE, not from prose:
+  architecture   4-stage serial, summed_at_retailer, all_sr, capacity 1.3x
+  horizon        260 periods, 52 warmup -> 208 measured; SAME window and divisor
+                 for cost and revenue
+  pricing        elasticity 1.5, reference price 1.0, review interval 20,
+                 initial price 1.0; scenarios no_pricing and
+                 phi_gated_asymmetric only
+  environments   level_shift_up_persistent (AR(1) phi=0.85, +20% level shift at
+                 t=130, persistent) and low_phi_shift_up (phi=0.30, same shift)
+                 - dicts frozen verbatim from get_sweep_environments()
+  hysteresis     pool(0)=1.0; each period, updated from the CURRENT price before
+                 demand realizes: if price/ref <= 1 pool unchanged; else
+                 pool *= max(0, 1 - h*(price/ref - 1)), then floored at 0.10;
+                 ONE-DIRECTIONAL (never regrows); realized demand per SKU =
+                 baseline * (price/ref)^(-elasticity) * pool; the policy's
+                 demand history is the post-hysteresis aggregate
+  intensities    {0.0, 0.10, 0.30, 0.60}
+  seeds          2000-2019 (20 per cell - THE SOURCE'S OWN, so the fidelity
+                 cross-check and the result are one run), 320 trials
+
+BUILD STRATEGY (Option B, ratified - the "ours where new, verified where
+inherited" pattern). The hysteresis layer is OURS, WRITTEN FROM SPECIFICATION
+(this operator + the mathematical structure stated in the source module's
+documentation), NEVER copied or transcribed from the source's code body. It
+drives the ALREADY-CIC-CLEARED vendored pricing closure (amendment 2026-07-16c/d
+under E8) through the vendored functions: build_phase2_6_serial_network,
+apply_capacity_constraints, generate_summed_baseline_streams,
+get_transition_period_for_environment, assign_realized_streams_to_retailer,
+apply_scenario_multiproduct, extract_chain_costs, make_pricing_policy, and
+stockpyl.simulation. The source's hysteresis module/wrapper/runner are NOT
+vendored: their role is replaced by our spec-derived implementation, and their
+artifact becomes the cross-check target. HONESTY LIMITS, recorded so the
+manuscript cannot drift: the re-implementation is AUTHORSHIP-INDEPENDENT but NOT
+BLIND - the source's code was read during this gate's verification, as the
+Standard requires; E9 MAY claim "the hysteresis layer was re-implemented from
+its specification and reproduces the source's committed artifact"; it MAY NOT
+claim blind replication.
+
+PARITY AT h=0 IS PROVED, NOT ARGUED. The source guaranteed intensity-0 parity by
+DISPATCHING to the original manager; we replace that argument with a proof: the
+suite asserts OUR walk at h=0 is BIT-IDENTICAL (realized streams, price history,
+revenue) to the vendored elasticity-only apply_pricing_to_retailer_streams on
+planted streams that force price changes. At pool = 1.0 the arithmetic reduces
+exactly (x * 1.0 is IEEE-exact), so bit-identity is the correct bar.
+
+FIDELITY CRITERION (pre-registered BEFORE the run). Our 320 trials at the
+source's seeds are compared to the registered artifact per (env, scenario,
+intensity, seed) on net value (mean_revenue_per_period - cost_per_period):
+  TIER-EXACT : max relative difference <= 1e-9 across all 320 trials
+               -> bit-faithful re-implementation.
+  TIER-CLOSE : every (env, intensity) cell's paired-benefit mean within
+               0.1 x that cell's SE of the artifact's
+               -> mathematically faithful; float-order noise only.
+  Anything worse -> FIDELITY FAIL: our build is defective, the line STOPS, the
+  discrepancy is dossiered, and the result is NEVER evidence about the source.
+The SAME RUN carries the E9 result: at 20 seeds every decision cell resolves in
+the source's data, so no separate higher-n execution is required. If OUR run
+leaves any decision-rule cell unresolved, the seed count is revisited ONLY by a
+dated amendment on measured cost (the 14f pattern).
+
+REPORT FORM (replaces nothing; instantiates the rule above): (a) the frozen
+retain/downgrade rule executes against OUR cells, with the pre-registered
+indeterminate rule (|mean| <= 1 SE) honored; (b) the crossover map along h per
+environment with its resolution; (c) end-of-run customer-pool fraction per cell.
+ALL cells reported regardless of direction.
+
+INPUTS CORRECTION: this section's "Inputs: none external" is SUPERSEDED - the
+source's hysteresis artifact becomes a registered local input (pull.py
+kind="local", id phase27_hysteresis_20seed, SHA256
+e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b) as the
+FIDELITY TARGET, not as evidence. Copy-to-store and SOURCES.md regeneration are
+part of this amendment's execution.
+
 **Inputs:** none external.
 
 ## 13. E10 - Sovereign ratings extension (suggestive), E11 - UI extension (suggestive), E12 - non-stationarity limitation
