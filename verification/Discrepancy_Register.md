@@ -530,8 +530,9 @@ environment; may invalidate the control environments.
 
 ## DISC-06 - E4's naive tier is a no-op, and the OUTLINE records a fabricated mechanism
 
-**Kind:** computational + consistency. **State:** OPEN. **Bears on:** LB-E4-naive,
-LB-E4-erp, ARG-14. **NOT WORKED HERE.**
+**Kind:** computational + consistency. **State:** RESOLVED 2026-07-16 -
+RECONSTRUCTION IN ERROR (ours); closure below, ladder shared with DISC-07.
+**Bears on:** LB-E4-naive, LB-E4-erp, ARG-14.
 
 e4_beer_game.simulate() branches only on `if algo in ("spectral", "full")`, so
 "naive" and "basestock" execute identical code and return bit-identical costs
@@ -552,14 +553,54 @@ ERP-style forecasting baseline" - E4 implements NO such comparator, so E4 cannot
 speak to that claim, and LB-E4-erp is named "erp" while holding a base-stock
 value.
 
+**CLOSURE (2026-07-16; author-ratified Option A - recharacterize, no re-run).**
+Adjudication: RECONSTRUCTION IN ERROR, ours. The defect is confirmed at the code
+level (read, not recalled): the algorithm list is ["naive", "basestock",
+"spectral", "full"] and simulate() branches only on the last two, so the naive
+branch was never written and its number measures nothing distinct. The OUTLINE
+parenthetical "CAPACITY BINDS EQUALLY" was a fabricated mechanism invented to
+explain a missing code branch and is WITHDRAWN.
+
+SOURCE RECOVERY ESTABLISHES THAT NAIVE IS REAL AND DISTINCT IN THE SOURCE. v16
+Section 5.4 (pin MD5 93135760b92cc195da36eb3c2b785ded, re-verified before
+reading): "Algorithm 1 (Naive): Close 100% of the perceived inventory gap each
+period with no demand forecasting" - a defined, implementable policy, matching
+make_basestock_team (fixed levels, full gap closure, no forecast) in the
+source's archived beergame_validation.py (MD5 f84568be4839d6b1c91c12af4cce3187).
+E4's frozen operator names it as algorithm (1); the build never implemented it.
+
+A CORRECTION TO THE 2026-07-13 RECORD: that entry stated "the abstract's ~30%
+is vs the Sterman worst-case baseline." FALSE - v16 Section 5.4 states the 30%
+is Algorithm 3 vs Algorithm 2 (Modern ERP), and its internal arithmetic checks
+(7.5M -> 5.2M = 30.7%). The Sterman-comparison percentages (88-95%) belong to
+the Phase 2.6 sweep record, a different experiment. The 2026-07-13 reading came
+from the corrupted draft.
+
+FIX SPECIFIED (record-level only; no re-run). (a) LB-E4-naive is DROPPED as
+not-a-measurement - the value is a duplicate of base-stock by code identity.
+(b) LB-E4-erp is CORRECTED: it holds the self-calibrating base-stock
+comparator's value; E4 built NO ERP (the operator's 0.50-gap-closure baseline
+was never implemented - see DISC-07), so E4 cannot speak to v16's "~30% vs ERP"
+claim. (c) Nothing else can either: per DISC-07, Section 5.4's original is
+UNRECOVERABLE and incoherent with the as-proven theorem at its stated
+parameters, so the ~30% headline is reported as unverifiable - a Phase-5a
+completeness finding. (d) OUTLINE corrected in place with changelog (v1.4);
+DESIGN Section 7 dated amendment 2026-07-16 records the recharacterization.
+E4's internal verdict (spectral < its own baseline, p = 0.0005) is UNAFFECTED
+and re-scoped as binding E4's own construction.
+
 ---
 
 ## DISC-07 - E4 and the source's chain-length sweep use DIFFERENT damping rules
 
-**Kind:** computational. **State:** OPEN. **Bears on:** E4's construction
-fidelity, ARG-14, LB-E4-tool, LB-E4-full. **NOT WORKED HERE** - E4 is closed and
-E7 is the open unit; logged at discovery per the rule that a discrepancy is never
-silently dropped. To be worked when E4's audit is opened, not before.
+**Kind:** computational. **State:** RESOLVED 2026-07-16 - three-part
+adjudication in the closure at the end of this dossier: (i) the rule
+"contradiction" dissolves (two different source experiments); (ii) E4's own
+build carries fidelity defects (reconstruction partially in error); (iii) the
+Section 5.4 ORIGINAL is UNRECOVERABLE and theorem-incoherent as stated.
+**Bears on:** E4's construction fidelity, ARG-14, LB-E4-tool, LB-E4-full.
+(Logged 2026-07-15 while E7 was the open unit; worked 2026-07-16 at the E4
+audit, per the rule that a discrepancy is never silently dropped.)
 
 **As found (2026-07-15),** while reading the source's chain-length sweep code to
 specify E7's rebuild. The two constructions compute the tool's damping factor
@@ -611,3 +652,99 @@ it remains internally valid whatever the rule's provenance; what would be at ris
 E4's claim to have re-earned the SOURCE's Beer Game construction, and with it the
 source-fidelity of LB-E4-tool and LB-E4-full. Recorded now so the question cannot
 be lost.
+
+**CLOSURE (2026-07-16; ladder run to exhaustion; author-ratified Option A -
+recharacterize, no re-run).** Methods run, in the playbook's order of attack:
+(8) framing gate; (9) stated-value triage; (10) artifact version reconciliation;
+(1) source recovery to exhaustion; (3) intermediates (negative); (7)
+cross-validation against the as-proven theorem (T1-verified theory_lib).
+Methods 11/12 not needed: the fix path requires no reconstruction of Section
+5.4, and a blind re-implementation of it is impossible on its stated parameters
+(see part iii). Every claim below was read from an artifact, never a summary;
+the pin MD5 was re-verified (93135760b92cc195da36eb3c2b785ded) before v16 was
+read.
+
+**PART (i) - THE "CONTRADICTION" DISSOLVES: TWO SOURCE EXPERIMENTS, TWO RULES,
+BY THE SOURCE'S OWN DESIGN.** v16 Section 5.4's Algorithm 3 is "Rolling
+persistence estimation with ordering dampened when rho exceeds 1.0"; the
+Strategic Plan (both the 05-13 copy and the 04-20 copy, byte-identical on this
+line) calls it "spectral radius v1 (cap ordering when rho > 1)." Algorithm 4
+adds the "pi^2/2 speed limit with optimal safety factor k*." The chain-length
+sweep's sr_paper9_ols is the CLOSED FORM alpha = k* x (pi^2/2)/S. These are
+separated by the source's own dated correction: the archived
+beergame_validation.py docstring reads "This REPLACES the numerical eigenvalue
+bisection with the exact analytical result," and phase2_6's sr_numerical is
+"the pre-correction numerical rule ... preserved specifically to document that
+the threshold change matters" (April 22). E4 implemented Section 5.4's
+two-tier structure (rho-boundary rule for spectral; pi^2/2 x k* for full);
+E7 implemented the corrected sweep. Different experiments - the dossier's
+premise that they should share a rule was a category error. E4's bisection is
+also NOT a theorem outlier: it locates the exact rho = 1 boundary using this
+repo's as-proven rho; it diverges from the source's CORRECTED rule, but so
+does Section 5.4 itself, which predates the correction.
+
+**PART (ii) - E4'S BUILD NONETHELESS CARRIES FIDELITY DEFECTS AGAINST ITS OWN
+FROZEN OPERATOR (reconstruction partially in error).** Verified numerically:
+the corrupted draft's "engagement boundary at phi approximately 0.83" is REAL
+but belongs to the SWEEP construction - it is the closed-form rule's implicit
+gate, where 0.90 x (pi^2/2)/S(phi, 8) crosses 1.0, at phi = 0.8216. E4's
+2026-07-13 build imported that derived quantity across constructions as a
+primitive and reverse-engineered BG_POLICY = 0.9561 to pin it (verified:
+rho(0.83, 8, 0.9561) = 1.000001), overriding Appendix E's explicitly stated
+"Spectral radius tools W = 8, base beta*gamma = 0.50." The 2026-07-13 claim
+that "the gap-closure 0.50 in the DESIGN operator was the SPEC-B monitor
+parameter, never the policy's ordering gain" is DISPROVEN by ground truth:
+Appendix E lists gap closure = 0.50 (the ERP's ordering gain) and base
+beta*gamma = 0.50 (the spectral tools') as two separate parameters, and the
+archived script implements make_erp_team as alpha pinned at 0.50 ("fixed 50%
+gap closure ... what typical commercial ordering modules do"). Consequences:
+the operator's ERP comparator (algorithm 2, the VERDICT comparator) was never
+built - E4's verdict was rendered against full-gap self-calibrating base-stock
+instead; Naive (algorithm 1) was never built (DISC-06); the full tier omits
+Section 5.4's "preemptive dampening based on persistence drift detection."
+Same failure class as E7's amendment 14c: a partial source check declared
+complete, on the strength of the corrupted draft.
+
+**PART (iii) - SECTION 5.4'S ORIGINAL IS UNRECOVERABLE, AND ITS STATED
+CONSTRUCTION IS INCOHERENT WITH THE PAPER'S OWN THEOREM.** Source recovery
+exhausted every plausible location: the Werner Beer Game Simulator tree and its
+Archive (only descendants exist - beergame_validation.py, closed-form era, and
+the stockpyl phases), the LaggingTruth mirror tree, date folders 04-13 / 04-20 /
+04-21 (no Beer Game scripts), LaggingTruth\Archive (no .py), C:\ResearchShare
+(no artifacts). The generating script for the $60.9M / $7.5M / $5.2M / $5.1M
+quartet DOES NOT EXIST ON DISK, and no output artifact does either. TIMELINE,
+proven from the artifacts: the quartet already appears verbatim in the 04-20
+Strategic Plan copy; the source's threshold correction is dated 04-22; v16
+(05-22) transcribed the pre-correction numbers unchanged. SEVERITY, verified
+two independent ways with the as-proven theorem: at the stated parameters
+(bg = 0.50, W = 8) the rho = 1 boundary sits at phi = 0.9990 (numerical, this
+repo's T1-verified rho), and analytically instability requires bg x S > pi^2/2,
+i.e. S > 9.87, which is impossible at W = 8 where S <= 8. UNDER THE PAPER'S OWN
+PROVEN THEOREM, SECTION 5.4'S ALGORITHM 3 AS STATED CAN NEVER ENGAGE on the
+stated demand (phi <= 0.95). Its ~30%-vs-ERP improvement can only have come
+from the pre-correction rho implementation the source itself later repudiated.
+Adjudication for this part: ORIGINAL UNRECOVERABLE. The charitable alternative
+(their v1 rho was simply a different computation) IS the pre-correction defect
+and is equally unrecoverable.
+
+**WHY NO REBUILD (the fork, ratified).** Option B (faithful Section 5.4
+rebuild) is rejected on PRE-RUN severity: at the stated parameters the tool
+provably never fires, so the instrument has zero dynamic range - the E5
+saturation disease known in advance. Option C (a new-construction E4) would be
+a new experiment requiring its own classification gate and is redundant with
+E7's 45,000-trial coverage of the corrected construction. Option A stands: all
+fixes are record-level.
+
+**FIX SPECIFIED.** (a) DESIGN Section 7 dated amendment 2026-07-16: the
+"identical to source calibration" label is WITHDRAWN; E4's verdict is re-scoped
+to bind E4's own construction (which it validly does - the instrument had
+dynamic range, phi_hat crosses 0.83 on the ramp, p = 0.0005). (b) OUTLINE v1.4:
+ARG-14 re-scoped; LB-E4-naive dropped; LB-E4-erp corrected; the "matches
+source's stated ~0.83 boundary" language corrected (the 0.83 belongs to the
+sweep's implicit gate, phi = 0.8216). (c) The Phase-5a review carries TWO
+findings: v16's flagship practical claim (~30% vs ERP) rests on an
+unrecoverable pre-correction implementation that is incoherent with the paper's
+own theorem; and the established pattern extends - the source's corrected work
+(the sweep, re-earned by E7) is better than its headline. (d) The 2026-07-13
+DECISIONS mis-conclusions (the SPEC-B conflation; "30% is vs Sterman") are
+corrected by an append-only DECISIONS entry, never edited in place.

@@ -114,6 +114,62 @@
 
 **Validity review.** Referent: the Beer Game is the canonical bullwhip environment; the ERP baseline is the realistic comparator (beating naive proves nothing - stated). Partition: better/equal/worse all mapped. Measure at n: 1,000 paired runs; paired design removes demand-draw variance.
 
+**AMENDMENT 2026-07-16 (POST-AUDIT RECHARACTERIZATION; author-ratified Option A
+- record-level fixes, no re-run; Standard v1.9.9. Full dossiers:
+verification/Discrepancy_Register.md DISC-06 and DISC-07, both RESOLVED at the
+E4 audit; every claim below traces to an artifact read directly, never a
+summary.)**
+
+THE "IDENTICAL TO SOURCE CALIBRATION" LABEL ABOVE IS WITHDRAWN. The 2026-07-13
+build diverged from this operator and from the source's Appendix E in four
+established ways: (1) BG_POLICY = 0.9561 was used in place of the stated "base
+beta*gamma = 0.50" - reverse-engineered to pin an "engagement boundary ~0.83"
+read from the corrupted supporting draft, a boundary that in fact belongs to a
+DIFFERENT source construction (it is the chain-length sweep's closed-form
+implicit gate, where 0.90 x (pi^2/2)/S(phi, 8) crosses 1.0 at phi = 0.8216);
+(2) the ERP baseline - THIS OPERATOR'S ALGORITHM (2) AND THE VERDICT
+COMPARATOR, exponential smoothing with 0.50 gap closure, confirmed by Appendix
+E and by the source's archived beergame_validation.py (make_erp_team: alpha
+pinned at 0.50) - was never built; the verdict was rendered against full-gap
+self-calibrating base-stock instead; (3) algorithm (1) Naive (100% gap closure,
+no forecasting - defined in v16 Section 5.4) was never built, and its recorded
+value is a bit-identical duplicate of base-stock (DISC-06); (4) the full tier
+omits Section 5.4's "preemptive dampening based on persistence drift
+detection." The 2026-07-13 DECISIONS "clarification" that reinterpreted the
+operator's 0.50 as a monitor parameter is DISPROVEN by ground truth and was
+never a dated amendment to this document - the same failure class as E7's
+amendment 14c (a partial source check declared complete).
+
+WHAT STANDS, RE-SCOPED. E4's run is a real, internally valid paired comparison
+between policies E4 itself defines: phi-gated rho-boundary damping (using this
+repo's as-proven rho - the bisection is theorem-conformant, locating the exact
+rho = 1 boundary) versus full-gap self-calibrating base-stock, at lean 1.3x
+capacity. The instrument had dynamic range (phi_hat crosses the 0.83 gate on
+the ramp; engagement observed) and the verdict rule was severe. VERDICT
+RETAINED, RE-SCOPED: SUPPORT for "acting on the diagnostic reduces cost against
+a rational self-calibrating base-stock baseline WITHIN E4'S OWN CONSTRUCTION"
+(p = 0.0005, CI excludes zero, full <= spectral). E4 claims NO source fidelity
+and does NOT re-earn v16 Section 5.4.
+
+WHY NO REBUILD (both alternatives examined and rejected on evidence). A
+faithful Section 5.4 rebuild is PROVABLY NON-SEVERE before any run: at the
+stated parameters (bg = 0.50, W = 8) the rho = 1 boundary sits at phi = 0.9990
+(numerical, T1-verified rho) and analytically bg x S > pi^2/2 requires
+S > 9.87, impossible at W = 8 where S <= 8 - the tool as stated NEVER ENGAGES
+on the stated demand (phi <= 0.95), so the instrument has zero dynamic range
+(the E5 saturation disease, caught pre-build this time). A new-construction E4
+would be a new experiment requiring its own v1.9.7 gate and is redundant with
+E7's 45,000-trial coverage of the source's corrected construction.
+
+CONSEQUENCE FOR THE SOURCE, carried to Phase 5a: v16's headline "~30% cost
+reduction relative to a modern ERP-style forecasting baseline" rests on a
+pre-correction implementation (the quartet predates the source's own April-22
+threshold correction, proven by the 04-20 Strategic Plan copy) whose generating
+script no longer exists anywhere on disk and whose stated construction is
+incoherent with the paper's own proven theorem. The claim is UNVERIFIABLE by
+anyone and the manuscript must not carry it as re-earned; the honest
+replacement is E7's re-earned sweep plus E4's re-scoped model-bound result.
+
 **Inputs:** none external (synthetic; seeds committed).
 
 ## 8. E5 - 17-sector structural-instability ranking (the CHIPS observation)
