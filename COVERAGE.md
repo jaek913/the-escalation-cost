@@ -75,15 +75,15 @@ Posture: ZERO-DROP. Every source element is KEEP or TRANSFORM; program history (
 | --- | --- | --- | --- |
 | GFC episode test (5.1) | TRANSFORM | DESIGN E2, frozen windows | analysis/e2_gfc_episode.py -> outputs/e2.json |
 | COVID episode test (5.2) | TRANSFORM | DESIGN E3, expected-null pre-registered | analysis/e3_covid_episode.py -> outputs/e3.json |
-| Rolling 34-year OOS validation (5.3) | TRANSFORM | DESIGN E1 + block bootstrap | analysis/e1_rolling_panel.py -> outputs/e1.json |
+| Rolling 34-year OOS validation (5.3) | TRANSFORM | DESIGN E1 + block bootstrap | analysis/e1_rolling_validation.py -> analysis/outputs/e1_rolling_validation.json |
 | Beer Game Monte Carlo (5.4, App E) | TRANSFORM | DESIGN E4, frozen calibration | analysis/e4_beer_game.py -> outputs/e4.json |
-| Cross-sector ranking + monitoring (6.4, 7.1, App C) | TRANSFORM | DESIGN E5, both specs | analysis/e5_sector_ranking.py -> outputs/e5.json |
+| Cross-sector ranking + monitoring (6.4, 7.1, App C) | TRANSFORM | DESIGN E5, both specs | analysis/e5_instability_ranking.py -> analysis/outputs/e5_instability_ranking.json |
 | Capacity-utilization threshold (7.2) | TRANSFORM | DESIGN E6 | analysis/e6_capacity_threshold.py -> outputs/e6.json |
 | Chain-length sweep (App F) | TRANSFORM | DESIGN E7, full grid | analysis/e7_chain_sweep.py -> outputs/e7.json |
 | Pricing-mechanism analysis (App F) | TRANSFORM | DESIGN E8. Mechanism, asymmetry sign pattern, and capacity dependence re-earned. ESCALATED 2026-07-15 (regenerate-or-escalate, Standard rule): the source's absolute dollar levels are separately dispositioned DROP - not replicable in prior form (see Analyses) - so E8 re-earns the SIGN pattern (the claim v16's abstract makes) and reports its own dollars as construction-specific with NO calibration verdict. Escalation logged in DECISIONS.md. | analysis/e8_pricing.py -> outputs/e8.json |
 | Customer-hysteresis sweep (App F) | TRANSFORM | DESIGN E9 | analysis/e9_hysteresis.py -> outputs/e9.json |
 | Recipe-level non-stationarity oracle test (App F) | TRANSFORM | DESIGN E12, limitation documentation | analysis/e12_nonstationarity.py -> outputs/e12.json |
-| Sovereign ratings analysis (8.1, App C) | TRANSFORM | DESIGN E10 + mandatory independent cross-check | analysis/e10_sovereign.py + analysis/e10_crosscheck.py -> outputs/e10.json |
+| Sovereign ratings analysis (8.1, App C) | TRANSFORM | DESIGN E10 + mandatory independent cross-check | analysis/e10_sovereign.py (independent cross-check internal: rho_independent, suite LEG 2) -> analysis/outputs/e10_sovereign.json |
 | UI experience-rating analysis (8.2) | TRANSFORM | DESIGN E11 | analysis/e11_ui.py -> outputs/e11.json |
 | Theorem numeric/symbolic verification (App B) | TRANSFORM | DESIGN T1-T3 three-way | analysis/t1_theorem_checks.py, t2_wstar.py, t3_kstar.py -> outputs/t*.json |
 | Yule-Walker estimator comparison (App B) | KEEP | Re-run inside T1 suite as a reported diagnostic | analysis/t1_theorem_checks.py (yw section) |
