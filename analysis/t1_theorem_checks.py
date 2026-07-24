@@ -128,6 +128,7 @@ def numeric_grid() -> dict:
     counterexamples = []
     n_cells = n_indomain = 0
     mono_phi_fail = mono_bg_fail = 0
+    thm3_identity_checked = thm3_identity_fail = 0
     noisy_exceed_frac = []
 
     rng_master = np.random.default_rng(20260713)
@@ -195,6 +196,22 @@ def numeric_grid() -> dict:
                                         "cell": [phi1, phi2, w, bg, kappa],
                                         "D": d_ratio})
 
+            # THM-3 identity, independently asserted per cell (added 2026-07-24,
+            # Phase-3 author ruling; verification-code only): log D computed by
+            # the power path must equal tau (ln r2 - ln r1) computed by the log
+            # path to rel 1e-12 - a dual-path check of the exact identity, with
+            # its own counters so the leg is independently addressable.
+            thm3_identity_checked += 1
+            log_d_power = np.log(d_ratio)
+            log_d_ident = tau * (np.log(r2) - np.log(r1))
+            if abs(log_d_power - log_d_ident) > 1e-12 * max(
+                    abs(log_d_ident), 1e-300):
+                thm3_identity_fail += 1
+                counterexamples.append({"type": "thm3_log_identity",
+                                        "cell": [phi1, phi2, w, bg, kappa],
+                                        "log_d_power": log_d_power,
+                                        "log_d_ident": log_d_ident})
+
             # Noisy simulation leg (100 seeds): homogeneous part must obey the
             # bound exactly (checked above); with additive noise, exceedances of
             # the homogeneous bound must be attributable to the noise term -
@@ -214,6 +231,8 @@ def numeric_grid() -> dict:
 
     return {"n_cells": n_cells, "n_indomain": n_indomain,
             "mono_phi_fail": mono_phi_fail, "mono_bg_fail": mono_bg_fail,
+            "thm3_identity_checked": thm3_identity_checked,
+            "thm3_identity_fail": thm3_identity_fail,
             "counterexamples": counterexamples,
             "noisy_exceed_frac_mean": float(np.mean(noisy_exceed_frac))
             if noisy_exceed_frac else None,
@@ -240,7 +259,7 @@ def main() -> None:
     num = numeric_grid()
     est = ols_vs_yw()
     verdict = ("SUPPORT" if sym["all_pass"] and num["all_pass"] else "REFUTE")
-    out = {"experiment": "T1", "date": "2026-07-13",
+    out = {"experiment": "T1", "date": "2026-07-24",
            "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
            "symbolic": sym, "numeric": num, "estimator_comparison": est,
            "verdict": verdict}

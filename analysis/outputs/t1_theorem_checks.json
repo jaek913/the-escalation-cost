@@ -1,6 +1,6 @@
 {
   "experiment": "T1",
-  "date": "2026-07-13",
+  "date": "2026-07-24",
   "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
   "symbolic": {
     "S1_charpoly_identity": true,
@@ -20,6 +20,8 @@
     "n_indomain": 35,
     "mono_phi_fail": 0,
     "mono_bg_fail": 0,
+    "thm3_identity_checked": 105,
+    "thm3_identity_fail": 0,
     "counterexamples": [],
     "noisy_exceed_frac_mean": 0.0,
     "all_pass": true
