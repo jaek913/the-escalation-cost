@@ -1,0 +1,19 @@
+{
+ "paper": "fixture",
+ "n_rows": 1,
+ "design_pin_md5": "00000000000000000000000000000000",
+ "rows": [
+  {
+   "id": "LB-X-a",
+   "script": "analysis/x.py",
+   "output": "analysis/outputs/x.json",
+   "json_path": "v",
+   "derived": "",
+   "expected": 1.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e1_rolling_validation",
+   "verify_mode": "rerun"
+  }
+ ]
+}

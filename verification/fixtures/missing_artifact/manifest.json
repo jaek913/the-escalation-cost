@@ -1,0 +1,4 @@
+{
+ "kind": "paper",
+ "expect_fragment": "artifact missing on disk: verification/ghost.md"
+}

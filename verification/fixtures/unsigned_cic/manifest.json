@@ -1,0 +1,4 @@
+{
+ "kind": "cic",
+ "expect_fragment": "not SIGNED"
+}
