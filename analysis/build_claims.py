@@ -428,8 +428,8 @@ def main() -> None:
             "never_hand_edit": True,
             "n_rows": len(rows_out),
             "rows": sorted(rows_out, key=lambda r: r["id"])}
-    LOCK.write_text(json.dumps(lock, indent=1, sort_keys=False) + "\n",
-                    encoding="utf-8")
+    with open(LOCK, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(json.dumps(lock, indent=1, sort_keys=False) + "\n")
     n_thm = sum(1 for r in rows_out if r.get("leg"))
     print(f"claims.lock written: {len(rows_out)} rows "
           f"({n_thm} theorem-leg rows) -> {LOCK}")

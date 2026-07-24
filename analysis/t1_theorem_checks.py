@@ -264,7 +264,8 @@ def main() -> None:
            "symbolic": sym, "numeric": num, "estimator_comparison": est,
            "verdict": verdict}
     OUT.parent.mkdir(parents=True, exist_ok=True)
-    OUT.write_text(json.dumps(out, indent=2))
+    with open(OUT, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(json.dumps(out, indent=2))
     print(f"T1 {verdict}: symbolic all_pass={sym['all_pass']}, "
           f"numeric all_pass={num['all_pass']} "
           f"({num['n_indomain']}/{num['n_cells']} in-domain cells, "
