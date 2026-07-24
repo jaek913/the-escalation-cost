@@ -4,7 +4,7 @@
  "generated_at": "2026-07-24",
  "design_pin_md5": "74c73ea165a7363c6714fe803fbe76b1",
  "never_hand_edit": true,
- "n_rows": 202,
+ "n_rows": 188,
  "rows": [
   {
    "id": "LB-E1-panel-n-chronic",
@@ -600,6 +600,28 @@
    "note": "dict {country: phi} - exact-match row"
   },
   {
+   "id": "LB-E10-calm-guard-dualimpl",
+   "script": "analysis/e10_sovereign.py",
+   "output": "analysis/outputs/e10_sovereign.json",
+   "json_path": "guards.max_dual_impl_diff",
+   "derived": "",
+   "expected": 0.0,
+   "tol_rel": 0.0,
+   "inputs": [
+    {
+     "id": "e10_jst_r6",
+     "sha256": "b0ebb74a8d1b5b1bc9033fc46a6dcc578736afff8ce1e1086b7840f2649e79b3"
+    },
+    {
+     "id": "jst_md5",
+     "md5": "5614589349612f4c79f5b73e11b3732d"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e10_sovereign",
+   "verify_mode": "rerun",
+   "note": "v14-site guard: bit-exact dual implementation, exact zero"
+  },
+  {
    "id": "LB-E10-calm-n-stationary",
    "script": "analysis/e10_sovereign.py",
    "output": "analysis/outputs/e10_sovereign.json",
@@ -727,28 +749,6 @@
    "note": "WITHDRAWN - conjunctive rule stops at stationarity failure; crossing sweep never reached (LB-E10-crisis per OUTLINE)"
   },
   {
-   "id": "LB-E10-guard-dualimpl",
-   "script": "analysis/e10_sovereign.py",
-   "output": "analysis/outputs/e10_sovereign.json",
-   "json_path": "guards.max_dual_impl_diff",
-   "derived": "",
-   "expected": 0.0,
-   "tol_rel": 0.0,
-   "inputs": [
-    {
-     "id": "e10_jst_r6",
-     "sha256": "b0ebb74a8d1b5b1bc9033fc46a6dcc578736afff8ce1e1086b7840f2649e79b3"
-    },
-    {
-     "id": "jst_md5",
-     "md5": "5614589349612f4c79f5b73e11b3732d"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e10_sovereign",
-   "verify_mode": "rerun",
-   "note": "v14-site guard: bit-exact dual implementation, exact zero"
-  },
-  {
    "id": "LB-E11-gfc-corner",
    "script": "analysis/e11_ui.py",
    "output": "analysis/outputs/e11_ui.json",
@@ -797,6 +797,27 @@
    "json_path": "pooled_gfc.phi",
    "derived": "",
    "expected": 0.7075797321455143,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "e11_eta539",
+     "sha256": "c4b22ff333fd4a1e8211b08926e77ee729f4462c7cd2a0cac79b087df904f571"
+    },
+    {
+     "id": "eta_md5",
+     "md5": "8f5cd02610f88a147d20c8173429d787"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e11_ui",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-E11-gfc-reading",
+   "script": "analysis/e11_ui.py",
+   "output": "analysis/outputs/e11_ui.json",
+   "json_path": "decision.reading",
+   "derived": "",
+   "expected": "WITHDRAWN",
    "tol_rel": 1e-09,
    "inputs": [
     {
@@ -944,27 +965,6 @@
    "json_path": "",
    "derived": "e11_rho_min",
    "expected": 0.7985624192830622,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "e11_eta539",
-     "sha256": "c4b22ff333fd4a1e8211b08926e77ee729f4462c7cd2a0cac79b087df904f571"
-    },
-    {
-     "id": "eta_md5",
-     "md5": "8f5cd02610f88a147d20c8173429d787"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e11_ui",
-   "verify_mode": "rerun"
-  },
-  {
-   "id": "LB-E11-reading",
-   "script": "analysis/e11_ui.py",
-   "output": "analysis/outputs/e11_ui.json",
-   "json_path": "decision.reading",
-   "derived": "",
-   "expected": "WITHDRAWN",
    "tol_rel": 1e-09,
    "inputs": [
     {
@@ -1767,7 +1767,7 @@
    "verify_mode": "rerun"
   },
   {
-   "id": "LB-E2-verdict",
+   "id": "LB-E2-gfc-verdict",
    "script": "analysis/e2_gfc_episode.py",
    "output": "analysis/outputs/e2_gfc_episode.json",
    "json_path": "verdict",
@@ -2091,6 +2091,87 @@
    "verify_mode": "rerun"
   },
   {
+   "id": "LB-E3-covid-verdict",
+   "script": "analysis/e3_covid_episode.py",
+   "output": "analysis/outputs/e3_covid_episode.json",
+   "json_path": "verdict",
+   "derived": "",
+   "expected": "CONSISTENT-WITH-BOUNDARY",
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMIS",
+     "sha256": "6f04cc81118ce4b310a9e197b7d5ef64af5b948c66e4ddfe7e326d05bdbec030"
+    },
+    {
+     "id": "fred_AMDMIS",
+     "sha256": "b927ec5b8fd057eeedfafe8840c0e9b5c0efb6e5b8a87a8ba6b09c7bbe3bb9a2"
+    },
+    {
+     "id": "fred_AMNMIS",
+     "sha256": "1886cfbe02a2deec212b204aeed16eddf79c82237ac04e4aff5b3f17d9eb697f"
+    },
+    {
+     "id": "fred_A34SIS",
+     "sha256": "510c977b5821fb9c6faf3b4927ebe64b4592e696817b1a3342c6b6afc45c6728"
+    },
+    {
+     "id": "fred_A35SIS",
+     "sha256": "6eec4118d43f642d2fd7b9456ff11e6c92db358f8528bc73019cb0918649e2fa"
+    },
+    {
+     "id": "fred_A36SIS",
+     "sha256": "af26907f761da4899c9079e3eb8a6da5070fe2908bfe10df177d003bb10b332b"
+    },
+    {
+     "id": "fred_A31SIS",
+     "sha256": "5988eec18479efc162607eb3a15afcf973c0c11de4cdad5857621fb42aa0a0e9"
+    },
+    {
+     "id": "fred_R4231IM163SCEN",
+     "sha256": "828f5027f57a491f91da8f8f5236d08d2b23fdbb70fec84dfd0959642a3a8fe2"
+    },
+    {
+     "id": "fred_R4232IM163SCEN",
+     "sha256": "5f6b7ec8897b113a0974d9011396454a87348f15323094dc26d9fdc3cb659eb3"
+    },
+    {
+     "id": "fred_R4233IM163SCEN",
+     "sha256": "11ba3d494359b5f237ffe42e52ed543a2a04a93e66b82369acdd0070d0d549cf"
+    },
+    {
+     "id": "fred_R4234IM163SCEN",
+     "sha256": "496d1f9b716e8606ac65a6d2344d995cec5b21ee5e71ad561fa610ed39589e72"
+    },
+    {
+     "id": "fred_R4236IM163SCEN",
+     "sha256": "cd18c2606a6b12933cf5855e2153c019fc61457dc20ffba48980af6b42e11f2c"
+    },
+    {
+     "id": "fred_R4238IM163SCEN",
+     "sha256": "ad3ab53d4e0266a6c6e30290dded898b0f05a26daa0003fd2c46b682fbbdaea4"
+    },
+    {
+     "id": "fred_R423IRM163SCEN",
+     "sha256": "f6cf5f9dbb033149092150f07d8fc8e2226d7624c4229bd29dae17bee98c910a"
+    },
+    {
+     "id": "fred_MRTSIR441USS",
+     "sha256": "70c78345724d5c1bcc17ac172e6dc460e51a391a069e8fd9ebdfaa65a9a196a1"
+    },
+    {
+     "id": "fred_MRTSIR444USS",
+     "sha256": "b909fff4bb57eb6b34777d06a765ac8603433544808d454bee94ddcf411cad5b"
+    },
+    {
+     "id": "fred_MRTSIR452USS",
+     "sha256": "0305d100c914086bca070c1472e9396392356076274987d0d636cba38cc95301"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e3_covid_episode",
+   "verify_mode": "rerun"
+  },
+  {
    "id": "LB-E3-persistence-direction-count",
    "script": "analysis/e3_covid_episode.py",
    "output": "analysis/outputs/e3_covid_episode.json",
@@ -2253,87 +2334,6 @@
    "verify_mode": "rerun"
   },
   {
-   "id": "LB-E3-verdict",
-   "script": "analysis/e3_covid_episode.py",
-   "output": "analysis/outputs/e3_covid_episode.json",
-   "json_path": "verdict",
-   "derived": "",
-   "expected": "CONSISTENT-WITH-BOUNDARY",
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "fred_AMTMIS",
-     "sha256": "6f04cc81118ce4b310a9e197b7d5ef64af5b948c66e4ddfe7e326d05bdbec030"
-    },
-    {
-     "id": "fred_AMDMIS",
-     "sha256": "b927ec5b8fd057eeedfafe8840c0e9b5c0efb6e5b8a87a8ba6b09c7bbe3bb9a2"
-    },
-    {
-     "id": "fred_AMNMIS",
-     "sha256": "1886cfbe02a2deec212b204aeed16eddf79c82237ac04e4aff5b3f17d9eb697f"
-    },
-    {
-     "id": "fred_A34SIS",
-     "sha256": "510c977b5821fb9c6faf3b4927ebe64b4592e696817b1a3342c6b6afc45c6728"
-    },
-    {
-     "id": "fred_A35SIS",
-     "sha256": "6eec4118d43f642d2fd7b9456ff11e6c92db358f8528bc73019cb0918649e2fa"
-    },
-    {
-     "id": "fred_A36SIS",
-     "sha256": "af26907f761da4899c9079e3eb8a6da5070fe2908bfe10df177d003bb10b332b"
-    },
-    {
-     "id": "fred_A31SIS",
-     "sha256": "5988eec18479efc162607eb3a15afcf973c0c11de4cdad5857621fb42aa0a0e9"
-    },
-    {
-     "id": "fred_R4231IM163SCEN",
-     "sha256": "828f5027f57a491f91da8f8f5236d08d2b23fdbb70fec84dfd0959642a3a8fe2"
-    },
-    {
-     "id": "fred_R4232IM163SCEN",
-     "sha256": "5f6b7ec8897b113a0974d9011396454a87348f15323094dc26d9fdc3cb659eb3"
-    },
-    {
-     "id": "fred_R4233IM163SCEN",
-     "sha256": "11ba3d494359b5f237ffe42e52ed543a2a04a93e66b82369acdd0070d0d549cf"
-    },
-    {
-     "id": "fred_R4234IM163SCEN",
-     "sha256": "496d1f9b716e8606ac65a6d2344d995cec5b21ee5e71ad561fa610ed39589e72"
-    },
-    {
-     "id": "fred_R4236IM163SCEN",
-     "sha256": "cd18c2606a6b12933cf5855e2153c019fc61457dc20ffba48980af6b42e11f2c"
-    },
-    {
-     "id": "fred_R4238IM163SCEN",
-     "sha256": "ad3ab53d4e0266a6c6e30290dded898b0f05a26daa0003fd2c46b682fbbdaea4"
-    },
-    {
-     "id": "fred_R423IRM163SCEN",
-     "sha256": "f6cf5f9dbb033149092150f07d8fc8e2226d7624c4229bd29dae17bee98c910a"
-    },
-    {
-     "id": "fred_MRTSIR441USS",
-     "sha256": "70c78345724d5c1bcc17ac172e6dc460e51a391a069e8fd9ebdfaa65a9a196a1"
-    },
-    {
-     "id": "fred_MRTSIR444USS",
-     "sha256": "b909fff4bb57eb6b34777d06a765ac8603433544808d454bee94ddcf411cad5b"
-    },
-    {
-     "id": "fred_MRTSIR452USS",
-     "sha256": "0305d100c914086bca070c1472e9396392356076274987d0d636cba38cc95301"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e3_covid_episode",
-   "verify_mode": "rerun"
-  },
-  {
    "id": "LB-E4-erp",
    "script": "analysis/e4_beer_game.py",
    "output": "analysis/outputs/e4_beer_game.json",
@@ -2353,18 +2353,6 @@
    "json_path": "mean_cost.full",
    "derived": "",
    "expected": 122487.37439381654,
-   "tol_rel": 1e-09,
-   "inputs": [],
-   "cic_ref": "verification/cic_signoff.md#e4_beer_game",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E4-phi-engagement",
-   "script": "analysis/e4_beer_game.py",
-   "output": "analysis/outputs/e4_beer_game.json",
-   "json_path": "phi_engagement",
-   "derived": "",
-   "expected": 0.8299961546645629,
    "tol_rel": 1e-09,
    "inputs": [],
    "cic_ref": "verification/cic_signoff.md#e4_beer_game",
@@ -2395,6 +2383,18 @@
    "verify_mode": "artifact"
   },
   {
+   "id": "LB-E4-tool-phi-engagement",
+   "script": "analysis/e4_beer_game.py",
+   "output": "analysis/outputs/e4_beer_game.json",
+   "json_path": "phi_engagement",
+   "derived": "",
+   "expected": 0.8299961546645629,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e4_beer_game",
+   "verify_mode": "artifact"
+  },
+  {
    "id": "LB-E4-tool-relreduction",
    "script": "analysis/e4_beer_game.py",
    "output": "analysis/outputs/e4_beer_game.json",
@@ -2407,7 +2407,7 @@
    "verify_mode": "artifact"
   },
   {
-   "id": "LB-E4-verdict",
+   "id": "LB-E4-tool-verdict",
    "script": "analysis/e4_beer_game.py",
    "output": "analysis/outputs/e4_beer_game.json",
    "json_path": "verdict",
@@ -2835,6 +2835,170 @@
    ],
    "cic_ref": "verification/cic_signoff.md#e5_instability_ranking",
    "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-E5-persistence-mfg-meanrho-M",
+   "script": "analysis/e5_instability_ranking.py",
+   "output": "analysis/outputs/e5_instability_ranking.json",
+   "json_path": "",
+   "derived": "e5_mfg_meanrho_M",
+   "expected": 0.803407525656999,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMIS",
+     "sha256": "6f04cc81118ce4b310a9e197b7d5ef64af5b948c66e4ddfe7e326d05bdbec030"
+    },
+    {
+     "id": "fred_AMDMIS",
+     "sha256": "b927ec5b8fd057eeedfafe8840c0e9b5c0efb6e5b8a87a8ba6b09c7bbe3bb9a2"
+    },
+    {
+     "id": "fred_AMNMIS",
+     "sha256": "1886cfbe02a2deec212b204aeed16eddf79c82237ac04e4aff5b3f17d9eb697f"
+    },
+    {
+     "id": "fred_A34SIS",
+     "sha256": "510c977b5821fb9c6faf3b4927ebe64b4592e696817b1a3342c6b6afc45c6728"
+    },
+    {
+     "id": "fred_A35SIS",
+     "sha256": "6eec4118d43f642d2fd7b9456ff11e6c92db358f8528bc73019cb0918649e2fa"
+    },
+    {
+     "id": "fred_A36SIS",
+     "sha256": "af26907f761da4899c9079e3eb8a6da5070fe2908bfe10df177d003bb10b332b"
+    },
+    {
+     "id": "fred_A31SIS",
+     "sha256": "5988eec18479efc162607eb3a15afcf973c0c11de4cdad5857621fb42aa0a0e9"
+    },
+    {
+     "id": "fred_R4231IM163SCEN",
+     "sha256": "828f5027f57a491f91da8f8f5236d08d2b23fdbb70fec84dfd0959642a3a8fe2"
+    },
+    {
+     "id": "fred_R4232IM163SCEN",
+     "sha256": "5f6b7ec8897b113a0974d9011396454a87348f15323094dc26d9fdc3cb659eb3"
+    },
+    {
+     "id": "fred_R4233IM163SCEN",
+     "sha256": "11ba3d494359b5f237ffe42e52ed543a2a04a93e66b82369acdd0070d0d549cf"
+    },
+    {
+     "id": "fred_R4234IM163SCEN",
+     "sha256": "496d1f9b716e8606ac65a6d2344d995cec5b21ee5e71ad561fa610ed39589e72"
+    },
+    {
+     "id": "fred_R4236IM163SCEN",
+     "sha256": "cd18c2606a6b12933cf5855e2153c019fc61457dc20ffba48980af6b42e11f2c"
+    },
+    {
+     "id": "fred_R4238IM163SCEN",
+     "sha256": "ad3ab53d4e0266a6c6e30290dded898b0f05a26daa0003fd2c46b682fbbdaea4"
+    },
+    {
+     "id": "fred_R423IRM163SCEN",
+     "sha256": "f6cf5f9dbb033149092150f07d8fc8e2226d7624c4229bd29dae17bee98c910a"
+    },
+    {
+     "id": "fred_MRTSIR441USS",
+     "sha256": "70c78345724d5c1bcc17ac172e6dc460e51a391a069e8fd9ebdfaa65a9a196a1"
+    },
+    {
+     "id": "fred_MRTSIR444USS",
+     "sha256": "b909fff4bb57eb6b34777d06a765ac8603433544808d454bee94ddcf411cad5b"
+    },
+    {
+     "id": "fred_MRTSIR452USS",
+     "sha256": "0305d100c914086bca070c1472e9396392356076274987d0d636cba38cc95301"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e5_instability_ranking",
+   "verify_mode": "rerun",
+   "note": "mfg aggregate (AMTMIS) mean rho, SPEC-M detrended variant"
+  },
+  {
+   "id": "LB-E5-persistence-mfg-meanrho-R",
+   "script": "analysis/e5_instability_ranking.py",
+   "output": "analysis/outputs/e5_instability_ranking.json",
+   "json_path": "",
+   "derived": "e5_mfg_meanrho_R",
+   "expected": 1.0643795174219342,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMIS",
+     "sha256": "6f04cc81118ce4b310a9e197b7d5ef64af5b948c66e4ddfe7e326d05bdbec030"
+    },
+    {
+     "id": "fred_AMDMIS",
+     "sha256": "b927ec5b8fd057eeedfafe8840c0e9b5c0efb6e5b8a87a8ba6b09c7bbe3bb9a2"
+    },
+    {
+     "id": "fred_AMNMIS",
+     "sha256": "1886cfbe02a2deec212b204aeed16eddf79c82237ac04e4aff5b3f17d9eb697f"
+    },
+    {
+     "id": "fred_A34SIS",
+     "sha256": "510c977b5821fb9c6faf3b4927ebe64b4592e696817b1a3342c6b6afc45c6728"
+    },
+    {
+     "id": "fred_A35SIS",
+     "sha256": "6eec4118d43f642d2fd7b9456ff11e6c92db358f8528bc73019cb0918649e2fa"
+    },
+    {
+     "id": "fred_A36SIS",
+     "sha256": "af26907f761da4899c9079e3eb8a6da5070fe2908bfe10df177d003bb10b332b"
+    },
+    {
+     "id": "fred_A31SIS",
+     "sha256": "5988eec18479efc162607eb3a15afcf973c0c11de4cdad5857621fb42aa0a0e9"
+    },
+    {
+     "id": "fred_R4231IM163SCEN",
+     "sha256": "828f5027f57a491f91da8f8f5236d08d2b23fdbb70fec84dfd0959642a3a8fe2"
+    },
+    {
+     "id": "fred_R4232IM163SCEN",
+     "sha256": "5f6b7ec8897b113a0974d9011396454a87348f15323094dc26d9fdc3cb659eb3"
+    },
+    {
+     "id": "fred_R4233IM163SCEN",
+     "sha256": "11ba3d494359b5f237ffe42e52ed543a2a04a93e66b82369acdd0070d0d549cf"
+    },
+    {
+     "id": "fred_R4234IM163SCEN",
+     "sha256": "496d1f9b716e8606ac65a6d2344d995cec5b21ee5e71ad561fa610ed39589e72"
+    },
+    {
+     "id": "fred_R4236IM163SCEN",
+     "sha256": "cd18c2606a6b12933cf5855e2153c019fc61457dc20ffba48980af6b42e11f2c"
+    },
+    {
+     "id": "fred_R4238IM163SCEN",
+     "sha256": "ad3ab53d4e0266a6c6e30290dded898b0f05a26daa0003fd2c46b682fbbdaea4"
+    },
+    {
+     "id": "fred_R423IRM163SCEN",
+     "sha256": "f6cf5f9dbb033149092150f07d8fc8e2226d7624c4229bd29dae17bee98c910a"
+    },
+    {
+     "id": "fred_MRTSIR441USS",
+     "sha256": "70c78345724d5c1bcc17ac172e6dc460e51a391a069e8fd9ebdfaa65a9a196a1"
+    },
+    {
+     "id": "fred_MRTSIR444USS",
+     "sha256": "b909fff4bb57eb6b34777d06a765ac8603433544808d454bee94ddcf411cad5b"
+    },
+    {
+     "id": "fred_MRTSIR452USS",
+     "sha256": "0305d100c914086bca070c1472e9396392356076274987d0d636cba38cc95301"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e5_instability_ranking",
+   "verify_mode": "rerun",
+   "note": "mfg aggregate (AMTMIS) mean rho, SPEC-R primary - the LB-E5-persistence family's committed value"
   },
   {
    "id": "LB-E5-ranking-r01-meanexc",
@@ -5633,28 +5797,6 @@
    "verify_mode": "rerun"
   },
   {
-   "id": "LB-E6-rule-outcome",
-   "script": "analysis/e6_capacity_threshold.py",
-   "output": "analysis/outputs/e6_capacity_threshold.json",
-   "json_path": "verdict",
-   "derived": "",
-   "expected": "REFUTE",
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "fred_CAPUTLG3344S",
-     "sha256": "55851a37dd77e18e584a337779ed81a334136df103c8c9cf6ad0addea66d7acb"
-    },
-    {
-     "id": "fred_IPG3344S",
-     "sha256": "c69c99400b59d6c2cd6a7b8381438b51e4d55ea1bd4536675feabc7a1c031309"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e6_capacity_threshold",
-   "verify_mode": "rerun",
-   "note": "the pre-registered rule's REFUTE - reported ALONGSIDE per DESIGN S9 amendment; NOT the finding (severity failed; v1.9.7)"
-  },
-  {
    "id": "LB-E6-threshold-bin1-lt75-mean",
    "script": "analysis/e6_capacity_threshold.py",
    "output": "analysis/outputs/e6_capacity_threshold.json",
@@ -5821,6 +5963,28 @@
    ],
    "cic_ref": "verification/cic_signoff.md#e6_capacity_threshold",
    "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-E6-threshold-rule-outcome",
+   "script": "analysis/e6_capacity_threshold.py",
+   "output": "analysis/outputs/e6_capacity_threshold.json",
+   "json_path": "verdict",
+   "derived": "",
+   "expected": "REFUTE",
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_CAPUTLG3344S",
+     "sha256": "55851a37dd77e18e584a337779ed81a334136df103c8c9cf6ad0addea66d7acb"
+    },
+    {
+     "id": "fred_IPG3344S",
+     "sha256": "c69c99400b59d6c2cd6a7b8381438b51e4d55ea1bd4536675feabc7a1c031309"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e6_capacity_threshold",
+   "verify_mode": "rerun",
+   "note": "the pre-registered rule's REFUTE - reported ALONGSIDE per DESIGN S9 amendment; NOT the finding (severity failed; v1.9.7)"
   },
   {
    "id": "LB-E7-calibration-L4-ours",
@@ -6197,155 +6361,6 @@
    "verify_mode": "artifact"
   },
   {
-   "id": "LB-E8-claima-cipct-hi",
-   "script": "analysis/e8_pricing.py",
-   "output": "analysis/outputs/e8_pricing.json",
-   "json_path": "claim_a.by_arm.phi_gated_asymmetric.level_shift_up_persistent.ci_pct_of_claim_b[1]",
-   "derived": "",
-   "expected": 0.5441031638867944,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_validation_50seed",
-     "sha256": "36d369ab0a0c743ce081a5d30dd7e4a0d3f7d58fbbfb76f0f5af6ddea47fa9b9"
-    },
-    {
-     "id": "phase27_capsweep_18x",
-     "sha256": "bbdd64f49f3be646ebcba04bfb02de748083b3dd95ce17e734792a9965093daa"
-    },
-    {
-     "id": "phase27_capsweep_24x",
-     "sha256": "034ade6ac6c1719ecdc41d4adcb9de1d3806718a804124bd0111b87acc90669d"
-    },
-    {
-     "id": "phase27_capsweep_30x",
-     "sha256": "e49d678a00e631ffeedf57b107f44b81ec25f0c2e5570a711da2a0416caabd7f"
-    },
-    {
-     "id": "phase27_elasticity_05",
-     "sha256": "205ef1131d669794ff9f81af10cbe37e1eb0455b92de00daa6ce8b36ca0bfc53"
-    },
-    {
-     "id": "phase27_elasticity_30",
-     "sha256": "18ed1c67bc876a765634859e8107cc5d6ae169999985586f5edbf40a767866da"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e8_pricing",
-   "verify_mode": "rerun"
-  },
-  {
-   "id": "LB-E8-claima-cipct-lo",
-   "script": "analysis/e8_pricing.py",
-   "output": "analysis/outputs/e8_pricing.json",
-   "json_path": "claim_a.by_arm.phi_gated_asymmetric.level_shift_up_persistent.ci_pct_of_claim_b[0]",
-   "derived": "",
-   "expected": -0.28760667135653034,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_validation_50seed",
-     "sha256": "36d369ab0a0c743ce081a5d30dd7e4a0d3f7d58fbbfb76f0f5af6ddea47fa9b9"
-    },
-    {
-     "id": "phase27_capsweep_18x",
-     "sha256": "bbdd64f49f3be646ebcba04bfb02de748083b3dd95ce17e734792a9965093daa"
-    },
-    {
-     "id": "phase27_capsweep_24x",
-     "sha256": "034ade6ac6c1719ecdc41d4adcb9de1d3806718a804124bd0111b87acc90669d"
-    },
-    {
-     "id": "phase27_capsweep_30x",
-     "sha256": "e49d678a00e631ffeedf57b107f44b81ec25f0c2e5570a711da2a0416caabd7f"
-    },
-    {
-     "id": "phase27_elasticity_05",
-     "sha256": "205ef1131d669794ff9f81af10cbe37e1eb0455b92de00daa6ce8b36ca0bfc53"
-    },
-    {
-     "id": "phase27_elasticity_30",
-     "sha256": "18ed1c67bc876a765634859e8107cc5d6ae169999985586f5edbf40a767866da"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e8_pricing",
-   "verify_mode": "rerun"
-  },
-  {
-   "id": "LB-E8-claima-mean",
-   "script": "analysis/e8_pricing.py",
-   "output": "analysis/outputs/e8_pricing.json",
-   "json_path": "claim_a.by_arm.phi_gated_asymmetric.level_shift_up_persistent.mean",
-   "derived": "",
-   "expected": 13.006753880711694,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_validation_50seed",
-     "sha256": "36d369ab0a0c743ce081a5d30dd7e4a0d3f7d58fbbfb76f0f5af6ddea47fa9b9"
-    },
-    {
-     "id": "phase27_capsweep_18x",
-     "sha256": "bbdd64f49f3be646ebcba04bfb02de748083b3dd95ce17e734792a9965093daa"
-    },
-    {
-     "id": "phase27_capsweep_24x",
-     "sha256": "034ade6ac6c1719ecdc41d4adcb9de1d3806718a804124bd0111b87acc90669d"
-    },
-    {
-     "id": "phase27_capsweep_30x",
-     "sha256": "e49d678a00e631ffeedf57b107f44b81ec25f0c2e5570a711da2a0416caabd7f"
-    },
-    {
-     "id": "phase27_elasticity_05",
-     "sha256": "205ef1131d669794ff9f81af10cbe37e1eb0455b92de00daa6ce8b36ca0bfc53"
-    },
-    {
-     "id": "phase27_elasticity_30",
-     "sha256": "18ed1c67bc876a765634859e8107cc5d6ae169999985586f5edbf40a767866da"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e8_pricing",
-   "verify_mode": "rerun",
-   "note": "the formula's own contribution - a BOUND, not a verdict"
-  },
-  {
-   "id": "LB-E8-claimb-verdict",
-   "script": "analysis/e8_pricing.py",
-   "output": "analysis/outputs/e8_pricing.json",
-   "json_path": "claim_b.verdict",
-   "derived": "",
-   "expected": "ASSERTED",
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_validation_50seed",
-     "sha256": "36d369ab0a0c743ce081a5d30dd7e4a0d3f7d58fbbfb76f0f5af6ddea47fa9b9"
-    },
-    {
-     "id": "phase27_capsweep_18x",
-     "sha256": "bbdd64f49f3be646ebcba04bfb02de748083b3dd95ce17e734792a9965093daa"
-    },
-    {
-     "id": "phase27_capsweep_24x",
-     "sha256": "034ade6ac6c1719ecdc41d4adcb9de1d3806718a804124bd0111b87acc90669d"
-    },
-    {
-     "id": "phase27_capsweep_30x",
-     "sha256": "e49d678a00e631ffeedf57b107f44b81ec25f0c2e5570a711da2a0416caabd7f"
-    },
-    {
-     "id": "phase27_elasticity_05",
-     "sha256": "205ef1131d669794ff9f81af10cbe37e1eb0455b92de00daa6ce8b36ca0bfc53"
-    },
-    {
-     "id": "phase27_elasticity_30",
-     "sha256": "18ed1c67bc876a765634859e8107cc5d6ae169999985586f5edbf40a767866da"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e8_pricing",
-   "verify_mode": "rerun"
-  },
-  {
    "id": "LB-E8-down-level_shift_down_persistent-mean",
    "script": "analysis/e8_pricing.py",
    "output": "analysis/outputs/e8_pricing.json",
@@ -6679,6 +6694,118 @@
    "verify_mode": "rerun"
   },
   {
+   "id": "LB-E8-up-claima-cipct-hi",
+   "script": "analysis/e8_pricing.py",
+   "output": "analysis/outputs/e8_pricing.json",
+   "json_path": "claim_a.by_arm.phi_gated_asymmetric.level_shift_up_persistent.ci_pct_of_claim_b[1]",
+   "derived": "",
+   "expected": 0.5441031638867944,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_validation_50seed",
+     "sha256": "36d369ab0a0c743ce081a5d30dd7e4a0d3f7d58fbbfb76f0f5af6ddea47fa9b9"
+    },
+    {
+     "id": "phase27_capsweep_18x",
+     "sha256": "bbdd64f49f3be646ebcba04bfb02de748083b3dd95ce17e734792a9965093daa"
+    },
+    {
+     "id": "phase27_capsweep_24x",
+     "sha256": "034ade6ac6c1719ecdc41d4adcb9de1d3806718a804124bd0111b87acc90669d"
+    },
+    {
+     "id": "phase27_capsweep_30x",
+     "sha256": "e49d678a00e631ffeedf57b107f44b81ec25f0c2e5570a711da2a0416caabd7f"
+    },
+    {
+     "id": "phase27_elasticity_05",
+     "sha256": "205ef1131d669794ff9f81af10cbe37e1eb0455b92de00daa6ce8b36ca0bfc53"
+    },
+    {
+     "id": "phase27_elasticity_30",
+     "sha256": "18ed1c67bc876a765634859e8107cc5d6ae169999985586f5edbf40a767866da"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e8_pricing",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-E8-up-claima-cipct-lo",
+   "script": "analysis/e8_pricing.py",
+   "output": "analysis/outputs/e8_pricing.json",
+   "json_path": "claim_a.by_arm.phi_gated_asymmetric.level_shift_up_persistent.ci_pct_of_claim_b[0]",
+   "derived": "",
+   "expected": -0.28760667135653034,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_validation_50seed",
+     "sha256": "36d369ab0a0c743ce081a5d30dd7e4a0d3f7d58fbbfb76f0f5af6ddea47fa9b9"
+    },
+    {
+     "id": "phase27_capsweep_18x",
+     "sha256": "bbdd64f49f3be646ebcba04bfb02de748083b3dd95ce17e734792a9965093daa"
+    },
+    {
+     "id": "phase27_capsweep_24x",
+     "sha256": "034ade6ac6c1719ecdc41d4adcb9de1d3806718a804124bd0111b87acc90669d"
+    },
+    {
+     "id": "phase27_capsweep_30x",
+     "sha256": "e49d678a00e631ffeedf57b107f44b81ec25f0c2e5570a711da2a0416caabd7f"
+    },
+    {
+     "id": "phase27_elasticity_05",
+     "sha256": "205ef1131d669794ff9f81af10cbe37e1eb0455b92de00daa6ce8b36ca0bfc53"
+    },
+    {
+     "id": "phase27_elasticity_30",
+     "sha256": "18ed1c67bc876a765634859e8107cc5d6ae169999985586f5edbf40a767866da"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e8_pricing",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-E8-up-claima-mean",
+   "script": "analysis/e8_pricing.py",
+   "output": "analysis/outputs/e8_pricing.json",
+   "json_path": "claim_a.by_arm.phi_gated_asymmetric.level_shift_up_persistent.mean",
+   "derived": "",
+   "expected": 13.006753880711694,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_validation_50seed",
+     "sha256": "36d369ab0a0c743ce081a5d30dd7e4a0d3f7d58fbbfb76f0f5af6ddea47fa9b9"
+    },
+    {
+     "id": "phase27_capsweep_18x",
+     "sha256": "bbdd64f49f3be646ebcba04bfb02de748083b3dd95ce17e734792a9965093daa"
+    },
+    {
+     "id": "phase27_capsweep_24x",
+     "sha256": "034ade6ac6c1719ecdc41d4adcb9de1d3806718a804124bd0111b87acc90669d"
+    },
+    {
+     "id": "phase27_capsweep_30x",
+     "sha256": "e49d678a00e631ffeedf57b107f44b81ec25f0c2e5570a711da2a0416caabd7f"
+    },
+    {
+     "id": "phase27_elasticity_05",
+     "sha256": "205ef1131d669794ff9f81af10cbe37e1eb0455b92de00daa6ce8b36ca0bfc53"
+    },
+    {
+     "id": "phase27_elasticity_30",
+     "sha256": "18ed1c67bc876a765634859e8107cc5d6ae169999985586f5edbf40a767866da"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e8_pricing",
+   "verify_mode": "rerun",
+   "note": "the formula's own contribution - a BOUND, not a verdict"
+  },
+  {
    "id": "LB-E8-up-claimb-mean",
    "script": "analysis/e8_pricing.py",
    "output": "analysis/outputs/e8_pricing.json",
@@ -6753,548 +6880,41 @@
    "verify_mode": "rerun"
   },
   {
-   "id": "LB-E9-cell0-benefit",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[0].benefit_mean",
+   "id": "LB-E8-up-claimb-verdict",
+   "script": "analysis/e8_pricing.py",
+   "output": "analysis/outputs/e8_pricing.json",
+   "json_path": "claim_b.verdict",
    "derived": "",
-   "expected": 8401.301149517853,
+   "expected": "ASSERTED",
    "tol_rel": 1e-09,
    "inputs": [
     {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell0-env",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[0].env",
-   "derived": "",
-   "expected": "level_shift_up_persistent",
-   "tol_rel": 1e-09,
-   "inputs": [
+     "id": "phase27_validation_50seed",
+     "sha256": "36d369ab0a0c743ce081a5d30dd7e4a0d3f7d58fbbfb76f0f5af6ddea47fa9b9"
+    },
     {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell0-h",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[0].h",
-   "derived": "",
-   "expected": 0.0,
-   "tol_rel": 1e-09,
-   "inputs": [
+     "id": "phase27_capsweep_18x",
+     "sha256": "bbdd64f49f3be646ebcba04bfb02de748083b3dd95ce17e734792a9965093daa"
+    },
     {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell0-sigma",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[0].sigma",
-   "derived": "",
-   "expected": 10.32833831781141,
-   "tol_rel": 1e-09,
-   "inputs": [
+     "id": "phase27_capsweep_24x",
+     "sha256": "034ade6ac6c1719ecdc41d4adcb9de1d3806718a804124bd0111b87acc90669d"
+    },
     {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell1-benefit",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[1].benefit_mean",
-   "derived": "",
-   "expected": 8628.034644204323,
-   "tol_rel": 1e-09,
-   "inputs": [
+     "id": "phase27_capsweep_30x",
+     "sha256": "e49d678a00e631ffeedf57b107f44b81ec25f0c2e5570a711da2a0416caabd7f"
+    },
     {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell1-env",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[1].env",
-   "derived": "",
-   "expected": "level_shift_up_persistent",
-   "tol_rel": 1e-09,
-   "inputs": [
+     "id": "phase27_elasticity_05",
+     "sha256": "205ef1131d669794ff9f81af10cbe37e1eb0455b92de00daa6ce8b36ca0bfc53"
+    },
     {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+     "id": "phase27_elasticity_30",
+     "sha256": "18ed1c67bc876a765634859e8107cc5d6ae169999985586f5edbf40a767866da"
     }
    ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell1-h",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[1].h",
-   "derived": "",
-   "expected": 0.1,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell1-sigma",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[1].sigma",
-   "derived": "",
-   "expected": 10.249193395396782,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell2-benefit",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[2].benefit_mean",
-   "derived": "",
-   "expected": 7808.206711302277,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell2-env",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[2].env",
-   "derived": "",
-   "expected": "level_shift_up_persistent",
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell2-h",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[2].h",
-   "derived": "",
-   "expected": 0.3,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell2-sigma",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[2].sigma",
-   "derived": "",
-   "expected": 8.656861570069747,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell3-benefit",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[3].benefit_mean",
-   "derived": "",
-   "expected": 5855.077618001674,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell3-env",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[3].env",
-   "derived": "",
-   "expected": "level_shift_up_persistent",
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell3-h",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[3].h",
-   "derived": "",
-   "expected": 0.6,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell3-sigma",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[3].sigma",
-   "derived": "",
-   "expected": 6.1769998248951214,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell4-benefit",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[4].benefit_mean",
-   "derived": "",
-   "expected": 1407.261085983325,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell4-env",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[4].env",
-   "derived": "",
-   "expected": "low_phi_shift_up",
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell4-h",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[4].h",
-   "derived": "",
-   "expected": 0.0,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell4-sigma",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[4].sigma",
-   "derived": "",
-   "expected": 7.888318818004097,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell5-benefit",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[5].benefit_mean",
-   "derived": "",
-   "expected": 496.3712629941003,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell5-env",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[5].env",
-   "derived": "",
-   "expected": "low_phi_shift_up",
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell5-h",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[5].h",
-   "derived": "",
-   "expected": 0.1,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell5-sigma",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[5].sigma",
-   "derived": "",
-   "expected": 2.320678285163601,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell6-benefit",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[6].benefit_mean",
-   "derived": "",
-   "expected": -540.5837281160061,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell6-env",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[6].env",
-   "derived": "",
-   "expected": "low_phi_shift_up",
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell6-h",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[6].h",
-   "derived": "",
-   "expected": 0.3,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell6-sigma",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[6].sigma",
-   "derived": "",
-   "expected": -2.4340964614005594,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell7-benefit",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[7].benefit_mean",
-   "derived": "",
-   "expected": -3320.4536279264803,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell7-env",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[7].env",
-   "derived": "",
-   "expected": "low_phi_shift_up",
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell7-h",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[7].h",
-   "derived": "",
-   "expected": 0.6,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
-  },
-  {
-   "id": "LB-E9-cell7-sigma",
-   "script": "analysis/e9_hysteresis.py",
-   "output": "analysis/outputs/e9_hysteresis.json",
-   "json_path": "cells[7].sigma",
-   "derived": "",
-   "expected": -12.106240796540092,
-   "tol_rel": 1e-09,
-   "inputs": [
-    {
-     "id": "phase27_hysteresis_20seed",
-     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
-    }
-   ],
-   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
-   "verify_mode": "artifact"
+   "cic_ref": "verification/cic_signoff.md#e8_pricing",
+   "verify_mode": "rerun"
   },
   {
    "id": "LB-E9-fidelity-maxreldiff",
@@ -7332,6 +6952,278 @@
    "verify_mode": "artifact"
   },
   {
+   "id": "LB-E9-fragile-h000-benefit",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[4].benefit_mean",
+   "derived": "",
+   "expected": 1407.261085983325,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-fragile-h000-sigma",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[4].sigma",
+   "derived": "",
+   "expected": 7.888318818004097,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-fragile-h010-benefit",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[5].benefit_mean",
+   "derived": "",
+   "expected": 496.3712629941003,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-fragile-h010-sigma",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[5].sigma",
+   "derived": "",
+   "expected": 2.320678285163601,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-fragile-h030-benefit",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[6].benefit_mean",
+   "derived": "",
+   "expected": -540.5837281160061,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-fragile-h030-sigma",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[6].sigma",
+   "derived": "",
+   "expected": -2.4340964614005594,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-fragile-h060-benefit",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[7].benefit_mean",
+   "derived": "",
+   "expected": -3320.4536279264803,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-fragile-h060-sigma",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[7].sigma",
+   "derived": "",
+   "expected": -12.106240796540092,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-robust-h000-benefit",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[0].benefit_mean",
+   "derived": "",
+   "expected": 8401.301149517853,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-robust-h000-sigma",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[0].sigma",
+   "derived": "",
+   "expected": 10.32833831781141,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-robust-h010-benefit",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[1].benefit_mean",
+   "derived": "",
+   "expected": 8628.034644204323,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-robust-h010-sigma",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[1].sigma",
+   "derived": "",
+   "expected": 10.249193395396782,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-robust-h030-benefit",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[2].benefit_mean",
+   "derived": "",
+   "expected": 7808.206711302277,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-robust-h030-sigma",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[2].sigma",
+   "derived": "",
+   "expected": 8.656861570069747,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-robust-h060-benefit",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[3].benefit_mean",
+   "derived": "",
+   "expected": 5855.077618001674,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-E9-robust-h060-sigma",
+   "script": "analysis/e9_hysteresis.py",
+   "output": "analysis/outputs/e9_hysteresis.json",
+   "json_path": "cells[3].sigma",
+   "derived": "",
+   "expected": 6.1769998248951214,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "phase27_hysteresis_20seed",
+     "sha256": "e5875b0fac7f35e1b9ccc4b956c8f99f28355a5fa6787df6dd2624368202ef3b"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
+   "verify_mode": "artifact"
+  },
+  {
    "id": "LB-E9-verdict",
    "script": "analysis/e9_hysteresis.py",
    "output": "analysis/outputs/e9_hysteresis.json",
@@ -7347,6 +7239,60 @@
    ],
    "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
    "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-T1-bound-numeric-allpass",
+   "script": "analysis/t1_theorem_checks.py",
+   "output": "analysis/outputs/t1_theorem_checks.json",
+   "json_path": "numeric.all_pass",
+   "derived": "",
+   "expected": true,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#t1_theorem_checks",
+   "verify_mode": "rerun",
+   "leg": "numeric",
+   "note": "numeric_grid(): dominant-mode THM-1a check + damage-bound stress, 440 cells / 35 in-domain"
+  },
+  {
+   "id": "LB-T1-bound-numeric-counterexamples",
+   "script": "analysis/t1_theorem_checks.py",
+   "output": "analysis/outputs/t1_theorem_checks.json",
+   "json_path": "",
+   "derived": "t1_counterexample_n",
+   "expected": 0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#t1_theorem_checks",
+   "verify_mode": "rerun",
+   "leg": "numeric"
+  },
+  {
+   "id": "LB-T1-bound-numeric-indomain",
+   "script": "analysis/t1_theorem_checks.py",
+   "output": "analysis/outputs/t1_theorem_checks.json",
+   "json_path": "numeric.n_indomain",
+   "derived": "",
+   "expected": 35,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#t1_theorem_checks",
+   "verify_mode": "rerun",
+   "leg": "numeric"
+  },
+  {
+   "id": "LB-T1-bound-symbolic",
+   "script": "analysis/t1_theorem_checks.py",
+   "output": "analysis/outputs/t1_theorem_checks.json",
+   "json_path": "",
+   "derived": "t1_thm1_symbolic",
+   "expected": true,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#t1_theorem_checks",
+   "verify_mode": "rerun",
+   "leg": "symbolic",
+   "note": "sympy S2 (D_SMA strictly convex) + S3 (induction identity tau=4); legs read and confirmed in t1_theorem_checks.py symbolic_checks()"
   },
   {
    "id": "LB-T1-estimator-ols",
@@ -7431,6 +7377,60 @@
    "note": "corrected G.4 statics signs S7a/S7b/S7c (sympy)"
   },
   {
+   "id": "LB-T2-wstar-numeric-match",
+   "script": "analysis/t2_wstar.py",
+   "output": "analysis/outputs/t2_wstar.json",
+   "json_path": "interior_match",
+   "derived": "",
+   "expected": 105,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#t2_wstar",
+   "verify_mode": "rerun",
+   "leg": "numeric",
+   "note": "t2_wstar.py: closed-form W* vs brute-force argmin, 105 interior cells"
+  },
+  {
+   "id": "LB-T2-wstar-numeric-matchrate",
+   "script": "analysis/t2_wstar.py",
+   "output": "analysis/outputs/t2_wstar.json",
+   "json_path": "match_rate",
+   "derived": "",
+   "expected": 1.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#t2_wstar",
+   "verify_mode": "rerun",
+   "leg": "numeric"
+  },
+  {
+   "id": "LB-T2-wstar-numeric-unimodal-failures",
+   "script": "analysis/t2_wstar.py",
+   "output": "analysis/outputs/t2_wstar.json",
+   "json_path": "unimodal_failures",
+   "derived": "",
+   "expected": 0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#t2_wstar",
+   "verify_mode": "rerun",
+   "leg": "numeric"
+  },
+  {
+   "id": "LB-T2-wstar-symbolic",
+   "script": "analysis/t1_theorem_checks.py",
+   "output": "analysis/outputs/t1_theorem_checks.json",
+   "json_path": "",
+   "derived": "t1_thm2_symbolic",
+   "expected": true,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#t1_theorem_checks",
+   "verify_mode": "rerun",
+   "leg": "symbolic",
+   "note": "sympy S4 (loss convex) + S5 (interiority condition C) + S6 (Lambert-W solves FOC); in t1_theorem_checks.py"
+  },
+  {
    "id": "LB-T3-kstar-allbelow1",
    "script": "analysis/t3_kstar.py",
    "output": "analysis/outputs/t3_kstar.json",
@@ -7487,114 +7487,6 @@
    "verify_mode": "rerun",
    "leg": "numeric",
    "label": "proposition-numeric-only"
-  },
-  {
-   "id": "LB-THM1-numeric-allpass",
-   "script": "analysis/t1_theorem_checks.py",
-   "output": "analysis/outputs/t1_theorem_checks.json",
-   "json_path": "numeric.all_pass",
-   "derived": "",
-   "expected": true,
-   "tol_rel": 1e-09,
-   "inputs": [],
-   "cic_ref": "verification/cic_signoff.md#t1_theorem_checks",
-   "verify_mode": "rerun",
-   "leg": "numeric",
-   "note": "numeric_grid(): dominant-mode THM-1a check + damage-bound stress, 440 cells / 35 in-domain"
-  },
-  {
-   "id": "LB-THM1-numeric-counterexamples",
-   "script": "analysis/t1_theorem_checks.py",
-   "output": "analysis/outputs/t1_theorem_checks.json",
-   "json_path": "",
-   "derived": "t1_counterexample_n",
-   "expected": 0,
-   "tol_rel": 1e-09,
-   "inputs": [],
-   "cic_ref": "verification/cic_signoff.md#t1_theorem_checks",
-   "verify_mode": "rerun",
-   "leg": "numeric"
-  },
-  {
-   "id": "LB-THM1-numeric-indomain",
-   "script": "analysis/t1_theorem_checks.py",
-   "output": "analysis/outputs/t1_theorem_checks.json",
-   "json_path": "numeric.n_indomain",
-   "derived": "",
-   "expected": 35,
-   "tol_rel": 1e-09,
-   "inputs": [],
-   "cic_ref": "verification/cic_signoff.md#t1_theorem_checks",
-   "verify_mode": "rerun",
-   "leg": "numeric"
-  },
-  {
-   "id": "LB-THM1-symbolic",
-   "script": "analysis/t1_theorem_checks.py",
-   "output": "analysis/outputs/t1_theorem_checks.json",
-   "json_path": "",
-   "derived": "t1_thm1_symbolic",
-   "expected": true,
-   "tol_rel": 1e-09,
-   "inputs": [],
-   "cic_ref": "verification/cic_signoff.md#t1_theorem_checks",
-   "verify_mode": "rerun",
-   "leg": "symbolic",
-   "note": "sympy S2 (D_SMA strictly convex) + S3 (induction identity tau=4); legs read and confirmed in t1_theorem_checks.py symbolic_checks()"
-  },
-  {
-   "id": "LB-THM2-numeric-match",
-   "script": "analysis/t2_wstar.py",
-   "output": "analysis/outputs/t2_wstar.json",
-   "json_path": "interior_match",
-   "derived": "",
-   "expected": 105,
-   "tol_rel": 1e-09,
-   "inputs": [],
-   "cic_ref": "verification/cic_signoff.md#t2_wstar",
-   "verify_mode": "rerun",
-   "leg": "numeric",
-   "note": "t2_wstar.py: closed-form W* vs brute-force argmin, 105 interior cells"
-  },
-  {
-   "id": "LB-THM2-numeric-matchrate",
-   "script": "analysis/t2_wstar.py",
-   "output": "analysis/outputs/t2_wstar.json",
-   "json_path": "match_rate",
-   "derived": "",
-   "expected": 1.0,
-   "tol_rel": 1e-09,
-   "inputs": [],
-   "cic_ref": "verification/cic_signoff.md#t2_wstar",
-   "verify_mode": "rerun",
-   "leg": "numeric"
-  },
-  {
-   "id": "LB-THM2-numeric-unimodal-failures",
-   "script": "analysis/t2_wstar.py",
-   "output": "analysis/outputs/t2_wstar.json",
-   "json_path": "unimodal_failures",
-   "derived": "",
-   "expected": 0,
-   "tol_rel": 1e-09,
-   "inputs": [],
-   "cic_ref": "verification/cic_signoff.md#t2_wstar",
-   "verify_mode": "rerun",
-   "leg": "numeric"
-  },
-  {
-   "id": "LB-THM2-symbolic",
-   "script": "analysis/t1_theorem_checks.py",
-   "output": "analysis/outputs/t1_theorem_checks.json",
-   "json_path": "",
-   "derived": "t1_thm2_symbolic",
-   "expected": true,
-   "tol_rel": 1e-09,
-   "inputs": [],
-   "cic_ref": "verification/cic_signoff.md#t1_theorem_checks",
-   "verify_mode": "rerun",
-   "leg": "symbolic",
-   "note": "sympy S4 (loss convex) + S5 (interiority condition C) + S6 (Lambert-W solves FOC); in t1_theorem_checks.py"
   },
   {
    "id": "LB-THM3-numeric",

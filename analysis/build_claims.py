@@ -120,6 +120,10 @@ DERIVED = {
     "t3_mfg_argmin":       lambda d: (d["mfg_argmins"][0]
                                       if len(set(d["mfg_argmins"])) == 1
                                       else sorted(set(d["mfg_argmins"]))),
+    "e5_mfg_meanrho_R":    lambda d: next(x["mean_rho"] for x in d["ranking_R"]
+                                          if x["sector"] == "AMTMIS"),
+    "e5_mfg_meanrho_M":    lambda d: next(x["mean_rho"] for x in d["ranking_M"]
+                                          if x["sector"] == "AMTMIS"),
     "e12_paradox_count":   lambda d: sum(
         1 for k, cell in d["leg_b"]["drift_paired_contrasts"].items()
         if k.endswith("_oracle_minus_ols") and cell["resolved"]
@@ -140,23 +144,23 @@ def rows_spec():
     # ---- THEOREM ROWS (v1.9.3: two separate rows per theorem-bearing claim;
     #      each leg confirmed present by reading the check's source 2026-07-24).
     t1 = "t1_theorem_checks.json"
-    row("LB-THM1-symbolic", t1, "t1_thm1_symbolic", derived=True, leg="symbolic",
+    row("LB-T1-bound-symbolic", t1, "t1_thm1_symbolic", derived=True, leg="symbolic",
         note="sympy S2 (D_SMA strictly convex) + S3 (induction identity tau=4); "
              "legs read and confirmed in t1_theorem_checks.py symbolic_checks()")
-    row("LB-THM1-numeric-allpass", t1, "numeric.all_pass", leg="numeric",
+    row("LB-T1-bound-numeric-allpass", t1, "numeric.all_pass", leg="numeric",
         note="numeric_grid(): dominant-mode THM-1a check + damage-bound stress, "
              "440 cells / 35 in-domain")
-    row("LB-THM1-numeric-indomain", t1, "numeric.n_indomain", leg="numeric")
-    row("LB-THM1-numeric-counterexamples", t1, "t1_counterexample_n",
+    row("LB-T1-bound-numeric-indomain", t1, "numeric.n_indomain", leg="numeric")
+    row("LB-T1-bound-numeric-counterexamples", t1, "t1_counterexample_n",
         derived=True, leg="numeric")
-    row("LB-THM2-symbolic", t1, "t1_thm2_symbolic", derived=True, leg="symbolic",
+    row("LB-T2-wstar-symbolic", t1, "t1_thm2_symbolic", derived=True, leg="symbolic",
         note="sympy S4 (loss convex) + S5 (interiority condition C) + "
              "S6 (Lambert-W solves FOC); in t1_theorem_checks.py")
     t2 = "t2_wstar.json"
-    row("LB-THM2-numeric-match", t2, "interior_match", leg="numeric",
+    row("LB-T2-wstar-numeric-match", t2, "interior_match", leg="numeric",
         note="t2_wstar.py: closed-form W* vs brute-force argmin, 105 interior cells")
-    row("LB-THM2-numeric-matchrate", t2, "match_rate", leg="numeric")
-    row("LB-THM2-numeric-unimodal-failures", t2, "unimodal_failures", leg="numeric")
+    row("LB-T2-wstar-numeric-matchrate", t2, "match_rate", leg="numeric")
+    row("LB-T2-wstar-numeric-unimodal-failures", t2, "unimodal_failures", leg="numeric")
     row("LB-T2-statics-symbolic", t1, "t1_statics_symbolic", derived=True,
         leg="symbolic", note="corrected G.4 statics signs S7a/S7b/S7c (sympy)")
     row("LB-T2-statics-numeric-monophi-fail", t1, "numeric.mono_phi_fail",
@@ -215,7 +219,7 @@ def rows_spec():
     row("LB-E2-components-rho-crisis", e2, "components.rho_crisis")
     row("LB-E2-components-absdphi", e2, "components.abs_delta_phi")
     row("LB-E2-components-combined-ge", e2, "combined_ge_components")
-    row("LB-E2-verdict", e2, "verdict")
+    row("LB-E2-gfc-verdict", e2, "verdict")
 
     # ---- E3 COVID boundary
     e3 = "e3_covid_episode.json"
@@ -224,7 +228,7 @@ def rows_spec():
     row("LB-E3-covid-n", e3, "n")
     row("LB-E3-persistence-direction-count", e3, "n_dropped")
     row("LB-E3-persistence-direction-majority", e3, "majority_dropped")
-    row("LB-E3-verdict", e3, "verdict")
+    row("LB-E3-covid-verdict", e3, "verdict")
 
     # ---- E4 Beer Game (model-bound; naive EXCLUDED - DROPPED not-a-measurement)
     e4 = "e4_beer_game.json"
@@ -236,8 +240,8 @@ def rows_spec():
     row("LB-E4-tool-relreduction", e4, "rel_reduction_mean", mode="artifact")
     row("LB-E4-full", e4, "mean_cost.full", mode="artifact")
     row("LB-E4-winrate", e4, "win_rate_full_vs_spectral", mode="artifact")
-    row("LB-E4-phi-engagement", e4, "phi_engagement", mode="artifact")
-    row("LB-E4-verdict", e4, "verdict", mode="artifact",
+    row("LB-E4-tool-phi-engagement", e4, "phi_engagement", mode="artifact")
+    row("LB-E4-tool-verdict", e4, "verdict", mode="artifact",
         note="model-bound per OUTLINE v1.4 / DESIGN amendment 2026-07-16")
 
     # ---- E5 instability ranking (valid redesigned run; SPEC-R primary)
@@ -251,6 +255,11 @@ def rows_spec():
     row("LB-E5-chips-rank-M-A34SIS", e5, "chips_ranks_M['A34SIS']")
     row("LB-E5-chips-rank-M-R4238", e5, "chips_ranks_M['R4238IM163SCEN']")
     row("LB-E5-chips-verdict", e5, "chips_verdict")
+    row("LB-E5-persistence-mfg-meanrho-R", e5, "e5_mfg_meanrho_R", derived=True,
+        note="mfg aggregate (AMTMIS) mean rho, SPEC-R primary - the "
+             "LB-E5-persistence family's committed value")
+    row("LB-E5-persistence-mfg-meanrho-M", e5, "e5_mfg_meanrho_M", derived=True,
+        note="mfg aggregate (AMTMIS) mean rho, SPEC-M detrended variant")
 
     # ---- E6 capacity threshold (CHARACTERIZATION + ESTIMATE; no verdict promoted)
     e6 = "e6_capacity_threshold.json"
@@ -261,7 +270,7 @@ def rows_spec():
             f"primary_spec_R.bins[{i}].n")
     row("LB-E6-current-utilization", e6, "primary_spec_R.current_utilization")
     row("LB-E6-current-month", e6, "primary_spec_R.current_utilization_month")
-    row("LB-E6-rule-outcome", e6, "verdict",
+    row("LB-E6-threshold-rule-outcome", e6, "verdict",
         note="the pre-registered rule's REFUTE - reported ALONGSIDE per DESIGN "
              "S9 amendment; NOT the finding (severity failed; v1.9.7)")
 
@@ -296,26 +305,32 @@ def rows_spec():
                 "mid_phi_shift_down"):
         row(f"LB-E8-down-{env}-mean", e8, f"claim_b.cells.{env}.mean")
         row(f"LB-E8-down-{env}-sigma", e8, f"claim_b.cells.{env}.sigma")
-    row("LB-E8-claimb-verdict", e8, "claim_b.verdict")
-    row("LB-E8-claima-mean", e8,
+    row("LB-E8-up-claimb-verdict", e8, "claim_b.verdict")
+    row("LB-E8-up-claima-mean", e8,
         "claim_a.by_arm.phi_gated_asymmetric.level_shift_up_persistent.mean",
         note="the formula's own contribution - a BOUND, not a verdict")
-    row("LB-E8-claima-cipct-lo", e8, "claim_a.by_arm.phi_gated_asymmetric."
+    row("LB-E8-up-claima-cipct-lo", e8, "claim_a.by_arm.phi_gated_asymmetric."
         "level_shift_up_persistent.ci_pct_of_claim_b[0]")
-    row("LB-E8-claima-cipct-hi", e8, "claim_a.by_arm.phi_gated_asymmetric."
+    row("LB-E8-up-claima-cipct-hi", e8, "claim_a.by_arm.phi_gated_asymmetric."
         "level_shift_up_persistent.ci_pct_of_claim_b[1]")
     for cap in ("1.8x", "2.4x", "3.0x"):
         row(f"LB-E8-up-cap{cap.replace('.','')}-mean", e8,
             f"robustness['capacity {cap}'].level_shift_up_persistent.mean")
 
     # ---- E9 hysteresis (qualification of E8 Claim B; TIER-EXACT fidelity)
+    # Cell ids encode OUTLINE family + intensity: strained sticky env
+    # (level_shift_up_persistent) = LB-E9-robust; noisy env (low_phi_shift_up)
+    # = LB-E9-fragile; h tag = intensity x100 (family-prefix tie, DECISIONS 44).
     e9 = "e9_hysteresis.json"
-    for i in range(8):
-        row(f"LB-E9-cell{i}-env", e9, f"cells[{i}].env", mode="artifact")
-        row(f"LB-E9-cell{i}-h", e9, f"cells[{i}].h", mode="artifact")
-        row(f"LB-E9-cell{i}-benefit", e9, f"cells[{i}].benefit_mean",
+    _e9cells = load(e9)["cells"]
+    _e9fam = {"level_shift_up_persistent": "robust", "low_phi_shift_up": "fragile"}
+    for i, cell in enumerate(_e9cells):
+        fam = _e9fam[cell["env"]]
+        htag = f"h{int(round(cell['h'] * 100)):03d}"
+        row(f"LB-E9-{fam}-{htag}-benefit", e9, f"cells[{i}].benefit_mean",
             mode="artifact")
-        row(f"LB-E9-cell{i}-sigma", e9, f"cells[{i}].sigma", mode="artifact")
+        row(f"LB-E9-{fam}-{htag}-sigma", e9, f"cells[{i}].sigma",
+            mode="artifact")
     row("LB-E9-verdict", e9, "decision.verdict", mode="artifact")
     row("LB-E9-fidelity-tier", e9, "fidelity.tier", mode="artifact")
     row("LB-E9-fidelity-maxreldiff", e9, "fidelity.max_rel_diff",
@@ -334,7 +349,7 @@ def rows_spec():
     row("LB-E10-crisis-reading", e10, "decision.reading",
         note="WITHDRAWN - conjunctive rule stops at stationarity failure; "
              "crossing sweep never reached (LB-E10-crisis per OUTLINE)")
-    row("LB-E10-guard-dualimpl", e10, "guards.max_dual_impl_diff", tol=0.0,
+    row("LB-E10-calm-guard-dualimpl", e10, "guards.max_dual_impl_diff", tol=0.0,
         note="v14-site guard: bit-exact dual implementation, exact zero")
 
     # ---- E11 UI (WITHDRAWN per rule; characterization)
@@ -349,7 +364,7 @@ def rows_spec():
     row("LB-E11-gfc-phi", e11, "pooled_gfc.phi")
     row("LB-E11-gfc-n", e11, "pooled_gfc.n_pairs")
     row("LB-E11-gfc-corner", e11, "phi_star_corner")
-    row("LB-E11-reading", e11, "decision.reading")
+    row("LB-E11-gfc-reading", e11, "decision.reading")
 
     # ---- E12 non-stationarity (EXPECTED-CONFIRMED-RECIPE-LEVEL)
     e12 = "e12_nonstationarity.json"
