@@ -1,0 +1,27 @@
+{
+  "bet_a": {
+    "carried_from": "pinned source (locked April 2026); restated and re-registered at the rebuild commit",
+    "claim": "rho > 1 at measurement implies amplifying response to the firm's next demand shock; rho < 1 implies decaying"
+  },
+  "bet_b": {
+    "alpha": 0.05,
+    "baseline_months": 60,
+    "decay_sectors": "A34SIS,A35SIS,MRTSIR444USS,MRTSIR452USS,R4232IM163SCEN,R4233IM163SCEN,R4234IM163SCEN,R4236IM163SCEN",
+    "flagged_sectors": "A31SIS,A36SIS,AMDMIS,AMNMIS,AMTMIS,MRTSIR441USS,R4231IM163SCEN,R4238IM163SCEN,R423IRM163SCEN",
+    "metric": "peak |log I/S deviation from pre-onset baseline mean| within the evaluation window, divided by the pre-onset baseline standard deviation",
+    "metric_window_months": 24,
+    "n_decay": 8,
+    "n_flagged": 9,
+    "test": "one-sided Mann-Whitney, oscillating > never-crossing",
+    "trigger": "next NBER-dated US recession onset after registration"
+  },
+  "calculator_url": "LaggingTruth.com/diagnostic",
+  "date": "2026-07-24",
+  "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
+  "e1_md5": "c40d4ae49700279ec19e847008b3fede",
+  "estimator": "ols_ar1_intercept",
+  "experiment": "FP",
+  "horizon": "2031-07-31",
+  "registered": "2026-07-24",
+  "threshold_rho": 1.0
+}

@@ -25,8 +25,9 @@ Load-bearing = anything the Abstract/Conclusion states or depends on
 (OUTLINE v1.8 LB families; family prefix ties ledger rows to OUTLINE rows).
 Excluded by decision: LB-E4-naive (DROPPED not-a-measurement, OUTLINE v1.4);
 LB-E7-crossover (renamed LB-E7-gradient, OUTLINE v1.0); LB-E13-firm-bookend
-(conditional on the deferred EDGAR entry); LB-FP-diagnostic (Phase-4
-deliverable, registered at 5c).
+(conditional on the deferred EDGAR entry). LB-FP-diagnostic landed 2026-07-24
+(Phase-4 registration constants via analysis/fp_registration.py; public
+registration at 5c).
 """
 from __future__ import annotations
 import datetime as _dt
@@ -386,6 +387,26 @@ def rows_spec():
              "perfect-information paradox (mechanical count over leg_b)")
     row("LB-E12-oracle-winscheck", e12, "decision.oracle_wins_check")
 
+    # ---- FORWARD-PREDICTION REGISTRATION (Phase 4; OUTLINE ARG-27) --------
+    # Registered protocol constants, emitted by the committed deterministic
+    # generator analysis/fp_registration.py (bet (b) class lists extracted
+    # mechanically from the committed E1 output, whose md5 is embedded).
+    fp = "fp_registration.json"
+    row("LB-FP-diagnostic-registered", fp, "registered", tol=0)
+    row("LB-FP-diagnostic-horizon", fp, "horizon", tol=0)
+    row("LB-FP-diagnostic-threshold", fp, "threshold_rho")
+    row("LB-FP-diagnostic-estimator", fp, "estimator", tol=0)
+    row("LB-FP-diagnostic-calculator-url", fp, "calculator_url", tol=0)
+    row("LB-FP-diagnostic-trigger", fp, "bet_b.trigger", tol=0)
+    row("LB-FP-diagnostic-metric-window-months", fp, "bet_b.metric_window_months")
+    row("LB-FP-diagnostic-baseline-months", fp, "bet_b.baseline_months")
+    row("LB-FP-diagnostic-alpha", fp, "bet_b.alpha")
+    row("LB-FP-diagnostic-test", fp, "bet_b.test", tol=0)
+    row("LB-FP-diagnostic-n-flagged", fp, "bet_b.n_flagged")
+    row("LB-FP-diagnostic-n-decay", fp, "bet_b.n_decay")
+    row("LB-FP-diagnostic-flagged-sectors", fp, "bet_b.flagged_sectors", tol=0)
+    row("LB-FP-diagnostic-decay-sectors", fp, "bet_b.decay_sectors", tol=0)
+
     return R
 
 
@@ -410,7 +431,8 @@ def main() -> None:
         exp_tag = data.get("experiment", "")
         inputs = list(by_exp.get(exp_tag, []))
         # artifact hashes embedded in the output itself
-        for key, algo in (("jst_md5", "md5"), ("eta_md5", "md5")):
+        for key, algo in (("jst_md5", "md5"), ("eta_md5", "md5"),
+                          ("e1_md5", "md5")):
             if key in data:
                 inputs.append({"id": key, algo: data[key]})
         if exp_tag == "E12":

@@ -203,3 +203,15 @@ SIGNED 2026-07-24.
 7. PASS - grid pins recorded; numeric-only by design and LABELED proposition-numeric-only in the ledger (the written proof with labeled approximations is the Phase-4 three-way obligation, per author ruling 2026-07-24).
 
 SIGNED 2026-07-24.
+
+## fp_registration
+
+1. PASS - main() -> literal registered constants + mechanical class extraction from the committed e1 output -> committed JSON; ledger reads that JSON by path.
+2. N/A - no series operations; the only data touch is a key/value read of e1's sector list.
+3. N/A - no numeric series; the classification field is categorical and complete (asserted to partition all 17 sectors).
+4. PASS - no look-ahead by construction: bet (b)'s class lists come from the committed, pre-registration E1 output (full-sample pre-registered partition, as disclosed in e1's own class-4 note); all other fields are registration literals fixed before any resolving data exists.
+5. N/A - no subsampling.
+6. PASS - class lists extracted per-sector with no cross-sector computation; the sector-id split takes the token before the first space (ids contain no spaces; titles follow in parentheses).
+7. PASS - input integrity: the e1 artifact's MD5 is computed from the exact bytes read and embedded in the output; the builder carries it as a hashed input and verify.py re-hashes the same committed path on every run.
+
+SIGNED 2026-07-24.

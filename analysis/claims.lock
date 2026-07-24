@@ -4,7 +4,7 @@
  "generated_at": "2026-07-24",
  "design_pin_md5": "74c73ea165a7363c6714fe803fbe76b1",
  "never_hand_edit": true,
- "n_rows": 188,
+ "n_rows": 202,
  "rows": [
   {
    "id": "LB-E1-panel-n-chronic",
@@ -7239,6 +7239,244 @@
    ],
    "cic_ref": "verification/cic_signoff.md#e9_hysteresis",
    "verify_mode": "artifact"
+  },
+  {
+   "id": "LB-FP-diagnostic-alpha",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "bet_b.alpha",
+   "derived": "",
+   "expected": 0.05,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-baseline-months",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "bet_b.baseline_months",
+   "derived": "",
+   "expected": 60,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-calculator-url",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "calculator_url",
+   "derived": "",
+   "expected": "LaggingTruth.com/diagnostic",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-decay-sectors",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "bet_b.decay_sectors",
+   "derived": "",
+   "expected": "A34SIS,A35SIS,MRTSIR444USS,MRTSIR452USS,R4232IM163SCEN,R4233IM163SCEN,R4234IM163SCEN,R4236IM163SCEN",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-estimator",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "estimator",
+   "derived": "",
+   "expected": "ols_ar1_intercept",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-flagged-sectors",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "bet_b.flagged_sectors",
+   "derived": "",
+   "expected": "A31SIS,A36SIS,AMDMIS,AMNMIS,AMTMIS,MRTSIR441USS,R4231IM163SCEN,R4238IM163SCEN,R423IRM163SCEN",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-horizon",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "horizon",
+   "derived": "",
+   "expected": "2031-07-31",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-metric-window-months",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "bet_b.metric_window_months",
+   "derived": "",
+   "expected": 24,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-n-decay",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "bet_b.n_decay",
+   "derived": "",
+   "expected": 8,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-n-flagged",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "bet_b.n_flagged",
+   "derived": "",
+   "expected": 9,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-registered",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "registered",
+   "derived": "",
+   "expected": "2026-07-24",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-test",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "bet_b.test",
+   "derived": "",
+   "expected": "one-sided Mann-Whitney, oscillating > never-crossing",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-threshold",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "threshold_rho",
+   "derived": "",
+   "expected": 1.0,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-FP-diagnostic-trigger",
+   "script": "analysis/fp_registration.py",
+   "output": "analysis/outputs/fp_registration.json",
+   "json_path": "bet_b.trigger",
+   "derived": "",
+   "expected": "next NBER-dated US recession onset after registration",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "e1_md5",
+     "md5": "c40d4ae49700279ec19e847008b3fede"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#fp_registration",
+   "verify_mode": "rerun"
   },
   {
    "id": "LB-T1-bound-numeric-allpass",

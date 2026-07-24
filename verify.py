@@ -25,7 +25,7 @@ CHECKS
   5. OUTLINE-TIE:   the family-prefix convention, bidirectional (OUTLINE
      v1.9 changelog; DECISIONS 44): every non-exempt OUTLINE LB family has
      >= 1 ledger row; every ledger id extends some OUTLINE family.
-     Exempt-deferred: LB-E4-naive, LB-E13-firm-bookend, LB-FP-diagnostic,
+     Exempt-deferred: LB-E4-naive, LB-E13-firm-bookend,
      LB-E5-monitor.
   6. PAPER (arms at Phase 4 when paper/the-escalation-cost.md exists):
      every ledger id present at its {{LB-id}} token; no placeholders
@@ -67,7 +67,7 @@ FIXTURES = ROOT / "verification" / "fixtures"
 STORE = pathlib.Path(os.environ.get(
     "EC_STORE", r"C:\Users\jaek9\Documents\LaggingTruth\The-Escalation-Cost"))
 
-TIE_EXEMPT = {"LB-E4-naive", "LB-E13-firm-bookend", "LB-FP-diagnostic",
+TIE_EXEMPT = {"LB-E4-naive", "LB-E13-firm-bookend",
               "LB-E5-monitor"}
 
 # Embedded-input ids -> on-disk locations (everything else resolves via the
@@ -78,6 +78,7 @@ EMBEDDED_INPUTS = {
     "leg_a_e7_rebuild": OUTPUTS / "e7_chain_sweep.json",
     "leg_b_source_sweep": STORE / "raw" / "phase26"
                           / "aggregated_chain_length_sweep.json",
+    "e1_md5": OUTPUTS / "e1_rolling_validation.json",
 }
 
 RED, GREEN, SKIP = "RED", "green", "SKIPPED"

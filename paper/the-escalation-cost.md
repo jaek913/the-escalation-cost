@@ -229,21 +229,25 @@ Interventions ranked by which parameter they move.
 
 ## 10 Forward Prediction: Self-Service Diagnostic
 
-### 10.1 The Prediction
+This section states the paper's two dated, falsifiable forward predictions - standing claims about post-publication outcomes, the one validator that routes around both author and reviewer. Every protocol constant below is a ledger row emitted by the committed registration generator (verification path: the same machinery that polices every other number in this paper); registration date {{LB-FP-diagnostic-registered}}, carry-forward horizon {{LB-FP-diagnostic-horizon}}.
 
-A dated, falsifiable forward prediction is stated here for public registration: for systems whose measured rho exceeds 1, the response to the next demand shock amplifies; for rho below 1, it decays. Protocol constants are finalized in this phase and ledgered under the LB-FP-diagnostic family.
+### 10.1 The Predictions
+
+PREDICTION A (self-service diagnostic; carried from the pinned source, locked April 2026, restated and re-registered at this rebuild's commit). Any firm can compute the closed-loop spectral radius rho from three quantities it already has: its estimated demand persistence phi (estimator {{LB-FP-diagnostic-estimator}} - the paper's pre-registered choice, Section 5.3), its measurement window W, and its feedback gain, via the companion-matrix construction of EQ-1. The standing claim: rho above the threshold {{LB-FP-diagnostic-threshold}} implies the firm's response to its next demand shock AMPLIFIES (bullwhip); rho below it implies the response DECAYS. A public calculator implements the computation at {{LB-FP-diagnostic-calculator-url}}.
+
+PREDICTION B (sector-level two-class bet; new at this rebuild, registered at publication). The paper's committed rolling construction (Section 5.3) partitions the seventeen-sector panel into {{LB-FP-diagnostic-n-flagged}} boundary-crossing ("oscillating") sectors and {{LB-FP-diagnostic-n-decay}} never-crossing sectors; the class lists are extracted mechanically from the committed output and registered verbatim (flagged: {{LB-FP-diagnostic-flagged-sectors}}; never-crossing: {{LB-FP-diagnostic-decay-sectors}}). The standing claim: at the trigger event, the flagged class shows amplifying inventory/sales responses exceeding the never-crossing class under the registered metric and test. Honesty note, registered as part of the claim: under this committed construction the CHIPS-dependent computers/electronics sector sits in the NEVER-CROSSING class while wholesale machinery sits in the flagged class - an earlier informal sketch that named both CHIPS sectors as flagged is superseded by the committed classification, and the spec-sensitivity of such flags is itself one of this paper's findings (Section 7.1).
 
 ### 10.2 Protocol
 
-Thresholds, window, and reporting per the replication protocol.
+Trigger: {{LB-FP-diagnostic-trigger}}. Metric: peak absolute deviation of log inventory/sales from its pre-onset baseline mean within {{LB-FP-diagnostic-metric-window-months}} months of onset, normalized by the pre-onset {{LB-FP-diagnostic-baseline-months}}-month baseline standard deviation, per sector, from the same public monthly series the paper uses (Appendix A). Test: {{LB-FP-diagnostic-test}} at alpha {{LB-FP-diagnostic-alpha}}.
 
 ### 10.3 Registration
 
-Registered publicly at the review stage.
+Both predictions are registered publicly at the review stage alongside this paper's release, and scored publicly as data accrues; the registered constants above are byte-verified against the committed generator on every verification run.
 
 ### 10.4 Falsification Conditions
 
-What outcome would falsify the prediction, stated in advance.
+Prediction A is falsified by systematic decay in above-threshold systems or amplification in below-threshold systems under the stated computation. Prediction B is falsified if, at the trigger event, the flagged class does NOT exceed the never-crossing class under the registered metric and test - a genuine two-sided exposure, since the never-crossing class is non-empty and includes a CHIPS-dependent sector. If no qualifying trigger occurs before {{LB-FP-diagnostic-horizon}}, the bet is untestable and carries forward, re-registered, dated.
 
 ## 11 Conclusion
 
