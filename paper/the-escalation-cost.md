@@ -4,7 +4,7 @@
 
 Jae Kim (ORCID 0009-0005-3260-7880) - jae@laggingtruth.com
 
-<!-- Rendered numbers: every {{LB-id}} token below is substituted by the committed renderer from analysis/claims.lock. No figure is retyped by hand. -->
+<!-- Rendered numbers: every double-braced LB-id token below is substituted by the committed renderer (analysis/render_paper.py) from analysis/claims.lock. No figure is retyped by hand. -->
 
 ## Abstract
 
