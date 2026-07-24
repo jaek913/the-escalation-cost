@@ -331,8 +331,9 @@ def check_paper(lock: dict, paper_path: pathlib.Path,
 
     # citations: every [@key] used must be defined once in a references
     # section as a line starting "[@key]:"
-    used = set(re.findall(r"\[@([A-Za-z0-9_:-]+)\](?!:)", text))
     defined = set(re.findall(r"^\[@([A-Za-z0-9_:-]+)\]:", text, re.M))
+    body_wo_defs = re.sub(r"^\[@[A-Za-z0-9_:-]+\]:.*$", "", text, flags=re.M)
+    used = set(re.findall(r"[\[;]\s*@([A-Za-z0-9_:-]+)", body_wo_defs))
     for k in sorted(used - defined):
         problems.append(f"[paper] citation used but undefined: [@{k}]")
     for k in sorted(defined - used):
