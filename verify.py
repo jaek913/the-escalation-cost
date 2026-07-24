@@ -371,7 +371,7 @@ def check_paper(lock: dict, paper_path: pathlib.Path,
             problems.append(f"[paper] dangling cross-reference: {m.group(0)}")
 
     # named verification/ artifacts must exist on disk
-    for m in re.finditer(r"\b(verification/[A-Za-z0-9_./-]+)", text):
+    for m in re.finditer(r"\b(verification/[A-Za-z0-9_./-]*[A-Za-z0-9_/-])", text):
         if not (root / m.group(1)).exists():
             problems.append(f"[paper] named artifact missing on disk: "
                             f"{m.group(1)}")
