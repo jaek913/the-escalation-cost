@@ -14,6 +14,9 @@ changing what the builder stores, never by this script):
   int   -> decimal string
   float -> repr(value) (shortest round-trip representation)
   dict  -> compact JSON, sorted keys (used by interval-style rows)
+  null  -> "n/a" (a committed artifact's honest not-computed marker - e.g.
+           calm rho for the explosive sovereign countries, where the
+           diagnostic's own precondition fails; the ledger stores the null)
 
 Fails loud (exit 2) if the manuscript contains a token with no ledger row or
 any {{...}} that is not a ledger token. The reverse direction (every ledger id
@@ -37,6 +40,8 @@ OUT = ROOT / "paper" / "the-escalation-cost.rendered.md"
 
 
 def fmt(v) -> str:
+    if v is None:
+        return "n/a"
     if isinstance(v, bool):
         return "true" if v else "false"
     if isinstance(v, str):

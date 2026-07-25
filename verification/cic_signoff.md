@@ -227,3 +227,15 @@ SIGNED 2026-07-24.
 7. PASS - input integrity: 17 hashed FRED members via the frozen SECTOR_MAP (asserted 17); the committed e5 artifact's MD5 computed from the exact bytes read, embedded, and mapped in verify.py's EMBEDDED_INPUTS; full-sample stats asserted equal (1e-12) to E5's committed rows under both specs - the hard tie that made loader or construction drift impossible to miss.
 
 SIGNED 2026-07-24.
+
+## tbl4_join
+
+1. PASS - main() -> mechanical rank-ordered join of two committed artifacts -> committed JSON; ledger reads cells by positional path.
+2. PASS - join keyed on exact sector id; KeyError on any unmatched sector; ranks asserted contiguous 1..17 and sectors asserted distinct.
+3. N/A - no numeric series; fields copied verbatim from the parents.
+4. N/A - no estimation; presentation join of frozen post-run artifacts.
+5. N/A - no subsampling.
+6. PASS - per-sector copy only; no cross-sector computation.
+7. PASS - both parents' MD5s computed from the exact bytes read, embedded, and mapped in verify.py's EMBEDDED_INPUTS (e5_md5, monitor_md5); any parent drift REDs input-hashes.
+
+SIGNED 2026-07-24.

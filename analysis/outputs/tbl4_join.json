@@ -1,0 +1,196 @@
+{
+  "experiment": "E5",
+  "date": "2026-07-24",
+  "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
+  "e5_md5": "9a5472e480b72044b2fe376f7b9ce787",
+  "monitor_md5": "14db1e855f55fa5e4da2b165707c576e",
+  "rows": [
+    {
+      "rank": 1,
+      "sector": "A31SIS",
+      "title": "Primary Metals I/S [2026-07-13 amendment]",
+      "mean_exceedance": 0.06837806560721346,
+      "pct_months_above_1": 1.0,
+      "gfc_status": "crossing",
+      "gfc_first": "2009-01-01",
+      "covid_status": "crossing",
+      "covid_first": "2020-05-01"
+    },
+    {
+      "rank": 2,
+      "sector": "MRTSIR452USS",
+      "title": "Retail General Merchandise I/S",
+      "mean_exceedance": 0.06504003723031007,
+      "pct_months_above_1": 1.0,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "never-above",
+      "covid_first": "none"
+    },
+    {
+      "rank": 3,
+      "sector": "AMTMIS",
+      "title": "Total Manufacturing I/S",
+      "mean_exceedance": 0.06437951742193417,
+      "pct_months_above_1": 1.0,
+      "gfc_status": "crossing",
+      "gfc_first": "2008-12-01",
+      "covid_status": "crossing",
+      "covid_first": "2020-02-01"
+    },
+    {
+      "rank": 4,
+      "sector": "R4238IM163SCEN",
+      "title": "Wholesale Machinery I/S",
+      "mean_exceedance": 0.0637140663582436,
+      "pct_months_above_1": 1.0,
+      "gfc_status": "crossing",
+      "gfc_first": "2009-02-01",
+      "covid_status": "never-above",
+      "covid_first": "none"
+    },
+    {
+      "rank": 5,
+      "sector": "AMNMIS",
+      "title": "Nondurable Goods I/S",
+      "mean_exceedance": 0.061904643465775545,
+      "pct_months_above_1": 1.0,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "crossing",
+      "covid_first": "2020-05-01"
+    },
+    {
+      "rank": 6,
+      "sector": "R423IRM163SCEN",
+      "title": "Wholesale Total Durables I/S",
+      "mean_exceedance": 0.061603729640777094,
+      "pct_months_above_1": 1.0,
+      "gfc_status": "crossing",
+      "gfc_first": "2008-11-01",
+      "covid_status": "crossing",
+      "covid_first": "2020-05-01"
+    },
+    {
+      "rank": 7,
+      "sector": "A34SIS",
+      "title": "Computers and Electronic Products I/S",
+      "mean_exceedance": 0.05990095528130071,
+      "pct_months_above_1": 1.0,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "never-above",
+      "covid_first": "none"
+    },
+    {
+      "rank": 8,
+      "sector": "AMDMIS",
+      "title": "Durable Goods I/S",
+      "mean_exceedance": 0.056637427160287426,
+      "pct_months_above_1": 1.0,
+      "gfc_status": "crossing",
+      "gfc_first": "2009-01-01",
+      "covid_status": "crossing",
+      "covid_first": "2020-01-01"
+    },
+    {
+      "rank": 9,
+      "sector": "A35SIS",
+      "title": "Electrical Equipment, Appliances and Components I/S",
+      "mean_exceedance": 0.05168434831285939,
+      "pct_months_above_1": 0.9915014164305949,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "never-above",
+      "covid_first": "none"
+    },
+    {
+      "rank": 10,
+      "sector": "R4234IM163SCEN",
+      "title": "Wholesale Professional/Commercial Equipment I/S",
+      "mean_exceedance": 0.051617642550981474,
+      "pct_months_above_1": 1.0,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "never-above",
+      "covid_first": "none"
+    },
+    {
+      "rank": 11,
+      "sector": "MRTSIR441USS",
+      "title": "Retail Motor Vehicle Dealers I/S",
+      "mean_exceedance": 0.050680534538200255,
+      "pct_months_above_1": 0.9943181818181818,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "crossing",
+      "covid_first": "2020-05-01"
+    },
+    {
+      "rank": 12,
+      "sector": "R4236IM163SCEN",
+      "title": "Wholesale Electrical/Electronics I/S",
+      "mean_exceedance": 0.048751366251328414,
+      "pct_months_above_1": 0.9943342776203966,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "never-above",
+      "covid_first": "none"
+    },
+    {
+      "rank": 13,
+      "sector": "R4233IM163SCEN",
+      "title": "Wholesale Lumber/Construction I/S",
+      "mean_exceedance": 0.04716496577106149,
+      "pct_months_above_1": 1.0,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "never-above",
+      "covid_first": "none"
+    },
+    {
+      "rank": 14,
+      "sector": "MRTSIR444USS",
+      "title": "Retail Building Materials I/S",
+      "mean_exceedance": 0.047149609176632155,
+      "pct_months_above_1": 0.9886363636363636,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "never-above",
+      "covid_first": "none"
+    },
+    {
+      "rank": 15,
+      "sector": "R4231IM163SCEN",
+      "title": "Wholesale Motor Vehicles I/S",
+      "mean_exceedance": 0.04094357330545884,
+      "pct_months_above_1": 0.9461756373937678,
+      "gfc_status": "crossing",
+      "gfc_first": "2008-12-01",
+      "covid_status": "crossing",
+      "covid_first": "2020-05-01"
+    },
+    {
+      "rank": 16,
+      "sector": "R4232IM163SCEN",
+      "title": "Wholesale Furniture I/S",
+      "mean_exceedance": 0.04013354800683089,
+      "pct_months_above_1": 0.9858356940509915,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "never-above",
+      "covid_first": "none"
+    },
+    {
+      "rank": 17,
+      "sector": "A36SIS",
+      "title": "Transportation Equipment I/S",
+      "mean_exceedance": 0.03995458260039651,
+      "pct_months_above_1": 0.9461756373937678,
+      "gfc_status": "never-above",
+      "gfc_first": "none",
+      "covid_status": "crossing",
+      "covid_first": "2020-04-01"
+    }
+  ]
+}

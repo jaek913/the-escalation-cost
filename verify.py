@@ -78,6 +78,7 @@ EMBEDDED_INPUTS = {
                           / "aggregated_chain_length_sweep.json",
     "e1_md5": OUTPUTS / "e1_rolling_validation.json",
     "e5_md5": OUTPUTS / "e5_instability_ranking.json",
+    "monitor_md5": OUTPUTS / "e5_monitor_tbl4.json",
 }
 
 RED, GREEN, SKIP = "RED", "green", "SKIPPED"

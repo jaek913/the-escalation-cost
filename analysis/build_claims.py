@@ -431,6 +431,39 @@ def rows_spec():
     row("LB-E5-monitor-specr-covid-above-throughout-count", em,
         "per_spec['SPEC-R'].summary.covid.n_above_throughout")
 
+    # ---- TABLE FILL (Phase 4 drafting; author-ratified 2026-07-24) --------
+    # Every number a table prints is a ledger row. Positional json_paths into
+    # frozen committed artifacts; row order is the artifact's committed order.
+    # TBL-2 (Section 5.3): e1's per-sector table, e1 output member order.
+    e1f = "e1_rolling_validation.json"
+    for i in range(17):
+        rn = f"r{i+1:02d}"
+        row(f"LB-E1-tbl2-{rn}-sector", e1f, f"sectors[{i}].sector", tol=0)
+        row(f"LB-E1-tbl2-{rn}-class", e1f, f"sectors[{i}].klass", tol=0)
+        row(f"LB-E1-tbl2-{rn}-spearman", e1f, f"sectors[{i}].spearman")
+        row(f"LB-E1-tbl2-{rn}-p", e1f,
+            f"sectors[{i}].p_one_sided_descriptive")
+    # TBL-4 (Sections 6.4/7.1): rank-ordered join artifact (tbl4_join.py).
+    tj = "tbl4_join.json"
+    for i in range(17):
+        rn = f"r{i+1:02d}"
+        row(f"LB-E5-tbl4-{rn}-share", tj, f"rows[{i}].pct_months_above_1")
+        row(f"LB-E5-tbl4-{rn}-gfc-status", tj, f"rows[{i}].gfc_status", tol=0)
+        row(f"LB-E5-tbl4-{rn}-gfc-first", tj, f"rows[{i}].gfc_first", tol=0)
+        row(f"LB-E5-tbl4-{rn}-covid-status", tj,
+            f"rows[{i}].covid_status", tol=0)
+        row(f"LB-E5-tbl4-{rn}-covid-first", tj,
+            f"rows[{i}].covid_first", tol=0)
+    # TBL-5 (Section 8.1): e10's country panel, e10 output order.
+    e10f = "e10_sovereign.json"
+    for i in range(18):
+        rn = f"r{i+1:02d}"
+        row(f"LB-E10-tbl5-{rn}-country", e10f, f"countries[{i}].country",
+            tol=0)
+        row(f"LB-E10-tbl5-{rn}-phi", e10f, f"countries[{i}].phi_detrended")
+        row(f"LB-E10-tbl5-{rn}-rho", e10f, f"countries[{i}].rho_calm")
+        row(f"LB-E10-tbl5-{rn}-npairs", e10f, f"countries[{i}].n_pairs")
+
     return R
 
 
@@ -456,7 +489,8 @@ def main() -> None:
         inputs = list(by_exp.get(exp_tag, []))
         # artifact hashes embedded in the output itself
         for key, algo in (("jst_md5", "md5"), ("eta_md5", "md5"),
-                          ("e1_md5", "md5"), ("e5_md5", "md5")):
+                          ("e1_md5", "md5"), ("e5_md5", "md5"),
+                          ("monitor_md5", "md5")):
             if key in data:
                 inputs.append({"id": key, algo: data[key]})
         if exp_tag == "E12":

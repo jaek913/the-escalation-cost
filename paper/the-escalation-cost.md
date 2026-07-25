@@ -99,10 +99,17 @@ Pre-crisis predicted damage ranking aligns with realized crisis damage (corrobor
 
 <!-- anchor: TBL-1 -->
 
-*TBL-1 token stub (GFC episode + components).*
+*Table TBL-1. GFC episode (2008-09): episode-level association between predicted D and realized inventory/sales deviation, with the component bake-off. The committed episode artifact carries episode statistics and components; per-sector regime detail is in Table TBL-2.*
 
-- LB-E2-gfc: {{LB-E2-gfc-n}} {{LB-E2-gfc-p}} {{LB-E2-gfc-spearman}} {{LB-E2-gfc-verdict}}
-- LB-E2-components: {{LB-E2-components-absdphi}} {{LB-E2-components-combined-ge}} {{LB-E2-components-rho-crisis}}
+| Statistic | Value |
+| --- | --- |
+| Sectors (n) | {{LB-E2-gfc-n}} |
+| Spearman, predicted D vs realized deviation | {{LB-E2-gfc-spearman}} |
+| One-sided p | {{LB-E2-gfc-p}} |
+| Verdict (pre-registered rule) | {{LB-E2-gfc-verdict}} |
+| Component alone: crisis rho (Spearman) | {{LB-E2-components-rho-crisis}} |
+| Component alone: abs delta phi (Spearman) | {{LB-E2-components-absdphi}} |
+| Combined D at least matches each component | {{LB-E2-components-combined-ge}} |
 
 
 ### 5.2 COVID Episode
@@ -115,11 +122,27 @@ The primary falsifier: rolling out-of-sample D predicts subsequent inventory-to-
 
 <!-- anchor: TBL-2 -->
 
-*TBL-2 token stub (rolling validation).*
+*Table TBL-2. Rolling 34-year out-of-sample validation, per sector: full-sample regime class, Spearman between trailing D and forward deviation, and the descriptive one-sided block-bootstrap p (alpha 0.05 reference; the verdict is panel-level, not per-sector). Panel result: {{LB-E1-panel-n-oscillating}} oscillating sectors ({{LB-E1-panel-n-chronic}} chronic-boundary), pooled mean Spearman {{LB-E1-panel-spearman}}, joint panel p {{LB-E1-panel-p}}, verdict {{LB-E1-panel-verdict}}; per-sector Spearman range {{LB-E1-range-min}} to {{LB-E1-range-max}} (descriptive). Estimator footnote: OLS AR(1) bias {{LB-T1-estimator-ols}} vs Yule-Walker {{LB-T1-estimator-yw}}; OLS less biased: {{LB-T1-estimator-ols-less-biased}} (supplementary, not-a-theorem).*
 
-- LB-E1-panel: {{LB-E1-panel-n-chronic}} {{LB-E1-panel-n-oscillating}} {{LB-E1-panel-p}} {{LB-E1-panel-spearman}} {{LB-E1-panel-verdict}}
-- LB-E1-range: {{LB-E1-range-max}} {{LB-E1-range-min}}
-- LB-T1-estimator: {{LB-T1-estimator-ols}} {{LB-T1-estimator-ols-less-biased}} {{LB-T1-estimator-yw}}
+| Sector | Regime class | Spearman | p (descriptive) |
+| --- | --- | --- | --- |
+| {{LB-E1-tbl2-r01-sector}} | {{LB-E1-tbl2-r01-class}} | {{LB-E1-tbl2-r01-spearman}} | {{LB-E1-tbl2-r01-p}} |
+| {{LB-E1-tbl2-r02-sector}} | {{LB-E1-tbl2-r02-class}} | {{LB-E1-tbl2-r02-spearman}} | {{LB-E1-tbl2-r02-p}} |
+| {{LB-E1-tbl2-r03-sector}} | {{LB-E1-tbl2-r03-class}} | {{LB-E1-tbl2-r03-spearman}} | {{LB-E1-tbl2-r03-p}} |
+| {{LB-E1-tbl2-r04-sector}} | {{LB-E1-tbl2-r04-class}} | {{LB-E1-tbl2-r04-spearman}} | {{LB-E1-tbl2-r04-p}} |
+| {{LB-E1-tbl2-r05-sector}} | {{LB-E1-tbl2-r05-class}} | {{LB-E1-tbl2-r05-spearman}} | {{LB-E1-tbl2-r05-p}} |
+| {{LB-E1-tbl2-r06-sector}} | {{LB-E1-tbl2-r06-class}} | {{LB-E1-tbl2-r06-spearman}} | {{LB-E1-tbl2-r06-p}} |
+| {{LB-E1-tbl2-r07-sector}} | {{LB-E1-tbl2-r07-class}} | {{LB-E1-tbl2-r07-spearman}} | {{LB-E1-tbl2-r07-p}} |
+| {{LB-E1-tbl2-r08-sector}} | {{LB-E1-tbl2-r08-class}} | {{LB-E1-tbl2-r08-spearman}} | {{LB-E1-tbl2-r08-p}} |
+| {{LB-E1-tbl2-r09-sector}} | {{LB-E1-tbl2-r09-class}} | {{LB-E1-tbl2-r09-spearman}} | {{LB-E1-tbl2-r09-p}} |
+| {{LB-E1-tbl2-r10-sector}} | {{LB-E1-tbl2-r10-class}} | {{LB-E1-tbl2-r10-spearman}} | {{LB-E1-tbl2-r10-p}} |
+| {{LB-E1-tbl2-r11-sector}} | {{LB-E1-tbl2-r11-class}} | {{LB-E1-tbl2-r11-spearman}} | {{LB-E1-tbl2-r11-p}} |
+| {{LB-E1-tbl2-r12-sector}} | {{LB-E1-tbl2-r12-class}} | {{LB-E1-tbl2-r12-spearman}} | {{LB-E1-tbl2-r12-p}} |
+| {{LB-E1-tbl2-r13-sector}} | {{LB-E1-tbl2-r13-class}} | {{LB-E1-tbl2-r13-spearman}} | {{LB-E1-tbl2-r13-p}} |
+| {{LB-E1-tbl2-r14-sector}} | {{LB-E1-tbl2-r14-class}} | {{LB-E1-tbl2-r14-spearman}} | {{LB-E1-tbl2-r14-p}} |
+| {{LB-E1-tbl2-r15-sector}} | {{LB-E1-tbl2-r15-class}} | {{LB-E1-tbl2-r15-spearman}} | {{LB-E1-tbl2-r15-p}} |
+| {{LB-E1-tbl2-r16-sector}} | {{LB-E1-tbl2-r16-class}} | {{LB-E1-tbl2-r16-spearman}} | {{LB-E1-tbl2-r16-p}} |
+| {{LB-E1-tbl2-r17-sector}} | {{LB-E1-tbl2-r17-class}} | {{LB-E1-tbl2-r17-spearman}} | {{LB-E1-tbl2-r17-p}} |
 
 
 ### 5.4 Beer Game Monte Carlo
@@ -166,11 +189,27 @@ The graded pre-registered claim was DROPPED with a limited-resolution caveat [@M
 
 <!-- anchor: TBL-4 -->
 
-*TBL-4 token stub (instability ranking + persistence + per-episode crossing record; full 17-sector fill at drafting from the committed outputs e5_instability_ranking.json and e5_monitor_tbl4.json).*
+*Table TBL-4. Seventeen-sector cross-section, ranked by SPEC-R mean exceedance (the amended primary key). Share is the fraction of months rho > 1 under SPEC-R - near one for most sectors, the saturation record. Episode columns are the SPEC-M monitoring record (Section 6.4): status in the onset +/- 24-month window and the first upward-crossing month ("none" where no crossing occurred). CHIPS footnote: ranks R4238 {{LB-E5-chips-rank-R-R4238}} (SPEC-R) / {{LB-E5-chips-rank-M-R4238}} (SPEC-M), A34SIS {{LB-E5-chips-rank-R-A34SIS}} / {{LB-E5-chips-rank-M-A34SIS}}; graded verdict {{LB-E5-chips-verdict}}. Persistence footnote: manufacturing-aggregate mean rho {{LB-E5-persistence-mfg-meanrho-R}} (SPEC-R) / {{LB-E5-persistence-mfg-meanrho-M}} (SPEC-M).*
 
-- LB-E5-ranking: {{LB-E5-ranking-r01-meanexc}} {{LB-E5-ranking-r01-sector}} {{LB-E5-ranking-r02-meanexc}} {{LB-E5-ranking-r02-sector}} {{LB-E5-ranking-r03-meanexc}} {{LB-E5-ranking-r03-sector}} {{LB-E5-ranking-r04-meanexc}} {{LB-E5-ranking-r04-sector}} {{LB-E5-ranking-r05-meanexc}} {{LB-E5-ranking-r05-sector}} {{LB-E5-ranking-r06-meanexc}} {{LB-E5-ranking-r06-sector}} {{LB-E5-ranking-r07-meanexc}} {{LB-E5-ranking-r07-sector}} {{LB-E5-ranking-r08-meanexc}} {{LB-E5-ranking-r08-sector}} {{LB-E5-ranking-r09-meanexc}} {{LB-E5-ranking-r09-sector}} {{LB-E5-ranking-r10-meanexc}} {{LB-E5-ranking-r10-sector}} {{LB-E5-ranking-r11-meanexc}} {{LB-E5-ranking-r11-sector}} {{LB-E5-ranking-r12-meanexc}} {{LB-E5-ranking-r12-sector}} {{LB-E5-ranking-r13-meanexc}} {{LB-E5-ranking-r13-sector}} {{LB-E5-ranking-r14-meanexc}} {{LB-E5-ranking-r14-sector}} {{LB-E5-ranking-r15-meanexc}} {{LB-E5-ranking-r15-sector}} {{LB-E5-ranking-r16-meanexc}} {{LB-E5-ranking-r16-sector}} {{LB-E5-ranking-r17-meanexc}} {{LB-E5-ranking-r17-sector}}
-- LB-E5-chips: {{LB-E5-chips-rank-M-A34SIS}} {{LB-E5-chips-rank-M-R4238}} {{LB-E5-chips-rank-R-A34SIS}} {{LB-E5-chips-rank-R-R4238}} {{LB-E5-chips-verdict}}
-- LB-E5-persistence: {{LB-E5-persistence-mfg-meanrho-M}} {{LB-E5-persistence-mfg-meanrho-R}}
+| Rank | Sector | Mean exceedance | Share > 1 | GFC (SPEC-M) | GFC first crossing | COVID (SPEC-M) | COVID first crossing |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | {{LB-E5-ranking-r01-sector}} | {{LB-E5-ranking-r01-meanexc}} | {{LB-E5-tbl4-r01-share}} | {{LB-E5-tbl4-r01-gfc-status}} | {{LB-E5-tbl4-r01-gfc-first}} | {{LB-E5-tbl4-r01-covid-status}} | {{LB-E5-tbl4-r01-covid-first}} |
+| 2 | {{LB-E5-ranking-r02-sector}} | {{LB-E5-ranking-r02-meanexc}} | {{LB-E5-tbl4-r02-share}} | {{LB-E5-tbl4-r02-gfc-status}} | {{LB-E5-tbl4-r02-gfc-first}} | {{LB-E5-tbl4-r02-covid-status}} | {{LB-E5-tbl4-r02-covid-first}} |
+| 3 | {{LB-E5-ranking-r03-sector}} | {{LB-E5-ranking-r03-meanexc}} | {{LB-E5-tbl4-r03-share}} | {{LB-E5-tbl4-r03-gfc-status}} | {{LB-E5-tbl4-r03-gfc-first}} | {{LB-E5-tbl4-r03-covid-status}} | {{LB-E5-tbl4-r03-covid-first}} |
+| 4 | {{LB-E5-ranking-r04-sector}} | {{LB-E5-ranking-r04-meanexc}} | {{LB-E5-tbl4-r04-share}} | {{LB-E5-tbl4-r04-gfc-status}} | {{LB-E5-tbl4-r04-gfc-first}} | {{LB-E5-tbl4-r04-covid-status}} | {{LB-E5-tbl4-r04-covid-first}} |
+| 5 | {{LB-E5-ranking-r05-sector}} | {{LB-E5-ranking-r05-meanexc}} | {{LB-E5-tbl4-r05-share}} | {{LB-E5-tbl4-r05-gfc-status}} | {{LB-E5-tbl4-r05-gfc-first}} | {{LB-E5-tbl4-r05-covid-status}} | {{LB-E5-tbl4-r05-covid-first}} |
+| 6 | {{LB-E5-ranking-r06-sector}} | {{LB-E5-ranking-r06-meanexc}} | {{LB-E5-tbl4-r06-share}} | {{LB-E5-tbl4-r06-gfc-status}} | {{LB-E5-tbl4-r06-gfc-first}} | {{LB-E5-tbl4-r06-covid-status}} | {{LB-E5-tbl4-r06-covid-first}} |
+| 7 | {{LB-E5-ranking-r07-sector}} | {{LB-E5-ranking-r07-meanexc}} | {{LB-E5-tbl4-r07-share}} | {{LB-E5-tbl4-r07-gfc-status}} | {{LB-E5-tbl4-r07-gfc-first}} | {{LB-E5-tbl4-r07-covid-status}} | {{LB-E5-tbl4-r07-covid-first}} |
+| 8 | {{LB-E5-ranking-r08-sector}} | {{LB-E5-ranking-r08-meanexc}} | {{LB-E5-tbl4-r08-share}} | {{LB-E5-tbl4-r08-gfc-status}} | {{LB-E5-tbl4-r08-gfc-first}} | {{LB-E5-tbl4-r08-covid-status}} | {{LB-E5-tbl4-r08-covid-first}} |
+| 9 | {{LB-E5-ranking-r09-sector}} | {{LB-E5-ranking-r09-meanexc}} | {{LB-E5-tbl4-r09-share}} | {{LB-E5-tbl4-r09-gfc-status}} | {{LB-E5-tbl4-r09-gfc-first}} | {{LB-E5-tbl4-r09-covid-status}} | {{LB-E5-tbl4-r09-covid-first}} |
+| 10 | {{LB-E5-ranking-r10-sector}} | {{LB-E5-ranking-r10-meanexc}} | {{LB-E5-tbl4-r10-share}} | {{LB-E5-tbl4-r10-gfc-status}} | {{LB-E5-tbl4-r10-gfc-first}} | {{LB-E5-tbl4-r10-covid-status}} | {{LB-E5-tbl4-r10-covid-first}} |
+| 11 | {{LB-E5-ranking-r11-sector}} | {{LB-E5-ranking-r11-meanexc}} | {{LB-E5-tbl4-r11-share}} | {{LB-E5-tbl4-r11-gfc-status}} | {{LB-E5-tbl4-r11-gfc-first}} | {{LB-E5-tbl4-r11-covid-status}} | {{LB-E5-tbl4-r11-covid-first}} |
+| 12 | {{LB-E5-ranking-r12-sector}} | {{LB-E5-ranking-r12-meanexc}} | {{LB-E5-tbl4-r12-share}} | {{LB-E5-tbl4-r12-gfc-status}} | {{LB-E5-tbl4-r12-gfc-first}} | {{LB-E5-tbl4-r12-covid-status}} | {{LB-E5-tbl4-r12-covid-first}} |
+| 13 | {{LB-E5-ranking-r13-sector}} | {{LB-E5-ranking-r13-meanexc}} | {{LB-E5-tbl4-r13-share}} | {{LB-E5-tbl4-r13-gfc-status}} | {{LB-E5-tbl4-r13-gfc-first}} | {{LB-E5-tbl4-r13-covid-status}} | {{LB-E5-tbl4-r13-covid-first}} |
+| 14 | {{LB-E5-ranking-r14-sector}} | {{LB-E5-ranking-r14-meanexc}} | {{LB-E5-tbl4-r14-share}} | {{LB-E5-tbl4-r14-gfc-status}} | {{LB-E5-tbl4-r14-gfc-first}} | {{LB-E5-tbl4-r14-covid-status}} | {{LB-E5-tbl4-r14-covid-first}} |
+| 15 | {{LB-E5-ranking-r15-sector}} | {{LB-E5-ranking-r15-meanexc}} | {{LB-E5-tbl4-r15-share}} | {{LB-E5-tbl4-r15-gfc-status}} | {{LB-E5-tbl4-r15-gfc-first}} | {{LB-E5-tbl4-r15-covid-status}} | {{LB-E5-tbl4-r15-covid-first}} |
+| 16 | {{LB-E5-ranking-r16-sector}} | {{LB-E5-ranking-r16-meanexc}} | {{LB-E5-tbl4-r16-share}} | {{LB-E5-tbl4-r16-gfc-status}} | {{LB-E5-tbl4-r16-gfc-first}} | {{LB-E5-tbl4-r16-covid-status}} | {{LB-E5-tbl4-r16-covid-first}} |
+| 17 | {{LB-E5-ranking-r17-sector}} | {{LB-E5-ranking-r17-meanexc}} | {{LB-E5-tbl4-r17-share}} | {{LB-E5-tbl4-r17-gfc-status}} | {{LB-E5-tbl4-r17-gfc-first}} | {{LB-E5-tbl4-r17-covid-status}} | {{LB-E5-tbl4-r17-covid-first}} |
 
 
 ### 7.2 Capacity Utilization Threshold
@@ -203,10 +242,28 @@ The pre-registered conditional-instability reading fired WITHDRAWN: the stationa
 
 <!-- anchor: TBL-5 -->
 
-*TBL-5 token stub (sovereign panel).*
+*Table TBL-5. Sovereign debt panel (18 countries, JST): detrended AR(1) persistence, calm-regime rho, and pair counts - presented as a characterization with the withdrawn reading, not as a crossing table. Stationary countries: {{LB-E10-calm-n-stationary}} of 18, phi range {{LB-E10-calm-phi-min}} to {{LB-E10-calm-phi-max}}, calm rho range {{LB-E10-calm-rho-min}} to {{LB-E10-calm-rho-max}}; explosive detrended estimates: {{LB-E10-calm-explosive}}. Dual-implementation guard: max disagreement {{LB-E10-calm-guard-dualimpl}}. Crisis branch: {{LB-E10-crisis-reading}}.*
 
-- LB-E10-calm: {{LB-E10-calm-explosive}} {{LB-E10-calm-guard-dualimpl}} {{LB-E10-calm-n-stationary}} {{LB-E10-calm-phi-max}} {{LB-E10-calm-phi-min}} {{LB-E10-calm-rho-max}} {{LB-E10-calm-rho-min}}
-- LB-E10-crisis: {{LB-E10-crisis-reading}}
+| Country | phi (detrended) | rho (calm) | n pairs |
+| --- | --- | --- | --- |
+| {{LB-E10-tbl5-r01-country}} | {{LB-E10-tbl5-r01-phi}} | {{LB-E10-tbl5-r01-rho}} | {{LB-E10-tbl5-r01-npairs}} |
+| {{LB-E10-tbl5-r02-country}} | {{LB-E10-tbl5-r02-phi}} | {{LB-E10-tbl5-r02-rho}} | {{LB-E10-tbl5-r02-npairs}} |
+| {{LB-E10-tbl5-r03-country}} | {{LB-E10-tbl5-r03-phi}} | {{LB-E10-tbl5-r03-rho}} | {{LB-E10-tbl5-r03-npairs}} |
+| {{LB-E10-tbl5-r04-country}} | {{LB-E10-tbl5-r04-phi}} | {{LB-E10-tbl5-r04-rho}} | {{LB-E10-tbl5-r04-npairs}} |
+| {{LB-E10-tbl5-r05-country}} | {{LB-E10-tbl5-r05-phi}} | {{LB-E10-tbl5-r05-rho}} | {{LB-E10-tbl5-r05-npairs}} |
+| {{LB-E10-tbl5-r06-country}} | {{LB-E10-tbl5-r06-phi}} | {{LB-E10-tbl5-r06-rho}} | {{LB-E10-tbl5-r06-npairs}} |
+| {{LB-E10-tbl5-r07-country}} | {{LB-E10-tbl5-r07-phi}} | {{LB-E10-tbl5-r07-rho}} | {{LB-E10-tbl5-r07-npairs}} |
+| {{LB-E10-tbl5-r08-country}} | {{LB-E10-tbl5-r08-phi}} | {{LB-E10-tbl5-r08-rho}} | {{LB-E10-tbl5-r08-npairs}} |
+| {{LB-E10-tbl5-r09-country}} | {{LB-E10-tbl5-r09-phi}} | {{LB-E10-tbl5-r09-rho}} | {{LB-E10-tbl5-r09-npairs}} |
+| {{LB-E10-tbl5-r10-country}} | {{LB-E10-tbl5-r10-phi}} | {{LB-E10-tbl5-r10-rho}} | {{LB-E10-tbl5-r10-npairs}} |
+| {{LB-E10-tbl5-r11-country}} | {{LB-E10-tbl5-r11-phi}} | {{LB-E10-tbl5-r11-rho}} | {{LB-E10-tbl5-r11-npairs}} |
+| {{LB-E10-tbl5-r12-country}} | {{LB-E10-tbl5-r12-phi}} | {{LB-E10-tbl5-r12-rho}} | {{LB-E10-tbl5-r12-npairs}} |
+| {{LB-E10-tbl5-r13-country}} | {{LB-E10-tbl5-r13-phi}} | {{LB-E10-tbl5-r13-rho}} | {{LB-E10-tbl5-r13-npairs}} |
+| {{LB-E10-tbl5-r14-country}} | {{LB-E10-tbl5-r14-phi}} | {{LB-E10-tbl5-r14-rho}} | {{LB-E10-tbl5-r14-npairs}} |
+| {{LB-E10-tbl5-r15-country}} | {{LB-E10-tbl5-r15-phi}} | {{LB-E10-tbl5-r15-rho}} | {{LB-E10-tbl5-r15-npairs}} |
+| {{LB-E10-tbl5-r16-country}} | {{LB-E10-tbl5-r16-phi}} | {{LB-E10-tbl5-r16-rho}} | {{LB-E10-tbl5-r16-npairs}} |
+| {{LB-E10-tbl5-r17-country}} | {{LB-E10-tbl5-r17-phi}} | {{LB-E10-tbl5-r17-rho}} | {{LB-E10-tbl5-r17-npairs}} |
+| {{LB-E10-tbl5-r18-country}} | {{LB-E10-tbl5-r18-phi}} | {{LB-E10-tbl5-r18-rho}} | {{LB-E10-tbl5-r18-npairs}} |
 
 
 ### 8.2 Unemployment Insurance
