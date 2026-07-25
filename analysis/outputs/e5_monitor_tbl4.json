@@ -1,0 +1,1127 @@
+{
+  "experiment": "E5",
+  "date": "2026-07-24",
+  "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
+  "e5_md5": "9a5472e480b72044b2fe376f7b9ce787",
+  "roll_win": 60,
+  "spec_R": {
+    "name": "SPEC-R",
+    "W": 12,
+    "bg": 3.0
+  },
+  "spec_M": {
+    "name": "SPEC-M",
+    "W": 8,
+    "bg": 0.05
+  },
+  "window_months": 24,
+  "sustain_months": 3,
+  "onsets": {
+    "gfc": "2008-09",
+    "covid": "2020-03"
+  },
+  "per_spec": {
+    "SPEC-R": {
+      "sectors": [
+        {
+          "sector": "AMTMIS",
+          "title": "Total Manufacturing I/S",
+          "mean_exceedance": 0.06437951742193417,
+          "peak_rho": 1.2206724443003882,
+          "mean_rho": 1.0643795174219342,
+          "pct_months_above_1": 1.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "AMDMIS",
+          "title": "Durable Goods I/S",
+          "mean_exceedance": 0.056637427160287426,
+          "peak_rho": 1.242987376635511,
+          "mean_rho": 1.0566374271602876,
+          "pct_months_above_1": 1.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "AMNMIS",
+          "title": "Nondurable Goods I/S",
+          "mean_exceedance": 0.061904643465775545,
+          "peak_rho": 1.1540054942194216,
+          "mean_rho": 1.0619046434657757,
+          "pct_months_above_1": 1.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "A34SIS",
+          "title": "Computers and Electronic Products I/S",
+          "mean_exceedance": 0.05990095528130071,
+          "peak_rho": 1.0956628979934904,
+          "mean_rho": 1.0599009552813006,
+          "pct_months_above_1": 1.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "A35SIS",
+          "title": "Electrical Equipment, Appliances and Components I/S",
+          "mean_exceedance": 0.05168434831285939,
+          "peak_rho": 1.0914571602870582,
+          "mean_rho": 1.0516652131672761,
+          "pct_months_above_1": 0.9915014164305949,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "A36SIS",
+          "title": "Transportation Equipment I/S",
+          "mean_exceedance": 0.03995458260039651,
+          "peak_rho": 1.368606214239971,
+          "mean_rho": 1.0393199480546302,
+          "pct_months_above_1": 0.9461756373937678,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "A31SIS",
+          "title": "Primary Metals I/S [2026-07-13 amendment]",
+          "mean_exceedance": 0.06837806560721346,
+          "peak_rho": 1.1524140918065577,
+          "mean_rho": 1.0683780656072135,
+          "pct_months_above_1": 1.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4231IM163SCEN",
+          "title": "Wholesale Motor Vehicles I/S",
+          "mean_exceedance": 0.04094357330545884,
+          "peak_rho": 1.2296898251979196,
+          "mean_rho": 1.0403717983944805,
+          "pct_months_above_1": 0.9461756373937678,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "crossing",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 0.8163265306122449,
+              "first_crossing": "2008-03-01",
+              "sustained_crossing": "2008-03-01",
+              "lead_months_vs_onset": 6,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4232IM163SCEN",
+          "title": "Wholesale Furniture I/S",
+          "mean_exceedance": 0.04013354800683089,
+          "peak_rho": 1.0940891413005354,
+          "mean_rho": 1.04000535896012,
+          "pct_months_above_1": 0.9858356940509915,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 0.8979591836734694,
+              "first_crossing": "2020-11-01",
+              "sustained_crossing": "2020-11-01",
+              "lead_months_vs_onset": -8,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4233IM163SCEN",
+          "title": "Wholesale Lumber/Construction I/S",
+          "mean_exceedance": 0.04716496577106149,
+          "peak_rho": 1.0908674017218378,
+          "mean_rho": 1.0471649657710616,
+          "pct_months_above_1": 1.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4234IM163SCEN",
+          "title": "Wholesale Professional/Commercial Equipment I/S",
+          "mean_exceedance": 0.051617642550981474,
+          "peak_rho": 1.0804345952146102,
+          "mean_rho": 1.0516176425509816,
+          "pct_months_above_1": 1.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4236IM163SCEN",
+          "title": "Wholesale Electrical/Electronics I/S",
+          "mean_exceedance": 0.048751366251328414,
+          "peak_rho": 1.0962584382972886,
+          "mean_rho": 1.0487502933332458,
+          "pct_months_above_1": 0.9943342776203966,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 0.9591836734693877,
+              "first_crossing": "2018-09-01",
+              "sustained_crossing": "2018-09-01",
+              "lead_months_vs_onset": 18,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4238IM163SCEN",
+          "title": "Wholesale Machinery I/S",
+          "mean_exceedance": 0.0637140663582436,
+          "peak_rho": 1.1390939935283035,
+          "mean_rho": 1.0637140663582436,
+          "pct_months_above_1": 1.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R423IRM163SCEN",
+          "title": "Wholesale Total Durables I/S",
+          "mean_exceedance": 0.061603729640777094,
+          "peak_rho": 1.1576159082991322,
+          "mean_rho": 1.061603729640777,
+          "pct_months_above_1": 1.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "MRTSIR441USS",
+          "title": "Retail Motor Vehicle Dealers I/S",
+          "mean_exceedance": 0.050680534538200255,
+          "peak_rho": 1.1007213938239169,
+          "mean_rho": 1.0506381064222696,
+          "pct_months_above_1": 0.9943181818181818,
+          "n_months": 352,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 0.9591836734693877,
+              "first_crossing": "2020-08-01",
+              "sustained_crossing": "2020-08-01",
+              "lead_months_vs_onset": -5,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "MRTSIR444USS",
+          "title": "Retail Building Materials I/S",
+          "mean_exceedance": 0.047149609176632155,
+          "peak_rho": 1.0887786776705723,
+          "mean_rho": 1.047108017290989,
+          "pct_months_above_1": 0.9886363636363636,
+          "n_months": 352,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 0.9183673469387755,
+              "first_crossing": "2019-07-01",
+              "sustained_crossing": "2019-07-01",
+              "lead_months_vs_onset": 8,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "MRTSIR452USS",
+          "title": "Retail General Merchandise I/S",
+          "mean_exceedance": 0.06504003723031007,
+          "peak_rho": 1.0883998783501216,
+          "mean_rho": 1.0650400372303102,
+          "pct_months_above_1": 1.0,
+          "n_months": 352,
+          "episodes": {
+            "gfc": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "above-throughout",
+              "above_at_window_start": true,
+              "n_window_months": 49,
+              "share_above_in_window": 1.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        }
+      ],
+      "summary": {
+        "gfc": {
+          "n_above_throughout": 16,
+          "n_never_above": 0,
+          "n_crossing": 1,
+          "n_crossing_before_onset": 1,
+          "mfg_status": "above-throughout",
+          "mfg_first_crossing": "none",
+          "mfg_sustained_crossing": "none"
+        },
+        "covid": {
+          "n_above_throughout": 13,
+          "n_never_above": 0,
+          "n_crossing": 4,
+          "n_crossing_before_onset": 2,
+          "mfg_status": "above-throughout",
+          "mfg_first_crossing": "none",
+          "mfg_sustained_crossing": "none"
+        }
+      }
+    },
+    "SPEC-M": {
+      "sectors": [
+        {
+          "sector": "AMTMIS",
+          "title": "Total Manufacturing I/S",
+          "mean_exceedance": 0.002078825874688907,
+          "peak_rho": 1.4044478201723678,
+          "mean_rho": 0.803407525656999,
+          "pct_months_above_1": 0.0226628895184136,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.08163265306122448,
+              "first_crossing": "2008-12-01",
+              "sustained_crossing": "2008-12-01",
+              "lead_months_vs_onset": -3,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.08163265306122448,
+              "first_crossing": "2020-02-01",
+              "sustained_crossing": "2020-04-01",
+              "lead_months_vs_onset": 1,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "AMDMIS",
+          "title": "Durable Goods I/S",
+          "mean_exceedance": 0.001984178197113005,
+          "peak_rho": 1.469408500433592,
+          "mean_rho": 0.775938015281654,
+          "pct_months_above_1": 0.028328611898016998,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.10204081632653061,
+              "first_crossing": "2009-01-01",
+              "sustained_crossing": "2009-01-01",
+              "lead_months_vs_onset": -4,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.10204081632653061,
+              "first_crossing": "2020-01-01",
+              "sustained_crossing": "2020-04-01",
+              "lead_months_vs_onset": 2,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "AMNMIS",
+          "title": "Nondurable Goods I/S",
+          "mean_exceedance": 0.0007295575626175135,
+          "peak_rho": 1.2035907335156268,
+          "mean_rho": 0.7941723355754611,
+          "pct_months_above_1": 0.0056657223796034,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.04081632653061224,
+              "first_crossing": "2020-05-01",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": -2,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "A34SIS",
+          "title": "Computers and Electronic Products I/S",
+          "mean_exceedance": 0.0,
+          "peak_rho": 0.9835688646630292,
+          "mean_rho": 0.7997159294264399,
+          "pct_months_above_1": 0.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "A35SIS",
+          "title": "Electrical Equipment, Appliances and Components I/S",
+          "mean_exceedance": 0.0,
+          "peak_rho": 0.9628834736961822,
+          "mean_rho": 0.7537164961300716,
+          "pct_months_above_1": 0.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "A36SIS",
+          "title": "Transportation Equipment I/S",
+          "mean_exceedance": 0.0024432010223595026,
+          "peak_rho": 1.84748313082648,
+          "mean_rho": 0.7362347655593015,
+          "pct_months_above_1": 0.0056657223796034,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.04081632653061224,
+              "first_crossing": "2020-04-01",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": -1,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "A31SIS",
+          "title": "Primary Metals I/S [2026-07-13 amendment]",
+          "mean_exceedance": 0.0015506925206233472,
+          "peak_rho": 1.1984632056441686,
+          "mean_rho": 0.8124835958630291,
+          "pct_months_above_1": 0.019830028328611898,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.10204081632653061,
+              "first_crossing": "2009-01-01",
+              "sustained_crossing": "2009-01-01",
+              "lead_months_vs_onset": -4,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.04081632653061224,
+              "first_crossing": "2020-05-01",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": -2,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4231IM163SCEN",
+          "title": "Wholesale Motor Vehicles I/S",
+          "mean_exceedance": 0.0019446326887301846,
+          "peak_rho": 1.4307076749352488,
+          "mean_rho": 0.735864974918227,
+          "pct_months_above_1": 0.0113314447592068,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.061224489795918366,
+              "first_crossing": "2008-12-01",
+              "sustained_crossing": "2008-12-01",
+              "lead_months_vs_onset": -3,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.02040816326530612,
+              "first_crossing": "2020-05-01",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": -2,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4232IM163SCEN",
+          "title": "Wholesale Furniture I/S",
+          "mean_exceedance": 0.0,
+          "peak_rho": 0.9759739828464842,
+          "mean_rho": 0.7322266916439891,
+          "pct_months_above_1": 0.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4233IM163SCEN",
+          "title": "Wholesale Lumber/Construction I/S",
+          "mean_exceedance": 0.0,
+          "peak_rho": 0.9598774867352542,
+          "mean_rho": 0.742359408275118,
+          "pct_months_above_1": 0.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4234IM163SCEN",
+          "title": "Wholesale Professional/Commercial Equipment I/S",
+          "mean_exceedance": 0.0,
+          "peak_rho": 0.9006716619137662,
+          "mean_rho": 0.7558822607007933,
+          "pct_months_above_1": 0.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4236IM163SCEN",
+          "title": "Wholesale Electrical/Electronics I/S",
+          "mean_exceedance": 0.0,
+          "peak_rho": 0.9864011752302373,
+          "mean_rho": 0.7512074696122327,
+          "pct_months_above_1": 0.0,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R4238IM163SCEN",
+          "title": "Wholesale Machinery I/S",
+          "mean_exceedance": 0.0004372484631163073,
+          "peak_rho": 1.1543487074800565,
+          "mean_rho": 0.7971505565084861,
+          "pct_months_above_1": 0.0028328611898017,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.02040816326530612,
+              "first_crossing": "2009-02-01",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": -5,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "R423IRM163SCEN",
+          "title": "Wholesale Total Durables I/S",
+          "mean_exceedance": 0.0020653758264338384,
+          "peak_rho": 1.2151277755274479,
+          "mean_rho": 0.8003700840313669,
+          "pct_months_above_1": 0.014164305949008499,
+          "n_months": 353,
+          "episodes": {
+            "gfc": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.08163265306122448,
+              "first_crossing": "2008-11-01",
+              "sustained_crossing": "2008-11-01",
+              "lead_months_vs_onset": -2,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.02040816326530612,
+              "first_crossing": "2020-05-01",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": -2,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "MRTSIR441USS",
+          "title": "Retail Motor Vehicle Dealers I/S",
+          "mean_exceedance": 1.9797904794413695e-05,
+          "peak_rho": 1.0069688624876336,
+          "mean_rho": 0.750189247686724,
+          "pct_months_above_1": 0.002840909090909091,
+          "n_months": 352,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "crossing",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.02040816326530612,
+              "first_crossing": "2020-05-01",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": -2,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "MRTSIR444USS",
+          "title": "Retail Building Materials I/S",
+          "mean_exceedance": 0.0,
+          "peak_rho": 0.9489938181380322,
+          "mean_rho": 0.7471554783006614,
+          "pct_months_above_1": 0.0,
+          "n_months": 352,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        },
+        {
+          "sector": "MRTSIR452USS",
+          "title": "Retail General Merchandise I/S",
+          "mean_exceedance": 0.0,
+          "peak_rho": 0.9469777410887485,
+          "mean_rho": 0.8055616616047324,
+          "pct_months_above_1": 0.0,
+          "n_months": 352,
+          "episodes": {
+            "gfc": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2008-09-01"
+            },
+            "covid": {
+              "status": "never-above",
+              "above_at_window_start": false,
+              "n_window_months": 49,
+              "share_above_in_window": 0.0,
+              "first_crossing": "none",
+              "sustained_crossing": "none",
+              "lead_months_vs_onset": null,
+              "onset_month": "2020-03-01"
+            }
+          }
+        }
+      ],
+      "summary": {
+        "gfc": {
+          "n_above_throughout": 0,
+          "n_never_above": 11,
+          "n_crossing": 6,
+          "n_crossing_before_onset": 0,
+          "mfg_status": "crossing",
+          "mfg_first_crossing": "2008-12-01",
+          "mfg_sustained_crossing": "2008-12-01"
+        },
+        "covid": {
+          "n_above_throughout": 0,
+          "n_never_above": 9,
+          "n_crossing": 8,
+          "n_crossing_before_onset": 2,
+          "mfg_status": "crossing",
+          "mfg_first_crossing": "2020-02-01",
+          "mfg_sustained_crossing": "2020-04-01"
+        }
+      }
+    }
+  }
+}

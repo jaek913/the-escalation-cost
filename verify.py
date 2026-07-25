@@ -25,8 +25,7 @@ CHECKS
   5. OUTLINE-TIE:   the family-prefix convention, bidirectional (OUTLINE
      v1.9 changelog; DECISIONS 44): every non-exempt OUTLINE LB family has
      >= 1 ledger row; every ledger id extends some OUTLINE family.
-     Exempt-deferred: LB-E4-naive, LB-E13-firm-bookend,
-     LB-E5-monitor.
+     Exempt-deferred: LB-E4-naive, LB-E13-firm-bookend.
   6. PAPER (arms at Phase 4 when paper/the-escalation-cost.md exists):
      every ledger id present at its {{LB-id}} token; no placeholders
      (TODO/TBD/XXX/STUB); every [@citekey] defined in the references
@@ -67,8 +66,7 @@ FIXTURES = ROOT / "verification" / "fixtures"
 STORE = pathlib.Path(os.environ.get(
     "EC_STORE", r"C:\Users\jaek9\Documents\LaggingTruth\The-Escalation-Cost"))
 
-TIE_EXEMPT = {"LB-E4-naive", "LB-E13-firm-bookend",
-              "LB-E5-monitor"}
+TIE_EXEMPT = {"LB-E4-naive", "LB-E13-firm-bookend"}
 
 # Embedded-input ids -> on-disk locations (everything else resolves via the
 # SOURCES.md "Pulled files" table's store-path column).
@@ -79,6 +77,7 @@ EMBEDDED_INPUTS = {
     "leg_b_source_sweep": STORE / "raw" / "phase26"
                           / "aggregated_chain_length_sweep.json",
     "e1_md5": OUTPUTS / "e1_rolling_validation.json",
+    "e5_md5": OUTPUTS / "e5_instability_ranking.json",
 }
 
 RED, GREEN, SKIP = "RED", "green", "SKIPPED"

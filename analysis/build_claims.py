@@ -407,6 +407,30 @@ def rows_spec():
     row("LB-FP-diagnostic-flagged-sectors", fp, "bet_b.flagged_sectors", tol=0)
     row("LB-FP-diagnostic-decay-sectors", fp, "bet_b.decay_sectors", tol=0)
 
+    # ---- E5 MONITORING / TBL-4 (Phase 4; DESIGN Sec. 8 amendment 2026-07-24;
+    #      characterization - crossing dates + counts, no verdict) -----------
+    em = "e5_monitor_tbl4.json"
+    row("LB-E5-monitor-specm-gfc-crossing-count", em,
+        "per_spec['SPEC-M'].summary.gfc.n_crossing")
+    row("LB-E5-monitor-specm-gfc-precede-count", em,
+        "per_spec['SPEC-M'].summary.gfc.n_crossing_before_onset")
+    row("LB-E5-monitor-specm-covid-crossing-count", em,
+        "per_spec['SPEC-M'].summary.covid.n_crossing")
+    row("LB-E5-monitor-specm-covid-precede-count", em,
+        "per_spec['SPEC-M'].summary.covid.n_crossing_before_onset")
+    row("LB-E5-monitor-specm-mfg-gfc-status", em,
+        "per_spec['SPEC-M'].summary.gfc.mfg_status", tol=0)
+    row("LB-E5-monitor-specm-mfg-gfc-first-crossing", em,
+        "per_spec['SPEC-M'].summary.gfc.mfg_first_crossing", tol=0)
+    row("LB-E5-monitor-specm-mfg-covid-status", em,
+        "per_spec['SPEC-M'].summary.covid.mfg_status", tol=0)
+    row("LB-E5-monitor-specm-mfg-covid-first-crossing", em,
+        "per_spec['SPEC-M'].summary.covid.mfg_first_crossing", tol=0)
+    row("LB-E5-monitor-specr-gfc-above-throughout-count", em,
+        "per_spec['SPEC-R'].summary.gfc.n_above_throughout")
+    row("LB-E5-monitor-specr-covid-above-throughout-count", em,
+        "per_spec['SPEC-R'].summary.covid.n_above_throughout")
+
     return R
 
 
@@ -432,7 +456,7 @@ def main() -> None:
         inputs = list(by_exp.get(exp_tag, []))
         # artifact hashes embedded in the output itself
         for key, algo in (("jst_md5", "md5"), ("eta_md5", "md5"),
-                          ("e1_md5", "md5")):
+                          ("e1_md5", "md5"), ("e5_md5", "md5")):
             if key in data:
                 inputs.append({"id": key, algo: data[key]})
         if exp_tag == "E12":

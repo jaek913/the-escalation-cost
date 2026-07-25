@@ -215,3 +215,15 @@ SIGNED 2026-07-24.
 7. PASS - input integrity: the e1 artifact's MD5 is computed from the exact bytes read and embedded in the output; the builder carries it as a hashed input and verify.py re-hashes the same committed path on every run.
 
 SIGNED 2026-07-24.
+
+## e5_monitor_tbl4
+
+1. PASS - main() -> run_monitoring -> per-sector episode analyses + summaries -> committed JSON; ledger reads the summary fields by path.
+2. PASS - dates and values carried in one aligned pass by the dated loader (same '.'-filter as e1's load_series, asserted value-identical per sector); rolling loop is pure positional; rho index t maps to dates[t] by construction.
+3. PASS - '.' missing tokens dropped at load exactly as the frozen loaders drop them; no other gap handling exists or is needed (341-obs gap-free member series, e1 class 7).
+4. PASS - strictly trailing windows (y[t-60:t]); episode windows are centered on onsets but every reported quantity (crossing month, status) is a property of the trailing-rho path; lead/lag is reported relative to onset, both signs possible, and the suite's planted legs confirm detection at the exact month with no forward leakage.
+5. N/A - no subsampling; the +/-24-month windows are fixed pre-run in the DESIGN amendment.
+6. PASS - each sector processed independently; summaries are counts over per-sector statuses, never cross-series computation.
+7. PASS - input integrity: 17 hashed FRED members via the frozen SECTOR_MAP (asserted 17); the committed e5 artifact's MD5 computed from the exact bytes read, embedded, and mapped in verify.py's EMBEDDED_INPUTS; full-sample stats asserted equal (1e-12) to E5's committed rows under both specs - the hard tie that made loader or construction drift impossible to miss.
+
+SIGNED 2026-07-24.
