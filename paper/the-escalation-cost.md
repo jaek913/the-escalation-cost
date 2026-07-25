@@ -16,9 +16,19 @@ Institutions steer feedback systems off trailing averages of persistent variable
 
 ## 1 Introduction
 
-Institutions steer feedback off trailing averages of persistent variables; after a regime change the estimator lags reality, and the loop pays for the lag [@Minsky-1986; @Hopp-Spearman-2008]. Prior literatures answer steady-state stability or optimal policy mix, not the transient cost of estimator lag during a regime transition - the gap this paper fills [@Disney-Towill-2002; @Dejonckheere-2003; @Li-Dorfler-2024; @Leng-2025; @Spiegler-2016]. Our contribution is a computable bound on that transient cost, its optimal-window corollary, an identity unifying them, and a program of pre-registered empirical and simulation tests that map the result's domain - including its failures - honestly.
+Every institution that steers a system steers it off a measurement, and every measurement of a persistent variable is a trailing average of some length. A central bank reads inflation over a window. A manufacturer sets inventory policy off recent demand. A rating agency assesses debt sustainability from years of fiscal data. Each of these windows is a choice, and each is usually made on grounds of statistical precision alone: longer windows give cleaner estimates, so longer is treated as safer.
+
+That reasoning holds exactly as long as the world stays in one regime. When the underlying persistence changes - when demand that used to revert starts to compound, when a fiscal position that used to stabilize starts to run - the trailing average keeps reporting the old regime for a while. During that stretch the institution is not making a small error. It is applying a control rule calibrated to conditions that no longer exist, to a system whose deviations are now amplifying rather than decaying. The loop pays for the lag, and the payment is not proportional to it [@Minsky-1986; @Hopp-Spearman-2008].
+
+This paper prices that payment. The result is a bound: damage during the blind period is the intensity of the new instability raised to the power of the institution's own adaptation time. Intensity and duration compound rather than add, so the cost of a slow measurement rises exponentially in exactly the situations where the measurement is most likely to be slow - and both inputs are quantities institutions already estimate, which makes the bound a diagnostic rather than a metaphor. Two corollaries follow directly: there is a unique optimal window that balances estimation precision against adaptation speed and it is available in closed form, and the safe operating point under regime-change risk sits strictly below the stability limit that steady-state analysis would license.
+
+The gap this fills is specific. The control-theoretic literature answers when a loop is stable in steady state, and answers it well; the empirical bullwhip literature measures amplification as it occurs; the adaptive-control literature bounds transient behavior for a controller that knows it is adapting. None of them prices what an institution loses in the interval between a regime changing and its own estimator noticing [@Disney-Towill-2002; @Dejonckheere-2003; @Li-Dorfler-2024; @Leng-2025; @Spiegler-2016].
+
+The contribution is therefore a computable bound on that transient cost, its optimal-window corollary, an identity unifying them across domains, and - equally - a program of pre-registered empirical and simulation tests that map where the result holds and where it does not. That second half is not a formality. The tests reported here include a rolling out-of-sample validation the framework passes, two domain extensions whose pre-registered readings were withdrawn when their preconditions failed, a capacity-threshold hypothesis that proved unadjudicable, a simulation result showing the framework's own remedy causes harm under conditions the theory does not cover, and a monitoring record showing that the paper's own instability dashboard confirms regime shifts rather than anticipating them. Each of those outcomes is reported at the strength the evidence supports, because a diagnostic whose failure modes are undocumented is not a diagnostic.
 
 ## 2 Related Work
+
+Six literatures bear on this result. The first establishes the stability conditions this paper takes as given; the second supplies the empirical phenomenon; the third and fourth ground the applications; the fifth supplies the institutional frame; the sixth contains the nearest formal relatives. Across all six, the recurring pattern is that the transient - the interval during which a system's own measurement is wrong about which regime it is in - is either assumed away or treated as a nuisance rather than priced.
 
 ### 2.1 Control-Theoretic Stability
 
@@ -26,59 +36,81 @@ The transfer-function and eigenvalue traditions establish when supply loops are 
 
 ### 2.2 Empirical Bullwhip
 
-Firm- and industry-level measurements establish the phenomenon our panel rides on [@Bray-Mendelson-2012; @Bray-Mendelson-2015; @Cachon-2007; @Shan-2014; @Dooley-2010; @Saricioglu-2025], with SPC-style monitoring as a method contrast [@Costantino-2014].
+Firm- and industry-level measurements establish the phenomenon our panel rides on [@Bray-Mendelson-2012; @Bray-Mendelson-2015; @Cachon-2007; @Shan-2014; @Dooley-2010; @Saricioglu-2025], with SPC-style monitoring as a method contrast [@Costantino-2014]. This work documents that amplification exists, varies across firms and sectors, and intensifies in crises. What it does not supply is a pre-crisis quantity that orders sectors by how much amplification they are about to suffer - which is precisely what the damage bound proposes and Section 5 tests out of sample.
 
 ### 2.3 Semiconductor Dynamics
 
-Sector-specific volatility and planning literature ground the CHIPS application [@Anderson-2000; @Monch-2011; @Nepal-2012; @Hopp-Spearman-2008].
+Sector-specific volatility and planning literature ground the CHIPS application [@Anderson-2000; @Monch-2011; @Nepal-2012; @Hopp-Spearman-2008]. Semiconductors are the natural stress case: long lead times, high capital intensity, and demand that swings hard. That literature also supplies the capacity-utilization intuition this paper tests directly in Section 7.2 - and, as reported there, fails to confirm.
 
 ### 2.4 Complexity and Resilience
 
-Complexity-performance and network-risk results motivate the persistence channel [@Bozarth-2009; @Choi-2001; @Novak-Eppinger-2001; @Serdarasan-2013; @Osadchiy-2016; @Graves-Tomlin-2003; @Tomlin-2006].
+Complexity-performance and network-risk results motivate the persistence channel [@Bozarth-2009; @Choi-2001; @Novak-Eppinger-2001; @Serdarasan-2013; @Osadchiy-2016; @Graves-Tomlin-2003; @Tomlin-2006]. The mechanism they identify - that structural complexity propagates and prolongs disturbances - is, in this paper's terms, a mechanism for high persistence, which is why the instability ranking in Section 7.1 and the complexity literature point at overlapping sets of sectors.
 
 ### 2.5 Minsky in Operations
 
-Stability breeding instability, drift toward boundaries, capability traps, and quality erosion supply the institutional frame [@Minsky-1986; @Rasmussen-1997; @Dekker-2011; @Repenning-Sterman-2001; @Repenning-Sterman-2002; @Oliva-Sterman-2001].
+Stability breeding instability, drift toward boundaries, capability traps, and quality erosion supply the institutional frame [@Minsky-1986; @Rasmussen-1997; @Dekker-2011; @Repenning-Sterman-2001; @Repenning-Sterman-2002; @Oliva-Sterman-2001]. This tradition explains why regime changes in the dangerous direction are not rare accidents but the expected consequence of a quiet period: calm conditions invite the very leverage, tightening, and margin-thinning that raise persistence. The measurement problem this paper prices is therefore structural rather than incidental - the transition is most likely to arrive exactly when the institution's long measurement window feels most justified.
 
 ### 2.6 Adaptation Rates and Transient Response
 
-Adaptive-control transient bounds are the nearest formal relatives of the blind-period cost [@Datta-Ioannou-1994; @Krstic-Kokotovic-1993; @Zang-Bitmead-1994; @Gibson-2013; @Haykin-1996; @Jungers-2009; @Plischke-Wirth-2008].
+Adaptive-control transient bounds are the nearest formal relatives of the blind-period cost [@Datta-Ioannou-1994; @Krstic-Kokotovic-1993; @Zang-Bitmead-1994; @Gibson-2013; @Haykin-1996]. Those results bound what happens while an adaptive controller converges, which is structurally the same question asked of a controller that is not designed to adapt at all - the ordinary institutional case, where the window is a fixed policy choice rather than a tuned gain. The joint-spectral-radius literature supplies the correct caution for products of differing matrices, which Appendix G.0 uses to scope the paper's per-step reading precisely rather than assume it away [@Jungers-2009; @Plischke-Wirth-2008].
 
 ## 3 The Framework in Brief
 
-The closed loop is a W x W companion matrix whose spectral radius rho determines stability; this is a verified input from the companion work, cited not re-proved [@Kim-MeasurementTrap]. A trailing estimator of window W adapts to a new persistence regime over adaptation time tau(W): the blind period [@Kim-AdaptationRate]. S-1 states the linearization scope: stability is read from the companion-matrix spectral radius under linearization. S-2 states the demand model: AR(1) with a single persistence parameter per regime.
+Three ingredients carry the whole argument, and two of them are inherited rather than re-proved here.
+
+The first is the loop. An institution measuring over a window W and feeding back at rate bg produces a closed loop whose linearization is a W x W companion matrix; its spectral radius rho decides stability. When rho is below one, deviations decay; above one, they compound. This is a verified input from the companion work, cited not re-proved [@Kim-MeasurementTrap].
+
+The second is the lag. A trailing estimator of window W does not learn a new persistence regime instantly; it converges over an adaptation time tau(W) that is proportional to the window. That interval - during which the institution is steering by a description of a regime it has already left - is the blind period [@Kim-AdaptationRate].
+
+The third is the composition, and it is this paper's contribution: what the blind period costs. Because deviations compound at the new regime's rate for the whole of it, the cost is the new intensity raised to the duration, and because the duration is set by the window the institution chose, the cost is a consequence of a measurement decision rather than of the shock alone. Two scope conditions govern throughout: stability is read from the companion-matrix spectral radius under linearization (S-1), and the managed variable follows an AR(1) with a single persistence parameter per regime (S-2).
 
 ## 4 The Measurement Damage Theorem
 
 ### 4.1 Setup
 
+An institution manages a variable it cannot observe without delay. The managed variable y_t follows AR(1) dynamics with persistence phi, and the institution estimates the state it is reacting to with a trailing average of window W - the last W observations, equally weighted. A feedback policy then adjusts the system at rate bg on the gap between that estimate and a target. Linearizing the resulting closed loop gives a W x W companion matrix A(phi, W, bg): the persistence and feedback structure occupy its first row, an identity shift sits below, and its spectral radius rho(A) decides whether deviations decay or compound [@Kim-MeasurementTrap; @Dejonckheere-2003].
+
 <!-- anchor: EQ-1 -->
 EQ-1 defines the managed variable, trailing estimator, and companion matrix A(phi, W, bg). Scope conditions S-1 and S-2 bind here.
 
+The window is the decision variable, and it is the source of the tension the rest of this section resolves. A long window estimates persistence precisely but adapts slowly; a short window adapts quickly but estimates noisily. When persistence is stable, only the first consideration matters and longer is better without limit. When persistence changes, the second consideration acquires a price - and Section 4.3 shows that price is finite, computable, and minimized at a unique interior window. Two restrictions carry through: stability is read from the linearized companion matrix rather than from the full nonlinear system (S-1), and the managed variable follows an AR(1) with a single persistence parameter per regime (S-2). Appendix G.0 states the full assumption set (A1 through A6), including the dominant-mode reading of damage that Remark G.0.1 scopes explicitly and Lemma G.1 replaces with a matrix-general bound.
+
 ### 4.2 Theorem 1: The Compound Damage Bound
+
+When true persistence steps from phi_1 to phi_2 at some moment, a trailing estimator does not notice immediately. For a stretch of time it continues to report the old regime, and the policy keeps applying a rule calibrated to conditions that no longer hold. This is the blind period, and its length is the estimator's adaptation time tau(W) = kappa * W, proportional to the window (A5). The theorem prices what happens inside it.
 
 <!-- anchor: THM-1 -->
 THM-1 (Compound Damage Bound): blind-period damage is bounded by D = (rho_2/rho_1)^tau.
 <!-- anchor: EQ-2 -->
-EQ-2 states the bound. S-3 restricts the domain to step-change regime transitions; compound multi-channel shocks are outside the model. The full written proof is P-THM-1 in Appendix G; the machine legs are the symbolic step-check ({{LB-T1-bound-symbolic}}) and the numeric stress grid (in-domain cells {{LB-T1-bound-numeric-indomain}}, counterexamples {{LB-T1-bound-numeric-counterexamples}}, all-pass {{LB-T1-bound-numeric-allpass}}).
+EQ-2 states the bound. The structure is the paper's central claim in one line: damage is not additive in the delay, it is exponential in it, with the base set by how much more unstable the new regime is (rho_2/rho_1) and the exponent set by how long the institution stays blind (tau). Intensity and duration multiply rather than add, so a modest increase in instability paired with a long measurement window produces damage that neither factor predicts alone. Both inputs are quantities institutions already estimate, which is what makes the bound a diagnostic rather than an abstraction. S-3 restricts the domain to step-change regime transitions; compound multi-channel shocks are outside the model. The full written proof is P-THM-1 in Appendix G; the machine legs are the symbolic step-check ({{LB-T1-bound-symbolic}}) and the numeric stress grid (in-domain cells {{LB-T1-bound-numeric-indomain}}, counterexamples {{LB-T1-bound-numeric-counterexamples}}, all-pass {{LB-T1-bound-numeric-allpass}}).
 
 ### 4.3 Theorem 2: The Optimal Measurement Window
+
+The trade-off is now explicit and has two opposing arms. Lengthening the window lowers estimation error - the asymptotic variance of the AR(1) estimate falls like (1 - phi^2)/W - while raising the exponential damage term, because a longer window means a longer blind period. Minimizing the sum of the two costs gives a first-order condition with a transcendental solution, and that solution is exactly the Lambert W function's domain.
 
 <!-- anchor: THM-2 -->
 THM-2: a unique interior optimal window W* exists in closed form via the Lambert W function [@Warburton-Disney-2007].
 <!-- anchor: EQ-3 -->
-EQ-3 states the closed form. Written proof P-THM-2 in Appendix G; machine legs {{LB-T2-wstar-symbolic}}, brute-force agreement {{LB-T2-wstar-numeric-match}} (match rate {{LB-T2-wstar-numeric-matchrate}}), unimodality failures {{LB-T2-wstar-numeric-unimodal-failures}}.
+EQ-3 states the closed form. The optimum is interior and unique under strict convexity of the loss (proved in Appendix G.3), which matters practically: there is one right window, not a range of defensible ones, and it can be computed from parameters an institution can estimate rather than chosen by convention. Written proof P-THM-2 in Appendix G; machine legs {{LB-T2-wstar-symbolic}}, brute-force agreement {{LB-T2-wstar-numeric-match}} (match rate {{LB-T2-wstar-numeric-matchrate}}), unimodality failures {{LB-T2-wstar-numeric-unimodal-failures}}.
 
 ### 4.4 Theorem 3: The Adaptation-Stability Identity
+
+The first two theorems are stated for a supply chain, but nothing in their derivation is about inventory. What the derivation uses is that some quantity compounds at a rate set by the regime in force, and that the regime in force is whatever the institution's measurement says it is. Any domain with those two features inherits the result.
 
 <!-- anchor: THM-3 -->
 THM-3 (Adaptation-Stability Identity): total damage is governed by intensity x duration across domains.
 <!-- anchor: EQ-4 -->
-EQ-4 states the identity. Written proof P-THM-3 in Appendix G; machine legs {{LB-THM3-symbolic}}, dual-path identity checks {{LB-THM3-numeric-checked}}, numeric leg pass {{LB-THM3-numeric}}.
+EQ-4 states the identity. This is what licenses Sections 6 through 8 to apply one framework to inventories, semiconductor capacity, sovereign debt, and unemployment insurance without re-deriving anything: the domains differ in what compounds and how the feedback is implemented, not in the structure of the cost. Written proof P-THM-3 in Appendix G; machine legs {{LB-THM3-symbolic}}, dual-path identity checks {{LB-THM3-numeric-checked}}, numeric leg pass {{LB-THM3-numeric}}.
 
 ### 4.5 Comparative Statics
 
-Signs of dW*/d(rho_2), dW*/d(phi), and dW*/d(Delta_phi), re-derived cleanly in this rebuild: symbolic legs {{LB-T2-statics-symbolic}}; numeric monotonicity counters {{LB-T2-statics-numeric-monophi-fail}} (phi) and {{LB-T2-statics-numeric-monobg-fail}} (bg) failures.
+How should the optimal window move when conditions change? Implicit differentiation of the first-order condition answers this cleanly, since strict convexity fixes the denominator's sign and every comparative static reduces to the sign of one partial derivative. The full re-derivation is Appendix G.4; the results are three confirmations and one correction.
+
+Higher instability intensity shortens the window. Raising rho_2 raises the damage term at every window length, so the optimum moves left: when the new regime is more explosive, the institution can afford less blindness. Larger expected regime changes shorten it too. A bigger Delta_phi raises kappa and so lengthens the blind period for any given window, which the optimum offsets by shrinking W. Dearer estimation error lengthens it, symmetrically: as the cost of acting on a noisy estimate rises relative to the cost of acting late, the optimum buys precision with time.
+
+The fourth static reverses the direction claimed by the source this rebuild replaces, and the reversal is forced by the model's own cost function. Holding regime-change intensity fixed, higher steady-state persistence favors a SHORTER window, not a longer one. The reason is the estimation-cost term itself: the asymptotic variance of the AR(1) estimator is (1 - phi^2)/W, which FALLS as phi approaches one. Under this variance model, highly persistent series are estimated more precisely per observation, not less, so persistence relieves estimation pressure rather than adding to it - and relieved pressure means the optimum spends fewer periods blind. The source's verbal justification ("coefficients near 1.0 require more data") contradicts the formula the source itself adopts; the correction was pre-registered before the rebuild's experiments ran. Including the indirect channel does not rescue the original sign: higher phi also raises rho_2 (A3), and that effect pushes the same direction, so the total derivative is unambiguously negative. Restoring the source's intuition would require a different estimation-cost model - one in which the difficulty of the estimation task rises with persistence, as it does for a unit-root boundary test - and that is a modeling choice outside the pinned cost function, not adopted here. No experiment in this paper consumes the sign of dW*/dphi, so the correction changes exposition rather than any operator or result.
+
+Machine verification: symbolic legs {{LB-T2-statics-symbolic}}; numeric monotonicity counters {{LB-T2-statics-numeric-monophi-fail}} (phi) and {{LB-T2-statics-numeric-monobg-fail}} (bg) failures.
 
 ### 4.6 The pi^2/2 Speed Limit and Optimal Safety Factor
 
@@ -89,7 +121,7 @@ EQ-6 gives the optimal safety factor k*. Under regime-change risk the optimal op
 
 ### 4.7 Connection to the Adaptation Tax
 
-The damage bound supplies the transition-cost foundation for the adaptation-tax framework [@Kim-AdaptationTax].
+The damage bound supplies the transition-cost foundation for the adaptation-tax framework [@Kim-AdaptationTax]. That framework asks what an institution pays to move between operating regimes; this theorem prices one specific component of that bill - the cost incurred while the institution's own measurement still describes the regime it has already left. The two results compose rather than compete: the adaptation tax counts the cost of changing, and the damage bound counts the cost of not yet knowing that change is required.
 
 ## 5 Empirical Validation
 
@@ -114,7 +146,7 @@ Pre-crisis predicted damage ranking aligns with realized crisis damage (corrobor
 
 ### 5.2 COVID Episode
 
-The pre-registered expected null: a compound shock where persistence drops sits outside the step-change model (L-01) [@Saricioglu-2025]. Result: Spearman {{LB-E3-covid-spearman}}, p {{LB-E3-covid-p}}, n {{LB-E3-covid-n}}, verdict {{LB-E3-covid-verdict}}; persistence dropped in {{LB-E3-persistence-direction-count}} of 17 sectors (majority {{LB-E3-persistence-direction-majority}}) - the falsifiable boundary direction confirmed.
+COVID was pre-registered as an expected null, and the reason matters more than the result. The theorem prices a step change in the dangerous direction: persistence rises, the loop that was decaying starts compounding, and the estimator's lag becomes expensive. COVID was not that shock. Demand collapsed and rebounded across multiple channels at once, and in most sectors measured persistence FELL rather than rose - a compound multi-channel disturbance sitting squarely outside the step-change model (L-01) [@Saricioglu-2025]. A framework that predicted damage rankings here would be a framework detecting crises in general rather than the specific mechanism it claims, so the null is the outcome that supports the theory and a positive result would have undermined it. Result: Spearman {{LB-E3-covid-spearman}}, p {{LB-E3-covid-p}}, n {{LB-E3-covid-n}}, verdict {{LB-E3-covid-verdict}}; persistence dropped in {{LB-E3-persistence-direction-count}} of 17 sectors (majority {{LB-E3-persistence-direction-majority}}) - the falsifiable boundary direction confirmed. This is the paper's cleanest demonstration that the diagnostic is scoped rather than universal: it declines to fire on the most famous supply-chain disruption in living memory, because that disruption is not the kind of event it prices.
 
 ### 5.3 Rolling 34-Year Validation
 
@@ -169,15 +201,17 @@ Acting on the diagnostic saves cost within this experiment's own construction (L
 
 ### 6.1 Bullwhip Instability Finding
 
-Measured sector inventory-to-sales persistence is high enough that standard order-up-to policies sit at or over the stability boundary [@Lee-1997a; @Lee-1997b; @Chen-2000]: manufacturing-aggregate mean rho {{LB-E5-persistence-mfg-meanrho-R}} (SPEC-R) and {{LB-E5-persistence-mfg-meanrho-M}} (SPEC-M).
+The classical bullwhip literature explains amplification through informational and incentive channels: demand signal processing, order batching, rationing games, price promotions [@Lee-1997a; @Lee-1997b; @Chen-2000]. The measurement channel adds a structural one that operates even when every informational pathology has been eliminated. If measured persistence is high enough, a standard order-up-to policy driven by a trailing estimate is not merely amplifying - it is operating at or past its own stability boundary, and the amplification is a property of the control loop rather than of anyone's behavior. That is what the panel shows: manufacturing-aggregate mean rho {{LB-E5-persistence-mfg-meanrho-R}} (SPEC-R) and {{LB-E5-persistence-mfg-meanrho-M}} (SPEC-M). Under the primary specification the boundary is not a line these sectors occasionally cross; it is a line they operate above, which is the finding that shapes everything in Section 7.
 
 ### 6.2 Spectral Radius Ordering Tool
 
-The ordering tool is a practitioner rule taking observed demand persistence as input, positioned against stability-region inversions and eigenvalue precedents [@Warburton-2004; @Wang-2013; @Udenio-2017; @Gaalman-Disney-2009; @Boute-2006]. S-4 states the data floor: monthly frequency with n at least 36 (60 preferred); quarterly filing data is insufficient.
+The practical form of the result is an ordering rule: estimate demand persistence from data a firm already has, compute the spectral radius its current window and feedback rate imply, and read off whether the loop sits below the boundary, above it, or close enough that a regime change would push it over. The rule inverts the same stability geometry as the region-inversion and eigenvalue precedents, but takes an estimated persistence as its input rather than a design parameter [@Warburton-2004; @Wang-2013; @Udenio-2017; @Gaalman-Disney-2009; @Boute-2006].
+
+The input requirement is the binding constraint in practice, and it is stated as a scope condition rather than a caveat. S-4 sets the data floor: monthly frequency with at least 36 observations, 60 preferred. Below that floor the persistence estimate carries more sampling error than the boundary comparison can absorb, and the tool returns a number with no informational content. Quarterly filing data is insufficient - a limitation with immediate consequences for who can use this and on what data, taken up next.
 
 ### 6.3 Firm-Level Bookend
 
-The data-floor illustration (S-4): quarterly filings cannot support the persistence estimate the tool needs. (Conditional on the deferred EDGAR entry; any quoted figure will be ledgered.)
+The data floor has a sharp institutional edge. The richest publicly available firm-level operating data - quarterly filings - cannot support the estimate the tool requires: a decade of quarterly observations yields roughly forty points, and the persistence estimate at that sample size is too noisy to place a firm relative to the boundary with any confidence. The consequence is a genuine limit on the diagnostic's reach rather than a temporary data-collection problem. Firms can run this analysis internally on their own monthly or weekly series; outside analysts working from public filings generally cannot, which is why every empirical result in this paper is sector-level rather than firm-level (S-4). (Conditional on the deferred EDGAR entry; any quoted figure will be ledgered.)
 
 ### 6.4 Cross-Sector Evidence
 
@@ -236,11 +270,11 @@ The knee hypothesis could not be adjudicated: NAICS 334 runs persistently above 
 
 ### 7.3 Complexity Drives Persistence
 
-Product and network complexity drive persistence, connecting the complexity literature to the instability ranking [@Bozarth-2009; @Novak-Eppinger-2001; @Choi-2001; @Serdarasan-2013; @Anderson-2000; @Ning-2023].
+Why should some sectors carry structurally higher persistence than others? The complexity literature supplies the mechanism: products with many interdependent components, networks with many tiers, and supply bases with dense interconnection propagate a disturbance through more paths and hold it longer [@Bozarth-2009; @Novak-Eppinger-2001; @Choi-2001; @Serdarasan-2013; @Anderson-2000; @Ning-2023]. In this paper's terms, complexity is a mechanism for persistence, and persistence is the input to the damage bound - which is why the sectors this framework ranks as structurally unstable and the sectors that literature identifies as structurally complex are substantially the same sectors, arrived at from different directions. The connection is offered as a coherence check on the ranking, not as a tested causal claim; no experiment here estimates complexity or its effect on rho.
 
 ### 7.4 Werner-CHIPS Nexus
 
-Directed credit creation as a possible financing channel for supplier-ecosystem stability - exploratory, and labeled as such [@Werner-1997; @Werner-2005; @Werner-2014a; @Werner-2014b; @Alfaro-2025; @Ahn-Tan-2025].
+One financing question follows naturally and is raised here as exploration rather than result. If a supplier ecosystem's instability is structural, stabilizing it requires investment in the tiers that carry the persistence, not only in the visible final-assembly stage - and the composition of credit, not merely its quantity, determines whether such investment happens. The directed-credit tradition argues exactly this, that where newly created credit is channeled shapes real outcomes in ways aggregate monetary measures conceal [@Werner-1997; @Werner-2005; @Werner-2014a; @Werner-2014b], and recent work on industrial-policy financing raises the same composition question for semiconductor programs specifically [@Alfaro-2025; @Ahn-Tan-2025]. Whether that channel operates as the tradition claims is well outside anything this paper tests; the nexus is flagged as a direction, explicitly labeled exploratory, and carries no ledgered quantity.
 
 ## 8 Cross-Domain Extensions
 
@@ -284,15 +318,21 @@ The pre-registered procyclical-feedback reading fired WITHDRAWN [@Anderson-Meyer
 
 ### 9.1 Three-Parameter Audit
 
-The three-parameter audit (phi, W, bg) generalizes the diagnostic; EQ-2 and EQ-5 are its instruments [@Rasmussen-1997; @Dekker-2011].
+Stripped to essentials, the diagnostic asks an institution three questions. How persistent is the variable you are steering (phi)? How long is the window you steer by (W)? How hard do you push on the gap (bg)? Those three numbers determine the spectral radius, the spectral radius determines whether deviations decay or compound, and the pair (rho, tau) determines what a regime change costs while your measurement catches up. EQ-2 and EQ-5 are the instruments: the first prices the blind period, the second says whether the loop is stable at all.
+
+The audit's value is that all three parameters are observable to the institution itself, and two of them are policy choices. An organization that cannot change how persistent its environment is can still change how long it looks and how hard it reacts - and the framework says precisely which of those levers is worth pulling in which conditions. This is also why the audit belongs in the safety-boundary tradition rather than the forecasting one: the question is not what will happen, but how far the current operating point sits from a boundary past which the institution's own control actions amplify rather than dampen [@Rasmussen-1997; @Dekker-2011].
 
 ### 9.2 Reverse-Engineering Principle
 
-Observed damage patterns imply the loop parameters that produced them.
+The bound runs in both directions. Forward, it prices damage from known loop parameters. Backward, an observed damage pattern constrains the parameters that could have produced it: a deviation that persisted for a known number of periods and grew by a known factor implies a range of (rho, tau) pairs, and tau implies a measurement window. An institution that does not know its own effective window - a common situation, since windows are often embedded in inherited procedures, vendor defaults, and reporting cadences rather than chosen deliberately - can therefore infer it from its own crisis history.
+
+The inference is coarse and this paper does not test it; it is stated as a principle the identity licenses, not as a validated method. But it points at the practical failure the framework is ultimately about. Institutions rarely decide their measurement windows. They inherit them, and then discover during a regime change what the inheritance costs.
 
 ### 9.3 Domain Interventions
 
-Interventions ranked by which parameter they move.
+Ranking interventions by which parameter they move clarifies why some familiar remedies underperform. Interventions that shorten the window (faster reporting, higher-frequency data, nowcasting) attack tau directly and pay off exponentially, because tau sits in the exponent. Interventions that reduce feedback aggressiveness (damping, smoothing, rate limits) lower rho and can move a loop back inside the stability boundary, but they trade responsiveness for stability and Section 6.5 states the conditions under which that trade is worth making. Interventions that reduce underlying persistence (supply-base simplification, buffer capacity, demand pooling) are the most durable and the slowest to implement, since they change the environment rather than the controller.
+
+Two cautions carry from this paper's own results and are not optional. First, the ordering above assumes the regime change is of the kind the theorem prices; the COVID episode shows that compound shocks in the opposite direction are outside it. Second, the simulation studies in Appendix F show that the framework's own remedy - adapting the damping to estimated persistence - is harmful in conditions the theory does not cover, specifically when persistence itself is drifting rather than stepping (S-8). An institution that adopts the diagnostic without adopting its scope conditions has bought a tool that will fire confidently in exactly the circumstances where it is wrong.
 
 ## 10 Forward Prediction: Self-Service Diagnostic
 
@@ -436,15 +476,17 @@ Theorem machine-check detail (both legs per theorem, per the two-row rule) and e
 
 ## Appendix C: Companion Matrix Spectral Radii by Domain
 
-Cross-domain rho computations supporting Table TBL-4 and Table TBL-5.
+Cross-domain rho computations supporting Table TBL-4 and Table TBL-5. The construction is identical in every domain and only the inputs change: an estimated persistence, a window, and an assumed feedback strength generate a companion matrix whose spectral radius is computed directly. Two features of these computations require emphasis because they bound how the cross-domain numbers may be read.
+
+The feedback strengths are assumption-driven proxies rather than estimates (S-7). Persistence is estimated from data in every domain, but bg - how hard the institution pushes on the measured gap - is not identified from the series, so the cross-domain radii are reported across a grid of feedback strengths rather than at a single fitted value. Consequently a cross-domain rho is a conditional statement of the form "at this feedback strength, this loop would sit here relative to the boundary," never a measurement of where an institution actually sits. The sovereign and unemployment-insurance readings in Section 8 are governed by this scope condition, and both pre-registered crossing claims were withdrawn when their preconditions failed, which is the honest consequence of taking the condition seriously rather than treating the grid as a set of estimates.
 
 ## Appendix D: Mitigation Effectiveness
 
-Mitigation effectiveness under the damped policies, supporting Section 6.5.
+Mitigation effectiveness under the damped policies, supporting Section 6.5. The relevant comparison is not whether a damped policy outperforms an undamped one on average, but whether it does so in the specific configuration an institution occupies - because the simulation studies establish that the answer changes sign across that space. Damping helps decisively in genuinely shifted, persistent regimes; it costs little in stationary conditions where the gate rarely engages; and it inflicts real harm in noisy environments where the estimator's own variance drives the gate on and off, and in drifting-persistence environments where no estimate of a stable parameter exists to gate on (S-8). The mitigation question is therefore inseparable from the diagnostic question: the value of acting depends on the same persistence structure the diagnostic is measuring, which is why this paper reports where the remedy fails at equal length to where it works.
 
 ## Appendix E: Beer Game Simulation Parameters
 
-The frozen calibration behind Table TBL-3 (S-5 states the simulation scope).
+The frozen calibration behind Table TBL-3. The environment is a linear single-echelon core with the stated extensions and synthetic AR(1) demand, and the calibration was fixed before the comparison ran (S-5). The comparator deserves explicit note: the baseline is a self-calibrating base-stock policy, not a naive or deliberately weakened rule, because a diagnostic that only beats a straw policy demonstrates nothing about its value. The reported cost reduction is a property of this construction and this construction only. It is not a claim about deployed systems, and the audit that closed this experiment removed an inherited comparison to an external benchmark figure that could not be traced to its source (L-03).
 
 ## Appendix F: Additional Simulation Studies
 
