@@ -151,12 +151,18 @@ Acting on the diagnostic saves cost within this experiment's own construction (L
 
 <!-- anchor: TBL-3 -->
 
-*TBL-3 token stub (Beer Game).*
+*Table TBL-3. Beer Game Monte Carlo, mean cost by algorithm with the paired comparison - a property of E4's own construction, model-bound per the audit (the source-fidelity claim is withdrawn; no external benchmark figure is carried).*
 
-- LB-E4-erp: {{LB-E4-erp}}
-- LB-E4-tool: {{LB-E4-tool}} {{LB-E4-tool-p}} {{LB-E4-tool-phi-engagement}} {{LB-E4-tool-relreduction}} {{LB-E4-tool-verdict}}
-- LB-E4-full: {{LB-E4-full}}
-- LB-E4-winrate: {{LB-E4-winrate}}
+| Statistic | Value |
+| --- | --- |
+| Mean cost, self-calibrating base-stock (ERP-style baseline) | {{LB-E4-erp}} |
+| Mean cost, phi-gated spectral damping (the tool) | {{LB-E4-tool}} |
+| Mean cost, full theorem policy | {{LB-E4-full}} |
+| Paired p, tool vs baseline | {{LB-E4-tool-p}} |
+| Relative cost reduction, tool vs baseline | {{LB-E4-tool-relreduction}} |
+| Verdict (pre-registered rule) | {{LB-E4-tool-verdict}} |
+| Engagement persistence (phi at which the gate engages; a property of this construction) | {{LB-E4-tool-phi-engagement}} |
+| Pairwise win rate, full theorem vs spectral | {{LB-E4-winrate}} |
 
 
 ## 6 Supply Chain Application
@@ -218,10 +224,14 @@ The knee hypothesis could not be adjudicated: NAICS 334 runs persistently above 
 
 <!-- anchor: TBL-6 -->
 
-*TBL-6 token stub (utilization bins).*
+*Table TBL-6. Semiconductor (NAICS 334) mean rho by capacity-utilization bin - an estimate/characterization, not a threshold-crossing table: the band sits entirely above the boundary at every utilization level, so no capacity knee is detectable in this statistic and NO verdict is attached (the pre-registered rule's outcome, {{LB-E6-threshold-rule-outcome}}, is reported alongside, not as the finding). Current reading, as context only: utilization {{LB-E6-current-utilization}} ({{LB-E6-current-month}}).*
 
-- LB-E6-threshold: {{LB-E6-threshold-bin1-lt75-mean}} {{LB-E6-threshold-bin1-lt75-n}} {{LB-E6-threshold-bin2-75-85-mean}} {{LB-E6-threshold-bin2-75-85-n}} {{LB-E6-threshold-bin3-85-90-mean}} {{LB-E6-threshold-bin3-85-90-n}} {{LB-E6-threshold-bin4-ge90-mean}} {{LB-E6-threshold-bin4-ge90-n}} {{LB-E6-threshold-rule-outcome}}
-- LB-E6-current: {{LB-E6-current-month}} {{LB-E6-current-utilization}}
+| Utilization bin (%) | Mean rho | n (months) |
+| --- | --- | --- |
+| below 75 | {{LB-E6-threshold-bin1-lt75-mean}} | {{LB-E6-threshold-bin1-lt75-n}} |
+| 75 to 85 | {{LB-E6-threshold-bin2-75-85-mean}} | {{LB-E6-threshold-bin2-75-85-n}} |
+| 85 to 90 | {{LB-E6-threshold-bin3-85-90-mean}} | {{LB-E6-threshold-bin3-85-90-n}} |
+| 90 and above | {{LB-E6-threshold-bin4-ge90-mean}} | {{LB-E6-threshold-bin4-ge90-n}} |
 
 
 ### 7.3 Complexity Drives Persistence
@@ -397,20 +407,31 @@ This paper was produced with substantial AI assistance. Claude (Anthropic) serve
 Data sources and identifiers mirror the committed data registry; Table TBL-A lists them.
 
 <!-- anchor: TBL-A -->
-*TBL-A token stub: mirrors data/SOURCES.md (no ledger values).*
+*Table TBL-A. Data sources and identifiers (provenance summary; the authoritative per-file registry - exact identifiers, byte counts, SHA256 hashes, store paths, and replicator tolerances - is the generated data/SOURCES.md, which this table mirrors and never supersedes).*
+
+| Source group | Provider / identifier | Frequency | Used by |
+| --- | --- | --- | --- |
+| 17-member inventory/sales panel (7 manufacturing, 7 wholesale, 3 retail; frozen member map) | FRED (US Census / Fed), series ids per the frozen map in data/SOURCES.md | monthly, SA | E1, E2, E3, E5, monitoring record |
+| Auxiliary series (audit-trail chemical products, aerospace inventories/shipments pair, three non-member wholesale lines) | FRED, per manifest | monthly, SA | audit / aux per manifest |
+| Semiconductor capacity utilization | FRED CAPUTLG3344S | monthly, SA | E6 |
+| Sovereign macrohistory panel (18 countries, 1870-2020) | Jorda-Schularick-Taylor Macrohistory, Release 6 | annual | E10 |
+| Unemployment-insurance claims, all jurisdictions | US DOL ETA 539 | weekly | E11 |
+| Source simulation sweep (9,000 trials; fixed in-house artifact) | aggregated chain-length sweep, source Phase 2.6 record | fixed artifact | E7 regression record; E12 leg B |
 
 ## Appendix B: Validation and Robustness
 
 Theorem machine-check detail (both legs per theorem, per the two-row rule) and estimator robustness supporting Section 4 and Section 5.3.
 
-*Theorem-leg token stub.*
+*Machine verification of the formal results (both legs per theorem, per the two-row rule; the written proofs are Appendix G).*
 
-- LB-T1-bound: {{LB-T1-bound-numeric-allpass}} {{LB-T1-bound-numeric-counterexamples}} {{LB-T1-bound-numeric-indomain}} {{LB-T1-bound-symbolic}}
-- LB-T2-wstar: {{LB-T2-wstar-numeric-match}} {{LB-T2-wstar-numeric-matchrate}} {{LB-T2-wstar-numeric-unimodal-failures}} {{LB-T2-wstar-symbolic}}
-- LB-T2-statics: {{LB-T2-statics-numeric-monobg-fail}} {{LB-T2-statics-numeric-monophi-fail}} {{LB-T2-statics-symbolic}}
-- LB-T3-kstar: {{LB-T3-kstar-allbelow1}} {{LB-T3-kstar-inband}} {{LB-T3-kstar-mfg-argmin}} {{LB-T3-kstar-verdict}}
-- LB-THM3: {{LB-THM3-numeric}} {{LB-THM3-numeric-checked}} {{LB-THM3-symbolic}}
-- LB-T1-estimator: {{LB-T1-estimator-ols}} {{LB-T1-estimator-ols-less-biased}} {{LB-T1-estimator-yw}}
+| Result | Symbolic leg | Numeric leg |
+| --- | --- | --- |
+| THM-1 (boundary bound) | {{LB-T1-bound-symbolic}} | all-pass {{LB-T1-bound-numeric-allpass}}, counterexamples {{LB-T1-bound-numeric-counterexamples}}, in-domain {{LB-T1-bound-numeric-indomain}} |
+| THM-2 (closed-form W*) | {{LB-T2-wstar-symbolic}} | brute-force match {{LB-T2-wstar-numeric-match}} at rate {{LB-T2-wstar-numeric-matchrate}}, unimodality failures {{LB-T2-wstar-numeric-unimodal-failures}} |
+| THM-2 comparative statics (corrected re-derivation) | {{LB-T2-statics-symbolic}} | monotonicity failures: phi {{LB-T2-statics-numeric-monophi-fail}}, bg {{LB-T2-statics-numeric-monobg-fail}} |
+| THM-3 (adaptation-stability identity) | {{LB-THM3-symbolic}} | pass {{LB-THM3-numeric}}, dual-path checks {{LB-THM3-numeric-checked}} |
+| Proposition k* (safety factor; numeric legs, written companion in Appendix G) | - | mfg argmin {{LB-T3-kstar-mfg-argmin}}, in-band {{LB-T3-kstar-inband}}, all-below-one {{LB-T3-kstar-allbelow1}}, verdict {{LB-T3-kstar-verdict}} |
+| Estimator comparison (supplementary, not-a-theorem) | - | OLS bias {{LB-T1-estimator-ols}} vs Yule-Walker {{LB-T1-estimator-yw}}; OLS less biased {{LB-T1-estimator-ols-less-biased}} |
 
 
 ## Appendix C: Companion Matrix Spectral Radii by Domain
@@ -431,17 +452,35 @@ Four studies: the chain-length sweep, the pricing analysis (S-6 states the prici
 
 <!-- anchor: TBL-7 -->
 
-*TBL-7 token stub (chain-length / pricing / hysteresis / non-stationarity).*
+*Table TBL-7. The four Appendix F simulation studies, presented as their honest headlines: a capacity-conditional gradient map (not an unconditional crossover), a value cliff with withdrawn attribution, a resolved robust/fragile split, and the recipe-level non-stationarity result. Full grids with CIs and resolution flags live in the committed outputs.*
 
-- LB-E7-gradient: {{LB-E7-gradient-cap13-ar1high-L4}} {{LB-E7-gradient-cap13-ar1high-L6}} {{LB-E7-gradient-cap13-ar1high-L8}} {{LB-E7-gradient-cap24-ar1high-L4}} {{LB-E7-gradient-cap24-ar1high-L4-resolved}} {{LB-E7-gradient-cap24-ar1high-L6}} {{LB-E7-gradient-cap24-ar1high-L6-resolved}} {{LB-E7-gradient-cap24-ar1high-L8}} {{LB-E7-gradient-cap24-ar1high-L8-resolved}} {{LB-E7-gradient-n-benefit}} {{LB-E7-gradient-n-harm}} {{LB-E7-gradient-n-resolved}} {{LB-E7-gradient-n-unresolved}}
-- LB-E7-calibration: {{LB-E7-calibration-L4-ours}} {{LB-E7-calibration-L4-source}} {{LB-E7-calibration-L4-source-in-ci}} {{LB-E7-calibration-L6-ours}} {{LB-E7-calibration-L6-source}} {{LB-E7-calibration-L6-source-in-ci}} {{LB-E7-calibration-L8-ours}} {{LB-E7-calibration-L8-source}} {{LB-E7-calibration-L8-source-in-ci}}
-- LB-E8-up: {{LB-E8-up-cap18x-mean}} {{LB-E8-up-cap24x-mean}} {{LB-E8-up-cap30x-mean}} {{LB-E8-up-claima-cipct-hi}} {{LB-E8-up-claima-cipct-lo}} {{LB-E8-up-claima-mean}} {{LB-E8-up-claimb-mean}} {{LB-E8-up-claimb-sigma}} {{LB-E8-up-claimb-verdict}}
-- LB-E8-down: {{LB-E8-down-level_shift_down_persistent-mean}} {{LB-E8-down-level_shift_down_persistent-sigma}} {{LB-E8-down-low_phi_shift_down-mean}} {{LB-E8-down-low_phi_shift_down-sigma}} {{LB-E8-down-mid_phi_shift_down-mean}} {{LB-E8-down-mid_phi_shift_down-sigma}}
-- LB-E9-robust: {{LB-E9-robust-h000-benefit}} {{LB-E9-robust-h000-sigma}} {{LB-E9-robust-h010-benefit}} {{LB-E9-robust-h010-sigma}} {{LB-E9-robust-h030-benefit}} {{LB-E9-robust-h030-sigma}} {{LB-E9-robust-h060-benefit}} {{LB-E9-robust-h060-sigma}}
-- LB-E9-fragile: {{LB-E9-fragile-h000-benefit}} {{LB-E9-fragile-h000-sigma}} {{LB-E9-fragile-h010-benefit}} {{LB-E9-fragile-h010-sigma}} {{LB-E9-fragile-h030-benefit}} {{LB-E9-fragile-h030-sigma}} {{LB-E9-fragile-h060-benefit}} {{LB-E9-fragile-h060-sigma}}
-- LB-E9-verdict: {{LB-E9-verdict}}
-- LB-E9-fidelity: {{LB-E9-fidelity-maxreldiff}} {{LB-E9-fidelity-tier}}
-- LB-E12-oracle: {{LB-E12-oracle-L4x13-mean}} {{LB-E12-oracle-L8x24-mean}} {{LB-E12-oracle-fixed-L8x18-mean}} {{LB-E12-oracle-fixed-L8x24-mean}} {{LB-E12-oracle-harm-all-drift}} {{LB-E12-oracle-legb-L8x18-fixedvsols}} {{LB-E12-oracle-legb-L8x18-fixedvsoracle}} {{LB-E12-oracle-legb-L8x24-fixedvsols}} {{LB-E12-oracle-legb-L8x24-fixedvsoracle}} {{LB-E12-oracle-paradox-count}} {{LB-E12-oracle-verdict}} {{LB-E12-oracle-winscheck}}
+**Panel A - chain-length x capacity gradient (E7; ar1_high, tool-vs-disabled cost delta; positive = harm).** Grid counts: {{LB-E7-gradient-n-resolved}} of 36 cells resolved ({{LB-E7-gradient-n-harm}} harm, {{LB-E7-gradient-n-benefit}} benefit, {{LB-E7-gradient-n-unresolved}} unresolved).
+
+| Capacity | L = 4 | L = 6 | L = 8 |
+| --- | --- | --- | --- |
+| 1.3x | {{LB-E7-gradient-cap13-ar1high-L4}} | {{LB-E7-gradient-cap13-ar1high-L6}} | {{LB-E7-gradient-cap13-ar1high-L8}} |
+| 2.4x | {{LB-E7-gradient-cap24-ar1high-L4}} (resolved: {{LB-E7-gradient-cap24-ar1high-L4-resolved}}) | {{LB-E7-gradient-cap24-ar1high-L6}} (resolved: {{LB-E7-gradient-cap24-ar1high-L6-resolved}}) | {{LB-E7-gradient-cap24-ar1high-L8}} (resolved: {{LB-E7-gradient-cap24-ar1high-L8-resolved}}) |
+
+**Panel B - resolution vs the source's 50-seed record (ar1_high x 2.4x; a regression check, not a calibration).**
+
+| Cell | Ours (250 seeds) | Source (50 seeds) | Source inside our CI |
+| --- | --- | --- | --- |
+| L = 4 | {{LB-E7-calibration-L4-ours}} | {{LB-E7-calibration-L4-source}} | {{LB-E7-calibration-L4-source-in-ci}} |
+| L = 6 | {{LB-E7-calibration-L6-ours}} | {{LB-E7-calibration-L6-source}} | {{LB-E7-calibration-L6-source-in-ci}} |
+| L = 8 | {{LB-E7-calibration-L8-ours}} | {{LB-E7-calibration-L8-source}} | {{LB-E7-calibration-L8-source-in-ci}} |
+
+**Panel C - pricing asymmetry (E8).** Raise side: claim A benefit {{LB-E8-up-claima-mean}} (CI {{LB-E8-up-claima-cipct-lo}} to {{LB-E8-up-claima-cipct-hi}} percent of the reacting-at-all benefit); claim B (formula attribution) {{LB-E8-up-claimb-mean}} at {{LB-E8-up-claimb-sigma}} sigma, verdict {{LB-E8-up-claimb-verdict}}; mean benefit by capacity {{LB-E8-up-cap18x-mean}} (1.8x) / {{LB-E8-up-cap24x-mean}} (2.4x) / {{LB-E8-up-cap30x-mean}} (3.0x). Cut side (mean, sigma): low-phi {{LB-E8-down-low_phi_shift_down-mean}} ({{LB-E8-down-low_phi_shift_down-sigma}}); mid-phi {{LB-E8-down-mid_phi_shift_down-mean}} ({{LB-E8-down-mid_phi_shift_down-sigma}}); persistent level shift {{LB-E8-down-level_shift_down_persistent-mean}} ({{LB-E8-down-level_shift_down_persistent-sigma}}).
+
+**Panel D - hysteresis split (E9; raise benefit vs hysteresis intensity h; verdict {{LB-E9-verdict}}; fidelity {{LB-E9-fidelity-tier}}, max relative diff {{LB-E9-fidelity-maxreldiff}}).**
+
+| h | Sticky environment (benefit, sigma) | Noisy environment (benefit, sigma) |
+| --- | --- | --- |
+| 0.0 | {{LB-E9-robust-h000-benefit}} ({{LB-E9-robust-h000-sigma}}) | {{LB-E9-fragile-h000-benefit}} ({{LB-E9-fragile-h000-sigma}}) |
+| 0.1 | {{LB-E9-robust-h010-benefit}} ({{LB-E9-robust-h010-sigma}}) | {{LB-E9-fragile-h010-benefit}} ({{LB-E9-fragile-h010-sigma}}) |
+| 0.3 | {{LB-E9-robust-h030-benefit}} ({{LB-E9-robust-h030-sigma}}) | {{LB-E9-fragile-h030-benefit}} ({{LB-E9-fragile-h030-sigma}}) |
+| 0.6 | {{LB-E9-robust-h060-benefit}} ({{LB-E9-robust-h060-sigma}}) | {{LB-E9-fragile-h060-benefit}} ({{LB-E9-fragile-h060-sigma}}) |
+
+**Panel E - recipe-level non-stationarity (E12; verdict {{LB-E12-oracle-verdict}}).** Oracle handed true phi: resolved harm in all nine drift cells: {{LB-E12-oracle-harm-all-drift}}; oracle mean delta {{LB-E12-oracle-L4x13-mean}} (L4 x 1.3x) and {{LB-E12-oracle-L8x24-mean}} (L8 x 2.4x); fixed-alpha at the long-chain locus {{LB-E12-oracle-fixed-L8x18-mean}} (L8 x 1.8x) / {{LB-E12-oracle-fixed-L8x24-mean}} (L8 x 2.4x). Paired 50-seed contrasts (leg B): fixed-vs-oracle {{LB-E12-oracle-legb-L8x18-fixedvsoracle}} / {{LB-E12-oracle-legb-L8x24-fixedvsoracle}}; fixed-vs-OLS {{LB-E12-oracle-legb-L8x18-fixedvsols}} / {{LB-E12-oracle-legb-L8x24-fixedvsols}}. Perfect-information paradox: oracle resolved-worse than the noisy OLS estimator in {{LB-E12-oracle-paradox-count}} of 9 drift cells; stationary-control inertness check {{LB-E12-oracle-winscheck}}.
 
 
 ## Appendix G: Proofs
