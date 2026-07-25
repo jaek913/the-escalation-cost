@@ -32,7 +32,11 @@ Six literatures bear on this result. The first establishes the stability conditi
 
 ### 2.1 Control-Theoretic Stability
 
-The transfer-function and eigenvalue traditions establish when supply loops are stable in steady state [@Disney-Towill-2002; @Dejonckheere-2003; @Dejonckheere-2004; @Disney-2008; @Disney-Towill-2003; @Disney-2004-golden; @Hosoda-Disney-2006; @Li-2023; @Lin-2020; @Ouyang-Daganzo-2006; @Spiegler-2016; @Helbing-2004; @Gaalman-2022; @Warburton-Disney-2007]. The closest method precedents are closed-loop production-inventory analysis under i.i.d. demand [@Boute-2006], ARMA-demand eigenvalue work [@Gaalman-Disney-2009], stability-region inversions [@Warburton-2004; @Wang-2013], and behavioral stability regions [@Udenio-2017]. Two closest cousins are positioned explicitly: transient bullwhip via robust control [@Li-Dorfler-2024] and persistence-driven network amplification [@Leng-2025]; neither prices the estimator's blind period after a regime change. Deep-RL policy work is a contrast, not a precedent [@Gijsbrechts-2022].
+This is the literature the paper stands on rather than argues with. The transfer-function and eigenvalue traditions establish when supply loops are stable in steady state, and they establish it well: given a demand process and a replenishment rule, the analysis says whether the loop amplifies or damps [@Disney-Towill-2002; @Dejonckheere-2003; @Dejonckheere-2004; @Disney-2008; @Disney-Towill-2003; @Disney-2004-golden; @Hosoda-Disney-2006; @Li-2023; @Lin-2020; @Ouyang-Daganzo-2006; @Spiegler-2016; @Helbing-2004; @Gaalman-2022; @Warburton-Disney-2007]. The companion-matrix construction this paper uses is taken from that tradition and is cited, not re-proved.
+
+The closest method precedents share the move of treating the loop's own parameters as the object of analysis: closed-loop production-inventory analysis under i.i.d. demand [@Boute-2006], ARMA-demand eigenvalue work [@Gaalman-Disney-2009], stability-region inversions that solve for the admissible parameter set rather than testing one policy [@Warburton-2004; @Wang-2013], and behavioral stability regions that ask which regions human orderers actually occupy [@Udenio-2017].
+
+What the tradition assumes away is the thing this paper prices. Steady-state stability presumes the parameters are known and fixed; the analysis is conducted at a given phi. It therefore has nothing to say about the interval in which phi has changed and the institution's estimate of it has not. Two recent results come closest and are positioned explicitly rather than lumped in: transient bullwhip analyzed through robust control [@Li-Dorfler-2024], which bounds transient behavior but for a controller with known dynamics, and persistence-driven network amplification [@Leng-2025], which makes persistence the driver but not the measurement of it. Neither prices the estimator's blind period after a regime change. Deep-RL policy work is a contrast rather than a precedent: it learns a policy without a stability characterization, which is the opposite trade from the one made here [@Gijsbrechts-2022].
 
 ### 2.2 Empirical Bullwhip
 
@@ -40,11 +44,15 @@ Firm- and industry-level measurements establish the phenomenon our panel rides o
 
 ### 2.3 Semiconductor Dynamics
 
-Sector-specific volatility and planning literature ground the CHIPS application [@Anderson-2000; @Monch-2011; @Nepal-2012; @Hopp-Spearman-2008]. Semiconductors are the natural stress case: long lead times, high capital intensity, and demand that swings hard. That literature also supplies the capacity-utilization intuition this paper tests directly in Section 8.2 - and, as reported there, fails to confirm.
+Sector-specific volatility and planning literature ground the CHIPS application [@Anderson-2000; @Monch-2011; @Nepal-2012; @Hopp-Spearman-2008]. Semiconductors are the natural stress case for a measurement-lag argument: fabrication lead times run months, capacity is lumpy and capital-intensive so it cannot be adjusted incrementally, and end demand swings hard enough that the persistence of any given quarter is a poor guide to the next. An industry with long lead times and expensive capacity is an industry whose control loop has both a long effective window and a strong incentive to react hard once it does react - the two ingredients the damage bound multiplies together.
+
+That literature also supplies the specific intuition this paper puts to a direct test: that a stability knee should appear as utilization approaches its ceiling, since a system running near capacity has no slack to absorb a disturbance. Section 8.2 tests it and does not confirm it - not because the intuition is refuted, but because the sector never occupies the stable regime the test needed as a contrast. The honest reading is reported there as an inconclusive instrument rather than as a negative result.
 
 ### 2.4 Complexity and Resilience
 
-Complexity-performance and network-risk results motivate the persistence channel [@Bozarth-2009; @Choi-2001; @Novak-Eppinger-2001; @Serdarasan-2013; @Osadchiy-2016; @Graves-Tomlin-2003; @Tomlin-2006]. The mechanism they identify - that structural complexity propagates and prolongs disturbances - is, in this paper's terms, a mechanism for high persistence, which is why the instability ranking in Section 8.1 and the complexity literature point at overlapping sets of sectors.
+Complexity-performance and network-risk results motivate the persistence channel [@Bozarth-2009; @Choi-2001; @Novak-Eppinger-2001; @Serdarasan-2013; @Osadchiy-2016; @Graves-Tomlin-2003; @Tomlin-2006]. Their common finding is that structure matters independently of scale: products with many interdependent components, supply bases with many tiers, and networks with dense interconnection all propagate a disturbance through more paths and hold it longer than a simpler system would.
+
+Translated into this paper's vocabulary, that is a mechanism for high persistence - complexity is one of the reasons a sector's phi sits where it does. The translation matters because it connects two literatures that rarely cite each other: the complexity tradition explains WHY some sectors are structurally slow to shed a shock, and the control tradition explains WHAT a slow-shedding sector does to a feedback loop. This paper joins them at the persistence parameter, which is why the instability ranking of Section 8.1 and the complexity literature's usual suspects are substantially the same sectors, reached from different directions. That convergence is offered as a coherence check, not as a tested claim: no experiment here measures complexity or estimates its effect on persistence.
 
 ### 2.5 Minsky in Operations
 
@@ -114,8 +122,13 @@ Machine verification: symbolic legs {{LB-T2-statics-symbolic}}; numeric monotoni
 
 ### 4.6 The pi^2/2 Speed Limit and Optimal Safety Factor
 
+The stability boundary itself is not this paper's result; it is the foundation's, and it takes a compact form. A single loop is stable when the product of the estimator's amplification and the feedback aggressiveness stays below a fixed constant - the pi^2/2 speed limit. Read as engineering advice it says something simple: there is a maximum rate at which a system can chase a measurement it takes time to form, and exceeding it converts correction into oscillation.
+
 <!-- anchor: EQ-5 -->
 EQ-5 restates the single-loop criterion S(phi, W) * bg < pi^2/2 from the foundation [@Kim-MeasurementTrap].
+
+The question this paper adds is where inside that region an institution should actually sit. The boundary marks where stability is lost under CURRENT conditions; it says nothing about how much room to leave for conditions changing. If persistence can step upward, an operating point that is merely inside the boundary today can be outside it tomorrow, and the blind period guarantees the institution keeps steering as though it were still inside. The safety factor answers how much margin that risk is worth.
+
 <!-- anchor: EQ-6 -->
 EQ-6 gives the optimal safety factor k*. Under regime-change risk the optimal operating point sits below the limit: mfg-parameter argmin {{LB-T3-kstar-mfg-argmin}}, in-band {{LB-T3-kstar-inband}}, all-below-one {{LB-T3-kstar-allbelow1}}, verdict {{LB-T3-kstar-verdict}} (proposition-level: numeric legs here; the written proof with labeled approximations is P-THM-3's companion obligation in Appendix G).
 
