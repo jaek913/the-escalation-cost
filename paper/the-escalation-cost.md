@@ -36,15 +36,15 @@ The transfer-function and eigenvalue traditions establish when supply loops are 
 
 ### 2.2 Empirical Bullwhip
 
-Firm- and industry-level measurements establish the phenomenon our panel rides on [@Bray-Mendelson-2012; @Bray-Mendelson-2015; @Cachon-2007; @Shan-2014; @Dooley-2010; @Saricioglu-2025], with SPC-style monitoring as a method contrast [@Costantino-2014]. This work documents that amplification exists, varies across firms and sectors, and intensifies in crises. What it does not supply is a pre-crisis quantity that orders sectors by how much amplification they are about to suffer - which is precisely what the damage bound proposes and Section 5 tests out of sample.
+Firm- and industry-level measurements establish the phenomenon our panel rides on [@Bray-Mendelson-2012; @Bray-Mendelson-2015; @Cachon-2007; @Shan-2014; @Dooley-2010; @Saricioglu-2025], with SPC-style monitoring as a method contrast [@Costantino-2014]. This work documents that amplification exists, varies across firms and sectors, and intensifies in crises. What it does not supply is a pre-crisis quantity that orders sectors by how much amplification they are about to suffer - which is precisely what the damage bound proposes and Section 6 tests out of sample.
 
 ### 2.3 Semiconductor Dynamics
 
-Sector-specific volatility and planning literature ground the CHIPS application [@Anderson-2000; @Monch-2011; @Nepal-2012; @Hopp-Spearman-2008]. Semiconductors are the natural stress case: long lead times, high capital intensity, and demand that swings hard. That literature also supplies the capacity-utilization intuition this paper tests directly in Section 7.2 - and, as reported there, fails to confirm.
+Sector-specific volatility and planning literature ground the CHIPS application [@Anderson-2000; @Monch-2011; @Nepal-2012; @Hopp-Spearman-2008]. Semiconductors are the natural stress case: long lead times, high capital intensity, and demand that swings hard. That literature also supplies the capacity-utilization intuition this paper tests directly in Section 8.2 - and, as reported there, fails to confirm.
 
 ### 2.4 Complexity and Resilience
 
-Complexity-performance and network-risk results motivate the persistence channel [@Bozarth-2009; @Choi-2001; @Novak-Eppinger-2001; @Serdarasan-2013; @Osadchiy-2016; @Graves-Tomlin-2003; @Tomlin-2006]. The mechanism they identify - that structural complexity propagates and prolongs disturbances - is, in this paper's terms, a mechanism for high persistence, which is why the instability ranking in Section 7.1 and the complexity literature point at overlapping sets of sectors.
+Complexity-performance and network-risk results motivate the persistence channel [@Bozarth-2009; @Choi-2001; @Novak-Eppinger-2001; @Serdarasan-2013; @Osadchiy-2016; @Graves-Tomlin-2003; @Tomlin-2006]. The mechanism they identify - that structural complexity propagates and prolongs disturbances - is, in this paper's terms, a mechanism for high persistence, which is why the instability ranking in Section 8.1 and the complexity literature point at overlapping sets of sectors.
 
 ### 2.5 Minsky in Operations
 
@@ -100,7 +100,7 @@ The first two theorems are stated for a supply chain, but nothing in their deriv
 <!-- anchor: THM-3 -->
 THM-3 (Adaptation-Stability Identity): total damage is governed by intensity x duration across domains.
 <!-- anchor: EQ-4 -->
-EQ-4 states the identity. This is what licenses Sections 6 through 8 to apply one framework to inventories, semiconductor capacity, sovereign debt, and unemployment insurance without re-deriving anything: the domains differ in what compounds and how the feedback is implemented, not in the structure of the cost. Written proof P-THM-3 in Appendix G; machine legs {{LB-THM3-symbolic}}, dual-path identity checks {{LB-THM3-numeric-checked}}, numeric leg pass {{LB-THM3-numeric}}.
+EQ-4 states the identity. This is what licenses Sections 7 through 9 to apply one framework to inventories, semiconductor capacity, sovereign debt, and unemployment insurance without re-deriving anything: the domains differ in what compounds and how the feedback is implemented, not in the structure of the cost. Written proof P-THM-3 in Appendix G; machine legs {{LB-THM3-symbolic}}, dual-path identity checks {{LB-THM3-numeric-checked}}, numeric leg pass {{LB-THM3-numeric}}.
 
 ### 4.5 Comparative Statics
 
@@ -123,11 +123,57 @@ EQ-6 gives the optimal safety factor k*. Under regime-change risk the optimal op
 
 The damage bound supplies the transition-cost foundation for the adaptation-tax framework [@Kim-AdaptationTax]. That framework asks what an institution pays to move between operating regimes; this theorem prices one specific component of that bill - the cost incurred while the institution's own measurement still describes the regime it has already left. The two results compose rather than compete: the adaptation tax counts the cost of changing, and the damage bound counts the cost of not yet knowing that change is required.
 
-## 5 Empirical Validation
+## 5 Methods
 
-### 5.1 GFC Episode
+This section states the operators the experiments actually ran. Every specification here was frozen in the pre-registered design document and committed before the first hashed-data run; where a rule changed, the change is a dated amendment disclosed in place rather than a silent edit, and no operator was chosen after seeing a result.
 
-Pre-crisis predicted damage ranking aligns with realized crisis damage (corroborating; L-06 states the limit) [@Udenio-2015; @Dooley-2010]. This is an episode association by construction - the crisis estimation window is contemporaneous with part of the realized window - and is never an out-of-sample prediction; Section 5.3 owns prediction. Combined D: Spearman {{LB-E2-gfc-spearman}}, permutation p {{LB-E2-gfc-p}}, n {{LB-E2-gfc-n}}, verdict {{LB-E2-gfc-verdict}}; component bake-off rho_crisis {{LB-E2-components-rho-crisis}}, |delta phi| {{LB-E2-components-absdphi}}, combined-beats-components {{LB-E2-components-combined-ge}}. Table TBL-1 reports the full panel.
+### 5.1 Managed Variable and Data
+
+The managed variable is the inventory-to-sales ratio: monthly, seasonally adjusted, per sector. It is the quantity firms actually control through ordering decisions, and it is stationary, which the persistence estimator requires. The panel is seventeen US Census series - seven manufacturing, seven wholesale, three retail - held fixed from the design stage; the frozen member map, every series identifier, and each file's hash are recorded in the data dictionary (Table TBL-A), and one aggregate carries a dated correction to a source mislabel with the superseded series retained as an audit trail. Coverage runs from January 1992 to the pull date. Cross-domain extensions use the Jorda-Schularick-Taylor macrohistory panel (eighteen countries, annual) and US Department of Labor unemployment-insurance claims; semiconductor work uses the Federal Reserve capacity-utilization series.
+
+The data floor is a scope condition, not a preference (S-4): persistence estimation requires monthly frequency and at least thirty-six observations, sixty preferred. A twenty-observation quarterly sample cannot distinguish a persistence of 0.95 from one of 0.50, so quarterly filing data is excluded by design rather than accepted with a caveat.
+
+### 5.2 Persistence, the Loop, and Damage
+
+Persistence phi is the AR(1) coefficient, estimated by ordinary least squares of the series on its own lag with an intercept. OLS was pre-registered as the sole estimator. The alternative considered was Yule-Walker, and the comparison is reported rather than buried: on synthetic AR(1) histories at high true persistence, Yule-Walker is the more downward-biased of the two, so OLS was retained. That comparison is re-earned in this paper's own verification suite and is labeled a diagnostic, not a selectable specification - a specification the analyst may switch after seeing results is a specification the analyst is fishing with.
+
+The closed loop follows the construction of the companion work, used and not re-proved: a trailing-average estimator of window W feeding a proportional feedback policy of aggressiveness bg yields a W x W companion matrix A(phi, W, bg), whose spectral radius rho decides stability (S-1). Adaptation time tau is the structural function of W carried from the companion work on trailing-average adaptation, with its constant frozen in the analysis scripts. Predicted damage is D = (rho_2/rho_1)^tau, computed with rho_1 at pre-transition persistence and rho_2 at post-transition persistence, both evaluated at the system's own (W, bg).
+
+### 5.3 The Two Named Specifications
+
+Two real-data specifications were named in advance and both are reported wherever both apply: SPEC-M, the monitoring specification (W = 8 months, bg = 0.05), and SPEC-R, the ranking specification (W = 12 months, bg scale 3.0). Neither was selected after the fact. Three further specifications govern their own simulations - the Beer Game harness, the sovereign panel (five-year window, calm feedback swept upward for the crisis branch), and the unemployment-insurance reading - and are stated where they are used.
+
+Reporting both specifications is what makes Section 8.1's spec-conditionality visible rather than concealed: results that hold under one and not the other are reported as exactly that.
+
+### 5.4 The Primary Test and Its Amended Rule
+
+The falsifier is the rolling out-of-sample panel validation (Section 6.3). At each month and sector, phi is estimated on the trailing sixty months, regime change is detected from the trailing twelve, tau follows from the window, and D is computed under SPEC-M using backward-looking data only. The outcome is the sector's excess absolute I/S deviation over the following twelve months, measured against its own trailing baseline, with the deviation definition frozen in the script before the first real run.
+
+The decision rule was amended once, before any hashed data was touched, and the amendment is disclosed because concealing it would misrepresent the test's strength. The pre-registered rule required a majority of regime-oscillating sectors to clear a per-sector significance bar. The mechanism-validation suite measured that rule at the real sample size and found it broken in the supporting direction: the block-bootstrap null placed the bar near a rank correlation of 0.30 while the operator's own detection noise capped even strong planted true effects well below it - measured power approximately zero. A rule that cannot detect a planted true effect is a rubber stamp, and discovering this before the run is precisely what the pre-run validation exists for.
+
+The replacement rule, ratified and frozen before the run, moves the verdict to the panel level: the statistic is the mean Spearman correlation across regime-oscillating sectors; the null is a joint circular block bootstrap in which one set of twenty-four-month block indices is applied to every oscillating sector simultaneously, preserving the cross-sector dependence that a per-sector majority rule ignores, with D held fixed and two thousand resamples. Support requires at least two oscillating sectors, a positive pooled mean, and a one-sided p below 0.01. The per-sector table (Table TBL-2) is retained as descriptive reporting and no longer carries the verdict. Verdict-level false support measured zero at the null. A pass under this rule is strong evidence; a failure is reported as indistinguishable from noise at this data resolution, not as disproof.
+
+Sector classification is part of the operator, not a post-hoc convenience: sectors whose rolling rho crosses the boundary in both directions are regime-oscillating and carry the test; chronically-unstable sectors are boundary-condition cases reported separately, per the theorem's stated domain.
+
+### 5.5 Episodes, Ranking, and Monitoring
+
+The two episode tests share one operator and differ only in dates. For each sector, phi_1 is estimated over a pre-episode window and phi_2 over the episode itself, D follows, and the realized outcome is the excess deviation over the episode's peak window; the association is Spearman across the seventeen sectors, with a component bake-off reporting crisis rho alone and absolute change in persistence alone alongside the combined quantity. The global financial crisis uses 2003-2006 against 2008-2009, with outcomes over 2007-2010. COVID uses 2017-2019 against 2020-2021, with outcomes over 2020-2022, and was pre-registered as an expected null with its polarity stated explicitly: a non-significant correlation together with persistence falling in most sectors confirms the boundary, while a strongly positive result would have been reported as a problem for the mechanism rather than a win (L-01). Episode tests are seventeen observations and are labeled corroborating; they cannot carry falsification, which Section 6.3 owns.
+
+The cross-sector ranking (Table TBL-4) orders sectors by mean exceedance - the average of max(rho - 1, 0) - after the originally registered ranking key, the share of months above the boundary, was found to saturate at its ceiling and tie the leaders. That re-instrumentation was chosen for dynamic range, blind to where any sector lands, and pre-registered before the re-run; a metric that cannot separate the leaders produces no ordering in either direction, so the earlier reading was recorded as uninformative rather than as a result. The monitoring record (Section 7.4) applies the same rolling construction at both specifications across the full sample, marks upward boundary crossings as a below-to-above transition sustained three months, and reports status and first crossing within twenty-four months either side of each episode onset.
+
+### 5.6 Simulations, Seeds, and Disclosure
+
+The simulation studies use paired designs: within a run, every algorithm faces identical demand sequences, seeds are recorded, and run counts were fixed in advance. The Beer Game comparison (Table TBL-3) runs four algorithms against one frozen calibration with no parameter search on the demand process. The chain-length study reports its full grid - three chain lengths by three capacity levels by four demand environments, at fifty seeds - as the experiment rather than as a search, and every cell is reported including the unresolved ones. The pricing and hysteresis studies likewise report all cells. Simulation verdicts bind the model, and generalization to the world is a separate and weaker claim (S-5).
+
+The anti-fishing disclosure is the pair of counts, not either alone: the design document stated in advance how many specifications would be tried, and the totals actually run match those counts. Any specification beyond them would have required a dated amendment before the run, tested against the question of whether the same change would have been made had it pushed the result the other way.
+
+Every load-bearing number in this paper is generated by a committed script from hashed inputs, recorded in a machine-checked ledger, and substituted into the text by a committed renderer; no figure is retyped by hand. The verification apparatus, including the ledger's coverage and the checks that guard it, is described in Appendix B.
+
+## 6 Empirical Validation
+
+### 6.1 GFC Episode
+
+Pre-crisis predicted damage ranking aligns with realized crisis damage (corroborating; L-06 states the limit) [@Udenio-2015; @Dooley-2010]. This is an episode association by construction - the crisis estimation window is contemporaneous with part of the realized window - and is never an out-of-sample prediction; Section 6.3 owns prediction. Combined D: Spearman {{LB-E2-gfc-spearman}}, permutation p {{LB-E2-gfc-p}}, n {{LB-E2-gfc-n}}, verdict {{LB-E2-gfc-verdict}}; component bake-off rho_crisis {{LB-E2-components-rho-crisis}}, |delta phi| {{LB-E2-components-absdphi}}, combined-beats-components {{LB-E2-components-combined-ge}}. Table TBL-1 reports the full panel.
 
 <!-- anchor: TBL-1 -->
 
@@ -144,11 +190,11 @@ Pre-crisis predicted damage ranking aligns with realized crisis damage (corrobor
 | Combined D at least matches each component | {{LB-E2-components-combined-ge}} |
 
 
-### 5.2 COVID Episode
+### 6.2 COVID Episode
 
 COVID was pre-registered as an expected null, and the reason matters more than the result. The theorem prices a step change in the dangerous direction: persistence rises, the loop that was decaying starts compounding, and the estimator's lag becomes expensive. COVID was not that shock. Demand collapsed and rebounded across multiple channels at once, and in most sectors measured persistence FELL rather than rose - a compound multi-channel disturbance sitting squarely outside the step-change model (L-01) [@Saricioglu-2025]. A framework that predicted damage rankings here would be a framework detecting crises in general rather than the specific mechanism it claims, so the null is the outcome that supports the theory and a positive result would have undermined it. Result: Spearman {{LB-E3-covid-spearman}}, p {{LB-E3-covid-p}}, n {{LB-E3-covid-n}}, verdict {{LB-E3-covid-verdict}}; persistence dropped in {{LB-E3-persistence-direction-count}} of 17 sectors (majority {{LB-E3-persistence-direction-majority}}) - the falsifiable boundary direction confirmed. This is the paper's cleanest demonstration that the diagnostic is scoped rather than universal: it declines to fire on the most famous supply-chain disruption in living memory, because that disruption is not the kind of event it prices.
 
-### 5.3 Rolling 34-Year Validation
+### 6.3 Rolling 34-Year Validation
 
 The primary falsifier: rolling out-of-sample D predicts subsequent inventory-to-sales deviation at the panel level across regime-oscillating sectors (amended rule B, pooled statistic) [@Cachon-2007]. Result: pooled mean Spearman {{LB-E1-panel-spearman}}, joint block-bootstrap panel p {{LB-E1-panel-p}} over {{LB-E1-panel-n-oscillating}} oscillating sectors ({{LB-E1-panel-n-chronic}} chronic-boundary), verdict {{LB-E1-panel-verdict}}; per-sector range {{LB-E1-range-min}} to {{LB-E1-range-max}} (descriptive). The estimator choice is justified by the supplementary OLS-vs-YW comparison (OLS bias {{LB-T1-estimator-ols}} vs Yule-Walker bias {{LB-T1-estimator-yw}}; OLS less biased: {{LB-T1-estimator-ols-less-biased}}; labeled not-a-theorem). Table TBL-2 reports per-sector detail.
 
@@ -177,7 +223,7 @@ The primary falsifier: rolling out-of-sample D predicts subsequent inventory-to-
 | {{LB-E1-tbl2-r17-sector}} | {{LB-E1-tbl2-r17-class}} | {{LB-E1-tbl2-r17-spearman}} | {{LB-E1-tbl2-r17-p}} |
 
 
-### 5.4 Beer Game Monte Carlo
+### 6.4 Beer Game Monte Carlo
 
 Acting on the diagnostic saves cost within this experiment's own construction (L-03 binds; the source's ERP figure is not carried) [@Oroojlooyjadid-2022]. Base-stock comparator {{LB-E4-erp}}; phi-gated spectral tool {{LB-E4-tool}} (relative reduction {{LB-E4-tool-relreduction}}, paired p {{LB-E4-tool-p}}, verdict {{LB-E4-tool-verdict}}); full theorem {{LB-E4-full}}; win rate {{LB-E4-winrate}}; engagement boundary {{LB-E4-tool-phi-engagement}} (a property of this construction). Table TBL-3 reports costs by algorithm.
 
@@ -197,39 +243,39 @@ Acting on the diagnostic saves cost within this experiment's own construction (L
 | Pairwise win rate, full theorem vs spectral | {{LB-E4-winrate}} |
 
 
-## 6 Supply Chain Application
+## 7 Supply Chain Application
 
-### 6.1 Bullwhip Instability Finding
+### 7.1 Bullwhip Instability Finding
 
 The classical bullwhip literature explains amplification through informational and incentive channels: demand signal processing, order batching, rationing games, price promotions [@Lee-1997a; @Lee-1997b; @Chen-2000]. The measurement channel adds a structural one that operates even when every informational pathology has been eliminated. If measured persistence is high enough, a standard order-up-to policy driven by a trailing estimate is not merely amplifying - it is operating at or past its own stability boundary, and the amplification is a property of the control loop rather than of anyone's behavior. That is what the panel shows: manufacturing-aggregate mean rho {{LB-E5-persistence-mfg-meanrho-R}} (SPEC-R) and {{LB-E5-persistence-mfg-meanrho-M}} (SPEC-M). Under the primary specification the boundary is not a line these sectors occasionally cross; it is a line they operate above, which is the finding that shapes everything in Section 7.
 
-### 6.2 Spectral Radius Ordering Tool
+### 7.2 Spectral Radius Ordering Tool
 
 The practical form of the result is an ordering rule: estimate demand persistence from data a firm already has, compute the spectral radius its current window and feedback rate imply, and read off whether the loop sits below the boundary, above it, or close enough that a regime change would push it over. The rule inverts the same stability geometry as the region-inversion and eigenvalue precedents, but takes an estimated persistence as its input rather than a design parameter [@Warburton-2004; @Wang-2013; @Udenio-2017; @Gaalman-Disney-2009; @Boute-2006].
 
 The input requirement is the binding constraint in practice, and it is stated as a scope condition rather than a caveat. S-4 sets the data floor: monthly frequency with at least 36 observations, 60 preferred. Below that floor the persistence estimate carries more sampling error than the boundary comparison can absorb, and the tool returns a number with no informational content. Quarterly filing data is insufficient - a limitation with immediate consequences for who can use this and on what data, taken up next.
 
-### 6.3 Firm-Level Bookend
+### 7.3 Firm-Level Bookend
 
 The data floor has a sharp institutional edge. The richest publicly available firm-level operating data - quarterly filings - cannot support the estimate the tool requires: a decade of quarterly observations yields roughly forty points, and the persistence estimate at that sample size is too noisy to place a firm relative to the boundary with any confidence. The consequence is a genuine limit on the diagnostic's reach rather than a temporary data-collection problem. Firms can run this analysis internally on their own monthly or weekly series; outside analysts working from public filings generally cannot, which is why every empirical result in this paper is sector-level rather than firm-level (S-4). (Conditional on the deferred EDGAR entry; any quoted figure will be ledgered.)
 
-### 6.4 Cross-Sector Evidence
+### 7.4 Cross-Sector Evidence
 
-The rolling monitoring record is backward-looking and weaker than Section 5.3, and says so: it documents what a boundary dashboard would have displayed around the two crisis onsets, not lead-time predictivity (Section 5.3 carries the out-of-sample claim). The committed record is honest about direction: the monitor is reactive. Around the 2008-09 onset, under the crossing-informative specification, no sector sat above the boundary beforehand and none crossed before the onset ({{LB-E5-monitor-specm-gfc-precede-count}} pre-onset crossings); {{LB-E5-monitor-specm-gfc-crossing-count}} sectors crossed in the window, clustered two to five months after the onset - the manufacturing aggregate's status was {{LB-E5-monitor-specm-mfg-gfc-status}} with first crossing {{LB-E5-monitor-specm-mfg-gfc-first-crossing}}. Around the 2020-03 onset, {{LB-E5-monitor-specm-covid-crossing-count}} sectors crossed, of which {{LB-E5-monitor-specm-covid-precede-count}} nominally preceded the onset by one to two months (within monthly-data noise, not offered as warning); the manufacturing aggregate's status was {{LB-E5-monitor-specm-mfg-covid-status}} with first crossing {{LB-E5-monitor-specm-mfg-covid-first-crossing}}. Under the primary specification the boundary saturates as disclosed in advance: {{LB-E5-monitor-specr-gfc-above-throughout-count}} of seventeen sectors sat above the boundary throughout the GFC window and {{LB-E5-monitor-specr-covid-above-throughout-count}} throughout the COVID window, so episode-specific crossing information lives at the crossing-informative specification - the spec-conditionality of Section 7.1 again. Two characterizations follow. First, the sectors that cross in either crisis window are exactly the nine boundary-oscillating sectors of the Section 5.3 classification, and the sectors that never cross are exactly the never-crossing class: the panel's boundary-crossing action over thirty-four years concentrates in these two crisis windows (in part reflecting that the full-sample classification contains these episodes). Second, and on-theme: the instability monitor is itself a lagging measurement - it confirms regime shifts with a two-to-five-month lag rather than predicting them, which is this paper's thesis applied to its own dashboard.
+The rolling monitoring record is backward-looking and weaker than Section 6.3, and says so: it documents what a boundary dashboard would have displayed around the two crisis onsets, not lead-time predictivity (Section 6.3 carries the out-of-sample claim). The committed record is honest about direction: the monitor is reactive. Around the 2008-09 onset, under the crossing-informative specification, no sector sat above the boundary beforehand and none crossed before the onset ({{LB-E5-monitor-specm-gfc-precede-count}} pre-onset crossings); {{LB-E5-monitor-specm-gfc-crossing-count}} sectors crossed in the window, clustered two to five months after the onset - the manufacturing aggregate's status was {{LB-E5-monitor-specm-mfg-gfc-status}} with first crossing {{LB-E5-monitor-specm-mfg-gfc-first-crossing}}. Around the 2020-03 onset, {{LB-E5-monitor-specm-covid-crossing-count}} sectors crossed, of which {{LB-E5-monitor-specm-covid-precede-count}} nominally preceded the onset by one to two months (within monthly-data noise, not offered as warning); the manufacturing aggregate's status was {{LB-E5-monitor-specm-mfg-covid-status}} with first crossing {{LB-E5-monitor-specm-mfg-covid-first-crossing}}. Under the primary specification the boundary saturates as disclosed in advance: {{LB-E5-monitor-specr-gfc-above-throughout-count}} of seventeen sectors sat above the boundary throughout the GFC window and {{LB-E5-monitor-specr-covid-above-throughout-count}} throughout the COVID window, so episode-specific crossing information lives at the crossing-informative specification - the spec-conditionality of Section 8.1 again. Two characterizations follow. First, the sectors that cross in either crisis window are exactly the nine boundary-oscillating sectors of the Section 6.3 classification, and the sectors that never cross are exactly the never-crossing class: the panel's boundary-crossing action over thirty-four years concentrates in these two crisis windows (in part reflecting that the full-sample classification contains these episodes). Second, and on-theme: the instability monitor is itself a lagging measurement - it confirms regime shifts with a two-to-five-month lag rather than predicting them, which is this paper's thesis applied to its own dashboard.
 
-### 6.5 Boundary Conditions
+### 7.5 Boundary Conditions
 
 Where the tool helps and where it harms is mapped, not assumed [@Boute-2022]. The chain-length crossover is conditional on capacity headroom; pricing value is a cliff in capacity strain and net-negative above it; the raise strategy is robust to permanent attrition only in genuinely shifted regimes; and under drifting persistence no estimator - including a perfect one - rescues the recipe (S-8, L-04). Appendix F carries the four studies; Table TBL-7 the cells. Scope conditions S-3, S-5 and limits L-01, L-03 bind here.
 
-## 7 The CHIPS Act
+## 8 The CHIPS Act
 
-### 7.1 Most Unstable Sectors
+### 8.1 Most Unstable Sectors
 
 The graded pre-registered claim was DROPPED with a limited-resolution caveat [@Monch-2011]: on the valid mean-exceedance instrument the CHIPS-dependent sectors sit in the top-instability cluster but not distinguishably at its peak, and rank is spec-sensitive. Ranks: R4238 {{LB-E5-chips-rank-R-R4238}} (SPEC-R) / {{LB-E5-chips-rank-M-R4238}} (SPEC-M); A34SIS {{LB-E5-chips-rank-R-A34SIS}} / {{LB-E5-chips-rank-M-A34SIS}}; verdict {{LB-E5-chips-verdict}}. Table TBL-4 carries the full ranking.
 
 <!-- anchor: TBL-4 -->
 
-*Table TBL-4. Seventeen-sector cross-section, ranked by SPEC-R mean exceedance (the amended primary key). Share is the fraction of months rho > 1 under SPEC-R - near one for most sectors, the saturation record. Episode columns are the SPEC-M monitoring record (Section 6.4): status in the onset +/- 24-month window and the first upward-crossing month ("none" where no crossing occurred). CHIPS footnote: ranks R4238 {{LB-E5-chips-rank-R-R4238}} (SPEC-R) / {{LB-E5-chips-rank-M-R4238}} (SPEC-M), A34SIS {{LB-E5-chips-rank-R-A34SIS}} / {{LB-E5-chips-rank-M-A34SIS}}; graded verdict {{LB-E5-chips-verdict}}. Persistence footnote: manufacturing-aggregate mean rho {{LB-E5-persistence-mfg-meanrho-R}} (SPEC-R) / {{LB-E5-persistence-mfg-meanrho-M}} (SPEC-M).*
+*Table TBL-4. Seventeen-sector cross-section, ranked by SPEC-R mean exceedance (the amended primary key). Share is the fraction of months rho > 1 under SPEC-R - near one for most sectors, the saturation record. Episode columns are the SPEC-M monitoring record (Section 7.4): status in the onset +/- 24-month window and the first upward-crossing month ("none" where no crossing occurred). CHIPS footnote: ranks R4238 {{LB-E5-chips-rank-R-R4238}} (SPEC-R) / {{LB-E5-chips-rank-M-R4238}} (SPEC-M), A34SIS {{LB-E5-chips-rank-R-A34SIS}} / {{LB-E5-chips-rank-M-A34SIS}}; graded verdict {{LB-E5-chips-verdict}}. Persistence footnote: manufacturing-aggregate mean rho {{LB-E5-persistence-mfg-meanrho-R}} (SPEC-R) / {{LB-E5-persistence-mfg-meanrho-M}} (SPEC-M).*
 
 | Rank | Sector | Mean exceedance | Share > 1 | GFC (SPEC-M) | GFC first crossing | COVID (SPEC-M) | COVID first crossing |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -252,7 +298,7 @@ The graded pre-registered claim was DROPPED with a limited-resolution caveat [@M
 | 17 | {{LB-E5-ranking-r17-sector}} | {{LB-E5-ranking-r17-meanexc}} | {{LB-E5-tbl4-r17-share}} | {{LB-E5-tbl4-r17-gfc-status}} | {{LB-E5-tbl4-r17-gfc-first}} | {{LB-E5-tbl4-r17-covid-status}} | {{LB-E5-tbl4-r17-covid-first}} |
 
 
-### 7.2 Capacity Utilization Threshold
+### 8.2 Capacity Utilization Threshold
 
 The knee hypothesis could not be adjudicated: NAICS 334 runs persistently above the instability boundary at every utilization level - chronically unstable, not utilization-triggered - so no capacity knee is detectable in this statistic (the empirical demonstration of L-02) [@Hopp-Spearman-2008; @Nepal-2012]. Bin means {{LB-E6-threshold-bin1-lt75-mean}} / {{LB-E6-threshold-bin2-75-85-mean}} / {{LB-E6-threshold-bin3-85-90-mean}} / {{LB-E6-threshold-bin4-ge90-mean}} (n {{LB-E6-threshold-bin1-lt75-n}} / {{LB-E6-threshold-bin2-75-85-n}} / {{LB-E6-threshold-bin3-85-90-n}} / {{LB-E6-threshold-bin4-ge90-n}}); the pre-registered rule's outcome {{LB-E6-threshold-rule-outcome}} is reported alongside, not as the finding. Current utilization {{LB-E6-current-utilization}} ({{LB-E6-current-month}}), context only. Table TBL-6 shows the flat above-boundary band.
 
@@ -268,19 +314,19 @@ The knee hypothesis could not be adjudicated: NAICS 334 runs persistently above 
 | 90 and above | {{LB-E6-threshold-bin4-ge90-mean}} | {{LB-E6-threshold-bin4-ge90-n}} |
 
 
-### 7.3 Complexity Drives Persistence
+### 8.3 Complexity Drives Persistence
 
 Why should some sectors carry structurally higher persistence than others? The complexity literature supplies the mechanism: products with many interdependent components, networks with many tiers, and supply bases with dense interconnection propagate a disturbance through more paths and hold it longer [@Bozarth-2009; @Novak-Eppinger-2001; @Choi-2001; @Serdarasan-2013; @Anderson-2000; @Ning-2023]. In this paper's terms, complexity is a mechanism for persistence, and persistence is the input to the damage bound - which is why the sectors this framework ranks as structurally unstable and the sectors that literature identifies as structurally complex are substantially the same sectors, arrived at from different directions. The connection is offered as a coherence check on the ranking, not as a tested causal claim; no experiment here estimates complexity or its effect on rho.
 
-### 7.4 Werner-CHIPS Nexus
+### 8.4 Werner-CHIPS Nexus
 
 One financing question follows naturally and is raised here as exploration rather than result. If a supplier ecosystem's instability is structural, stabilizing it requires investment in the tiers that carry the persistence, not only in the visible final-assembly stage - and the composition of credit, not merely its quantity, determines whether such investment happens. The directed-credit tradition argues exactly this, that where newly created credit is channeled shapes real outcomes in ways aggregate monetary measures conceal [@Werner-1997; @Werner-2005; @Werner-2014a; @Werner-2014b], and recent work on industrial-policy financing raises the same composition question for semiconductor programs specifically [@Alfaro-2025; @Ahn-Tan-2025]. Whether that channel operates as the tradition claims is well outside anything this paper tests; the nexus is flagged as a direction, explicitly labeled exploratory, and carries no ledgered quantity.
 
-## 8 Cross-Domain Extensions
+## 9 Cross-Domain Extensions
 
 Suggestive readings only; S-7 states that feedback strengths are assumption-driven proxies, and L-05 bounds every claim in this section.
 
-### 8.1 Sovereign Ratings
+### 9.1 Sovereign Ratings
 
 The pre-registered conditional-instability reading fired WITHDRAWN: the stationarity precondition fails at the extreme [@Ferri-1999]. Characterization: {{LB-E10-calm-n-stationary}} of 18 countries in a tight near-unit band (phi {{LB-E10-calm-phi-min}} to {{LB-E10-calm-phi-max}}, calm rho {{LB-E10-calm-rho-min}} to {{LB-E10-calm-rho-max}}, all below 1); explosive {{LB-E10-calm-explosive}}; dual-implementation guard {{LB-E10-calm-guard-dualimpl}}; the crossing sweep is the withdrawn branch ({{LB-E10-crisis-reading}}). Table TBL-5 carries the country panel.
 
@@ -310,53 +356,53 @@ The pre-registered conditional-instability reading fired WITHDRAWN: the stationa
 | {{LB-E10-tbl5-r18-country}} | {{LB-E10-tbl5-r18-phi}} | {{LB-E10-tbl5-r18-rho}} | {{LB-E10-tbl5-r18-npairs}} |
 
 
-### 8.2 Unemployment Insurance
+### 9.2 Unemployment Insurance
 
 The pre-registered procyclical-feedback reading fired WITHDRAWN [@Anderson-Meyer-1994; @Woodbury-2004]. Characterization: pooled normal-period phi {{LB-E11-normal-phi}} (n {{LB-E11-normal-n}}), rho {{LB-E11-normal-rho-min}} to {{LB-E11-normal-rho-max}} across all nine combinations, all below 1; jurisdictions {{LB-E11-normal-jur-phi-min}} to {{LB-E11-normal-jur-phi-max}} (median {{LB-E11-normal-jur-phi-median}}); pooled GFC phi {{LB-E11-gfc-phi}} (n {{LB-E11-gfc-n}}) sits far below the boundary corner {{LB-E11-gfc-corner}} and is statistically indistinguishable from normal; reading {{LB-E11-gfc-reading}} - consistent with the cited counterpoint [@Fath-Fuest-2002] and rhyming with the COVID finding: crises in these systems arrive as level shocks, not persistence explosions.
 
-## 9 Implications for Institutional Design
+## 10 Implications for Institutional Design
 
-### 9.1 Three-Parameter Audit
+### 10.1 Three-Parameter Audit
 
 Stripped to essentials, the diagnostic asks an institution three questions. How persistent is the variable you are steering (phi)? How long is the window you steer by (W)? How hard do you push on the gap (bg)? Those three numbers determine the spectral radius, the spectral radius determines whether deviations decay or compound, and the pair (rho, tau) determines what a regime change costs while your measurement catches up. EQ-2 and EQ-5 are the instruments: the first prices the blind period, the second says whether the loop is stable at all.
 
 The audit's value is that all three parameters are observable to the institution itself, and two of them are policy choices. An organization that cannot change how persistent its environment is can still change how long it looks and how hard it reacts - and the framework says precisely which of those levers is worth pulling in which conditions. This is also why the audit belongs in the safety-boundary tradition rather than the forecasting one: the question is not what will happen, but how far the current operating point sits from a boundary past which the institution's own control actions amplify rather than dampen [@Rasmussen-1997; @Dekker-2011].
 
-### 9.2 Reverse-Engineering Principle
+### 10.2 Reverse-Engineering Principle
 
 The bound runs in both directions. Forward, it prices damage from known loop parameters. Backward, an observed damage pattern constrains the parameters that could have produced it: a deviation that persisted for a known number of periods and grew by a known factor implies a range of (rho, tau) pairs, and tau implies a measurement window. An institution that does not know its own effective window - a common situation, since windows are often embedded in inherited procedures, vendor defaults, and reporting cadences rather than chosen deliberately - can therefore infer it from its own crisis history.
 
 The inference is coarse and this paper does not test it; it is stated as a principle the identity licenses, not as a validated method. But it points at the practical failure the framework is ultimately about. Institutions rarely decide their measurement windows. They inherit them, and then discover during a regime change what the inheritance costs.
 
-### 9.3 Domain Interventions
+### 10.3 Domain Interventions
 
-Ranking interventions by which parameter they move clarifies why some familiar remedies underperform. Interventions that shorten the window (faster reporting, higher-frequency data, nowcasting) attack tau directly and pay off exponentially, because tau sits in the exponent. Interventions that reduce feedback aggressiveness (damping, smoothing, rate limits) lower rho and can move a loop back inside the stability boundary, but they trade responsiveness for stability and Section 6.5 states the conditions under which that trade is worth making. Interventions that reduce underlying persistence (supply-base simplification, buffer capacity, demand pooling) are the most durable and the slowest to implement, since they change the environment rather than the controller.
+Ranking interventions by which parameter they move clarifies why some familiar remedies underperform. Interventions that shorten the window (faster reporting, higher-frequency data, nowcasting) attack tau directly and pay off exponentially, because tau sits in the exponent. Interventions that reduce feedback aggressiveness (damping, smoothing, rate limits) lower rho and can move a loop back inside the stability boundary, but they trade responsiveness for stability and Section 7.5 states the conditions under which that trade is worth making. Interventions that reduce underlying persistence (supply-base simplification, buffer capacity, demand pooling) are the most durable and the slowest to implement, since they change the environment rather than the controller.
 
 Two cautions carry from this paper's own results and are not optional. First, the ordering above assumes the regime change is of the kind the theorem prices; the COVID episode shows that compound shocks in the opposite direction are outside it. Second, the simulation studies in Appendix F show that the framework's own remedy - adapting the damping to estimated persistence - is harmful in conditions the theory does not cover, specifically when persistence itself is drifting rather than stepping (S-8). An institution that adopts the diagnostic without adopting its scope conditions has bought a tool that will fire confidently in exactly the circumstances where it is wrong.
 
-## 10 Forward Prediction: Self-Service Diagnostic
+## 11 Forward Prediction: Self-Service Diagnostic
 
 This section states the paper's two dated, falsifiable forward predictions - standing claims about post-publication outcomes, the one validator that routes around both author and reviewer. Every protocol constant below is a ledger row emitted by the committed registration generator (verification path: the same machinery that polices every other number in this paper); registration date {{LB-FP-diagnostic-registered}}, carry-forward horizon {{LB-FP-diagnostic-horizon}}.
 
-### 10.1 The Predictions
+### 11.1 The Predictions
 
-PREDICTION A (self-service diagnostic; carried from the pinned source, locked April 2026, restated and re-registered at this rebuild's commit). Any firm can compute the closed-loop spectral radius rho from three quantities it already has: its estimated demand persistence phi (estimator {{LB-FP-diagnostic-estimator}} - the paper's pre-registered choice, Section 5.3), its measurement window W, and its feedback gain, via the companion-matrix construction of EQ-1. The standing claim: rho above the threshold {{LB-FP-diagnostic-threshold}} implies the firm's response to its next demand shock AMPLIFIES (bullwhip); rho below it implies the response DECAYS. A public calculator implements the computation at {{LB-FP-diagnostic-calculator-url}}.
+PREDICTION A (self-service diagnostic; carried from the pinned source, locked April 2026, restated and re-registered at this rebuild's commit). Any firm can compute the closed-loop spectral radius rho from three quantities it already has: its estimated demand persistence phi (estimator {{LB-FP-diagnostic-estimator}} - the paper's pre-registered choice, Section 6.3), its measurement window W, and its feedback gain, via the companion-matrix construction of EQ-1. The standing claim: rho above the threshold {{LB-FP-diagnostic-threshold}} implies the firm's response to its next demand shock AMPLIFIES (bullwhip); rho below it implies the response DECAYS. A public calculator implements the computation at {{LB-FP-diagnostic-calculator-url}}.
 
-PREDICTION B (sector-level two-class bet; new at this rebuild, registered at publication). The paper's committed rolling construction (Section 5.3) partitions the seventeen-sector panel into {{LB-FP-diagnostic-n-flagged}} boundary-crossing ("oscillating") sectors and {{LB-FP-diagnostic-n-decay}} never-crossing sectors; the class lists are extracted mechanically from the committed output and registered verbatim (flagged: {{LB-FP-diagnostic-flagged-sectors}}; never-crossing: {{LB-FP-diagnostic-decay-sectors}}). The standing claim: at the trigger event, the flagged class shows amplifying inventory/sales responses exceeding the never-crossing class under the registered metric and test. Honesty note, registered as part of the claim: under this committed construction the CHIPS-dependent computers/electronics sector sits in the NEVER-CROSSING class while wholesale machinery sits in the flagged class - an earlier informal sketch that named both CHIPS sectors as flagged is superseded by the committed classification, and the spec-sensitivity of such flags is itself one of this paper's findings (Section 7.1).
+PREDICTION B (sector-level two-class bet; new at this rebuild, registered at publication). The paper's committed rolling construction (Section 6.3) partitions the seventeen-sector panel into {{LB-FP-diagnostic-n-flagged}} boundary-crossing ("oscillating") sectors and {{LB-FP-diagnostic-n-decay}} never-crossing sectors; the class lists are extracted mechanically from the committed output and registered verbatim (flagged: {{LB-FP-diagnostic-flagged-sectors}}; never-crossing: {{LB-FP-diagnostic-decay-sectors}}). The standing claim: at the trigger event, the flagged class shows amplifying inventory/sales responses exceeding the never-crossing class under the registered metric and test. Honesty note, registered as part of the claim: under this committed construction the CHIPS-dependent computers/electronics sector sits in the NEVER-CROSSING class while wholesale machinery sits in the flagged class - an earlier informal sketch that named both CHIPS sectors as flagged is superseded by the committed classification, and the spec-sensitivity of such flags is itself one of this paper's findings (Section 8.1).
 
-### 10.2 Protocol
+### 11.2 Protocol
 
 Trigger: {{LB-FP-diagnostic-trigger}}. Metric: peak absolute deviation of log inventory/sales from its pre-onset baseline mean within {{LB-FP-diagnostic-metric-window-months}} months of onset, normalized by the pre-onset {{LB-FP-diagnostic-baseline-months}}-month baseline standard deviation, per sector, from the same public monthly series the paper uses (Appendix A). Test: {{LB-FP-diagnostic-test}} at alpha {{LB-FP-diagnostic-alpha}}.
 
-### 10.3 Registration
+### 11.3 Registration
 
 Both predictions are registered publicly at the review stage alongside this paper's release, and scored publicly as data accrues; the registered constants above are byte-verified against the committed generator on every verification run.
 
-### 10.4 Falsification Conditions
+### 11.4 Falsification Conditions
 
 Prediction A is falsified by systematic decay in above-threshold systems or amplification in below-threshold systems under the stated computation. Prediction B is falsified if, at the trigger event, the flagged class does NOT exceed the never-crossing class under the registered metric and test - a genuine two-sided exposure, since the never-crossing class is non-empty and includes a CHIPS-dependent sector. If no qualifying trigger occurs before {{LB-FP-diagnostic-horizon}}, the bet is untestable and carries forward, re-registered, dated.
 
-## 11 Conclusion
+## 12 Conclusion
 
 C-01: blind-period damage is governed by intensity x duration, D = (rho_2/rho_1)^tau, computable from quantities institutions already estimate. C-02: a unique optimal measurement window W* exists in closed form. C-03: under regime-change risk the optimal operating point sits below the pi^2/2 limit. C-04: acting on the diagnostic reduces cost against a rational self-calibrating base-stock baseline within the simulated environment. C-05: the CHIPS-dependent sectors are among the more structurally unstable, though not the two most, with measurement-sensitive ranking. C-06: semiconductor instability is structural rather than utilization-triggered, so a utilization tripwire is not an available monitoring benchmark. Limits: L-01 (compound shocks excluded), L-02 (chronically-unstable sectors need steady-state analysis), L-03 (simulation binds the model), L-04 (recipe-level non-stationarity unresolved; one trajectory shape tested), L-05 (cross-domain readings suggestive only), L-06 (GFC corroborating only), L-07 (pricing bounded by the immediate-arithmetic demand model).
 
@@ -460,7 +506,7 @@ Data sources and identifiers mirror the committed data registry; Table TBL-A lis
 
 ## Appendix B: Validation and Robustness
 
-Theorem machine-check detail (both legs per theorem, per the two-row rule) and estimator robustness supporting Section 4 and Section 5.3.
+Theorem machine-check detail (both legs per theorem, per the two-row rule) and estimator robustness supporting Section 4 and Section 6.3.
 
 *Machine verification of the formal results (both legs per theorem, per the two-row rule; the written proofs are Appendix G).*
 
@@ -478,11 +524,11 @@ Theorem machine-check detail (both legs per theorem, per the two-row rule) and e
 
 Cross-domain rho computations supporting Table TBL-4 and Table TBL-5. The construction is identical in every domain and only the inputs change: an estimated persistence, a window, and an assumed feedback strength generate a companion matrix whose spectral radius is computed directly. Two features of these computations require emphasis because they bound how the cross-domain numbers may be read.
 
-The feedback strengths are assumption-driven proxies rather than estimates (S-7). Persistence is estimated from data in every domain, but bg - how hard the institution pushes on the measured gap - is not identified from the series, so the cross-domain radii are reported across a grid of feedback strengths rather than at a single fitted value. Consequently a cross-domain rho is a conditional statement of the form "at this feedback strength, this loop would sit here relative to the boundary," never a measurement of where an institution actually sits. The sovereign and unemployment-insurance readings in Section 8 are governed by this scope condition, and both pre-registered crossing claims were withdrawn when their preconditions failed, which is the honest consequence of taking the condition seriously rather than treating the grid as a set of estimates.
+The feedback strengths are assumption-driven proxies rather than estimates (S-7). Persistence is estimated from data in every domain, but bg - how hard the institution pushes on the measured gap - is not identified from the series, so the cross-domain radii are reported across a grid of feedback strengths rather than at a single fitted value. Consequently a cross-domain rho is a conditional statement of the form "at this feedback strength, this loop would sit here relative to the boundary," never a measurement of where an institution actually sits. The sovereign and unemployment-insurance readings in Section 9 are governed by this scope condition, and both pre-registered crossing claims were withdrawn when their preconditions failed, which is the honest consequence of taking the condition seriously rather than treating the grid as a set of estimates.
 
 ## Appendix D: Mitigation Effectiveness
 
-Mitigation effectiveness under the damped policies, supporting Section 6.5. The relevant comparison is not whether a damped policy outperforms an undamped one on average, but whether it does so in the specific configuration an institution occupies - because the simulation studies establish that the answer changes sign across that space. Damping helps decisively in genuinely shifted, persistent regimes; it costs little in stationary conditions where the gate rarely engages; and it inflicts real harm in noisy environments where the estimator's own variance drives the gate on and off, and in drifting-persistence environments where no estimate of a stable parameter exists to gate on (S-8). The mitigation question is therefore inseparable from the diagnostic question: the value of acting depends on the same persistence structure the diagnostic is measuring, which is why this paper reports where the remedy fails at equal length to where it works.
+Mitigation effectiveness under the damped policies, supporting Section 7.5. The relevant comparison is not whether a damped policy outperforms an undamped one on average, but whether it does so in the specific configuration an institution occupies - because the simulation studies establish that the answer changes sign across that space. Damping helps decisively in genuinely shifted, persistent regimes; it costs little in stationary conditions where the gate rarely engages; and it inflicts real harm in noisy environments where the estimator's own variance drives the gate on and off, and in drifting-persistence environments where no estimate of a stable parameter exists to gate on (S-8). The mitigation question is therefore inseparable from the diagnostic question: the value of acting depends on the same persistence structure the diagnostic is measuring, which is why this paper reports where the remedy fails at equal length to where it works.
 
 ## Appendix E: Beer Game Simulation Parameters
 

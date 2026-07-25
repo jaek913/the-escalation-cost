@@ -40,7 +40,7 @@ broken fixtures in verification/fixtures/ and is GREEN only if EVERY fixture
 turns RED for its named class:
   value_drift, unsigned_cic, missing_citation, surviving_stub,
   missing_section, orphan_figure, dangling_crossref, dropped_limit,
-  missing_artifact.
+  missing_artifact, missing_required_section.
 """
 from __future__ import annotations
 
@@ -67,6 +67,32 @@ STORE = pathlib.Path(os.environ.get(
     "EC_STORE", r"C:\Users\jaek9\Documents\LaggingTruth\The-Escalation-Cost"))
 
 TIE_EXEMPT = {"LB-E4-naive", "LB-E13-firm-bookend"}
+
+# REQUIRED SECTION RUN (Standard v1.9.10). Asserted from THIS FIXED LIST and
+# never from OUTLINE.md's own IMRaD map: the reconciliation gate diffs the
+# manuscript against the outline, so it is structurally blind to an omission
+# the two SHARE - which is exactly how this paper reached mid-Phase-4 with no
+# Methods section while every check stayed green. Each pattern is the role's
+# conventional realizations, matched case-insensitively against heading text,
+# because the series titles sections by content ("Empirical Validation")
+# rather than by IMRaD label. A paper that fills a role under a title not
+# listed here extends this list in a dated commit - never silently.
+REQUIRED_SECTIONS = [
+    ("Abstract", r"\babstract\b"),
+    ("Introduction", r"\bintroduction\b"),
+    ("Methods", r"\bmethods?\b|\bmethodology\b"),
+    ("Results", r"\bresults?\b|\bempirical\b|\bfindings\b"
+                r"|\bvalidation\b|\bevidence\b"),
+    ("Discussion", r"\bdiscussion\b|\bimplications?\b"
+                   r"|\binterpretation\b"),
+    ("Conclusion", r"\bconclusions?\b"),
+    ("References", r"\breferences\b|\bbibliography\b"),
+]
+# Required only when the paper carries prior-art citations (Standard v1.6).
+REQUIRED_IF_CITATIONS = (
+    "Related literature",
+    r"related work|related literature|literature review|prior art",
+)
 
 # Embedded-input ids -> on-disk locations (everything else resolves via the
 # SOURCES.md "Pulled files" table's store-path column).
@@ -376,13 +402,24 @@ def check_paper(lock: dict, paper_path: pathlib.Path,
         if not (root / m.group(1)).exists():
             problems.append(f"[paper] named artifact missing on disk: "
                             f"{m.group(1)}")
+
+    # required section run (v1.9.10) - see REQUIRED_SECTIONS
+    headings = re.findall(r"^#{1,3}[ \t]+(.+?)\s*$", text, re.M)
+    required = list(REQUIRED_SECTIONS)
+    if defined:                      # the paper carries prior-art citations
+        required.append(REQUIRED_IF_CITATIONS)
+    for role, pat in required:
+        if not any(re.search(pat, h, re.I) for h in headings):
+            problems.append(f"[paper] REQUIRED SECTION missing from the "
+                            f"IMRaD run: {role}")
     return problems
 
 
 # ---------------------------------------------------------------- selftest --
 FIXTURE_CLASSES = ["value_drift", "unsigned_cic", "missing_citation",
                    "surviving_stub", "missing_section", "orphan_figure",
-                   "dangling_crossref", "dropped_limit", "missing_artifact"]
+                   "dangling_crossref", "dropped_limit", "missing_artifact",
+                   "missing_required_section"]
 
 
 def run_selftest() -> int:
@@ -416,7 +453,8 @@ def run_selftest() -> int:
     if failures:
         print(f"SELF-TEST RED: {failures} fixture(s) did not trip")
         return 1
-    print("SELF-TEST GREEN: all 9 fixtures trip their checks")
+    print(f"SELF-TEST GREEN: all {len(FIXTURE_CLASSES)} fixtures trip "
+          f"their checks")
     return 0
 
 
