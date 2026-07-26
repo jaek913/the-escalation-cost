@@ -239,3 +239,47 @@ SIGNED 2026-07-24.
 7. PASS - both parents' MD5s computed from the exact bytes read, embedded, and mapped in verify.py's EMBEDDED_INPUTS (e5_md5, monitor_md5); any parent drift REDs input-hashes.
 
 SIGNED 2026-07-24.
+
+## e14_echelon
+
+Read in full from the committed source 2026-07-25. PRIMARY, pre-registered; DESIGN Sections 18 (classification + reporting commitment) and 20 (operator frozen). Classification: DESCRIPTIVE / STRUCTURAL CHARACTERIZATION, no verdict.
+
+1. PASS - main() -> real_run() -> build_panel -> analyse (point estimates, joint bootstrap, classify) -> committed JSON; every ledger row reads that JSON by path, and the three reported configurations (full, COVID-excluded, sector arm) are separate top-level blocks so no row can read the wrong one.
+2. PASS - the panel is built by intersecting observation dates on LEVELS and differencing inside that intersection (build_panel), so every column is aligned by construction rather than by position after independent differencing; the realised change count and its first and last dates are ASSERTED against frozen constants (411, 1992-03-01, 2026-05-01) and the run aborts rather than proceeding on a silently shorter sample. The COVID-excluded pass filters by DATE and carries its own dates list, never a positional offset.
+3. PASS - read_fred_csv raises on any non-numeric observation (FRED writes a bare period for a gap, which would parse as a string or NaN and poison a variance silently) and on any non-positive or non-finite level, which log-differencing requires; a missing-value scan across all five inputs returned zero non-numeric observations. There is no imputation anywhere.
+4. N/A - no estimation of a future quantity from past data and no rolling window: the statistic is a variance ratio over a fixed sample. The bootstrap resamples blocks of dates with wrap-around, which is a resampling scheme rather than a forecast, and cannot leak future information into a past prediction because no prediction is made.
+5. PASS - the stationary block bootstrap uses geometric block lengths of mean 12 months, 10,000 resamples, frozen in the script before its first real run (DESIGN 20.3); the COVID-excluded pass is a second application of the identical operator to a date-filtered sample and reports its own realised n separately, never reusing the full-sample interval.
+6. PASS - and this is the class that matters most here. Resampling is JOINT: one set of date blocks is applied to EVERY series in the chain, so cross-series co-movement within a month is preserved. Per-series resampling would destroy it, and the suite includes a leg that deliberately breaks the resampler and confirms the correlation-preservation self-test fires (deviation 1.0013 broken vs 0.0000 joint); the same leg asserts that the telescoping identity is BLIND to that defect, which is why the identity is not used as a self-test (DESIGN 20.4).
+7. PASS - all five inputs' SHA256 values are embedded as frozen literals and verified against the store before any computation; a mismatch is a hard exit, not a warning. Every identifier was confirmed against its own FRED series page for existence, title, units and seasonal adjustment before entering the manifest (DESIGN 19), and the realised coverage is asserted as in class 2.
+
+DISCLOSED, not a defect: the design_pin is a FROZEN LITERAL rather than a live md5 of DESIGN.md. It was written as a live hash first, which the rerun check correctly REDded, because a live hash of a mutable file cannot reproduce byte-identically once DESIGN moves on. The literal records the DESIGN version that governed this run.
+
+SIGNED 2026-07-25.
+
+## e14_resolution
+
+Read in full from the committed source 2026-07-25. POST-HOC / EXPLORATORY (DESIGN 21). Characterizes the INSTRUMENT, never the chain; produces no finding about amplification and no sentence in the manuscript may attribute one to it.
+
+1. PASS - main() -> hash guard -> build_panel -> characterise() per configuration -> committed JSON; ledger rows read grid cells by position, and the grid is a fixed literal (GRID) so a cell's meaning cannot drift.
+2. PASS - the driver is the REAL retail log-change column taken from the same build_panel intersection used by the primary, so alignment is inherited from a construction already cleared under e14_echelon class 2; synthetic downstream columns are generated element-wise from that driver and are the same length by construction.
+3. N/A - no missing-value handling is reachable: the inputs are the already-validated store files (class 7) and the synthetic columns are generated, never loaded.
+4. N/A - no forecasting; the sweep varies a planted parameter and measures a decision rule's fire rate.
+5. PASS - 100 replications per grid point at 2,000 resamples, both fixed literals; every replication uses an independently seeded generator (400000 + r) and the same seed sequence across grid points, so cells differ only in the planted ratio.
+6. PASS - each replication builds one independent chain; no statistic is computed across replications except the mean fire rate, which is the reported quantity.
+7. PASS - the five input SHA256 values are re-verified against the store before use, so the characterization cannot silently describe a different dataset than the primary ran on. DISCLOSED LIMITATION, carried in the artifact itself: injected noise is iid, so downstream serial dependence comes from the driver alone and is weaker than the real downstream series; bootstrap intervals are therefore slightly narrower than reality and the reported recovery rates are OPTIMISTIC - the honest direction for a resolution bound, since it cannot flatter the experiment.
+
+SIGNED 2026-07-25.
+
+## e14_contrast
+
+Read in full from the committed source 2026-07-25. POST-HOC / SECONDARY (DESIGN 22), with the reading committed in DESIGN 22.3 BEFORE this script existed. Imports e14_echelon READ ONLY and never regenerates it; the primary artifact was re-verified byte-identical after every run.
+
+1. PASS - main() -> real_run() -> contrast_analyse() per configuration + power_curve() per configuration -> committed JSON; the outcome field is computed by the script from the pre-committed decision tree (A / B / C) rather than asserted in prose, and the false-positive gate is evaluated BEFORE the interval is read, as committed.
+2. PASS - the contrast is computed WITHIN each resample from the same joint bootstrap draw, so the step ratios being compared are aligned by construction; the largest step is selected by argmax of the POINT estimates and the per-resample minimum is taken over the remaining indices, which cannot mis-pair because both come from one (B, k-1) array.
+3. N/A - as e14_resolution class 3.
+4. N/A - as e14_resolution class 4.
+5. PASS - 100 replications at 2,000 resamples for the power curves and the frozen N_BOOT for the reported intervals, all fixed literals; the suite includes a determinism leg confirming an identical seed reproduces an identical interval.
+6. PASS - joint resampling as in e14_echelon class 6, inherited unchanged from the imported bootstrap function.
+7. PASS - input hashes re-verified against the store before use, as e14_resolution class 7. TWO WATCHED-TO-FAIL SUITE LEGS: an even chain must NOT separate, and two JOINTLY-high steps must NOT separate either; both fire as required, which is what distinguishes the simultaneity claim from a label. The contrast rule's false-positive rate at realised coupling is 0.00 in both configurations against a 0.05 ceiling, so its higher power is not permissiveness.
+
+SIGNED 2026-07-25.

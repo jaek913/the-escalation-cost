@@ -1,12 +1,14 @@
 {
  "paper": "The Escalation Cost",
  "generated_by": "analysis/build_claims.py",
- "generated_at": "2026-07-25",
+ "generated_at": "2026-07-26",
  "design_pins_md5": [
-  "74c73ea165a7363c6714fe803fbe76b1"
+  "74c73ea165a7363c6714fe803fbe76b1",
+  "c81d4c6eb31aa74e51db4c3108dc63db",
+  "eaabaeef8137d0afa910c6a63f44c7ef"
  ],
  "never_hand_edit": true,
- "n_rows": 437,
+ "n_rows": 505,
  "rows": [
   {
    "id": "LB-E1-panel-n-chronic",
@@ -8479,6 +8481,1777 @@
    "cic_ref": "verification/cic_signoff.md#e12_nonstationarity",
    "verify_mode": "rerun",
    "design_pin_md5": "74c73ea165a7363c6714fe803fbe76b1"
+  },
+  {
+   "id": "LB-E14-arm-compound",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.compound_product",
+   "derived": "",
+   "expected": 7.475745853596637,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-e2e",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.end_to_end",
+   "derived": "",
+   "expected": 7.475745853596638,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-n",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.n_changes",
+   "derived": "",
+   "expected": 411,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-result",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.result",
+   "derived": "",
+   "expected": "DISTINGUISHED",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef",
+   "note": "by-product of the same series and operator; carries NO separate verdict. Its coupling regime (0.477) was never power-characterized, so no power figure attaches to it."
+  },
+  {
+   "id": "LB-E14-arm-s1-hi",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.step_ci_high[0]",
+   "derived": "",
+   "expected": 1.9547443341532666,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-s1-lo",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.step_ci_low[0]",
+   "derived": "",
+   "expected": 0.8426045433624816,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-s1-ratio",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.step_ratio[0]",
+   "derived": "",
+   "expected": 1.1452150524586318,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-s2-hi",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.step_ci_high[1]",
+   "derived": "",
+   "expected": 1.4030041053408124,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-s2-lo",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.step_ci_low[1]",
+   "derived": "",
+   "expected": 0.7742347614670123,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-s2-ratio",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.step_ratio[1]",
+   "derived": "",
+   "expected": 0.928671435914251,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-s3-hi",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.step_ci_high[2]",
+   "derived": "",
+   "expected": 13.962796763527026,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-s3-lo",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.step_ci_low[2]",
+   "derived": "",
+   "expected": 4.352522402349441,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-arm-s3-ratio",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "sector_arm.step_ratio[2]",
+   "derived": "",
+   "expected": 7.029191792232112,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-compound",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.compound_product",
+   "derived": "",
+   "expected": 5.197590822677674,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-e2e",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.end_to_end",
+   "derived": "",
+   "expected": 5.197590822677674,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-identity",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.identity_discrepancy",
+   "derived": "",
+   "expected": 0.0,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef",
+   "note": "reporting commitment (d). ALGEBRAIC IDENTITY - the step ratios telescope, so this is zero by construction and carries NO information about the data (DESIGN 20.4). Reported because the commitment binds, labelled as what it is."
+  },
+  {
+   "id": "LB-E14-chain-excl-n",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.n_changes",
+   "derived": "",
+   "expected": 387,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-result",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.result",
+   "derived": "",
+   "expected": "INCONCLUSIVE",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef",
+   "note": "pre-registered rule (DESIGN 20.2); INCONCLUSIVE is a statement about RESOLUTION, never a negative finding"
+  },
+  {
+   "id": "LB-E14-chain-excl-s1-hi",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.step_ci_high[0]",
+   "derived": "",
+   "expected": 2.2273207043976844,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-s1-lo",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.step_ci_low[0]",
+   "derived": "",
+   "expected": 0.8921611964277247,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-s1-ratio",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.step_ratio[0]",
+   "derived": "",
+   "expected": 1.5031425964698546,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-s2-hi",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.step_ci_high[1]",
+   "derived": "",
+   "expected": 1.5923145367245362,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-s2-lo",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.step_ci_low[1]",
+   "derived": "",
+   "expected": 0.8205390542339482,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-s2-ratio",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.step_ratio[1]",
+   "derived": "",
+   "expected": 1.1018487580734568,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-s3-hi",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.step_ci_high[2]",
+   "derived": "",
+   "expected": 4.846741724365829,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-s3-lo",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.step_ci_low[2]",
+   "derived": "",
+   "expected": 2.195835378485051,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-excl-s3-ratio",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "covid_excluded.step_ratio[2]",
+   "derived": "",
+   "expected": 3.138194943535571,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-compound",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.compound_product",
+   "derived": "",
+   "expected": 2.5171052839917945,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-e2e",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.end_to_end",
+   "derived": "",
+   "expected": 2.5171052839917945,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-identity",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.identity_discrepancy",
+   "derived": "",
+   "expected": 0.0,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef",
+   "note": "reporting commitment (d). ALGEBRAIC IDENTITY - the step ratios telescope, so this is zero by construction and carries NO information about the data (DESIGN 20.4). Reported because the commitment binds, labelled as what it is."
+  },
+  {
+   "id": "LB-E14-chain-full-n",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.n_changes",
+   "derived": "",
+   "expected": 411,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-result",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.result",
+   "derived": "",
+   "expected": "INCONCLUSIVE",
+   "tol_rel": 0,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef",
+   "note": "pre-registered rule (DESIGN 20.2); INCONCLUSIVE is a statement about RESOLUTION, never a negative finding"
+  },
+  {
+   "id": "LB-E14-chain-full-s1-hi",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.step_ci_high[0]",
+   "derived": "",
+   "expected": 1.9547443341532666,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-s1-lo",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.step_ci_low[0]",
+   "derived": "",
+   "expected": 0.8426045433624816,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-s1-ratio",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.step_ratio[0]",
+   "derived": "",
+   "expected": 1.1452150524586318,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-s2-hi",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.step_ci_high[1]",
+   "derived": "",
+   "expected": 1.4030041053408124,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-s2-lo",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.step_ci_low[1]",
+   "derived": "",
+   "expected": 0.7742347614670123,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-s2-ratio",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.step_ratio[1]",
+   "derived": "",
+   "expected": 0.928671435914251,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-s3-hi",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.step_ci_high[2]",
+   "derived": "",
+   "expected": 4.095228329363658,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-s3-lo",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.step_ci_low[2]",
+   "derived": "",
+   "expected": 1.6555256714518276,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-chain-full-s3-ratio",
+   "script": "analysis/e14_echelon.py",
+   "output": "analysis/outputs/e14_echelon.json",
+   "json_path": "full_sample.step_ratio[2]",
+   "derived": "",
+   "expected": 2.3667492379916664,
+   "tol_rel": 1e-09,
+   "inputs": [
+    {
+     "id": "fred_AMTMNO",
+     "sha256": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf"
+    },
+    {
+     "id": "fred_AMTMVS",
+     "sha256": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703"
+    },
+    {
+     "id": "fred_DGORDER",
+     "sha256": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040"
+    },
+    {
+     "id": "fred_MRTSSM44000USS",
+     "sha256": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4"
+    },
+    {
+     "id": "fred_S42SMSM144SCEN",
+     "sha256": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+    }
+   ],
+   "cic_ref": "verification/cic_signoff.md#e14_echelon",
+   "verify_mode": "rerun",
+   "design_pin_md5": "eaabaeef8137d0afa910c6a63f44c7ef"
+  },
+  {
+   "id": "LB-E14-contrast-arm-argmax-mid",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.sector_arm.argmax_probability[1]",
+   "derived": "",
+   "expected": 0.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. The middle step is NEVER the largest in any configuration."
+  },
+  {
+   "id": "LB-E14-contrast-arm-argmax-top",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.sector_arm.argmax_probability[2]",
+   "derived": "",
+   "expected": 1.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. Probability the ORDERING step is the largest across resamples - the graded object the characterization classification actually calls for."
+  },
+  {
+   "id": "LB-E14-contrast-arm-hi",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.sector_arm.contrast_ci_high",
+   "derived": "",
+   "expected": 12.53697888283307,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db"
+  },
+  {
+   "id": "LB-E14-contrast-arm-lo",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.sector_arm.contrast_ci_low",
+   "derived": "",
+   "expected": 3.218413513479226,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db"
+  },
+  {
+   "id": "LB-E14-contrast-arm-point",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.sector_arm.contrast_point",
+   "derived": "",
+   "expected": 5.88397673977348,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. Simultaneous contrast: per resample, the minimum of (largest step minus each other step)."
+  },
+  {
+   "id": "LB-E14-contrast-excl-argmax-mid",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.covid_excluded.argmax_probability[1]",
+   "derived": "",
+   "expected": 0.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. The middle step is NEVER the largest in any configuration."
+  },
+  {
+   "id": "LB-E14-contrast-excl-argmax-top",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.covid_excluded.argmax_probability[2]",
+   "derived": "",
+   "expected": 0.9952,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. Probability the ORDERING step is the largest across resamples - the graded object the characterization classification actually calls for."
+  },
+  {
+   "id": "LB-E14-contrast-excl-hi",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.covid_excluded.contrast_ci_high",
+   "derived": "",
+   "expected": 3.3513441046396313,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db"
+  },
+  {
+   "id": "LB-E14-contrast-excl-lo",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.covid_excluded.contrast_ci_low",
+   "derived": "",
+   "expected": 0.32201914874751913,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db"
+  },
+  {
+   "id": "LB-E14-contrast-excl-point",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.covid_excluded.contrast_point",
+   "derived": "",
+   "expected": 1.6350523470657163,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. Simultaneous contrast: per resample, the minimum of (largest step minus each other step)."
+  },
+  {
+   "id": "LB-E14-contrast-fpr-worst",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "false_positive_rate_worst",
+   "derived": "",
+   "expected": 0.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC, and the GATE: DESIGN 22.3 requires the contrast rule false-positive rate to be checked BEFORE its interval is read. A rule that fires more often is an improvement only if it fires more on TRUE effects and no more on none."
+  },
+  {
+   "id": "LB-E14-contrast-full-argmax-mid",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.full_sample.argmax_probability[1]",
+   "derived": "",
+   "expected": 0.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. The middle step is NEVER the largest in any configuration."
+  },
+  {
+   "id": "LB-E14-contrast-full-argmax-top",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.full_sample.argmax_probability[2]",
+   "derived": "",
+   "expected": 0.9989,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. Probability the ORDERING step is the largest across resamples - the graded object the characterization classification actually calls for."
+  },
+  {
+   "id": "LB-E14-contrast-full-hi",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.full_sample.contrast_ci_high",
+   "derived": "",
+   "expected": 2.7692338083921486,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db"
+  },
+  {
+   "id": "LB-E14-contrast-full-lo",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.full_sample.contrast_ci_low",
+   "derived": "",
+   "expected": 0.4421587976788141,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db"
+  },
+  {
+   "id": "LB-E14-contrast-full-point",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "contrast.full_sample.contrast_point",
+   "derived": "",
+   "expected": 1.2215341855330346,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. Simultaneous contrast: per resample, the minimum of (largest step minus each other step)."
+  },
+  {
+   "id": "LB-E14-contrast-outcome",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "design_22_3_outcome",
+   "derived": "",
+   "expected": "A - separated under the correctly-targeted statistic",
+   "tol_rel": 0,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. Which of the three pre-committed readings (A separated / B data cannot separate / C rule inadmissible) the run landed on."
+  },
+  {
+   "id": "LB-E14-contrast-power-excl",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "power_covid_excluded.grid[4].fire_rate",
+   "derived": "",
+   "expected": 1.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. Power of the CONTRAST rule at the observed COVID-excluded effect - the well-powered configuration, and the one the paper leads with."
+  },
+  {
+   "id": "LB-E14-contrast-power-full",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "power_full_sample.grid[3].fire_rate",
+   "derived": "",
+   "expected": 0.35,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. Power of the CONTRAST rule at the observed full-sample effect. LOW - that reading is FRAGILE and must not be presented as strong."
+  },
+  {
+   "id": "LB-E14-severity-excl-fpr",
+   "script": "analysis/e14_resolution.py",
+   "output": "analysis/outputs/e14_resolution.json",
+   "json_path": "covid_excluded.grid[0].recovery_rate",
+   "derived": "",
+   "expected": 0.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_resolution",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "EXPLORATORY. False-positive rate at a planted ratio of 1.0 (no concentration planted): the pre-registered rule does not manufacture concentration at realised coupling either."
+  },
+  {
+   "id": "LB-E14-severity-excl-power-at-excl-effect",
+   "script": "analysis/e14_resolution.py",
+   "output": "analysis/outputs/e14_resolution.json",
+   "json_path": "covid_excluded.grid[5].recovery_rate",
+   "derived": "",
+   "expected": 0.93,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_resolution",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "EXPLORATORY. Detection probability at the OBSERVED COVID-excluded effect (R3 = 3.1382)."
+  },
+  {
+   "id": "LB-E14-severity-excl-power-at-full-effect",
+   "script": "analysis/e14_resolution.py",
+   "output": "analysis/outputs/e14_resolution.json",
+   "json_path": "covid_excluded.grid[3].recovery_rate",
+   "derived": "",
+   "expected": 0.13,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_resolution",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "EXPLORATORY. Detection probability at the OBSERVED full-sample effect (R3 = 2.3667). For the full-sample configuration this is 0.00 - the headline pass could not have fired at the effect it measured."
+  },
+  {
+   "id": "LB-E14-severity-excl-r3-at-80",
+   "script": "analysis/e14_resolution.py",
+   "output": "analysis/outputs/e14_resolution.json",
+   "json_path": "covid_excluded.r3_at_80pct_recovery",
+   "derived": "",
+   "expected": 3.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_resolution",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "EXPLORATORY. Smallest swept ordering-step ratio reaching 0.80 recovery at realised coupling."
+  },
+  {
+   "id": "LB-E14-severity-full-fpr",
+   "script": "analysis/e14_resolution.py",
+   "output": "analysis/outputs/e14_resolution.json",
+   "json_path": "full_sample.grid[0].recovery_rate",
+   "derived": "",
+   "expected": 0.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_resolution",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "EXPLORATORY. False-positive rate at a planted ratio of 1.0 (no concentration planted): the pre-registered rule does not manufacture concentration at realised coupling either."
+  },
+  {
+   "id": "LB-E14-severity-full-power-at-excl-effect",
+   "script": "analysis/e14_resolution.py",
+   "output": "analysis/outputs/e14_resolution.json",
+   "json_path": "full_sample.grid[5].recovery_rate",
+   "derived": "",
+   "expected": 0.67,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_resolution",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "EXPLORATORY. Detection probability at the OBSERVED COVID-excluded effect (R3 = 3.1382)."
+  },
+  {
+   "id": "LB-E14-severity-full-power-at-full-effect",
+   "script": "analysis/e14_resolution.py",
+   "output": "analysis/outputs/e14_resolution.json",
+   "json_path": "full_sample.grid[3].recovery_rate",
+   "derived": "",
+   "expected": 0.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_resolution",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "EXPLORATORY. Detection probability at the OBSERVED full-sample effect (R3 = 2.3667). For the full-sample configuration this is 0.00 - the headline pass could not have fired at the effect it measured."
+  },
+  {
+   "id": "LB-E14-severity-full-r3-at-80",
+   "script": "analysis/e14_resolution.py",
+   "output": "analysis/outputs/e14_resolution.json",
+   "json_path": "full_sample.r3_at_80pct_recovery",
+   "derived": "",
+   "expected": 4.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_resolution",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "EXPLORATORY. Smallest swept ordering-step ratio reaching 0.80 recovery at realised coupling."
   },
   {
    "id": "LB-E2-components-absdphi",

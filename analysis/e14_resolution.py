@@ -136,6 +136,9 @@ def main() -> int:
 
     result = dict(
         characterization="E14 instrument resolution at realised coupling",
+        design_pin="c81d4c6eb31aa74e51db4c3108dc63db",  # FROZEN literal (see
+        # e14_echelon.py): a live md5 of DESIGN.md cannot reproduce
+        # byte-identically under the rerun check once DESIGN moves on.
         status="POST-HOC / EXPLORATORY - specified after the E14 result (DESIGN 21)",
         changes_no_reported_number=True,
         method=("semi-parametric: real retail log changes as driver; downstream "

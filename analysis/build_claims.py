@@ -464,6 +464,113 @@ def rows_spec():
         row(f"LB-E10-tbl5-{rn}-rho", e10f, f"countries[{i}].rho_calm")
         row(f"LB-E10-tbl5-{rn}-npairs", e10f, f"countries[{i}].n_pairs")
 
+    # ---- E14 ECHELON VARIANCE DECOMPOSITION (Phase 4; DESIGN Sections 18,
+    #      20, 21, 22; commit 9b57d61). CHARACTERIZATION - no verdict.
+    #      THREE artifacts carrying THREE DIFFERENT evidential statuses, kept
+    #      in separate families so a reader cannot conflate them:
+    #        LB-E14-chain     PRIMARY, pre-registered   (e14_echelon.json)
+    #        LB-E14-arm       by-product, no separate verdict (same artifact)
+    #        LB-E14-severity  POST-HOC / EXPLORATORY    (e14_resolution.json)
+    #        LB-E14-contrast  POST-HOC / SECONDARY      (e14_contrast.json)
+    #      The primary artifact is byte-frozen; both post-hoc scripts import
+    #      e14_echelon READ ONLY and never regenerate it.
+    e14 = 'e14_echelon.json'
+    STEPS = ('s1', 's2', 's3')        # retail->whsl, whsl->ship, ship->orders
+    for cfg, blk in (('full', 'full_sample'), ('excl', 'covid_excluded')):
+        for i, sn in enumerate(STEPS):
+            row(f'LB-E14-chain-{cfg}-{sn}-ratio', e14, f'{blk}.step_ratio[{i}]')
+            row(f'LB-E14-chain-{cfg}-{sn}-lo', e14, f'{blk}.step_ci_low[{i}]')
+            row(f'LB-E14-chain-{cfg}-{sn}-hi', e14, f'{blk}.step_ci_high[{i}]')
+        row(f'LB-E14-chain-{cfg}-n', e14, f'{blk}.n_changes')
+        row(f'LB-E14-chain-{cfg}-result', e14, f'{blk}.result', tol=0,
+            note='pre-registered rule (DESIGN 20.2); INCONCLUSIVE is a '
+                 'statement about RESOLUTION, never a negative finding')
+        row(f'LB-E14-chain-{cfg}-compound', e14, f'{blk}.compound_product')
+        row(f'LB-E14-chain-{cfg}-e2e', e14, f'{blk}.end_to_end')
+        row(f'LB-E14-chain-{cfg}-identity', e14, f'{blk}.identity_discrepancy',
+            note='reporting commitment (d). ALGEBRAIC IDENTITY - the step '
+                 'ratios telescope, so this is zero by construction and '
+                 'carries NO information about the data (DESIGN 20.4). '
+                 'Reported because the commitment binds, labelled as what it '
+                 'is.')
+    # Sector arm: same operator, final step replaced by durable-goods orders.
+    for i, sn in enumerate(STEPS):
+        row(f'LB-E14-arm-{sn}-ratio', e14, f'sector_arm.step_ratio[{i}]')
+        row(f'LB-E14-arm-{sn}-lo', e14, f'sector_arm.step_ci_low[{i}]')
+        row(f'LB-E14-arm-{sn}-hi', e14, f'sector_arm.step_ci_high[{i}]')
+    row('LB-E14-arm-n', e14, 'sector_arm.n_changes')
+    row('LB-E14-arm-result', e14, 'sector_arm.result', tol=0,
+        note='by-product of the same series and operator; carries NO separate '
+             'verdict. Its coupling regime (0.477) was never power-'
+             'characterized, so no power figure attaches to it.')
+    row('LB-E14-arm-compound', e14, 'sector_arm.compound_product')
+    row('LB-E14-arm-e2e', e14, 'sector_arm.end_to_end')
+
+    # POST-HOC / EXPLORATORY (DESIGN 21): resolution at REALISED coupling.
+    # Exists because the pre-registered suite measured resolution in a regime
+    # the data never occupied, so its resolution claim did not transfer.
+    e14r = 'e14_resolution.json'
+    for cfg, blk in (('full', 'full_sample'), ('excl', 'covid_excluded')):
+        row(f'LB-E14-severity-{cfg}-power-at-full-effect', e14r,
+            f'{blk}.grid[3].recovery_rate',
+            note='EXPLORATORY. Detection probability at the OBSERVED '
+                 'full-sample effect (R3 = 2.3667). For the full-sample '
+                 'configuration this is 0.00 - the headline pass could not '
+                 'have fired at the effect it measured.')
+        row(f'LB-E14-severity-{cfg}-power-at-excl-effect', e14r,
+            f'{blk}.grid[5].recovery_rate',
+            note='EXPLORATORY. Detection probability at the OBSERVED '
+                 'COVID-excluded effect (R3 = 3.1382).')
+        row(f'LB-E14-severity-{cfg}-fpr', e14r, f'{blk}.grid[0].recovery_rate',
+            note='EXPLORATORY. False-positive rate at a planted ratio of 1.0 '
+                 '(no concentration planted): the pre-registered rule does '
+                 'not manufacture concentration at realised coupling either.')
+        row(f'LB-E14-severity-{cfg}-r3-at-80', e14r,
+            f'{blk}.r3_at_80pct_recovery',
+            note='EXPLORATORY. Smallest swept ordering-step ratio reaching '
+                 '0.80 recovery at realised coupling.')
+
+    # POST-HOC / SECONDARY (DESIGN 22): the correctly-targeted contrast, with
+    # the reading committed in DESIGN 22.3 BEFORE the script existed.
+    e14c = 'e14_contrast.json'
+    for cfg, blk in (('full', 'contrast.full_sample'),
+                     ('excl', 'contrast.covid_excluded'),
+                     ('arm', 'contrast.sector_arm')):
+        row(f'LB-E14-contrast-{cfg}-point', e14c, f'{blk}.contrast_point',
+            note='SECONDARY / POST-HOC. Simultaneous contrast: per resample, '
+                 'the minimum of (largest step minus each other step).')
+        row(f'LB-E14-contrast-{cfg}-lo', e14c, f'{blk}.contrast_ci_low')
+        row(f'LB-E14-contrast-{cfg}-hi', e14c, f'{blk}.contrast_ci_high')
+        row(f'LB-E14-contrast-{cfg}-argmax-top', e14c,
+            f'{blk}.argmax_probability[2]',
+            note='SECONDARY / POST-HOC. Probability the ORDERING step is the '
+                 'largest across resamples - the graded object the '
+                 'characterization classification actually calls for.')
+        row(f'LB-E14-contrast-{cfg}-argmax-mid', e14c,
+            f'{blk}.argmax_probability[1]',
+            note='SECONDARY / POST-HOC. The middle step is NEVER the largest '
+                 'in any configuration.')
+    row('LB-E14-contrast-fpr-worst', e14c, 'false_positive_rate_worst',
+        note='SECONDARY / POST-HOC, and the GATE: DESIGN 22.3 requires the '
+             'contrast rule false-positive rate to be checked BEFORE its '
+             'interval is read. A rule that fires more often is an '
+             'improvement only if it fires more on TRUE effects and no more '
+             'on none.')
+    row('LB-E14-contrast-outcome', e14c, 'design_22_3_outcome', tol=0,
+        note='SECONDARY / POST-HOC. Which of the three pre-committed readings '
+             '(A separated / B data cannot separate / C rule inadmissible) '
+             'the run landed on.')
+    row('LB-E14-contrast-power-full', e14c,
+        'power_full_sample.grid[3].fire_rate',
+        note='SECONDARY / POST-HOC. Power of the CONTRAST rule at the '
+             'observed full-sample effect. LOW - that reading is FRAGILE and '
+             'must not be presented as strong.')
+    row('LB-E14-contrast-power-excl', e14c,
+        'power_covid_excluded.grid[4].fire_rate',
+        note='SECONDARY / POST-HOC. Power of the CONTRAST rule at the '
+             'observed COVID-excluded effect - the well-powered '
+             'configuration, and the one the paper leads with.')
+
     return R
 
 

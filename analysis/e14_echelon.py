@@ -504,7 +504,11 @@ def real_run() -> int:
 
     result = dict(
         experiment="E14",
-        design_pin=md5(ROOT / "DESIGN.md"),
+        # FROZEN LITERAL, never a live hash. The pin records the DESIGN version
+        # that GOVERNED this run; a live md5 of a mutable file cannot reproduce
+        # byte-identically once DESIGN moves on, and the rerun check caught
+        # exactly that (2026-07-25). Matches e5_monitor_tbl4.py's convention.
+        design_pin="eaabaeef8137d0afa910c6a63f44c7ef",
         classification="DESCRIPTIVE / STRUCTURAL CHARACTERIZATION - no verdict",
         operator=dict(observable="first difference of natural log",
                       statistic="variance ratio between adjacent chain steps",

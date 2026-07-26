@@ -72,6 +72,7 @@
     }
   },
   "design_22_3_outcome": "A - separated under the correctly-targeted statistic",
+  "design_pin": "c81d4c6eb31aa74e51db4c3108dc63db",
   "false_positive_rate_worst": 0.0,
   "fpr_ceiling": 0.05,
   "power_covid_excluded": {

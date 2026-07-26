@@ -245,6 +245,9 @@ def real_run() -> int:
 
     result = dict(
         analysis="E14 secondary contrast analysis",
+        design_pin="c81d4c6eb31aa74e51db4c3108dc63db",  # FROZEN literal (see
+        # e14_echelon.py): a live md5 of DESIGN.md cannot reproduce
+        # byte-identically under the rerun check once DESIGN moves on.
         status="POST-HOC / SECONDARY - reading committed in DESIGN 22.3 before execution",
         primary_unchanged=("e14_echelon.json is byte-frozen; primary remains "
                            "INCONCLUSIVE with detection probability 0.00 at the "
