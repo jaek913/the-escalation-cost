@@ -478,7 +478,8 @@ def main() -> None:
         if fname not in cache:
             cache[fname] = load(fname)
         data = cache[fname]
-        design_pins.add(data.get("design_pin", ""))
+        row_pin = data.get("design_pin", "")
+        design_pins.add(row_pin)
         if spec["derived"]:
             expected = DERIVED[spec["derived"]](data)
         else:
@@ -507,19 +508,30 @@ def main() -> None:
                    expected=expected, tol_rel=spec["tol_rel"],
                    inputs=inputs,
                    cic_ref=f"verification/cic_signoff.md#{pathlib.Path(script).stem}",
-                   verify_mode=spec["verify_mode"])
+                   verify_mode=spec["verify_mode"],
+                   design_pin_md5=row_pin)
         for opt in ("leg", "label", "note"):
             if opt in spec:
                 rec[opt] = spec[opt]
         rows_out.append(rec)
     ids = [r["id"] for r in rows_out]
     assert len(ids) == len(set(ids)), "duplicate LB-ids"
+    # DESIGN pins are recorded PER ROW (v1.9.10 audit consequence). A paper
+    # that legitimately amends its design and adds an experiment has more than
+    # one pin in play, and the honest record is which DESIGN version produced
+    # which number - not a single lock-level value that would be wrong for
+    # every row it does not describe. The lock keeps the sorted set for a
+    # replicator; the per-row field is authoritative. Every row must carry a
+    # non-empty pin: a missing one means an output was written without
+    # recording the design it ran under, which is a defect, not a variation.
     design_pins.discard("")
-    assert len(design_pins) == 1, f"mixed design pins: {design_pins}"
+    assert design_pins, "no design pin found in any output"
+    missing = [r["id"] for r in rows_out if not r["design_pin_md5"]]
+    assert not missing, f"rows with no design pin: {missing[:5]}"
     lock = {"paper": "The Escalation Cost",
             "generated_by": "analysis/build_claims.py",
             "generated_at": _dt.date.today().isoformat(),
-            "design_pin_md5": design_pins.pop(),
+            "design_pins_md5": sorted(design_pins),
             "never_hand_edit": True,
             "n_rows": len(rows_out),
             "rows": sorted(rows_out, key=lambda r: r["id"])}

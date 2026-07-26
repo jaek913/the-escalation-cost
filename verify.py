@@ -476,7 +476,7 @@ def main() -> int:
 
     lock = json.loads(LOCK.read_text(encoding="utf-8"))
     print(f"verify.py - {lock['paper']} - {lock['n_rows']} ledger rows "
-          f"(design pin {lock['design_pin_md5']})")
+          f"(design pins {', '.join(lock['design_pins_md5'])})")
     report = {}
     report["ledger-values"] = check_ledger_values(lock, OUTPUTS)
     report["input-hashes"] = check_input_hashes(lock, SOURCES)

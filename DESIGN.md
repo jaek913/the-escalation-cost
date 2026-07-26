@@ -1013,3 +1013,44 @@ Pre-registered specification counts, in full:
 **Re-run vs recharacterize (the governing distinction, ratified 2026-07-14).** RE-RUN if and only if the INSTRUMENT was degenerate - the data carry no information (E5's first run: six sectors tied at the ceiling is a jammed ruler, not a measurement). RECHARACTERIZE if and only if the instrument was sound but the REPORT FORM was wrong (E6: the bin means are valid, informative measurements at adequate n; only the verdict layer bolted on top was invalid). Under this test the battery requires ZERO new re-runs: E5's re-run is already done (freeze 7b27abc, result 7c5737b), and E6 needs none.
 
 **Defensibility conditions (all three mandatory, ratified 2026-07-14).** (1) Every report-form change is a DATED DESIGN amendment, never an overwrite - this section plus the Section 9 amendment. (2) The pre-registered output IS REPORTED alongside the recharacterization, never suppressed: for E5 the graded rule returned DROPPED, for E6 the rule returned REFUTE, and both are stated in the paper with the explanation that the rule imposed a verdict structure on a question that could not honestly carry one. (3) A methods/limitations note discloses the full arc - the battery was designed under a binary regime; execution revealed that several experiments were descriptive or non-severe; the classification standard was adopted mid-battery (Standard v1.9.7); labels and report forms changed; NO number changed. The Standard's re-design symmetry test ("would I make this change if it pushed the result the other way?") is answered YES on the record: E5's limited-resolution caveat would gut an ASSERTED verdict exactly as much as it softens the DROPPED one (a 0.0068 top-cluster spread makes "#1-#2" equally unresolvable), E6's severity defect would have invalidated a SUPPORT crossing exactly as much as it invalidates the REFUTE, and the classification was applied to ALL SIX completed experiments - E1-E4 keeping their verdicts and report forms unchanged - not only to the two whose results were unwelcome.
+
+---
+
+## 18. AMENDMENT 2026-07-25 - DATA MANIFEST EXTENSION + E14 (echelon variance decomposition)
+
+**Status: PRE-PULL, PRE-RUN. Design frozen here BEFORE any new data is pulled and before the synthetic suite is written, per the v1.9.5 experiment-validation gate and the v1.9.7 classification step. No hashed-data run until both halves below are committed and the suite passes.**
+
+**Why this amendment exists.** The Phase-4 source audit found that the pinned source reports an echelon-by-echelon variance decomposition of bullwhip amplification which this rebuild neither carried nor dispositioned. COVERAGE row 39 marks source 6.1 TRANSFORM with the disposition "Persistence estimates re-earned" - which covers the persistence estimates and NOT the decomposition. The decomposition is the paper's only opportunity to LOCATE its mechanism in real data: every other empirical result is predictive association (E1, E2) or simulation. Author-authorized 2026-07-25.
+
+### 18.1 Data manifest extension (amends Section 14)
+
+The pinned manifest holds inventory-to-sales RATIOS. The decomposition requires FLOW series, which were never pulled. Added to the manifest, monthly and seasonally adjusted, US Census via FRED, EVERY ID TO BE TITLE-VERIFIED AT PULL TIME before acceptance (the Section-14 discipline; a mislabeled id is the defect that produced the A25SIS audit-trail entry):
+
+- Total retail sales (chain step 1)
+- Merchant wholesalers sales (chain step 2)
+- Manufacturers' value of shipments, total manufacturing (chain step 3)
+- Manufacturers' new orders, total manufacturing (chain step 4)
+- Manufacturers' new orders, durable goods (sector arm)
+
+The exact FRED identifiers are resolved and title-verified at pull time and recorded in SOURCES.md with bytes, SHA256, store path and replicator tolerance, exactly as the existing 34. Coverage target 1992-01 onward to match the panel. These are REVISABLE series: per the v1.9.4 rule the pinned snapshot is the reproducibility anchor and a later live re-fetch is a drift-tolerant provenance check, not a gate.
+
+### 18.2 E14 classification and report form (v1.9.7)
+
+**Primary type: DESCRIPTIVE / STRUCTURAL CHARACTERIZATION.** The question is where along the chain variance amplification concentrates. It is not a hypothesis test and it does NOT receive a SUPPORT/REFUTE verdict.
+
+**Severity check.** If the claim were false - if amplification distributed roughly evenly across echelons rather than concentrating - could THIS test on THIS data distinguish that? Yes. The statistic is a per-step variance ratio, unbounded above and bounded below at zero, with no ceiling to saturate against and no tie structure; an even distribution appears as every step near 1.0 with overlapping intervals, and concentration appears as one step materially above 1.0 with an interval excluding the others. Both patterns are observable and distinguishable at the available n. The instrument therefore has dynamic range where the answer lives.
+
+**Report form: CHARACTERIZATION WITH UNCERTAINTY.** Per-step variance ratios with bootstrap confidence intervals, plus the compound product checked against the direct end-to-end ratio as an internal-consistency test. NO verdict is emitted. If the intervals overlap such that concentration cannot be distinguished from even distribution, the reported result is INCONCLUSIVE - a statement about resolution, never a negative finding.
+
+**Pre-registered REPORTING commitment (binds what is reported, not that a verdict is reached).** Reported in full regardless of outcome: (a) each adjacent-step variance ratio on month-over-month changes, with a bootstrap interval; (b) the compound product of the step ratios; (c) the direct end-to-end ratio; (d) the discrepancy between (b) and (c) as an internal-consistency check; (e) the same computed excluding the COVID window, since the source claimed the concentration is structural rather than crisis-driven and that claim is checkable by exclusion; (f) the sector arm, where available, on the same construction. No step is omitted for being uninformative.
+
+**Operator.** Observable: month-over-month change in each flow series. Statistic: ratio of variances between adjacent chain steps, computed on the common overlapping sample. Uncertainty: stationary block bootstrap on the paired changes, block length and resample count frozen in the analysis script before its first real run. Sample: 1992-01 onward, common coverage across the four chain series. Second pass excluding 2020-01 through 2021-12. No detrending beyond first-differencing, which is the transform the variance-ratio statistic is defined on.
+
+**Validity review.** Real-world referent: these are the actual order and shipment flows the bullwhip literature measures, not a constructed proxy. What the statistic means at the actual n: roughly 400 monthly observations per series, and the block bootstrap carries the serial dependence that a naive variance-ratio interval would ignore. Scope: this locates WHERE amplification concentrates; it does NOT establish that the measurement mechanism CAUSED the concentration, and the write-up must say so - a concentration at the ordering step is CONSISTENT WITH the mechanism this paper models and does not exclude other explanations for the same location.
+
+**Bias firewall.** This design is frozen at this commit. The synthetic suite is written next and must plant a known decomposition (one dominant step against near-unity steps) and recover it at the real n, plus plant an even distribution and correctly return INCONCLUSIVE. A suite failure fixes CODE, never this design. Any change to the operator or report form motivated by suite findings is a further dated amendment before any real run. Real data is touched once.
+
+**Sector arm (item 2 of the audit finding).** The per-sector variance ratios are a BY-PRODUCT of the same series and the same operator, reported under the same characterization rules. They are not a separate experiment and carry no separate verdict.
+
+**Third audit item, not part of E14.** The regime-era persistence comparison (stable, disruption, recovery eras) computes from the EXISTING hashed I/S panel with no new data and is handled separately; it is a descriptive re-cut of an already-pinned series, not a new experiment.
+
