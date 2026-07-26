@@ -1113,3 +1113,113 @@ Section 14 and Section 18.1 both require that every FRED identifier be TITLE-VER
 
 Measured from the hashed files on 2026-07-25, not from the series pages. AMTMNO and DGORDER carry 412 monthly observations spanning 1992-02 to 2026-05; retail, wholesale and AMTMVS carry 413 spanning 1992-01 to 2026-05. All five end in the same month, so the binding constraint is the START only. **The realised common window is 1992-02 to 2026-05: 412 monthly levels, and 411 month-over-month changes beginning 1992-03.** Section 18.2 states the sample as "1992-01 onward, common coverage across the four chain series"; the common-coverage clause already resolves this and no operator changes. Recorded so the write-up reports the REALISED window rather than the nominal one. A missing-value scan across all five files returns ZERO non-numeric observations - which matters because FRED writes a bare period for a gap, and that parses as a string and would poison a variance rather than failing loudly.
 
+---
+
+## 20. AMENDMENT 2026-07-25c - E14 OPERATOR SPECIFICATION FROZEN (pre-suite, pre-run, author-ratified)
+
+**Status: PRE-SUITE, PRE-RUN. The data is in the store and hashed (commit a4dd055); no analysis script exists yet and no ledger row has been produced. Section 18.2 fixed the SHAPE of the operator but left three things underdetermined. They are settled here, BEFORE the synthetic suite is written, because the bias firewall makes any change motivated by suite findings a further dated amendment. Author-ratified 2026-07-25.**
+
+### 20.1 The observable is the LOG difference (amends the wording of Section 18.2)
+
+Section 18.2 says "month-over-month change in each flow series" and "no detrending beyond first-differencing". That wording admits both the raw difference of levels and the difference of logs. **RATIFIED: the observable is the first difference of the natural logarithm, that is, the monthly growth rate.**
+
+The reason is not preference, it is that the raw-difference reading makes Section 18.2's own severity argument false. That argument states that if amplification were distributed evenly, "every step near 1.0 with overlapping intervals" would be the signature. That is a property of a SCALE-FREE statistic only. On raw level differences a chain with no amplification whatsoever would not produce step ratios near 1.0; it would produce whatever the ratios of the series' scales happen to be, and the reference point against which concentration is judged would be an arbitrary number that differs at every step. The pre-registered severity check therefore already presupposes the log reading, and adopting it makes 18.2 internally consistent rather than changing what 18.2 intended.
+
+The empirical case points the same way. Over the realised window the four chain series grow by materially different multiples - retail about 4.7 times, wholesale about 5.7, shipments about 2.9, orders about 2.9. A variance ratio on raw level differences would confound three distinct things: the levels' scale, the differential growth, and the amplification the experiment is trying to locate. It would also be dominated by the last decade of the sample, because the raw differences of a series that has grown fivefold are strongly heteroskedastic, so "where amplification concentrates" would silently become "where the series are largest now". Log-differencing removes scale and growth and leaves relative amplification, which is the quantity the bullwhip literature measures and the only one the claim is about. It remains first-differencing, so the Section 18.2 commitment to no further detrending is unaffected.
+
+### 20.2 Operational definition of DISTINGUISHED versus INCONCLUSIVE
+
+Section 18.2 commits to reporting INCONCLUSIVE when intervals overlap such that concentration cannot be separated from even distribution, but pins no rule. **RATIFIED: concentration is DISTINGUISHED if and only if EXACTLY ONE step's bootstrap confidence-interval LOWER bound exceeds the confidence-interval UPPER bound of EVERY other step. In every other configuration the reported result is INCONCLUSIVE.**
+
+The rule is deliberately strict and deliberately symmetric. It cannot manufacture a winner from a near-tie, it cannot be satisfied by two steps that are jointly high, and it does not depend on the ordering of the steps or on which step the modelled mechanism would favour. INCONCLUSIVE remains a statement about resolution and is never reported as a negative finding.
+
+### 20.3 Bootstrap parameters, frozen here before the script's first execution
+
+Section 18.2 delegates block length and resample count to the analysis script, to be frozen before its first real run. **RATIFIED: stationary block bootstrap with geometric block lengths of MEAN LENGTH 12 months, 10,000 resamples, 95 percent percentile intervals, and a fixed seed recorded in the output.** Twelve months is chosen because monthly flow data carries annual dependence and a block shorter than the seasonal cycle would understate the serial correlation the interval is meant to carry.
+
+**The resampling is JOINT across the chain, not per series.** At each draw the bootstrap resamples blocks of DATES and takes every series' change at those dates together, preserving the cross-series dependence within a month. Resampling each series independently would destroy exactly the co-movement that makes a chain a chain, and would produce intervals that are wrong in a direction no diagnostic could recover.
+
+### 20.4 Reporting commitment (d) is an ALGEBRAIC IDENTITY, not a check on the data - found while specifying the statistic, recorded before any run
+
+Section 18.2's reporting commitment (d) requires "the discrepancy between (b) and (c) as an internal-consistency check", where (b) is the compound product of the adjacent-step variance ratios and (c) is the direct end-to-end ratio. **On a common sample those two quantities are algebraically identical and their discrepancy is exactly zero by construction.** The step ratios telescope: the product of Var(2)/Var(1), Var(3)/Var(2) and Var(4)/Var(3) is Var(4)/Var(1), which is the end-to-end ratio. Every chain series shares one common window by construction (20.5), so nothing prevents the cancellation.
+
+This is recorded now, pre-run, because a check with no power is the failure mode this project has hit repeatedly from other directions - the pre-registered falsifier that measured at approximately zero power, the E5 ranking that saturated, the E8 arms that were bit-identical - and the pattern is always the same: a comparison that cannot come out any other way reads, in a write-up, exactly like a comparison that could have. **Commitment (d) is retained and will be reported, because the reporting commitment binds, but it must be reported for what it is: a confirmation that the arithmetic telescopes, carrying no information about the data.**
+
+**CORRECTION 2026-07-25, same day, before any real run.** This subsection as first written went on to claim that an informative companion existed: that the bootstrap DISTRIBUTIONS of (b) and (c) should coincide under joint resampling, so a divergence would reveal a defective resampler. **That claim is false, and it is false in exactly the way the paragraph above warns about.** The telescoping cancellation holds WITHIN EVERY INDIVIDUAL RESAMPLE, whatever indices produced it, so the distributions of (b) and (c) agree identically whether the resampling is joint or per series. Measured while building the suite: with deliberately broken per-series resampling the maximum absolute difference between the two bootstrap distributions is 8.88e-16, which is the same value joint resampling produces. The proposed self-test cannot fail and therefore tests nothing. I proposed a check, asked whether it could come out any other way, and it could not - the identical error, one paragraph after naming it.
+
+**The self-test that does work, and is what the script implements.** Joint resampling preserves the CROSS-SERIES co-movement within a month; per-series resampling destroys it. So the instrument self-test is CORRELATION PRESERVATION: for each adjacent pair of chain steps, compare the sample correlation of their log changes against the mean correlation across bootstrap resamples. Under correct joint resampling the two agree closely; under per-series draws the bootstrap correlation collapses toward zero. Measured on planted synthetic data: sample 0.9989, joint bootstrap 0.9989, broken per-series bootstrap 0.0034. That check CAN fail, has been WATCHED to fail on a deliberately broken resampler, and is therefore a tested check rather than a decorative one. It is reported as a property of the instrument and never as a finding about amplification.
+
+### 20.5 Sample construction, so the realised n is not an accident of ordering
+
+The common window is formed on LEVELS first and differenced afterwards: intersect the observation dates across the chain series, then take log differences within that intersection. Differencing each series over its own range and intersecting afterwards yields the same result here, but only by coincidence of these particular coverages, and the order is fixed so that it cannot silently differ on a later re-pull. **The script asserts the realised change count is 411 spanning 1992-03 to 2026-05, and fails loudly rather than proceeding on a silently shorter sample.** The COVID-excluded pass drops changes dated 2020-01 through 2021-12 and reports its own realised n separately.
+
+The sector arm is the same chain with the final step replaced by durable goods new orders, under the same operator and the same reporting rules, and carries no separate verdict.
+
+---
+
+## 21. AMENDMENT 2026-07-25d - POST-HOC INSTRUMENT RESOLUTION CHARACTERIZATION AT REALISED COUPLING
+
+**Status: POST-HOC. EXPLORATORY. Specified 2026-07-25 AFTER the E14 real run and AFTER seeing its result. Author-authorized. This is disclosed as post-hoc in DESIGN, in DECISIONS, and in the manuscript, and every number it produces is labelled EXPLORATORY wherever it appears. It changes NO reported result and CANNOT change one: analysis/e14_echelon.py is not modified, its output is not regenerated, and the characterization lives in a separate script writing a separate artifact.**
+
+### 21.1 Why this exists, and the defect that made it necessary
+
+The pre-registered suite characterized the instrument's resolution across planted step noise, reporting recovery rates at adjacent-series correlations of 1.000, 0.976 and 0.920. The realised data sits well below all three: adjacent correlations are 0.629, 0.768 and 0.685 on the full sample and 0.442, 0.623 and 0.614 excluding COVID. **Every realised coupling is below the lowest value the suite tested.** The suite's headline resolution statement - that dominance of about 1.5 times is reliably recovered at n = 411 - therefore DOES NOT TRANSFER to this data, and the true threshold at realised coupling is very likely worse.
+
+The defect is mine and it is a specification defect, not an implementation one. I chose the suite's noise levels to span a plausible-looking range without reasoning about what coupling real supply-chain flows would actually exhibit, and under-spanned it in the one direction that mattered. The consequence is precise: E14 returned INCONCLUSIVE on the registered chain, and the entire value of an INCONCLUSIVE result under a characterization design is the accompanying statement of what magnitude WOULD have been visible. Without that statement the result is honest but uninformative, which is a weaker reading than the data supports. A resolution claim measured outside the regime it is applied to is not a conservative claim; it is an unsupported one.
+
+### 21.2 What it does
+
+The characterization plants the REALISED nuisance structure and varies ONLY the quantity of interest. The first two step ratios are held at their realised values, all three adjacent correlations are held at their realised values, n is held at the realised 411 (387 for the COVID-excluded configuration), and the ordering-step ratio is swept across a grid. For each grid point the recovery rate of the pre-registered DISTINGUISHED rule is reported. The detection probability at the OBSERVED ordering-step ratio is reported separately, since that is the directly relevant number.
+
+Because step ratio and adjacent correlation are both targeted, the generator solves for them exactly rather than approximating: for a target variance ratio R and target correlation rho between adjacent steps, the amplification coefficient is rho times the square root of R, and the independent noise variance is R times the upstream variance times one minus rho squared. Both configurations, full sample and COVID-excluded, are characterized separately because their realised couplings differ materially.
+
+### 21.3 What it does NOT do, stated so it cannot drift
+
+It does not re-run E14, does not touch e14_echelon.py or its output artifact, does not alter any step ratio, interval, or classification, and does not convert an INCONCLUSIVE result into any other result. It characterizes the INSTRUMENT, not the chain. It cannot make a finding about amplification and no sentence in the manuscript may attribute one to it. Its only admissible use is to bound what the INCONCLUSIVE readings rule out, and to say plainly if they rule out less than was hoped.
+
+If the characterization shows the instrument had poor resolution at realised coupling, that is reported as a limitation of the experiment - and it is a limitation that was ALREADY TRUE before this amendment existed. Measuring it does not create it; declining to measure it would only have left it unstated.
+
+---
+
+## 22. AMENDMENT 2026-07-25e - E14 SECONDARY ANALYSIS ON CONTRASTS. READING COMMITTED BEFORE EXECUTION.
+
+**Status: POST-HOC. SECONDARY. Specified 2026-07-25 after the E14 result and after the resolution characterization. Author-authorized. The pre-registered primary is UNCHANGED and remains primary: INCONCLUSIVE on the registered chain, reported with its measured detection probability of 0.00 at the observed effect. This amendment adds ONE secondary analysis, run ONCE, reported WHATEVER IT RETURNS. analysis/e14_echelon.py and its output stay byte-frozen.**
+
+### 22.1 The defect being repaired, stated so it is result-independent
+
+The pre-registered rule (20.2) declares separation when one step's 95 percent interval lower bound clears every other step's 95 percent interval upper bound. **Non-overlap of two 95 percent intervals is approximately a 0.005-level test, not a 0.05-level test**, and requiring it against ALL other steps is stricter again. That is a general property of interval-overlap comparisons, true a priori, known before this data existed and indifferent to which direction the result went. It is the reason for this amendment, and it would have been the reason whatever E14 returned.
+
+The second defect is worse, because the remedy was already in hand. DESIGN 20.3 chose JOINT resampling precisely to preserve cross-series dependence, and stated that destroying it "would produce intervals that are wrong in a direction no diagnostic could recover". Every resample therefore yields a complete vector of step ratios. The correct comparison is the CONTRAST computed WITHIN each resample, which absorbs the covariance between step ratios. Collapsing each step to a marginal interval and then comparing intervals discards exactly the covariance the joint resampling existed to preserve. The design understood that covariance mattered and then built a rule that ignored it.
+
+A third mismatch, recorded because it explains the shape of what follows: E14 is classified DESCRIPTIVE / STRUCTURAL CHARACTERIZATION with NO verdict, and was then given a binary pass-fail rule that functions as a verdict. The estimand - WHERE amplification concentrates - is naturally answered by a graded object.
+
+### 22.2 The secondary statistics
+
+Computed from the SAME joint resamples, on the same frozen inputs, same n, same block length, same seed discipline.
+
+**(i) SIMULTANEOUS CONTRAST.** Let k be the step with the largest POINT estimate. Within each resample compute the minimum of (R_k minus R_j) over all other steps j. The 95 percent percentile interval of that per-resample minimum is the contrast interval. Taking the minimum WITHIN the resample makes the comparison simultaneous across the other steps rather than pairwise, so no multiplicity correction is smuggled past.
+
+**(ii) ARGMAX PROBABILITY.** For each step, the fraction of resamples in which it is the largest. This is the graded characterization the classification actually calls for, and it is reported for every step regardless of outcome.
+
+**(iii) POWER AND FALSE-POSITIVE RATE OF THE CONTRAST RULE**, measured at realised coupling by the DESIGN 21 machinery. This is not optional garnish. A looser rule that fires more often is not an improvement; it is only an improvement if it fires more often ON TRUE EFFECTS WITHOUT firing more often on NO effect.
+
+### 22.3 THE READING, COMMITTED NOW, BEFORE THE SCRIPT EXISTS
+
+Three outcomes. Each is written out here so that the interpretation cannot be fitted to the result.
+
+**OUTCOME A - contrast interval excludes zero AND the contrast rule's false-positive rate at a planted ratio of 1.0 is at most 0.05 at realised coupling.** Reported as: under the correctly-targeted statistic the ordering step is separated from the other steps, with the interval and the argmax probability given. This is SECONDARY and POST-HOC and must be labelled so in every location it appears. The pre-registered primary remains reported as INCONCLUSIVE and non-severe. The paper must state that the pre-registered rule was mis-calibrated relative to the level it appeared to imply, that this was knowable in advance, and that it was not known in advance by this author.
+
+**OUTCOME B - contrast interval includes zero.** Reported as: the data do not separate the ordering step from the other steps even under the correctly-targeted statistic. The INCONCLUSIVE is then a property of the DATA and not of the rule, which is a stronger and more final statement than the primary alone supports. E14 closes on that.
+
+**OUTCOME C - the contrast rule's false-positive rate exceeds 0.05 at realised coupling.** The contrast rule is INADMISSIBLE as an improvement regardless of what its interval says, and its interval is reported but carries no weight. The primary stands alone. This outcome would mean the proposed repair was itself a looser rule wearing better clothes, and it is named here so that it cannot be quietly dropped if it occurs.
+
+In ALL three outcomes the argmax probabilities are reported, the primary is reported unchanged, and the scope statement is unchanged: this locates WHERE amplification concentrates and does NOT establish that the measurement mechanism caused it.
+
+### 22.4 Sector-level chains: CONSIDERED AND DECLINED. This is a closed decision, not a deferral.
+
+A matched sector-level chain (wholesale sales by sector, manufacturing shipments and orders by sector) is genuinely unpulled and unseen, and would be the only available route to a more severe test. It is DECLINED, and recorded as declined rather than deferred, because an unrun registered test is not a scientific asset and a promissory note with no date misleads a future reader about what this paper did.
+
+The deciding reason is contamination of the registration itself. **A matched chain requires a NAICS crosswalk across retail, wholesale and manufacturing, and that crosswalk carries real degrees of freedom.** Constructing it now means choosing which sectors to match while already knowing that the aggregate came out at 2.37 and durable goods at 7.03. A crosswalk frozen with the answer already in the author's head is a compromised pre-registration, not a clean one. Two further reasons, neither sufficient alone: sector chains are not independent of the aggregate, since the aggregate is built from them; and it is a new experiment at Phase-4 close, against the standing rule that no new experiment begins until the current one is fully closed.
+
+Recorded so that a later reader knows the option was seen, weighed, and rejected on stated grounds.
+

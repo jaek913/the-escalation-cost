@@ -1,0 +1,146 @@
+{
+  "analysis": "E14 secondary contrast analysis",
+  "contrast": {
+    "covid_excluded": {
+      "argmax_probability": [
+        0.0048,
+        0.0,
+        0.9952
+      ],
+      "contrast_ci_high": 3.3513441046396313,
+      "contrast_ci_low": 0.32201914874751913,
+      "contrast_excludes_zero": true,
+      "contrast_point": 1.6350523470657163,
+      "largest_step": "shipments->orders",
+      "largest_step_index": 2,
+      "step_labels": [
+        "retail->wholesale",
+        "wholesale->shipments",
+        "shipments->orders"
+      ],
+      "step_ratio": [
+        1.5031425964698546,
+        1.1018487580734568,
+        3.138194943535571
+      ]
+    },
+    "full_sample": {
+      "argmax_probability": [
+        0.0011,
+        0.0,
+        0.9989
+      ],
+      "contrast_ci_high": 2.7692338083921486,
+      "contrast_ci_low": 0.4421587976788141,
+      "contrast_excludes_zero": true,
+      "contrast_point": 1.2215341855330346,
+      "largest_step": "shipments->orders",
+      "largest_step_index": 2,
+      "step_labels": [
+        "retail->wholesale",
+        "wholesale->shipments",
+        "shipments->orders"
+      ],
+      "step_ratio": [
+        1.1452150524586318,
+        0.928671435914251,
+        2.3667492379916664
+      ]
+    },
+    "sector_arm": {
+      "argmax_probability": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "contrast_ci_high": 12.53697888283307,
+      "contrast_ci_low": 3.218413513479226,
+      "contrast_excludes_zero": true,
+      "contrast_point": 5.88397673977348,
+      "largest_step": "shipments->orders_durable",
+      "largest_step_index": 2,
+      "step_labels": [
+        "retail->wholesale",
+        "wholesale->shipments",
+        "shipments->orders_durable"
+      ],
+      "step_ratio": [
+        1.1452150524586318,
+        0.928671435914251,
+        7.029191792232112
+      ]
+    }
+  },
+  "design_22_3_outcome": "A - separated under the correctly-targeted statistic",
+  "false_positive_rate_worst": 0.0,
+  "fpr_ceiling": 0.05,
+  "power_covid_excluded": {
+    "configuration": "COVID-EXCLUDED",
+    "false_positive_rate": 0.0,
+    "grid": [
+      {
+        "fire_rate": 0.0,
+        "note": "FALSE-POSITIVE RATE (DESIGN 22.3 outcome C gate)",
+        "r3": 1.0
+      },
+      {
+        "fire_rate": 0.0,
+        "note": "",
+        "r3": 1.5
+      },
+      {
+        "fire_rate": 0.06,
+        "note": "",
+        "r3": 2.0
+      },
+      {
+        "fire_rate": 0.55,
+        "note": "<-- OBSERVED, full sample",
+        "r3": 2.3667
+      },
+      {
+        "fire_rate": 1.0,
+        "note": "<-- OBSERVED, COVID-excluded",
+        "r3": 3.1382
+      }
+    ],
+    "n_boot": 2000,
+    "reps": 100
+  },
+  "power_full_sample": {
+    "configuration": "FULL SAMPLE",
+    "false_positive_rate": 0.0,
+    "grid": [
+      {
+        "fire_rate": 0.0,
+        "note": "FALSE-POSITIVE RATE (DESIGN 22.3 outcome C gate)",
+        "r3": 1.0
+      },
+      {
+        "fire_rate": 0.0,
+        "note": "",
+        "r3": 1.5
+      },
+      {
+        "fire_rate": 0.02,
+        "note": "",
+        "r3": 2.0
+      },
+      {
+        "fire_rate": 0.35,
+        "note": "<-- OBSERVED, full sample",
+        "r3": 2.3667
+      },
+      {
+        "fire_rate": 0.98,
+        "note": "<-- OBSERVED, COVID-excluded",
+        "r3": 3.1382
+      }
+    ],
+    "n_boot": 2000,
+    "reps": 100
+  },
+  "primary_unchanged": "e14_echelon.json is byte-frozen; primary remains INCONCLUSIVE with detection probability 0.00 at the observed full-sample effect",
+  "scope": "Locates WHERE amplification concentrates. Does NOT establish that the measurement mechanism CAUSED the concentration.",
+  "status": "POST-HOC / SECONDARY - reading committed in DESIGN 22.3 before execution"
+}

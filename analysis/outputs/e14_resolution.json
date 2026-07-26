@@ -1,0 +1,139 @@
+{
+  "changes_no_reported_number": true,
+  "characterization": "E14 instrument resolution at realised coupling",
+  "covid_excluded": {
+    "configuration": "COVID-EXCLUDED",
+    "grid": [
+      {
+        "note": "no concentration planted (false-positive rate)",
+        "r3": 1.0,
+        "recovery_rate": 0.0
+      },
+      {
+        "note": "",
+        "r3": 1.5,
+        "recovery_rate": 0.0
+      },
+      {
+        "note": "",
+        "r3": 2.0,
+        "recovery_rate": 0.0
+      },
+      {
+        "note": "<-- OBSERVED, full sample",
+        "r3": 2.3667,
+        "recovery_rate": 0.13
+      },
+      {
+        "note": "",
+        "r3": 3.0,
+        "recovery_rate": 0.88
+      },
+      {
+        "note": "<-- OBSERVED, COVID-excluded",
+        "r3": 3.1382,
+        "recovery_rate": 0.93
+      },
+      {
+        "note": "",
+        "r3": 4.0,
+        "recovery_rate": 1.0
+      },
+      {
+        "note": "",
+        "r3": 5.0,
+        "recovery_rate": 1.0
+      },
+      {
+        "note": "",
+        "r3": 6.0,
+        "recovery_rate": 1.0
+      },
+      {
+        "note": "",
+        "r3": 8.0,
+        "recovery_rate": 1.0
+      }
+    ],
+    "n": 387,
+    "n_boot": 2000,
+    "r3_at_80pct_recovery": 3.0,
+    "realised_r1": 1.5031425964698546,
+    "realised_r2": 1.1018487580734568,
+    "realised_rho": [
+      0.4419782702943177,
+      0.6231422941864163,
+      0.6140158052720086
+    ],
+    "reps": 100
+  },
+  "disclosed_limitation": "injected noise is iid, so downstream serial dependence comes from the driver alone and is weaker than the real downstream series; bootstrap intervals are therefore slightly narrower than reality and these recovery rates are OPTIMISTIC",
+  "full_sample": {
+    "configuration": "FULL SAMPLE",
+    "grid": [
+      {
+        "note": "no concentration planted (false-positive rate)",
+        "r3": 1.0,
+        "recovery_rate": 0.0
+      },
+      {
+        "note": "",
+        "r3": 1.5,
+        "recovery_rate": 0.0
+      },
+      {
+        "note": "",
+        "r3": 2.0,
+        "recovery_rate": 0.0
+      },
+      {
+        "note": "<-- OBSERVED, full sample",
+        "r3": 2.3667,
+        "recovery_rate": 0.0
+      },
+      {
+        "note": "",
+        "r3": 3.0,
+        "recovery_rate": 0.43
+      },
+      {
+        "note": "<-- OBSERVED, COVID-excluded",
+        "r3": 3.1382,
+        "recovery_rate": 0.67
+      },
+      {
+        "note": "",
+        "r3": 4.0,
+        "recovery_rate": 1.0
+      },
+      {
+        "note": "",
+        "r3": 5.0,
+        "recovery_rate": 1.0
+      },
+      {
+        "note": "",
+        "r3": 6.0,
+        "recovery_rate": 1.0
+      },
+      {
+        "note": "",
+        "r3": 8.0,
+        "recovery_rate": 1.0
+      }
+    ],
+    "n": 411,
+    "n_boot": 2000,
+    "r3_at_80pct_recovery": 4.0,
+    "realised_r1": 1.1452150524586318,
+    "realised_r2": 0.928671435914251,
+    "realised_rho": [
+      0.6289078834061204,
+      0.7681056748162338,
+      0.6849870503313262
+    ],
+    "reps": 100
+  },
+  "method": "semi-parametric: real retail log changes as driver; downstream steps constructed to hit target variance ratio and target adjacent correlation exactly; only the ordering-step ratio swept",
+  "status": "POST-HOC / EXPLORATORY - specified after the E14 result (DESIGN 21)"
+}

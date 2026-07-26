@@ -1,0 +1,149 @@
+{
+  "classification": "DESCRIPTIVE / STRUCTURAL CHARACTERIZATION - no verdict",
+  "covid_excluded": {
+    "bootstrap_mean_adjacent_corr": [
+      0.43666221856602644,
+      0.60717414335991,
+      0.6115379216633252
+    ],
+    "compound_product": 5.197590822677674,
+    "dominant_step": null,
+    "dominant_step_index": null,
+    "end_to_end": 5.197590822677674,
+    "first_change": "1992-03-01",
+    "identity_discrepancy": 0.0,
+    "last_change": "2026-05-01",
+    "n_changes": 387,
+    "resampler_corr_max_deviation": 0.015968150826506267,
+    "result": "INCONCLUSIVE",
+    "sample_adjacent_corr": [
+      0.4419782702943177,
+      0.6231422941864163,
+      0.6140158052720086
+    ],
+    "step_ci_high": [
+      2.2273207043976844,
+      1.5923145367245362,
+      4.846741724365829
+    ],
+    "step_ci_low": [
+      0.8921611964277247,
+      0.8205390542339482,
+      2.195835378485051
+    ],
+    "step_labels": [
+      "retail->wholesale",
+      "wholesale->shipments",
+      "shipments->orders"
+    ],
+    "step_ratio": [
+      1.5031425964698546,
+      1.1018487580734568,
+      3.138194943535571
+    ]
+  },
+  "design_pin": "eaabaeef8137d0afa910c6a63f44c7ef",
+  "experiment": "E14",
+  "full_sample": {
+    "bootstrap_mean_adjacent_corr": [
+      0.5856156684407924,
+      0.734228546582379,
+      0.6762391812213892
+    ],
+    "compound_product": 2.5171052839917945,
+    "dominant_step": null,
+    "dominant_step_index": null,
+    "end_to_end": 2.5171052839917945,
+    "first_change": "1992-03-01",
+    "identity_discrepancy": 0.0,
+    "last_change": "2026-05-01",
+    "n_changes": 411,
+    "resampler_corr_max_deviation": 0.04329221496532798,
+    "result": "INCONCLUSIVE",
+    "sample_adjacent_corr": [
+      0.6289078834061204,
+      0.7681056748162338,
+      0.6849870503313262
+    ],
+    "step_ci_high": [
+      1.9547443341532666,
+      1.4030041053408124,
+      4.095228329363658
+    ],
+    "step_ci_low": [
+      0.8426045433624816,
+      0.7742347614670123,
+      1.6555256714518276
+    ],
+    "step_labels": [
+      "retail->wholesale",
+      "wholesale->shipments",
+      "shipments->orders"
+    ],
+    "step_ratio": [
+      1.1452150524586318,
+      0.928671435914251,
+      2.3667492379916664
+    ]
+  },
+  "identity_note": "compound_product and end_to_end are algebraically identical on a common sample; identity_discrepancy is zero by construction and carries no information about the data (DESIGN 20.4).",
+  "inputs": {
+    "fred_AMTMNO.csv": "83373afa9ce779e45952943be547f0ea422cfe3cd89a8d2bfc251a22491766bf",
+    "fred_AMTMVS.csv": "d1b343e91c3fa3b4d4010c49cef5900be038d920373e0db9a8c34da37eb2a703",
+    "fred_DGORDER.csv": "b0606fb7cfce5f7862b9d1487ad3ad9f0400c2c0a0756d9472b4bd7b73fda040",
+    "fred_MRTSSM44000USS.csv": "a497e0a523d5f55118796f60379604c1ed50f1996705188ac77a907dbb2654e4",
+    "fred_S42SMSM144SCEN.csv": "943568eae777b0f363b1242d463a866f3f34dbb516a5735ad90e0146507b6bc7"
+  },
+  "operator": {
+    "ci_level": 95.0,
+    "mean_block": 12,
+    "n_boot": 10000,
+    "observable": "first difference of natural log",
+    "resampling": "joint across the chain",
+    "seed": 20260725,
+    "statistic": "variance ratio between adjacent chain steps"
+  },
+  "scope": "Locates WHERE amplification concentrates. Does NOT establish that the measurement mechanism CAUSED the concentration.",
+  "sector_arm": {
+    "bootstrap_mean_adjacent_corr": [
+      0.5856156684407924,
+      0.734228546582379,
+      0.4684826402968778
+    ],
+    "compound_product": 7.475745853596637,
+    "dominant_step": "shipments->orders_durable",
+    "dominant_step_index": 2,
+    "end_to_end": 7.475745853596638,
+    "first_change": "1992-03-01",
+    "identity_discrepancy": -8.881784197001252e-16,
+    "last_change": "2026-05-01",
+    "n_changes": 411,
+    "resampler_corr_max_deviation": 0.04329221496532798,
+    "result": "DISTINGUISHED",
+    "sample_adjacent_corr": [
+      0.6289078834061204,
+      0.7681056748162338,
+      0.4773566952777868
+    ],
+    "step_ci_high": [
+      1.9547443341532666,
+      1.4030041053408124,
+      13.962796763527026
+    ],
+    "step_ci_low": [
+      0.8426045433624816,
+      0.7742347614670123,
+      4.352522402349441
+    ],
+    "step_labels": [
+      "retail->wholesale",
+      "wholesale->shipments",
+      "shipments->orders_durable"
+    ],
+    "step_ratio": [
+      1.1452150524586318,
+      0.928671435914251,
+      7.029191792232112
+    ]
+  }
+}
