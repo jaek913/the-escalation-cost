@@ -1054,3 +1054,58 @@ The exact FRED identifiers are resolved and title-verified at pull time and reco
 
 **Third audit item, not part of E14.** The regime-era persistence comparison (stable, disruption, recovery eras) computes from the EXISTING hashed I/S panel with no new data and is handled separately; it is a descriptive re-cut of an already-pinned series, not a new experiment.
 
+---
+
+## 19. AMENDMENT 2026-07-25b - E14 IDENTIFIER RESOLUTION + SECTION 14 VERIFICATION RULE TIGHTENING
+
+**Status: PRE-PULL, PRE-RUN. Nothing has entered the store or data/SOURCES.md; the manifest extension is still empty, which is the correct state. Author-authorized 2026-07-25 (items 19.1, 19.2, 19.5, 19.6). The sub-decision in 19.4 is OPEN and must be closed before any pull.**
+
+### 19.1 Resolved identifiers for the E14 chain (closes the Section 18.1 deferral)
+
+Section 18.1 named the five chain series in words and deferred the exact FRED identifiers to pull time. They are resolved HERE INSTEAD, before the pull, because resolving them surfaced three defects that pull-time title-verification alone would not have caught (19.2). Each identifier below was confirmed on 2026-07-25 against its OWN FRED series page - not against a search snippet, a sibling series, or a naming pattern - for EXISTENCE, TITLE, UNITS and SEASONAL ADJUSTMENT.
+
+| Chain step | FRED id | FRED-verified title | Units | Adjustment | Coverage as read |
+|---|---|---|---|---|---|
+| 1 retail | MRTSSM44000USS | Retail Sales: Retail Trade | Millions of Dollars | Seasonally Adjusted | 1992-01 to 2026-03 |
+| 2 wholesale | S42SMSM144SCEN | Total Merchant Wholesalers, Except Manufacturers' Sales Branches and Offices Sales | Millions of Dollars | Seasonally Adjusted | 1992-01 to 2026-05 |
+| 3 shipments | AMTMVS | Manufacturers' Value of Shipments: Total Manufacturing | Millions of Dollars | Seasonally Adjusted | confirm at pull |
+| 4 new orders | AMTMNO | Manufacturers' New Orders: Total Manufacturing | Millions of Dollars | Seasonally Adjusted | 1992-02 to 2026-05 |
+| sector arm | DGORDER | Manufacturers' New Orders: Durable Goods | Millions of Dollars | Seasonally Adjusted | 1992-02 to 2026-04 |
+
+**Retail: revised, not advance (author-ratified 2026-07-25).** MRTSSM44000USS is the Monthly Retail Trade Survey series; RSXFS is the Advance Monthly Retail Sales subsample estimate of the same concept, superseded in following months by the fuller survey. For a 34-year variance decomposition the revised series is the correct input: the advance estimate's extra sampling noise inflates the variance of chain step 1, and step 1 is the denominator against which the concentration claim at later steps is measured, so advance data would bias the FIRST link of the chain in a direction that flatters the hypothesis. RSAFS and MRTSSM44X72USS - both "Retail Trade AND Food Services" - remain rejected: food services are not part of the goods chain being decomposed.
+
+### 19.2 Three defects found by resolving identifiers before the pull, and what each one teaches
+
+**(1) NONEXISTENT IDENTIFIER.** The Section 18.1 working plan carried AMDMNO as the durable-goods new-orders series. AMDMNO IS NOT A FRED SERIES; it does not resolve. The actual seasonally adjusted series is DGORDER (its not-seasonally-adjusted sibling UMDMNO carries a word-for-word identical title). A plausible-looking identifier inherited from a plan is not a verified identifier. New failure mode: EXISTENCE.
+
+**(2) IDENTIFIER CONSTRUCTED BY ANALOGY IS WRONG.** The Monthly Wholesale Trade sector series follow a visible pattern in which the seasonally adjusted sibling flips one letter: S4238SM144NCEN becomes S4238SM144SCEN. Applying that same pattern to the TOTAL series S42SMNM144NCEN yields S42SMNM144SCEN. The actual identifier is S42SMSM144SCEN - the letter flips in TWO positions, not one. An identifier derived from a sibling's naming pattern is a guess wearing the costume of a rule. New failure mode: CONSTRUCTION BY ANALOGY.
+
+**(3) A WITHIN-FAMILY SUBSTITUTION SILENTLY REGRESSED SCOPE.** The prior working note recommended MRTSSM44X72USS as the revised counterpart of RSXFS. It is not. FRED's own cross-reference notes are explicit in both directions: RSXFS pairs with MRTSSM44000USS ("Retail Trade"), and RSAFS pairs with MRTSSM44X72USS ("Retail Trade AND Food Services"). RSAFS had ALREADY been rejected for including food services. Taking MRTSSM44X72USS would have reintroduced food services into chain step 1 while presenting itself as a strict upgrade from advance to revised - undoing a correct earlier exclusion under cover of an improvement. New failure mode: SCOPE REGRESSION ON SUBSTITUTION. The general lesson is that a prior session's recorded recommendation is a CANDIDATE, never a CLEARANCE, including when this project produced it; this is the same class as the E8 finding that provenance is not correctness.
+
+**The identical-title collision is systemic in these families, not a one-off.** Total merchant wholesalers sales carries FOUR live series under a word-for-word identical title, separated only by units and adjustment: S42SMNM144NCEN (Millions of Dollars, NSA), S42SMSM144SCEN (Millions of Dollars, SA), M42MPCM157NCEN (Percent, NSA), P42MPCM157SCEN (Percent, SA). The M3 family does the same: AMTMVS/UMTMVS, AMTMNO/UMTMNO and DGORDER/UMDMNO are each identical-title SA/NSA pairs. Every series in this chain sits inside such a cluster. The percent-units near-miss recorded earlier was therefore the normal shape of these Census families on FRED, not bad luck, and the tightened rule in 19.5 is a response to the structure rather than to one incident.
+
+### 19.3 The manifest extension is TWO new series, not five
+
+Section 14 already lists AMTMNO, AMTMVS and DGORDER under "activity context", and data/SOURCES.md already carries all three as pulled, hashed rows (used-by field: "activity context"). Verified 2026-07-25 against the committed SOURCES.md: 32 FRED rows plus 12 non-FRED rows, 44 data rows in total. The extension therefore adds TWO new pulls - MRTSSM44000USS and S42SMSM144SCEN - taking the FRED rows from 32 to 34 and the total from 44 to 46. The earlier working estimate of five new pulls was wrong because it did not check what was already hashed.
+
+**Role promotion, recorded.** E14 consumes AMTMNO, AMTMVS and DGORDER as LOAD-BEARING inputs. Their used-by field in SOURCES.md must change from "activity context" to name E14. This is a regeneration of a generated file through pull.py's manifest configuration, never a hand-edit of SOURCES.md.
+
+### 19.4 OPEN - vintage policy for the three already-hashed chain series (must be closed before any pull)
+
+The three chain series already in the store were pulled and hashed at the Phase-2 freeze (SOURCES.md generated 2026-07-17). The two new series would be pulled now. The chain would therefore mix vintages unless all five are re-pulled together. Two options, neither yet ratified:
+
+- **Option A - reuse the frozen three, pull only the two new.** Preserves three already-committed SHA256 values untouched. The vintage mixture is absorbed by the operator's existing common-overlapping-sample rule, which truncates the analysis window to the EARLIEST common end date; the effect is to discard roughly one week of the newer series' tail, which is conservative. Requires the write-up to state that chain inputs carry two pull dates.
+- **Option B - re-pull all five at one date.** One coherent vintage across the chain. Rewrites the SHA256 of three currently pinned rows. No experiment currently consumes those three, so nothing already reported is invalidated, but it discards a frozen reproducibility anchor to buy tidiness.
+
+RECOMMENDED: Option A. A committed hash is not disturbed without cause, and the frozen operator already anticipates unequal coverage.
+
+### 19.5 Section 14 verification rule, TIGHTENED (amends Section 14; author-ratified 2026-07-25)
+
+Section 14 and Section 18.1 both require that every FRED identifier be TITLE-VERIFIED before acceptance. That standard is now demonstrably INSUFFICIENT: live series share word-for-word identical titles while differing in units and in seasonal adjustment, one planned identifier did not exist at all, and one was derivable only by a pattern that does not hold. The rule is replaced by the following, which governs this paper and is proposed to the Research-to-Publication Standard as a general note:
+
+**Every external data identifier entering the manifest must be confirmed against its OWN publisher series page for all four of: EXISTENCE, TITLE, UNITS, and SEASONAL ADJUSTMENT. An identifier may NEVER be accepted on the strength of a naming pattern inferred from a sibling series, a search result snippet, a prior session's recommendation, or a plan document. Any substitution WITHIN a series family - advance to revised, not-seasonally-adjusted to seasonally adjusted, total to sub-aggregate - must be independently re-verified for SCOPE, because a substitution that is correct on vintage or adjustment can silently change what the series covers.**
+
+### 19.6 Realised sample start (records a consequence, changes no operator)
+
+AMTMNO and DGORDER begin 1992-02; the retail and wholesale series begin 1992-01. Section 18.2 states the sample as "1992-01 onward, common coverage across the four chain series", and the common-coverage clause already resolves this. Recorded so the write-up reports the REALISED start rather than the nominal one: the common sample begins 1992-02 in levels and 1992-03 in month-over-month changes. No operator changes.
+
