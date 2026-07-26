@@ -16,6 +16,14 @@ Usage:
   python data\\pull.py            pull everything, hash, write SOURCES.md
   python data\\pull.py --verify   re-hash files on disk, no network
   python data\\pull.py --only ID  pull a single registry id (no SOURCES.md write)
+  python data\\pull.py --fetch ID[,ID]
+                                  fetch ONLY the named ids and hash every OTHER
+                                  manifest entry IN PLACE, then regenerate
+                                  SOURCES.md across the full set. Required by
+                                  DESIGN 19.4 Option A: it adds a new series
+                                  without re-pulling - and so without re-hashing
+                                  - anything already frozen. A default run would
+                                  re-fetch all of them.
 """
 
 from __future__ import annotations
@@ -95,11 +103,36 @@ SOURCES = (
         # Aggregates + activity context (manifest panel block)
         _fred("ISRATIO", "aggregate context"),
         _fred("MNFCTRIRSA", "aggregate context"),
-        _fred("AMTMNO", "activity context"),
-        _fred("AMTMVS", "activity context"),
+        # DESIGN 19.3: three of these are PROMOTED from context to LOAD-BEARING
+        # by the E14 amendment - chain steps 3 and 4 and the sector arm. Only
+        # the used_by label changes; the bytes are untouched, because DESIGN
+        # 19.4 Option A reuses the frozen pulls rather than re-fetching them.
+        _fred("AMTMNO", "E14 chain step 4 (mfg new orders); activity context"),
+        _fred("AMTMVS", "E14 chain step 3 (mfg shipments); activity context"),
         _fred("AMTMTI", "activity context"),
-        _fred("DGORDER", "activity context"),
+        _fred("DGORDER", "E14 sector arm (durable goods new orders); activity context"),
         _fred("ANDENO", "activity context"),
+        # --- E14 flow series (DESIGN Section 19 amendment 2026-07-25b) ---
+        # NEW PULLS. Each id was confirmed against its OWN FRED series page for
+        # EXISTENCE, TITLE, UNITS and SEASONAL ADJUSTMENT before being written
+        # here, per the tightened Section 14 rule (DESIGN 19.5). Ids are NEVER
+        # constructed by analogy from a sibling's naming pattern: doing exactly
+        # that here would have produced S42SMNM144SCEN, which is wrong.
+        _fred("MRTSSM44000USS", "E14 chain step 1 (retail sales)",
+              "FRED-verified 2026-07-25: 'Retail Sales: Retail Trade', Millions "
+              "of Dollars, Seasonally Adjusted, monthly, 1992-01 onward. This is "
+              "the REVISED Monthly Retail Trade Survey series, chosen over the "
+              "advance estimate RSXFS per DESIGN 19.1. RSAFS and MRTSSM44X72USS "
+              "were REJECTED: both are 'Retail Trade AND Food Services', and food "
+              "services are not part of the goods chain being decomposed."),
+        _fred("S42SMSM144SCEN", "E14 chain step 2 (merchant wholesalers sales)",
+              "FRED-verified 2026-07-25: 'Total Merchant Wholesalers, Except "
+              "Manufacturers' Sales Branches and Offices Sales', Millions of "
+              "Dollars, Seasonally Adjusted, monthly, 1992-01 onward. THREE other "
+              "live series carry that title word for word and differ only in "
+              "units and adjustment: S42SMNM144NCEN (dollars, NSA), "
+              "M42MPCM157NCEN (percent, NSA) and P42MPCM157SCEN (percent, SA). "
+              "Title matching alone cannot separate them."),
         # Semiconductors (E6)
         _fred("CAPUTLG3344S", "E6"),
         _fred("IPG3344S", "E6"),
@@ -348,12 +381,30 @@ def write_sources_md(records: list[dict]) -> None:
 def main() -> int:
     verify_only = "--verify" in sys.argv
     only = sys.argv[sys.argv.index("--only") + 1] if "--only" in sys.argv else None
+    # --fetch ID[,ID...]: DESIGN 19.4 Option A. Fetch ONLY the named ids, hash
+    # every other manifest entry in place, then regenerate SOURCES.md over the
+    # FULL record set. Without this mode, adding one series means a default run
+    # that re-fetches and re-hashes everything already frozen.
+    fetch_ids = None
+    if "--fetch" in sys.argv:
+        fetch_ids = {s.strip() for s in
+                     sys.argv[sys.argv.index("--fetch") + 1].split(",") if s.strip()}
+        unknown = sorted(fetch_ids - {s["id"] for s in SOURCES})
+        # An unrecognised id must FAIL LOUDLY. Silently fetching nothing would
+        # produce a green-looking run that added no data at all.
+        assert not unknown, f"--fetch names ids not in the manifest: {unknown}"
+        print(f"SELECTIVE FETCH (DESIGN 19.4 Option A): fetching only "
+              f"{sorted(fetch_ids)}; every other entry hashed in place.\n")
     RAW.mkdir(parents=True, exist_ok=True)
     records, failures = [], 0
     for src in SOURCES:
         if only and src["id"] != only:
             continue
-        rec = pull_one(src, verify_only)
+        # Do not fetch when in --verify mode, or when a selective set was given
+        # and this id is not in it. pull_one's flag means exactly "hash in place".
+        hash_in_place = verify_only or (fetch_ids is not None
+                                        and src["id"] not in fetch_ids)
+        rec = pull_one(src, hash_in_place)
         records.append(rec)
         ok = rec["status"] == "OK" or rec["status"].startswith("DEFERRED")
         print(f"{'OK ' if ok else '!! '}{rec['id']:24s} {rec['status']}")

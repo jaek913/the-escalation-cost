@@ -1058,7 +1058,7 @@ The exact FRED identifiers are resolved and title-verified at pull time and reco
 
 ## 19. AMENDMENT 2026-07-25b - E14 IDENTIFIER RESOLUTION + SECTION 14 VERIFICATION RULE TIGHTENING
 
-**Status: PRE-PULL, PRE-RUN. Nothing has entered the store or data/SOURCES.md; the manifest extension is still empty, which is the correct state. Author-authorized 2026-07-25 (items 19.1, 19.2, 19.5, 19.6). The sub-decision in 19.4 is OPEN and must be closed before any pull.**
+**Status: PRE-PULL, PRE-RUN. Nothing has entered the store or data/SOURCES.md; the manifest extension is still empty, which is the correct state. Author-authorized 2026-07-25 (items 19.1, 19.2, 19.5, 19.6). The sub-decision in 19.4 was ratified the same day (Option A) and is now CLOSED.**
 
 ### 19.1 Resolved identifiers for the E14 chain (closes the Section 18.1 deferral)
 
@@ -1086,18 +1086,20 @@ Section 18.1 named the five chain series in words and deferred the exact FRED id
 
 ### 19.3 The manifest extension is TWO new series, not five
 
-Section 14 already lists AMTMNO, AMTMVS and DGORDER under "activity context", and data/SOURCES.md already carries all three as pulled, hashed rows (used-by field: "activity context"). Verified 2026-07-25 against the committed SOURCES.md: 32 FRED rows plus 12 non-FRED rows, 44 data rows in total. The extension therefore adds TWO new pulls - MRTSSM44000USS and S42SMSM144SCEN - taking the FRED rows from 32 to 34 and the total from 44 to 46. The earlier working estimate of five new pulls was wrong because it did not check what was already hashed.
+Section 14 already lists AMTMNO, AMTMVS and DGORDER under "activity context", and data/SOURCES.md already carries all three as pulled, hashed rows (used-by field: "activity context"). Verified 2026-07-25 against the committed SOURCES.md: 32 FRED rows plus 11 non-FRED rows, 43 data rows in total. The extension therefore adds TWO new pulls - MRTSSM44000USS and S42SMSM144SCEN - taking the FRED rows from 32 to 34 and the total from 43 to 45. The earlier working estimate of five new pulls was wrong because it did not check what was already hashed.
+
+**COUNT CORRECTED 2026-07-25, same day.** This paragraph first recorded 11 non-FRED rows as 12, and therefore a 44-to-46 total instead of 43-to-45. The miscount came from a row-counting expression that matched the table's own HEADER row (the one beginning "| id | vendor |") as though it were data, inflating the non-FRED count by exactly one. It was caught by a container test that asserted the manifest's length against this paragraph: the assertion failed, and the paragraph was the thing at fault, not the code. Corrected in place here and recorded as a correction in DECISIONS rather than silently patched, because a number stated confidently and wrongly is precisely what these checks exist to surface, and because the same off-by-one would have been invisible to a reader who trusted the prose.
 
 **Role promotion, recorded.** E14 consumes AMTMNO, AMTMVS and DGORDER as LOAD-BEARING inputs. Their used-by field in SOURCES.md must change from "activity context" to name E14. This is a regeneration of a generated file through pull.py's manifest configuration, never a hand-edit of SOURCES.md.
 
-### 19.4 OPEN - vintage policy for the three already-hashed chain series (must be closed before any pull)
+### 19.4 RESOLVED - vintage policy for the three already-hashed chain series (author-ratified 2026-07-25: OPTION A)
 
-The three chain series already in the store were pulled and hashed at the Phase-2 freeze (SOURCES.md generated 2026-07-17). The two new series would be pulled now. The chain would therefore mix vintages unless all five are re-pulled together. Two options, neither yet ratified:
+The three chain series already in the store were pulled and hashed at the Phase-2 freeze (SOURCES.md generated 2026-07-17). The two new series would be pulled now. The chain would therefore mix vintages unless all five are re-pulled together. Two options were considered:
 
 - **Option A - reuse the frozen three, pull only the two new.** Preserves three already-committed SHA256 values untouched. The vintage mixture is absorbed by the operator's existing common-overlapping-sample rule, which truncates the analysis window to the EARLIEST common end date; the effect is to discard roughly one week of the newer series' tail, which is conservative. Requires the write-up to state that chain inputs carry two pull dates.
 - **Option B - re-pull all five at one date.** One coherent vintage across the chain. Rewrites the SHA256 of three currently pinned rows. No experiment currently consumes those three, so nothing already reported is invalidated, but it discards a frozen reproducibility anchor to buy tidiness.
 
-RECOMMENDED: Option A. A committed hash is not disturbed without cause, and the frozen operator already anticipates unequal coverage.
+**RATIFIED 2026-07-25: OPTION A.** A committed hash is not disturbed without cause, and the frozen operator's common-overlapping-sample rule already anticipates unequal coverage. Two consequences bind. FIRST, the write-up must state that the chain inputs carry TWO pull dates and that the analysis window is set by the EARLIEST common end date, so the newer series' tail is discarded wholesale rather than partially used. SECOND, found by reading the code rather than assuming it: OPTION A WAS NOT EXECUTABLE BY data/pull.py AS WRITTEN. The script has three modes and none does what A requires. A default run FETCHES AND OVERWRITES EVERY entry in the manifest, which would have silently re-pulled all 32 existing series and imposed Option B by accident. The --verify mode hashes in place but never fetches, so the two new files would not exist and would record FAILED (no file). The --only mode fetches a single id but deliberately skips the SOURCES.md write, so it cannot produce the regenerated table. Option A therefore requires a NEW SELECTIVE-FETCH MODE, added in the same dated change as the manifest extension: fetch ONLY the named new ids, hash every other manifest entry in place, and regenerate SOURCES.md across the full record set. This is a generator-level change, consistent with the standing rule that generated output is never hand-edited and that the fix goes into the generator rather than its product. Recording it here because the gap was invisible from the manifest alone: the design said what data to add, and the tool that adds data could not add it without destroying something else.
 
 ### 19.5 Section 14 verification rule, TIGHTENED (amends Section 14; author-ratified 2026-07-25)
 
