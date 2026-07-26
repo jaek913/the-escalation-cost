@@ -1,0 +1,5 @@
+{
+ "kind": "paper",
+ "expect_fragment": "ledger id never placed: {{LB-X-b}}",
+ "expect_absent_fragment": "LB-X-a"
+}

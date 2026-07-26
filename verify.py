@@ -346,9 +346,16 @@ def check_paper(lock: dict, paper_path: pathlib.Path,
     problems = []
     text = paper_path.read_text(encoding="utf-8")
 
-    # every ledger id present at its {{LB-id}} token
+    # every ledger id present at its {{LB-id}} token. A token may carry a
+    # PRESENTATION format suffix, {{LB-id:SPEC}} (see analysis/render_paper.py),
+    # which does not change the value quoted and must still count as placed -
+    # so this matches the id followed by either '}}' or ':'. Testing for the
+    # bare literal "{{id}}" would silently mark every formatted token as
+    # missing, which is the defect the unplaced_ledger_id fixture now guards.
+    placed = {t.split(":", 1)[0].strip()
+              for t in re.findall(r"\{\{([^{}]+)\}\}", text)}
     for r in lock["rows"]:
-        if "{{%s}}" % r["id"] not in text:
+        if r["id"] not in placed:
             problems.append(f"[paper] ledger id never placed: {{{{{r['id']}}}}}")
 
     # surviving stubs / placeholders
@@ -419,7 +426,7 @@ def check_paper(lock: dict, paper_path: pathlib.Path,
 FIXTURE_CLASSES = ["value_drift", "unsigned_cic", "missing_citation",
                    "surviving_stub", "missing_section", "orphan_figure",
                    "dangling_crossref", "dropped_limit", "missing_artifact",
-                   "missing_required_section"]
+                   "missing_required_section", "unplaced_ledger_id"]
 
 
 def run_selftest() -> int:
@@ -445,11 +452,26 @@ def run_selftest() -> int:
             failures += 1
             continue
         hit = any(expect_frag in p for p in problems)
-        status = "RED as required" if hit else "FAILED TO RED"
-        if not hit:
+        # OPTIONAL NEGATIVE ASSERTION. Without it a fixture proves only that a
+        # check FIRES, never that it fires SELECTIVELY - a check that flagged
+        # everything would pass every fixture in this suite. A fixture may
+        # therefore also name a fragment that must NOT appear among the
+        # problems, which is how unplaced_ledger_id proves that a token
+        # carrying a presentation format suffix still counts as placed.
+        absent_frag = manifest.get("expect_absent_fragment")
+        false_pos = (absent_frag is not None
+                     and any(absent_frag in p for p in problems))
+        ok = hit and not false_pos
+        if ok:
+            status = "RED as required"
+        elif not hit:
+            status = "FAILED TO RED"
+        else:
+            status = f"FALSE POSITIVE on {absent_frag!r}"
+        if not ok:
             failures += 1
         print(f"  {cls:<20} {status}"
-              + ("" if hit else f"  (problems: {problems})"))
+              + ("" if ok else f"  (problems: {problems})"))
     if failures:
         print(f"SELF-TEST RED: {failures} fixture(s) did not trip")
         return 1

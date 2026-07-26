@@ -1,0 +1,31 @@
+{
+ "paper": "fixture",
+ "n_rows": 2,
+ "design_pin_md5": "00000000000000000000000000000000",
+ "rows": [
+  {
+   "id": "LB-X-a",
+   "script": "analysis/x.py",
+   "output": "analysis/outputs/x.json",
+   "json_path": "v",
+   "derived": "",
+   "expected": 2.3667492379916664,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e1_rolling_validation",
+   "verify_mode": "rerun"
+  },
+  {
+   "id": "LB-X-b",
+   "script": "analysis/x.py",
+   "output": "analysis/outputs/x.json",
+   "json_path": "w",
+   "derived": "",
+   "expected": 1.0,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e1_rolling_validation",
+   "verify_mode": "rerun"
+  }
+ ]
+}

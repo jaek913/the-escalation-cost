@@ -570,6 +570,11 @@ def rows_spec():
         note='SECONDARY / POST-HOC. Power of the CONTRAST rule at the '
              'observed COVID-excluded effect - the well-powered '
              'configuration, and the one the paper leads with.')
+    row('LB-E14-contrast-power-reps', e14c, 'power_covid_excluded.reps',
+        note='SECONDARY / POST-HOC. The DENOMINATOR of every power and '
+             'false-positive rate above. A rate of 1.00 is 100 of 100 '
+             'replications, NOT probability 1; reporting the rate without '
+             'its denominator reads as certainty and would overclaim.')
 
     return R
 

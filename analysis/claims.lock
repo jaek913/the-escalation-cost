@@ -8,7 +8,7 @@
   "eaabaeef8137d0afa910c6a63f44c7ef"
  ],
  "never_hand_edit": true,
- "n_rows": 505,
+ "n_rows": 506,
  "rows": [
   {
    "id": "LB-E1-panel-n-chronic",
@@ -10140,6 +10140,20 @@
    "verify_mode": "rerun",
    "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
    "note": "SECONDARY / POST-HOC. Power of the CONTRAST rule at the observed full-sample effect. LOW - that reading is FRAGILE and must not be presented as strong."
+  },
+  {
+   "id": "LB-E14-contrast-power-reps",
+   "script": "analysis/e14_contrast.py",
+   "output": "analysis/outputs/e14_contrast.json",
+   "json_path": "power_covid_excluded.reps",
+   "derived": "",
+   "expected": 100,
+   "tol_rel": 1e-09,
+   "inputs": [],
+   "cic_ref": "verification/cic_signoff.md#e14_contrast",
+   "verify_mode": "rerun",
+   "design_pin_md5": "c81d4c6eb31aa74e51db4c3108dc63db",
+   "note": "SECONDARY / POST-HOC. The DENOMINATOR of every power and false-positive rate above. A rate of 1.00 is 100 of 100 replications, NOT probability 1; reporting the rate without its denominator reads as certainty and would overclaim."
   },
   {
    "id": "LB-E14-severity-excl-fpr",
