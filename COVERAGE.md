@@ -40,7 +40,7 @@ Posture: ZERO-DROP. Every source element is KEEP or TRANSFORM; program history (
 | 6.2 Spectral Radius Ordering Tool | KEEP | Practitioner rule + novelty positioning retained verbatim in substance | Sect 6.2 (ARG-16) |
 | 6.3 Walmart-Target Bookend | TRANSFORM | Retained as data-floor illustration; numbers ledgered if quoted | Sect 6.3 (ARG-17) |
 | 6.4 Cross-Sector Evidence | TRANSFORM | Monitoring narrative recomputed (SPEC-M); weaker-than-5.3 caveat retained | Sect 6.4 (ARG-18) |
-| 6.5 Boundary Conditions | TRANSFORM | Sweep results re-earned (E7-E9, E12); honest-limits framing retained | Sect 6.5 (ARG-19) |
+| 6.5 Boundary Conditions | TRANSFORM | Sweep results re-earned (E7-E9, E12); honest-limits framing retained | Sect 7.5 (ARG-19) |
 | 7.1 Most Unstable Sectors | TRANSFORM | Ranking re-earned under graded assertion rule (E5) | Sect 7.1 (ARG-20) |
 | 7.2 Capacity Utilization Threshold | TRANSFORM | Bins recomputed (E6) | Sect 7.2 (ARG-21) |
 | 7.3 Complexity Drives Persistence | KEEP | Literature-synthesis section | Sect 7.3 (ARG-22) |
@@ -99,11 +99,11 @@ Posture: ZERO-DROP. Every source element is KEEP or TRANSFORM; program history (
 | Werner directed-credit financing sketch (7.4) + marginal-contribution formula mention | KEEP | Exploratory framing retained | Sect 7.4 |
 | Chiplet compound-rho diversification observation | KEEP (citation only) | RULED 2026-07-26: the Ning-2023 citation and the complexity mechanism ARE carried in Sect 8.3; the compound-rho stability metric and its "70% at mature nodes" result are WITHDRAWN as unevidenced - no experiment in this rebuild computes a compound spectral radius, and the source's figure comes from calculations no artifact reproduces. Importing an uncomputed stability metric would contradict the v1.9.11 severity rule (severity is quantified, never asserted). Original disposition read "Carried in 7.3 with Ning-2023". | Sect 8.3 |
 | CHIPS "observation not causal claim" framing | KEEP | Load-bearing honesty language | Sect 7.1 |
-| Boundary-condition map (where formula helps/does not) | TRANSFORM | Re-earned from sweeps | Sect 6.5 |
+| Boundary-condition map (where formula helps/does not) | TRANSFORM | Re-earned from sweeps | Sect 7.5 |
 | Pricing-mechanism ABSOLUTE DOLLAR LEVELS (+$10,142 / +$1,647 / -$2,315 / -$581 / -$1,238 per period at 1.3x; and the 1.8x capacity figure) | DROP - not replicable in prior form | ESCALATED 2026-07-15 per the regenerate-or-escalate rule; disposition determined by fact, not chosen. (i) The source specifies NEITHER the level-shift magnitude, NOR its timing, NOR the pricing gain, NOR the velocity target, NOR the trailing window - and every one of these sets the dollar level, so no construction exists to re-earn. (ii) The source carries three mutually exclusive values for the 1.8x cell at phi=0.85: ~$845 (implied by v16's "collapses by 12x at 1.8x" and its "under $900 at 1.8x"), $5,200 (the draft's capacity-sweep record), and ~$133 (the draft's own elasticity sweep at the SAME capacity and persistence) - a 39x spread. v16 compressed the draft's full-range 12x collapse (1.3x -> 3.0x, $10,142 -> $775) onto the FIRST step; the draft's actual 1.3x -> 1.8x step is 2.0x. (iii) v16's -$2,315 downward harm conflicts with the draft's "approximately $4,000 ... roughly forty percent of the upward benefit". No coherent prior value exists. NOT "not necessary" - the pricing claim is load-bearing; only the dollar CALIBRATION is unrecoverable. | The MECHANISM and the SIGN pattern are re-earned instead (DESIGN Sect 11 amendment 2026-07-15); E8's own dollar figures are reported as construction-specific with uncertainty and explicitly NOT compared to any source figure. App F / TBL-7. |
-| Recipe-level non-stationarity interpretation + synthesis-direction pointer | KEEP | Honest-limitation prose; future-work pointer de-seriesed (no paper numbers) | Sect 6.5/App F (L-04) |
-| Interactive calculator reference (LaggingTruth.com) | KEEP | Companion asset; protocol in Sect 10 | Sect 10.4 |
-| Simulation scope disclaimer ("what these results do and do not establish") | KEEP | Verbatim-in-substance | Sect 6.5 (L-03) |
+| Recipe-level non-stationarity interpretation + synthesis-direction pointer | KEEP | Honest-limitation prose; future-work pointer de-seriesed (no paper numbers) | Sect 7.5/App F (L-04) |
+| Interactive calculator reference (LaggingTruth.com) | KEEP | Companion asset; protocol in Sect 10 | Sect 11.1 (LB-FP-diagnostic-calculator-url) |
+| Simulation scope disclaimer ("what these results do and do not establish") | KEEP | Verbatim-in-substance | App F (L-03) |
 
 ## 5. Domains / datasets
 
@@ -143,13 +143,13 @@ Posture: ZERO-DROP. Every source element is KEEP or TRANSFORM; program history (
 
 | Metric | Source | Rebuild | Delta% | Action if breached |
 | --- | --- | --- | --- | --- |
-| Words | 17,456 | [Phase 4] | [Phase 4] | >15% -> sign-off; >10% -> note |
-| Pages (built PDF) | [no source PDF exists - PDF_Build empty; word count is the size baseline] | [Phase 4] | [Phase 4] | >15% -> sign-off; >10% -> note |
-| Experiment count | 15 (T1-T3, E1-E13 incl. conditional bookend, minus none) | [Phase 4] | [Phase 4] | >15% -> sign-off; >10% -> note |
-| Theorem/proof count | 3 theorems + comparative statics + k* derivation (proofs upgraded, never reduced) | [Phase 4] | [Phase 4] | >15% -> sign-off; >10% -> note |
-| Reference count | 70 external + self-cites | [Phase 4] | [Phase 4] | any net loss requires a DROP row here |
+| Words | 17,456 | 23,591 raw; like-for-like (DECISIONS 67 method): 16,615 excl refs / 15,125 prose-only | +4.2% excl refs / -3.1% prose-only (raw +34.5% is a counting artifact: reference formatting, tables, anchors, token markup) | >15% -> sign-off; >10% -> note |
+| Pages (built PDF) | [no source PDF exists - PDF_Build empty; word count is the size baseline] | n/a at Phase 4 (no PDF built; word count is the size baseline, mirroring the source column) | - | >15% -> sign-off; >10% -> note |
+| Experiment count | 16 registered (T1-T3, E1-E13), of which E13 conditional and unrun -> 15 run [corrected at close: the original cell read "15 ... incl. conditional bookend", an internal inconsistency] | 17 registered (adds E14, new at the rebuild; E13 still conditional-unrun) -> 16 run | +1 (+6.3% registered / +6.7% run); the addition is E14, not a source item | >15% -> sign-off; >10% -> note |
+| Theorem/proof count | 3 theorems + comparative statics + k* derivation (proofs upgraded, never reduced) | 3 theorems + corrected comparative statics + k* proposition, all with full written proofs (sketches upgraded; statics sign (b) corrected per ARG-08) | 0 on count; proofs upgraded | >15% -> sign-off; >10% -> note |
+| Reference count | 70 external + self-cites | 74 keys; key-level diff: all 68 source reference signatures present; +6 added | +4 vs the source's recorded 70 (+5.7%); zero losses - no DROP rows owed | any net loss requires a DROP row here |
 
-**Breach notes / sign-offs:** none yet.
+**Breach notes / sign-offs:** Close reading 2026-07-26 (DECISIONS 74): word deltas +4.2% excl-refs / -3.1% prose-only - inside the recorded-check band, no author sign-off required; the raw +34.5% is recorded as a counting artifact per DECISIONS 67. Experiment-count source cell corrected in place at close (including E13 makes 16 registered / 15 run; the original "15 incl. conditional bookend" was internally inconsistent). Five rebuild-location cells updated in the pre-renumber sweep (old 6.5 -> 7.5 x3, App F x1; old 10.4 -> 11.1, confirmed via the calculator's own ledger token).
 
 ## Reconciliation (run before signing)
 
