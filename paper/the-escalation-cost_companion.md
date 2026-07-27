@@ -34,11 +34,25 @@ The paper's arithmetic is about exactly how expensive that interval is, and its 
 
 ## What was actually tested
 
-This is a rebuild of an earlier paper, and rebuilding meant re-earning every number rather than repeating it. Fifteen experiments were designed, and each one's pass/fail rule was written down and committed to a public timestamp *before* it ran, so no rule could be adjusted after seeing an inconvenient result.
+This is a rebuild of an earlier paper, and rebuilding meant re-earning every number rather than repeating it. Sixteen experiments were designed, and each one's pass/fail rule was written down and committed to a public timestamp *before* it ran, so no rule could be adjusted after seeing an inconvenient result.
 
 The main test - the one designated in advance as the thing that could kill the whole idea - looked at seventeen sectors of the US economy over thirty-four years. At each month, using only data available at the time, it computed the predicted damage and then checked whether that prediction ordered what actually happened over the following year. It passed.
 
 A test on the 2008 financial crisis supported it too, more weakly, and is reported as corroborating rather than decisive.
+
+## Where the escalation actually enters
+
+The newest experiment in the rebuild asked a question the earlier work raised but never carried forward: when volatility grows as it travels up a supply chain, *where along the chain* does the growth happen?
+
+Picture the goods economy as a line of relays. Shoppers buy at stores; stores are supplied by wholesalers; wholesalers are supplied by factory shipments; and behind the shipments sits the factory order book, where someone decides how much to make next. Month-to-month movement at the shop register is the input at one end. The experiment measured, over more than thirty years of monthly data, how much that movement grows at each handoff on its way to the order book.
+
+The answer is that the growth is not spread along the chain at all. It concentrates almost entirely at the final step - the point where factories convert what they *observe* into what they *order*. One of the middle handoffs actually calms the signal slightly rather than amplifying it. The chain is not a megaphone that gets uniformly louder; it is quiet, quiet, and then one loud step, and the loud step is the one where observation is turned into action. That is where a mechanism about acting on lagged measurements would predict the trouble to enter - though in fairness, locating *where* the escalation enters says nothing by itself about *why*, and older explanations, like orders placed in batches or suppliers rationing scarce goods, remain live candidates.
+
+One detail makes this finding sturdier than a single measurement would be. The earlier study this paper rebuilds had, in its own appendix, measured the same chain years earlier - shorter sample, different construction - and found the same shape, including the odd calming middle step. Two independent measurements agreeing on the headline is good; agreeing on the *strange detail* is better, because a strange detail is exactly what noise would be expected to wash away.
+
+Now the honest part. The pass/fail rule for this experiment, set in advance like all the others, came back "cannot confirm." Afterwards, we measured the rule itself - and found we had set the bar so high that even the effect actually present in the data would essentially never have cleared it. An alarm wired so that it cannot ring tells you nothing by staying silent. The paper says this plainly, names the mistake as one that was knowable in advance and simply not caught, and does not present the silence as if the test had been fair.
+
+Two disclosed follow-ups deal with it. The first is the measurement just described - how sensitive was the rule we actually set - which is how we know the silence was empty. The second asked the simpler question the original rule should have asked - "which step is largest?" - with its intended reading written down *before* the program that would answer it existed. The ordering step came out largest in effectively every one of ten thousand re-samplings of the data, and a stress check confirmed that this way of asking does not cry wolf when pointed at random data. Stripping out the two pandemic years made the concentration stronger and the measurement sharper - the opposite of what you would expect if the pattern were a crisis artifact rather than a standing feature of how the chain works. All of this is labeled as the follow-up it is; the pre-set rule's "cannot confirm" remains the official primary result, sitting right beside it.
 
 ## The parts that did not work
 
@@ -80,7 +94,7 @@ Most of all: the tool has documented conditions under which it makes things wors
 
 ## The short version
 
-Measuring slowly is not a small, proportional cost when conditions change. It is an exponential one, because how bad the new situation is and how long you fail to notice multiply together rather than adding. That cost is computable in advance from numbers organizations already have, there is a best window length rather than merely a safer-feeling longer one, and when change is possible the prudent operating point sits below the line that standard analysis would bless.
+Measuring slowly is not a small, proportional cost when conditions change. It is an exponential one, because how bad the new situation is and how long you fail to notice multiply together rather than adding. That cost is computable in advance from numbers organizations already have, there is a best window length rather than merely a safer-feeling longer one, and when change is possible the prudent operating point sits below the line that standard analysis would bless. And in the US goods economy, the escalation is not spread evenly along the supply chain: it concentrates at the single step where factories turn what they observe into what they order.
 
 The evidence supports this in the setting it was designed for and demonstrably fails to support it in several settings where it was tried honestly - and the paper reports both at the same volume.
 
