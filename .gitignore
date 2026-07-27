@@ -47,3 +47,8 @@ analysis/outputs/*_suite_smoke.json
 scratch/
 tmp/
 review_package_the_escalation_cost.zip
+
+# Phase 5a review-package build products (assembled on demand by
+# verification/build_review_package.py - never committed)
+review_package/
+the-escalation-cost_review_package.zip
