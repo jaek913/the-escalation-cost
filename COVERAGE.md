@@ -9,7 +9,7 @@
 - **Standard:** v1.9.5 (template v1.8)
 - **Status:** draft - 2026-07-13 (signed at Phase-1 gate)
 
-Posture: ZERO-DROP. Every source element is KEEP or TRANSFORM; program history (MSC proof gutting; Divergence citation decapitation) makes silent loss the primary rebuild risk, and this source is citation-heavy (70 external references) and theorem-bearing.
+Posture: ZERO-DROP as committed at Phase 1; amended at close: ONE DROP now stands (pricing-mechanism absolute dollar levels, escalated 2026-07-15, reason at its row - a 39x spread across three mutually exclusive source values plus a direct v16-vs-draft conflict made the levels not replicable in prior form; the mechanism itself is KEPT via the E8 analysis of the source's committed trial records). Every other source element is KEEP or TRANSFORM; program history (MSC proof gutting; Divergence citation decapitation) makes silent loss the primary rebuild risk, and this source is citation-heavy (70 external references) and theorem-bearing.
 
 ## 1. Sections
 
@@ -155,7 +155,7 @@ Posture: ZERO-DROP. Every source element is KEEP or TRANSFORM; program history (
 
 - [x] Every source section, proof, experiment, analysis, domain, and figure/table/equation has exactly one row above - nothing omitted (heading map cross-checked against the pinned v16: Abstract, 1, 2.1-2.6, 3, 4.1-4.7, 5.1-5.4, 6.1-6.5, 7.1-7.4, 8.1-8.2, 9.1-9.3, 10.1-10.4, 11, References, App A-F).
 - [x] Every KEEP / TRANSFORM names a concrete rebuild location.
-- [x] Every DROP carries a valid reason - vacuously true: ZERO drops.
+- [x] Every DROP carries a valid reason - ONE drop (pricing-mechanism absolute dollar levels, escalated 2026-07-15, reason at its row); corrected at Phase-5a adjudication from the stale "vacuously true: ZERO drops", which predated the escalation and was not updated with it.
 - [x] Every KEEP / TRANSFORM row maps to >= 1 OUTLINE.md node (Sect/ARG/LB/EQ/TBL ids named per row).
 - [x] Shape ledger source column computed; rebuild column deferred to Phase 4 by template design.
 - [ ] (At Phase 2) every KEEP / TRANSFORM experiment has a committed script or a logged escalation in DECISIONS.md.
