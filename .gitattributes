@@ -1,25 +1,10 @@
-# Normalize all text to LF on commit so file hashes are stable across machines.
-* text=auto eol=lf
-
-# Explicitly treat committed text artifacts as LF text.
-*.md    text eol=lf
-*.py    text eol=lf
-*.txt   text eol=lf
-*.lock  text eol=lf
-*.yaml  text eol=lf
-*.yml   text eol=lf
-*.tex   text eol=lf
-*.cff   text eol=lf
-.gitignore    text eol=lf
-.gitattributes text eol=lf
-
-# Binary artifacts (never normalized).
-*.pdf   binary
-*.png   binary
-*.jpg   binary
-*.jpeg  binary
-*.gif   binary
-*.xlsx  binary
-*.xls   binary
-*.zip   binary
-*.parquet binary
+# Byte-exactness guarantee for replication.
+# Every committed artifact (JSON outputs, CSV fixtures, lock files, markdown)
+# participates in md5/byte-identity checks: verify.py's embedded-input hashes,
+# the rerun gate's regenerated-vs-committed byte comparison, and e12's runtime
+# LEG-A artifact guard. Git line-ending translation (core.autocrlf) rewrites
+# LF to CRLF at checkout on default Windows git, silently changing on-disk
+# bytes and turning all of those checks RED on a fresh clone (found by the
+# Phase 5b clean-room reproduction, 2026-07-28). Declaring every path -text
+# disables translation entirely: what is committed is what checks out.
+* -text
