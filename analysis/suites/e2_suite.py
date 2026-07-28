@@ -116,13 +116,26 @@ def leg4_contrasts() -> bool:
     (c) exchangeable predictors -> resolved-positive rate at the 0.05 reading
         inside the 0.02-0.09 band over independent null panels."""
     rng = np.random.default_rng(1404)
-    # (a) dominant: realized driven by the latent D ranks; components are the
-    # same latent buried in noise, so D's edge is real and large.
+    # (a) dominant: realized driven by the latent D ranks; the components are
+    # DETERMINISTIC low/high-interleave patterns, rank-near-orthogonal to the
+    # sorted latent in-sample (|spearman| ~ 0.088 vs 1..17 by construction),
+    # so the planted truth - D informative, components uninformative - holds
+    # by construction rather than by draw. (First 4a draft used random-noise
+    # components; at n = 17 a noise component can fluke to rank correlation
+    # ~0.5 with the outcome, which is F-07's own lesson and exactly what the
+    # contrast exists to catch. Suite-fix 2026-07-26, code-only, DECISIONS.)
     z = np.sort(rng.standard_normal(N))
     D = z
-    comp1 = z + 2.5 * rng.standard_normal(N)
-    comp2 = z + 2.5 * rng.standard_normal(N)
-    realized = 0.9 * z + 0.3 * rng.standard_normal(N)
+    pattern = []
+    lo, hi = 1, N
+    for i in range(N):
+        if i % 2 == 0:
+            pattern.append(lo); lo += 1
+        else:
+            pattern.append(hi); hi -= 1
+    comp1 = np.array(pattern, float)          # 1,17,2,16,3,15,...
+    comp2 = comp1[::-1].copy()
+    realized = 0.95 * z + 0.15 * rng.standard_normal(N)
     k = paired_contrasts(D, comp1, comp2, realized, seed=1404)
     a_ok = (k["c_rho_reading"] == "resolved-positive"
             and k["c_dphi_reading"] == "resolved-positive")
