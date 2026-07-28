@@ -90,6 +90,30 @@ def _e1_osc(d):
 DERIVED = {
     "e1_osc_spearman_min": lambda d: min(s["spearman"] for s in _e1_osc(d)),
     "e1_osc_spearman_max": lambda d: max(s["spearman"] for s in _e1_osc(d)),
+    "e5_specm_zero_exceedance_count": lambda d: sum(1 for s in d["ranking_M"]
+                                                    if s["mean_exceedance"] == 0.0),
+    "e5_specm_a34sis_exceedance": lambda d: next(s["mean_exceedance"]
+                                                 for s in d["ranking_M"]
+                                                 if s["sector"] == "A34SIS"),
+    "mon_gfc_sustained_count": lambda d: sum(
+        1 for s in d["per_spec"]["SPEC-M"]["sectors"]
+        if s["episodes"]["gfc"]["sustained_crossing"] != "none"),
+    "mon_covid_sustained_count": lambda d: sum(
+        1 for s in d["per_spec"]["SPEC-M"]["sectors"]
+        if s["episodes"]["covid"]["sustained_crossing"] != "none"),
+    "mon_gfc_sustained_precede_count": lambda d: sum(
+        1 for s in d["per_spec"]["SPEC-M"]["sectors"]
+        if s["episodes"]["gfc"]["sustained_crossing"] != "none"
+        and s["episodes"]["gfc"]["sustained_crossing"][:7] < d["onsets"]["gfc"]),
+    "mon_covid_sustained_precede_count": lambda d: sum(
+        1 for s in d["per_spec"]["SPEC-M"]["sectors"]
+        if s["episodes"]["covid"]["sustained_crossing"] != "none"
+        and s["episodes"]["covid"]["sustained_crossing"][:7] < d["onsets"]["covid"]),
+    "e10_levels_n_below1": lambda d: sum(1 for c in d["countries"]
+                                         if c["phi_raw_levels"] < 1.0),
+    "e10_levels_explosive": lambda d: {c["country"]: round(c["phi_raw_levels"], 6)
+                                       for c in d["countries"]
+                                       if c["phi_raw_levels"] >= 1.0},
     "e10_n_stationary":    lambda d: sum(1 for c in d["countries"]
                                          if c["phi_detrended"] < 1.0),
     "e10_explosive":       lambda d: {c["country"]: round(c["phi_detrended"], 6)
@@ -256,6 +280,10 @@ def rows_spec():
     row("LB-E5-chips-rank-M-A34SIS", e5, "chips_ranks_M['A34SIS']")
     row("LB-E5-chips-rank-M-R4238", e5, "chips_ranks_M['R4238IM163SCEN']")
     row("LB-E5-chips-verdict", e5, "chips_verdict")
+    row("LB-E5-specm-zero-exceedance-count", e5,
+        "e5_specm_zero_exceedance_count", derived=True)
+    row("LB-E5-specm-a34sis-exceedance", e5,
+        "e5_specm_a34sis_exceedance", derived=True)
     row("LB-E5-persistence-mfg-meanrho-R", e5, "e5_mfg_meanrho_R", derived=True,
         note="mfg aggregate (AMTMIS) mean rho, SPEC-R primary - the "
              "LB-E5-persistence family's committed value")
@@ -269,6 +297,12 @@ def rows_spec():
             f"primary_spec_R.bins[{i}].mean_rho")
         row(f"LB-E6-threshold-bin{i+1}-{lab}-n", e6,
             f"primary_spec_R.bins[{i}].n")
+    for i, lab in enumerate(("lt75", "75-85", "85-90", "ge90")):
+        row(f"LB-E6-specm-bin{i+1}-{lab}-mean", e6,
+            f"robustness_spec_M.bins[{i}].mean_rho")
+    row("LB-E6-specm-crossing-bin", e6, "robustness_spec_M.crossing_bin", tol=0,
+        note="null = no crossing under SPEC-M either - honest not-found")
+    row("LB-E6-specm-monotone", e6, "robustness_spec_M.monotone", tol=0)
     row("LB-E6-current-utilization", e6, "primary_spec_R.current_utilization")
     row("LB-E6-current-month", e6, "primary_spec_R.current_utilization_month")
     row("LB-E6-threshold-rule-outcome", e6, "verdict",
@@ -426,6 +460,18 @@ def rows_spec():
         "per_spec['SPEC-M'].summary.covid.mfg_status", tol=0)
     row("LB-E5-monitor-specm-mfg-covid-first-crossing", em,
         "per_spec['SPEC-M'].summary.covid.mfg_first_crossing", tol=0)
+    row("LB-E5-monitor-specm-gfc-sustained-count", em,
+        "mon_gfc_sustained_count", derived=True)
+    row("LB-E5-monitor-specm-covid-sustained-count", em,
+        "mon_covid_sustained_count", derived=True)
+    row("LB-E5-monitor-specm-gfc-sustained-precede-count", em,
+        "mon_gfc_sustained_precede_count", derived=True)
+    row("LB-E5-monitor-specm-covid-sustained-precede-count", em,
+        "mon_covid_sustained_precede_count", derived=True)
+    row("LB-E5-monitor-specm-mfg-gfc-sustained", em,
+        "per_spec['SPEC-M'].summary.gfc.mfg_sustained_crossing", tol=0)
+    row("LB-E5-monitor-specm-mfg-covid-sustained", em,
+        "per_spec['SPEC-M'].summary.covid.mfg_sustained_crossing", tol=0)
     row("LB-E5-monitor-specr-gfc-above-throughout-count", em,
         "per_spec['SPEC-R'].summary.gfc.n_above_throughout")
     row("LB-E5-monitor-specr-covid-above-throughout-count", em,
@@ -461,8 +507,13 @@ def rows_spec():
         row(f"LB-E10-tbl5-{rn}-country", e10f, f"countries[{i}].country",
             tol=0)
         row(f"LB-E10-tbl5-{rn}-phi", e10f, f"countries[{i}].phi_detrended")
+        row(f"LB-E10-tbl5-{rn}-phiraw", e10f, f"countries[{i}].phi_raw_levels")
         row(f"LB-E10-tbl5-{rn}-rho", e10f, f"countries[{i}].rho_calm")
         row(f"LB-E10-tbl5-{rn}-npairs", e10f, f"countries[{i}].n_pairs")
+
+    row("LB-E10-levels-n-below1", e10f, "e10_levels_n_below1", derived=True)
+    row("LB-E10-levels-explosive", e10f, "e10_levels_explosive", derived=True,
+        tol=0.0, note="dict {country: phi_raw_levels} - exact-match row")
 
     # ---- E14 ECHELON VARIANCE DECOMPOSITION (Phase 4; DESIGN Sections 18,
     #      20, 21, 22; commit 9b57d61). CHARACTERIZATION - no verdict.
