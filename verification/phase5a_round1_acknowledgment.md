@@ -19,12 +19,12 @@ I have the adjudication document. I do not have the post-fix package. Sixteen ru
 What I can verify is the arithmetic in the adjudication itself, and I did. Every checkable quantity reconciles against the computations I ran independently in round 1:
 
 adjudication claim | my round-1 computation
-F-03: SPEC-M bins entirely below the boundary | 0.7599 / 0.8226 / 0.8117 / 0.8813 [confirmed]
-F-11: exceedance floors at zero for 8 of 17 | ranks 10–17 all exactly 0.0 [confirmed]
-F-12: zero crossings precede either onset under the stated definition | AMTMIS 2020-02→2020-04, AMDMIS 2020-01→2020-04 [confirmed]
-F-16: 14 of 18 below one on levels; USA joins the explosive set | 1.0128 [confirmed]
-W-01: 413 obs (1992-01..2026-05), 412 for retail | 34×12+5 = 413 [confirmed]
-W-01: evaluation count = raw_n − 71; min(342, 341) = 341 | guard admits t ≤ n−12 from t = 60 → n−71 [confirmed]
+F-03: SPEC-M bins entirely below the boundary | 0.7599 / 0.8226 / 0.8117 / 0.8813 ✓
+F-11: exceedance floors at zero for 8 of 17 | ranks 10–17 all exactly 0.0 ✓
+F-12: zero crossings precede either onset under the stated definition | AMTMIS 2020-02→2020-04, AMDMIS 2020-01→2020-04 ✓
+F-16: 14 of 18 below one on levels; USA joins the explosive set | 1.0128 ✓
+W-01: 413 obs (1992-01..2026-05), 412 for retail | 34×12+5 = 413 ✓
+W-01: evaluation count = raw_n − 71; min(342, 341) = 341 | guard admits t ≤ n−12 from t = 60 → n−71 ✓
 
 That the derived figures reconcile against an independent recomputation is the best available evidence that the adjudication was performed against the artifacts rather than asserted over them. Recorded as such.
 

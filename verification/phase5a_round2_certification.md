@@ -18,9 +18,9 @@ Everything I attested in round 1, re-run against the head package, plus the delt
 
 check | attested | independently reproduced
 ledger rows | 546 | 546 (n_rows field and actual row count agree)
-ledger vs committed outputs | green | 517 by json_path + 29 by re-executing DERIVED = 546, zero mismatches
+ledger ↔ committed outputs | green | 517 by json_path + 29 by re-executing DERIVED = 546, zero mismatches
 renderer | 646 occurrences / 546 distinct ids | 646 / 546, output byte-identical to the committed rendered manuscript
-token-ledger closure | — | zero tokens without a row, zero rows never placed
+token ↔ ledger closure | — | zero tokens without a row, zero rows never placed
 citation tie | — | 73/73 outline keys in reference list and cited; zero orphans; zero undefined
 structural node tie | — | all S-, L-, C-, TBL-, EQ-, THM- ids present
 design pins | unchanged | all three MD5s identical to round 1
