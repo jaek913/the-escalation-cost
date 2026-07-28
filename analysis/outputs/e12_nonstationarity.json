@@ -4,7 +4,7 @@
   "design_pin": "74c73ea165a7363c6714fe803fbe76b1",
   "classification": "characterization - pre-registered limitation documentation; CANNOT support the thesis",
   "leg_a": {
-    "path": "C:\\Users\\jaek9\\Documents\\Repos\\REPO-The-Escalation-Cost\\analysis\\outputs\\e7_chain_sweep.json",
+    "path": "analysis/outputs/e7_chain_sweep.json",
     "md5": "fdb79fd32566d4129226eea422c356cb",
     "n_seeds": 250,
     "map": [
@@ -1271,7 +1271,7 @@
     ]
   },
   "leg_b": {
-    "path": "C:\\Users\\jaek9\\Documents\\LaggingTruth\\The-Escalation-Cost\\raw\\phase26\\aggregated_chain_length_sweep.json",
+    "path": "store:raw/phase26/aggregated_chain_length_sweep.json",
     "sha256": "ea95218b2193b5ad0f174d380c13da358a9b365044cf2668fa243b34b0539e49",
     "n_seeds": 50,
     "drift_paired_contrasts": {
