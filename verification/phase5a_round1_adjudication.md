@@ -68,9 +68,16 @@ defects" below; one self-found code finding is disclosed as SF-01.
   crossings precede either onset, retiring the two-nominally-preceded hedge.
 - F-13 FIX @ 8ce8d5e: fifty-vs-250 seed count corrected.
 - F-14 FIX @ 8ce8d5e: Panel B's nested-seed structure disclosed.
-- F-15 REBUT, written into Panel E @ 8ce8d5e: E12 Leg A's ci_disjoint_below
-  is the pre-registered reading; the leg adjudicates the registered claim,
-  and the paradox finding beyond registration is labelled as such.
+- F-15 REBUT, written into Panel E @ 8ce8d5e, on two grounds (round-2
+  amendment of this entry: the earlier one-line summary here cited
+  pre-registration, which is not a defense under the paper's own Section 7.1
+  standard; the paper's Panel E rebuttal rests, and always rested, on the
+  grounds below): (1) direction - Leg A's disjoint-marginal-intervals rule
+  is conservative, strictly harder to satisfy than the paired test, so it
+  cannot manufacture the finding it gates (the opposite failure mode of the
+  E14 rule Section 7.1 discloses); (2) the load-bearing claim in 7.5 quotes
+  Leg B's paired contrasts, the correctly targeted statistic, not Leg A's
+  gate. The paradox finding beyond registration is labelled as such.
 - F-16 (load-bearing) FIX @ bd5cad2/4d19eb2: E10's raw-levels leg reported -
   TBL-5 gains the per-country phi (raw levels) column; 14 of 18 remain
   below one on levels, the explosive set grows to four (USA joins), and 9.1
