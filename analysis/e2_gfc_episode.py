@@ -24,6 +24,16 @@ AND combined-D point estimate >= each informative component's. WEAKENS
 otherwise, reported honestly (E1 owns falsification; a negative E2 is reported
 as evidence against, prominently).
 
+AMENDMENT 2026-07-26 (DESIGN Section 5 amendment; Phase-5a finding F-07):
+the ordering conjunct's READING is carried by the paired contrast, computed
+within the same outcome-permutation machinery as the p-value - for each
+permutation the same permuted outcome is ranked against D and both informative
+components, so the contrast's null distribution preserves the covariance a
+point comparison discards. Dedicated generator at SEED + 1; the original
+three tests' draws are untouched and reproduce exactly. Committed reading:
+RESOLVED-POSITIVE (c > 0, one-sided p < 0.05), RESOLVED-NEGATIVE (mirrored),
+else UNRESOLVED. The verdict formula is unchanged; the report is amended.
+
 Windows (frozen, inclusive, monthly): PRE 2003-01..2006-12; CRISIS
 2008-01..2009-12; PEAK (realized) 2007-01..2010-12; the realized deviation's
 baseline mean is the 2003-2006 pre-window level (the calm anchor the crisis
@@ -113,6 +123,57 @@ def boot_p(x: np.ndarray, realized: np.ndarray, rng: np.random.Generator,
     return obs, (count + 1) / (b + 1)
 
 
+def paired_contrasts(D: np.ndarray, rho_c: np.ndarray, dphi: np.ndarray,
+                     realized: np.ndarray, seed: int,
+                     b: int = B_BOOT) -> dict:
+    """AMENDMENT 2026-07-26 (F-07). Paired contrasts c = s_D - s_component,
+    with a one-sided permutation p computed by ranking the SAME permuted
+    outcome against all three predictors per draw (covariance preserved).
+    Dedicated generator (seed = run seed + 1): the original tests' draw
+    stream is untouched. Reading per the frozen DESIGN amendment."""
+    rng = np.random.default_rng(seed)
+    n = len(realized)
+    obs = {"rho": spearman(D, realized) - spearman(rho_c, realized),
+           "dphi": spearman(D, realized) - spearman(dphi, realized)}
+    rD = _rank(D); rD = rD - rD.mean()
+    rR = _rank(rho_c); rR = rR - rR.mean()
+    rP = _rank(dphi); rP = rP - rP.mean()
+    dD = np.sqrt((rD ** 2).sum())
+    dR = np.sqrt((rR ** 2).sum())
+    dP = np.sqrt((rP ** 2).sum())
+    ge = {"rho": 0, "dphi": 0}
+    le = {"rho": 0, "dphi": 0}
+    for _ in range(b):
+        ro = _rank(realized[rng.permutation(n)]); ro = ro - ro.mean()
+        dn = np.sqrt((ro ** 2).sum())
+        sD = float((rD * ro).sum() / (dD * dn)) if dD * dn > 0 else 0.0
+        sR = float((rR * ro).sum() / (dR * dn)) if dR * dn > 0 else 0.0
+        sP = float((rP * ro).sum() / (dP * dn)) if dP * dn > 0 else 0.0
+        for key, c_pi in (("rho", sD - sR), ("dphi", sD - sP)):
+            if c_pi >= obs[key]:
+                ge[key] += 1
+            if c_pi <= obs[key]:
+                le[key] += 1
+
+    def reading(key: str) -> tuple[float, float, str]:
+        c = obs[key]
+        p_up = (ge[key] + 1) / (b + 1)     # P(c_pi >= c_obs)
+        p_dn = (le[key] + 1) / (b + 1)     # mirrored side
+        if c > 0 and p_up < 0.05:
+            lab = "resolved-positive"
+        elif c < 0 and p_dn < 0.05:
+            lab = "resolved-negative"
+        else:
+            lab = "unresolved"
+        return c, p_up, lab
+
+    c_r, p_r, l_r = reading("rho")
+    c_p, p_p, l_p = reading("dphi")
+    return dict(c_rho=c_r, c_rho_p=p_r, c_rho_reading=l_r,
+                c_dphi=c_p, c_dphi_p=p_p, c_dphi_reading=l_p,
+                B=b, seed=seed)
+
+
 def run_panel(rows: list[tuple[str, float, float, float, float]],
               seed: int = SEED) -> dict:
     """rows: (name, D, rho_crisis, abs_dphi, realized) x 17. Verdict under the
@@ -132,12 +193,14 @@ def run_panel(rows: list[tuple[str, float, float, float, float]],
     components = {"rho_crisis": s_rho, "abs_delta_phi": s_dphi, "tau": None}
     informative = [v for k, v in components.items() if v is not None]
     combined_ge_components = all(s_d >= v - 1e-9 for v in informative)
+    contrasts = paired_contrasts(D, rho_c, dphi, realized, seed + 1)
 
     verdict = ("SUPPORT" if s_d > 0 and p_d < ALPHA and combined_ge_components
                else "WEAKENS")
     return dict(n=int(ok.sum()), spearman_D=s_d, p_one_sided=p_d,
                 components=components,
                 combined_ge_components=combined_ge_components,
+                contrasts=contrasts,
                 verdict=verdict, sectors=names)
 
 
@@ -159,11 +222,15 @@ def main() -> None:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(out, indent=2))
     c = res["components"]
+    k = res["contrasts"]
     print(f"E2 {res['verdict']}: Spearman(D, realized) = {res['spearman_D']:+.4f} "
           f"p = {res['p_one_sided']:.4f} (n = {res['n']}, corroborating); "
           f"components rho_crisis {c['rho_crisis']:+.3f} "
           f"|dphi| {c['abs_delta_phi']:+.3f} tau n/a; "
           f"combined >= components: {res['combined_ge_components']}")
+    print(f"E2 paired contrasts (F-07 amendment, seed {k['seed']}, B {k['B']}): "
+          f"c_rho {k['c_rho']:+.4f} p {k['c_rho_p']:.4f} [{k['c_rho_reading']}]; "
+          f"c_dphi {k['c_dphi']:+.4f} p {k['c_dphi_p']:.4f} [{k['c_dphi_reading']}]")
 
 
 if __name__ == "__main__":

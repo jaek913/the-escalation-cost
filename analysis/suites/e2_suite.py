@@ -26,7 +26,8 @@ import numpy as np
 
 _HERE = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(_HERE.parent))
-from e2_gfc_episode import ALPHA, boot_p, run_panel, spearman  # noqa: E402
+from e2_gfc_episode import (ALPHA, boot_p, paired_contrasts, run_panel,  # noqa: E402
+                            spearman)
 
 N = 17
 N_NULL_FP = 2000
@@ -108,13 +109,66 @@ def leg3_flip() -> bool:
     return ok
 
 
+def leg4_contrasts() -> bool:
+    """AMENDMENT LEG (2026-07-26, F-07): the paired-contrast machinery.
+    (a) dominant predictor -> both contrasts resolved-positive;
+    (b) rank-equal predictor -> unresolved (the tie case: c = 0 identically);
+    (c) exchangeable predictors -> resolved-positive rate at the 0.05 reading
+        inside the 0.02-0.09 band over independent null panels."""
+    rng = np.random.default_rng(1404)
+    # (a) dominant: realized driven by the latent D ranks; components are the
+    # same latent buried in noise, so D's edge is real and large.
+    z = np.sort(rng.standard_normal(N))
+    D = z
+    comp1 = z + 2.5 * rng.standard_normal(N)
+    comp2 = z + 2.5 * rng.standard_normal(N)
+    realized = 0.9 * z + 0.3 * rng.standard_normal(N)
+    k = paired_contrasts(D, comp1, comp2, realized, seed=1404)
+    a_ok = (k["c_rho_reading"] == "resolved-positive"
+            and k["c_dphi_reading"] == "resolved-positive")
+    print(f"LEG 4a dominant predictor: c_rho {k['c_rho']:+.3f} "
+          f"p {k['c_rho_p']:.4f} [{k['c_rho_reading']}]; "
+          f"c_dphi {k['c_dphi']:+.3f} p {k['c_dphi_p']:.4f} "
+          f"[{k['c_dphi_reading']}] -> {'PASS' if a_ok else 'FAIL'}")
+    # (b) rank-equal: component IS a monotone copy of D -> identical ranks,
+    # the contrast is exactly zero in the observation and in every
+    # permutation; the only honest reading is unresolved.
+    Db = np.sort(rng.uniform(1.0, 3.0, N))
+    copy = Db ** 2          # strictly monotone -> identical ranks
+    realb = 0.8 * (Db - Db.mean()) / Db.std() + 0.4 * rng.standard_normal(N)
+    kb = paired_contrasts(Db, copy, copy, realb, seed=1405)
+    b_ok = (kb["c_rho_reading"] == "unresolved"
+            and abs(kb["c_rho"]) < 1e-12)
+    print(f"LEG 4b rank-equal predictor: c_rho {kb['c_rho']:+.6f} "
+          f"[{kb['c_rho_reading']}] -> {'PASS' if b_ok else 'FAIL'}")
+    # (c) exchangeable false-positive rate: two independent equally-noisy
+    # views of the same latent; neither is truly better, so resolved-positive
+    # should fire at ~the 0.05 reading level.
+    rng_c = np.random.default_rng(1406)
+    M, hits = 400, 0
+    for i in range(M):
+        zc = rng_c.standard_normal(N)
+        pa = zc + 1.0 * rng_c.standard_normal(N)
+        pb = zc + 1.0 * rng_c.standard_normal(N)
+        rc = 0.8 * zc + 0.5 * rng_c.standard_normal(N)
+        kc = paired_contrasts(pa, pb, pb, rc, seed=20000 + i, b=500)
+        if kc["c_rho_reading"] == "resolved-positive":
+            hits += 1
+    fp = hits / M
+    c_ok = 0.02 <= fp <= 0.09
+    print(f"LEG 4c exchangeable FP rate: {hits}/{M} = {fp:.4f} "
+          f"(band 0.02-0.09) -> {'PASS' if c_ok else 'FAIL'}")
+    return a_ok and b_ok and c_ok
+
+
 def main() -> int:
     print(f"E2 suite: n={N} sectors (real cross-section); permutation null "
           f"B=2000 (verdict), 1000 (FP leg), {N_NULL_FP} null panels")
     r1 = leg1_effect()
     r2 = leg2_null()
     r3 = leg3_flip()
-    all_pass = r1 and r2 and r3
+    r4 = leg4_contrasts()
+    all_pass = r1 and r2 and r3 and r4
     print(f"\nALL PASS: {all_pass}")
     return 0 if all_pass else 1
 
