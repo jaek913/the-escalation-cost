@@ -130,6 +130,30 @@ def _e1_osc(d):
 DERIVED = {
     "e1_osc_spearman_min": lambda d: min(s["spearman"] for s in _e1_osc(d)),
     "e1_osc_spearman_max": lambda d: max(s["spearman"] for s in _e1_osc(d)),
+    "e5_specm_zero_exceedance_count": lambda d: sum(1 for s in d["ranking_M"]
+                                                    if s["mean_exceedance"] == 0.0),
+    "e5_specm_a34sis_exceedance": lambda d: next(s["mean_exceedance"]
+                                                 for s in d["ranking_M"]
+                                                 if s["sector"] == "A34SIS"),
+    "mon_gfc_sustained_count": lambda d: sum(
+        1 for s in d["per_spec"]["SPEC-M"]["sectors"]
+        if s["episodes"]["gfc"]["sustained_crossing"] != "none"),
+    "mon_covid_sustained_count": lambda d: sum(
+        1 for s in d["per_spec"]["SPEC-M"]["sectors"]
+        if s["episodes"]["covid"]["sustained_crossing"] != "none"),
+    "mon_gfc_sustained_precede_count": lambda d: sum(
+        1 for s in d["per_spec"]["SPEC-M"]["sectors"]
+        if s["episodes"]["gfc"]["sustained_crossing"] != "none"
+        and s["episodes"]["gfc"]["sustained_crossing"][:7] < d["onsets"]["gfc"]),
+    "mon_covid_sustained_precede_count": lambda d: sum(
+        1 for s in d["per_spec"]["SPEC-M"]["sectors"]
+        if s["episodes"]["covid"]["sustained_crossing"] != "none"
+        and s["episodes"]["covid"]["sustained_crossing"][:7] < d["onsets"]["covid"]),
+    "e10_levels_n_below1": lambda d: sum(1 for c in d["countries"]
+                                         if c["phi_raw_levels"] < 1.0),
+    "e10_levels_explosive": lambda d: {c["country"]: round(c["phi_raw_levels"], 6)
+                                       for c in d["countries"]
+                                       if c["phi_raw_levels"] >= 1.0},
     "e10_n_stationary":    lambda d: sum(1 for c in d["countries"]
                                          if c["phi_detrended"] < 1.0),
     "e10_explosive":       lambda d: {c["country"]: round(c["phi_detrended"], 6)
