@@ -97,3 +97,29 @@ zero open.
 4. Ground-up: reimplement from the frozen DESIGN operators alone. Precedent
    that this suffices: E9's spec-derived re-implementation reproduced the
    source artifact bit-for-bit (max_rel_diff = 0.0, 320 trials).
+
+## Addendum 2026-07-26 (SF-01, self-found at adversarial review): E1 boundary behavior
+
+Two behaviors of e1_rolling_validation.py a replicator must reproduce to match
+the committed output byte-for-byte:
+
+1. JOINT PANEL ALIGNMENT. run_panel truncates every sector's (D, outcome)
+   pair to the FIRST n_min points, where n_min is the minimum per-sector
+   evaluation count across the panel (the joint bootstrap's single
+   block-index set requires equal lengths). With the frozen store, per-sector
+   counts are raw_n - 71 (BASE_WIN 60 + FWD_WIN 12 - 1): 342 for the
+   fourteen 413-observation series, 341 for the three retail series, so
+   n_min = 341 and every committed n_obs reads 341. The computation is
+   therefore invariant to months accruing at the end of the longer series.
+
+2. FINAL-POINT FORWARD WINDOW. The evaluation guard admits the last point
+   whose forward slice truncates to eleven months (guard tests
+   t + FWD_WIN > n; a full window needs t + 1 + FWD_WIN <= n). The panel
+   alignment removes that point for the fourteen longer series; it survives
+   only as the final of 341 points in the three shortest series (one
+   oscillating), contributing roughly one three-thousandth of the pooled
+   falsifier evidence through an eleven-month mean. Disposition: disclosed
+   (manuscript Section 5.4; DECISIONS 82), value-neutral for all other
+   points; the one-line guard correction is a candidate for the Phase-5b
+   clean-room re-execution, where any corrected run must reproduce the
+   committed statistics to within this single point's effect.
