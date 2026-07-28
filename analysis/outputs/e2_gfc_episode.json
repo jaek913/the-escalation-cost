@@ -32,6 +32,16 @@
     "tau": null
   },
   "combined_ge_components": true,
+  "contrasts": {
+    "c_rho": 0.5049019607843137,
+    "c_rho_p": 0.05147426286856572,
+    "c_rho_reading": "unresolved",
+    "c_dphi": 0.02941176470588236,
+    "c_dphi_p": 0.42028985507246375,
+    "c_dphi_reading": "unresolved",
+    "B": 2000,
+    "seed": 20260714
+  },
   "verdict": "SUPPORT",
   "sectors": [
     "AMTMIS (Total Manufacturing I/S)",

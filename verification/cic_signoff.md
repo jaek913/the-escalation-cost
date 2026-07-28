@@ -47,6 +47,8 @@ SIGNED 2026-07-24.
 
 SIGNED 2026-07-24.
 
+ADDENDUM 2026-07-26 (F-07 amendment; freeze 75f9d96, suite-fix 5bb772e). The paired_contrasts function was read in full against the seven classes for the amendment run. 1. PASS - contrasts computed from the same (D, rho_c, dphi, realized) arrays the verdict uses, written to the committed JSON under contrasts.*, ledgered by json_path. 2. PASS - pure positional numpy on the already-filtered panel arrays; the joint isfinite filter runs upstream in run_panel before the call. 3. PASS - no new NaN pathways; degenerate-denominator guard returns 0.0 exactly as boot_p does. 4. PASS - no look-ahead possible: cross-sectional permutation of a fixed realized vector. 5. N/A - single cross-section; no overlap structure. 6. PASS - no cross-series computation; the permutation is across sector labels only. 7. PASS - inputs identical to the signed operator's; dedicated generator at seed + 1 leaves the original three tests' draw stream untouched, verified by the run reproducing every committed value exactly. SIGNED 2026-07-26.
+
 ## e3_covid_episode
 
 1. PASS - sector_row + run_panel -> three-way verdict + direction counts -> committed JSON.

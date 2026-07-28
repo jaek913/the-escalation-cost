@@ -245,6 +245,12 @@ def rows_spec():
     row("LB-E2-components-absdphi", e2, "components.abs_delta_phi")
     row("LB-E2-components-combined-ge", e2, "combined_ge_components")
     row("LB-E2-gfc-verdict", e2, "verdict")
+    row("LB-E2-contrast-rho", e2, "contrasts.c_rho")
+    row("LB-E2-contrast-rho-p", e2, "contrasts.c_rho_p")
+    row("LB-E2-contrast-rho-reading", e2, "contrasts.c_rho_reading", tol=0)
+    row("LB-E2-contrast-dphi", e2, "contrasts.c_dphi")
+    row("LB-E2-contrast-dphi-p", e2, "contrasts.c_dphi_p")
+    row("LB-E2-contrast-dphi-reading", e2, "contrasts.c_dphi_reading", tol=0)
 
     # ---- E3 COVID boundary
     e3 = "e3_covid_episode.json"
