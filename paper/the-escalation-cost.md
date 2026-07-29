@@ -634,7 +634,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Repenning-Sterman-2001]: Repenning, N. & Sterman, J. (2001). Nobody ever gets credit for fixing problems that never happened: creating and sustaining process improvement. California Management Review, 43(4), 64-88.
 [@Repenning-Sterman-2002]: Repenning, N. & Sterman, J. (2002). Capability traps and self-confirming attribution errors. Administrative Science Quarterly.
 [@Saricioglu-2025]: Saricioglu, A., Erol Genevois, M. & Cedolin, M. (2025). Impact of COVID-19 on the bullwhip effect across U.S. industries. International Journal of Industrial Engineering: Theory, Applications and Practice, 32(3), 751-769.
-[@Serdarasan-2013]: Serdarasan, S. (2013). A review of supply chain complexity drivers. Computers & Industrial Engineering.
+[@Serdarasan-2013]: Serdarasan, S. (2013). A review of supply chain complexity drivers. Computers & Industrial Engineering, 66(3), 533-540.
 [@Shan-2014]: Shan, J., Yang, S., Yang, S. & Zhang, J. (2014). An empirical study of the bullwhip effect in China. Production and Operations Management, 23(4), 537-551.
 [@Spiegler-2016]: Spiegler, V., Potter, A., Naim, M. & Towill, D. (2016). The value of nonlinear control theory in investigating the underlying dynamics and resilience of a grocery supply chain. International Journal of Production Research, 54(1), 265-286.
 [@Tomlin-2006]: Tomlin, B. (2006). On the value of mitigation and contingency strategies for managing supply chain disruption risks. Management Science, 52(5), 639-657.
