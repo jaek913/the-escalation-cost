@@ -644,9 +644,9 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Warburton-2004]: Warburton, R., Disney, S., Towill, D. & Hodgson, J. (2004). Further insights into the stability of supply chains. IJPR.
 [@Warburton-Disney-2007]: Warburton, R. & Disney, S. (2007). Order and inventory variance amplification: the equivalence of discrete and continuous time analyses. IJPE.
 [@Werner-1997]: Werner, R. (1997). Towards a new monetary paradigm: a quantity theorem of disaggregated credit. Kredit und Kapital.
-[@Werner-2005]: Werner, R. (2005). New Paradigm in Macroeconomics. Palgrave Macmillan.
-[@Werner-2014a]: Werner, R. (2014a). Can banks individually create money out of nothing? The theories and the empirical evidence. IRFA.
-[@Werner-2014b]: Werner, R. (2014b). How do banks create money, and why can other firms not do the same? IRFA.
+[@Werner-2005]: Werner, R. (2005). New Paradigm in Macroeconomics: Solving the Riddle of Japanese Macroeconomic Performance. Palgrave Macmillan.
+[@Werner-2014a]: Werner, R. (2014a). Can banks individually create money out of nothing? The theories and the empirical evidence. International Review of Financial Analysis, 36, 1-19.
+[@Werner-2014b]: Werner, R. (2014b). How do banks create money, and why can other firms not do the same? An explanation for the coexistence of lending and deposit-taking. International Review of Financial Analysis, 36, 71-77.
 [@Woodbury-2004]: Woodbury, S. (2004). Layoffs and experience rating of the unemployment insurance payroll tax. Upjohn Institute.
 [@Zang-Bitmead-1994]: Zang, Z. & Bitmead, R. (1994). Transient bounds for adaptive control systems. IEEE Transactions on Automatic Control, 39(1), 171-175.
 
