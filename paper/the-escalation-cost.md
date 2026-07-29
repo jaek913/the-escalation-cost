@@ -636,7 +636,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Saricioglu-2025]: Saricioglu, A., Erol Genevois, M. & Cedolin, M. (2025). Impact of COVID-19 on the bullwhip effect across U.S. industries. International Journal of Industrial Engineering: Theory, Applications and Practice, 32(3), 751-769.
 [@Serdarasan-2013]: Serdarasan, S. (2013). A review of supply chain complexity drivers. Computers & Industrial Engineering.
 [@Shan-2014]: Shan, J., Yang, S., Yang, S. & Zhang, J. (2014). An empirical study of the bullwhip effect in China. Production and Operations Management.
-[@Spiegler-2016]: Spiegler, V., Potter, A., Naim, M. & Towill, D. (2016). The value of nonlinear control theory in investigating the underlying dynamics of a production and inventory system. IJPR.
+[@Spiegler-2016]: Spiegler, V., Potter, A., Naim, M. & Towill, D. (2016). The value of nonlinear control theory in investigating the underlying dynamics and resilience of a grocery supply chain. International Journal of Production Research, 54(1), 265-286.
 [@Tomlin-2006]: Tomlin, B. (2006). On the value of mitigation and contingency strategies for managing supply chain disruption risks. Management Science, 52(5), 639-657.
 [@Udenio-2015]: Udenio, M., Fransoo, J. & Peels, R. (2015). Destocking, the bullwhip effect, and the credit crisis: empirical modeling of supply chain dynamics. International Journal of Production Economics, 160, 34-46.
 [@Udenio-2017]: Udenio, M., Vatamidou, E., Fransoo, J. & Dellaert, N. (2017). Behavioral causes of the bullwhip effect: an analysis using linear control theory. IISE Transactions, 49(10), 980-1000.
