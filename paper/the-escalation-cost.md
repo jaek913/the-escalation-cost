@@ -581,7 +581,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Anderson-2000]: Anderson, E., Fine, C. & Parker, G. (2000). Upstream volatility in the supply chain: the machine tool industry. Production and Operations Management.
 [@Anderson-Meyer-1994]: Anderson, P. & Meyer, B. (1994). The effects of unemployment insurance taxes and benefits on layoffs. NBER.
 [@Boute-2006]: Boute, R., Disney, S., Lambrecht, M. & Van Houdt, B. (2006). An integrated production and inventory model to dampen upstream demand variability. European Journal of Operational Research.
-[@Boute-2022]: Boute, R., Disney, S., Gijsbrechts, J. & Van Mieghem, J. (2022). Dual sourcing and smoothing under non-stationary demand. Management Science.
+[@Boute-2022]: Boute, R., Disney, S., Gijsbrechts, J. & Van Mieghem, J. (2022). Dual sourcing and smoothing under non-stationary demand time series: re-shoring with SpeedFactories. Management Science, 68(2), 1039-1057.
 [@Bozarth-2009]: Bozarth, C., Warsing, D., Flynn, B. & Flynn, E. (2009). The impact of supply chain complexity on manufacturing plant performance. Journal of Operations Management.
 [@Bray-Mendelson-2012]: Bray, R. & Mendelson, H. (2012). Information transmission and the bullwhip effect: an empirical investigation. Management Science.
 [@Bray-Mendelson-2015]: Bray, R. & Mendelson, H. (2015). Production smoothing and the bullwhip effect. M&SOM.
@@ -600,7 +600,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Dooley-2010]: Dooley, K., Yan, T., Mohan, S. & Gopalakrishnan, M. (2010). Inventory management and the bullwhip effect during the 2007-2009 recession. Journal of Supply Chain Management.
 [@Fath-Fuest-2002]: Fath, J. & Fuest, C. (2002). Experience rating of unemployment insurance in the US: a model for Europe? CESifo.
 [@Ferri-1999]: Ferri, G., Liu, L.-G. & Stiglitz, J. (1999). The procyclical role of rating agencies: evidence from the East Asian crisis. Economic Notes.
-[@Gaalman-2022]: Gaalman, G., Disney, S. & Wang, X. (2022). When bullwhip increases in the lead time. EJOR.
+[@Gaalman-2022]: Gaalman, G., Disney, S. & Wang, X. (2022). When bullwhip increases in the lead time: an eigenvalue analysis of ARMA demand. International Journal of Production Economics, 250, 108623.
 [@Gaalman-Disney-2009]: Gaalman, G. & Disney, S. (2009). On bullwhip in a family of order-up-to policies with ARMA(2,2) demand. IJPE.
 [@Gibson-2013]: Gibson, T., Annaswamy, A. & Lavretsky, E. (2013). On adaptive control with closed-loop reference models. IEEE Access.
 [@Gijsbrechts-2022]: Gijsbrechts, J., Boute, R., Van Mieghem, J. & Zhang, D. (2022). Can deep reinforcement learning improve inventory management? M&SOM.
@@ -617,12 +617,12 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Lee-1997a]: Lee, H., Padmanabhan, V. & Whang, S. (1997a). Information distortion in a supply chain: the bullwhip effect. Management Science.
 [@Lee-1997b]: Lee, H., Padmanabhan, V. & Whang, S. (1997b). The bullwhip effect in supply chains. Sloan Management Review.
 [@Leng-2025]: Leng, Y., Liu, E., Ren, Y. & Tsyvinski, A. (2025). The bullwhip: time-to-build and sectoral fluctuations. NBER Working Paper 33638.
-[@Li-2023]: Li, Q., Gaalman, G. & Disney, S. (2023). On the equivalence of proportional and damped-trend order-up-to policies. IJPE.
+[@Li-2023]: Li, Q., Gaalman, G. & Disney, S. (2023). On the equivalence of the proportional and damped trend order-up-to policies: an eigenvalue analysis. International Journal of Production Economics, 265, 109005.
 [@Li-Dorfler-2024]: Li, S. H. Q. & Dorfler, F. (2024). Mitigating transient bullwhip effects under imperfect demand forecasts. arXiv:2404.01090.
 [@Lin-2020]: Lin, J., Naim, M. & Spiegler, V. (2020). Delivery-time dynamics in supply chains. IJPR.
 [@Minsky-1986]: Minsky, H. (1986). Stabilizing an Unstable Economy. Yale University Press.
 [@Monch-2011]: Monch, L., Fowler, J. & Dauzere-Peres, S. (2011). A survey of semiconductor supply chain planning. EJOR.
-[@Nepal-2012]: Nepal, B., Murat, A. & Chinnam, R. (2012). The bullwhip effect in capacitated supply chains. IJPE.
+[@Nepal-2012]: Nepal, B., Murat, A. & Chinnam, R. (2012). The bullwhip effect in capacitated supply chains with consideration for product life-cycle aspects. International Journal of Production Economics, 136(2), 318-331.
 [@Ning-2023]: Ning, A., Tziantzioulis, G. & Wentzlaff, D. (2023). Supply chain aware computer architecture. ISCA.
 [@Novak-Eppinger-2001]: Novak, S. & Eppinger, S. (2001). Sourcing by design: product complexity and the supply chain. Management Science.
 [@Oliva-Sterman-2001]: Oliva, R. & Sterman, J. (2001). Cutting corners and working overtime: quality erosion in the service industry. Management Science.
@@ -640,7 +640,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Tomlin-2006]: Tomlin, B. (2006). On the value of mitigation and contingency strategies for managing supply chain disruption risks. Management Science.
 [@Udenio-2015]: Udenio, M., Fransoo, J. & Peels, R. (2015). Destocking, the bullwhip effect, and the credit crisis. IJPE.
 [@Udenio-2017]: Udenio, M., Vatamidou, E., Fransoo, J. & Dellaert, N. (2017). Behavioral causes of the bullwhip effect: an analysis using linear control theory. IISE Transactions.
-[@Wang-2013]: Wang, X., Disney, S. & Wang, J. (2013). Stability analysis of constrained inventory systems. EJOR.
+[@Wang-2013]: Wang, X., Disney, S. & Wang, J. (2012). Stability analysis of constrained inventory systems with transportation delay. European Journal of Operational Research, 223(1), 86-95.
 [@Warburton-2004]: Warburton, R., Disney, S., Towill, D. & Hodgson, J. (2004). Further insights into the stability of supply chains. IJPR.
 [@Warburton-Disney-2007]: Warburton, R. & Disney, S. (2007). Order and inventory variance amplification: the equivalence of discrete and continuous time analyses. IJPE.
 [@Werner-1997]: Werner, R. (1997). Towards a new monetary paradigm: a quantity theorem of disaggregated credit. Kredit und Kapital.
