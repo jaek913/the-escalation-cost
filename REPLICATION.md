@@ -123,3 +123,26 @@ the committed output byte-for-byte:
    points; the one-line guard correction is a candidate for the Phase-5b
    clean-room re-execution, where any corrected run must reproduce the
    committed statistics to within this single point's effect.
+
+## Addendum 2026-07-28 (Phase 5b clean-room reproduction): environment requirements
+
+The full replication chain was executed and proven GREEN on this date: a
+fresh clone, a physically separate copy of the pinned data store verified
+offline (45/45 hashes, no network), and a clean virtual environment built
+from requirements.txt. Three findings from that exercise bind replicators:
+
+1. BYTE-EXACT REPRODUCTION REQUIRES THE PINNED VERSIONS in
+   requirements.txt (Python 3.12; numpy 1.26.4, scipy 1.16.3,
+   pandas 2.3.3, sympy 1.14.0, stockpyl 1.0.2 are the numerically
+   load-bearing pins). Newer numpy/scipy stacks reproduce every statistic
+   to roughly 1e-13 relative - last-bit floating-point differences only,
+   measured on E10 during the clean-room run - which is scientifically
+   equivalent but fails the byte-identity rerun gate by design.
+2. LINE ENDINGS: the repository carries a .gitattributes declaring every
+   path -text, so any git configuration checks out the committed bytes
+   exactly. Do not override it.
+3. STORE LOCATION: all store-reading code honors the EC_STORE environment
+   variable (default: the author's store path). Point it at your copy of
+   the pinned store; artifact provenance paths inside committed outputs
+   are recorded repo-relative and store-relative (store: prefix) as of
+   commit ba03d14, so outputs are location-independent.
