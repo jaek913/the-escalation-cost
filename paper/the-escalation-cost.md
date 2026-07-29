@@ -595,7 +595,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Dekker-2011]: Dekker, S. (2011). Drift into Failure: From Hunting Broken Components to Understanding Complex Systems. Ashgate.
 [@Disney-2004-golden]: Disney, S., Towill, D. & Van de Velde, W. (2004). Variance amplification and the golden ratio in production and inventory control. International Journal of Production Economics, 90(3), 295-309.
 [@Disney-2008]: Disney, S. (2008). Supply chain aperiodicity, bullwhip and stability analysis with Jury's inners. IMA Journal of Management Mathematics.
-[@Disney-Towill-2002]: Disney, S. & Towill, D. (2002). A discrete transfer function model to determine the dynamic stability of a vendor managed inventory supply chain. IJPR.
+[@Disney-Towill-2002]: Disney, S. & Towill, D. (2002). A discrete linear control theory model to determine the dynamic stability of vendor managed inventory supply chains. International Journal of Production Research, 40(1), 179-204.
 [@Disney-Towill-2003]: Disney, S. & Towill, D. (2003). On the bullwhip and inventory variance produced by an ordering policy. Omega, 31(3), 157-167.
 [@Dooley-2010]: Dooley, K., Yan, T., Mohan, S. & Gopalakrishnan, M. (2010). Inventory management and the bullwhip effect during the 2007-2009 recession: evidence from the manufacturing sector. Journal of Supply Chain Management, 46(1), 12-18.
 [@Fath-Fuest-2002]: Fath, J. & Fuest, C. (2002). Experience rating of unemployment insurance in the US: a model for Europe? CESifo.
