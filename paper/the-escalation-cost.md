@@ -591,12 +591,12 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Costantino-2014]: Costantino, F., Di Gravio, G., Shaban, A. & Tronci, M. (2014). SPC-based inventory control policy to improve supply chain dynamics. International Journal of Production Research.
 [@Datta-Ioannou-1994]: Datta, A. & Ioannou, P. (1994). Performance analysis and improvement in model reference adaptive control. IEEE TAC.
 [@Dejonckheere-2003]: Dejonckheere, J., Disney, S., Lambrecht, M. & Towill, D. (2003). Measuring and avoiding the bullwhip effect: a control theoretic approach. European Journal of Operational Research, 147(3), 567-590.
-[@Dejonckheere-2004]: Dejonckheere, J., Disney, S., Lambrecht, M. & Towill, D. (2004). The impact of information enrichment on the bullwhip effect. EJOR.
+[@Dejonckheere-2004]: Dejonckheere, J., Disney, S., Lambrecht, M. & Towill, D. (2004). The impact of information enrichment on the bullwhip effect in supply chains: a control engineering perspective. European Journal of Operational Research, 153(3), 727-750.
 [@Dekker-2011]: Dekker, S. (2011). Drift into Failure. Ashgate.
-[@Disney-2004-golden]: Disney, S., Towill, D. & Van de Velde, W. (2004). Variance amplification and the golden ratio in production and inventory control. IJPE.
+[@Disney-2004-golden]: Disney, S., Towill, D. & Van de Velde, W. (2004). Variance amplification and the golden ratio in production and inventory control. International Journal of Production Economics, 90(3), 295-309.
 [@Disney-2008]: Disney, S. (2008). Supply chain aperiodicity, bullwhip and stability analysis with Jury's inners. IMA Journal of Management Mathematics.
 [@Disney-Towill-2002]: Disney, S. & Towill, D. (2002). A discrete transfer function model to determine the dynamic stability of a vendor managed inventory supply chain. IJPR.
-[@Disney-Towill-2003]: Disney, S. & Towill, D. (2003). On the bullwhip and inventory variance produced by an ordering policy. Omega.
+[@Disney-Towill-2003]: Disney, S. & Towill, D. (2003). On the bullwhip and inventory variance produced by an ordering policy. Omega, 31(3), 157-167.
 [@Dooley-2010]: Dooley, K., Yan, T., Mohan, S. & Gopalakrishnan, M. (2010). Inventory management and the bullwhip effect during the 2007-2009 recession: evidence from the manufacturing sector. Journal of Supply Chain Management, 46(1), 12-18.
 [@Fath-Fuest-2002]: Fath, J. & Fuest, C. (2002). Experience rating of unemployment insurance in the US: a model for Europe? CESifo.
 [@Ferri-1999]: Ferri, G., Liu, L.-G. & Stiglitz, J. (1999). The procyclical role of rating agencies: evidence from the East Asian crisis. Economic Notes.
@@ -614,7 +614,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Kim-AdaptationTax]: Kim, J. (2026). The Adaptation Tax. Zenodo (companion, cited by title).
 [@Kim-MeasurementTrap]: Kim, J. (2026). The Measurement Trap. Zenodo (companion, cited by title).
 [@Krstic-Kokotovic-1993]: Krstic, M. & Kokotovic, P. (1993). Transient-performance improvement with a new class of adaptive controllers. Systems & Control Letters.
-[@Lee-1997a]: Lee, H., Padmanabhan, V. & Whang, S. (1997a). Information distortion in a supply chain: the bullwhip effect. Management Science.
+[@Lee-1997a]: Lee, H., Padmanabhan, V. & Whang, S. (1997a). Information distortion in a supply chain: the bullwhip effect. Management Science, 43(4), 546-558.
 [@Lee-1997b]: Lee, H., Padmanabhan, V. & Whang, S. (1997b). The bullwhip effect in supply chains. Sloan Management Review.
 [@Leng-2025]: Leng, Y., Liu, E., Ren, Y. & Tsyvinski, A. (2025). The bullwhip: time-to-build and sectoral fluctuations. NBER Working Paper 33638.
 [@Li-2023]: Li, Q., Gaalman, G. & Disney, S. (2023). On the equivalence of the proportional and damped trend order-up-to policies: an eigenvalue analysis. International Journal of Production Economics, 265, 109005.
