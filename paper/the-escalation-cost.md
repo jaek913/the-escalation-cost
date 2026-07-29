@@ -638,7 +638,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Shan-2014]: Shan, J., Yang, S., Yang, S. & Zhang, J. (2014). An empirical study of the bullwhip effect in China. Production and Operations Management.
 [@Spiegler-2016]: Spiegler, V., Potter, A., Naim, M. & Towill, D. (2016). The value of nonlinear control theory in investigating the underlying dynamics of a production and inventory system. IJPR.
 [@Tomlin-2006]: Tomlin, B. (2006). On the value of mitigation and contingency strategies for managing supply chain disruption risks. Management Science, 52(5), 639-657.
-[@Udenio-2015]: Udenio, M., Fransoo, J. & Peels, R. (2015). Destocking, the bullwhip effect, and the credit crisis. IJPE.
+[@Udenio-2015]: Udenio, M., Fransoo, J. & Peels, R. (2015). Destocking, the bullwhip effect, and the credit crisis: empirical modeling of supply chain dynamics. International Journal of Production Economics, 160, 34-46.
 [@Udenio-2017]: Udenio, M., Vatamidou, E., Fransoo, J. & Dellaert, N. (2017). Behavioral causes of the bullwhip effect: an analysis using linear control theory. IISE Transactions, 49(10), 980-1000.
 [@Wang-2013]: Wang, X., Disney, S. & Wang, J. (2012). Stability analysis of constrained inventory systems with transportation delay. European Journal of Operational Research, 223(1), 86-95.
 [@Warburton-2004]: Warburton, R., Disney, S., Towill, D. & Hodgson, J. (2004). Further insights into 'the stability of supply chains'. International Journal of Production Research, 42(3), 639-648.
