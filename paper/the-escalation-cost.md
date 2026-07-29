@@ -592,7 +592,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Datta-Ioannou-1994]: Datta, A. & Ioannou, P. (1994). Performance analysis and improvement in model reference adaptive control. IEEE Transactions on Automatic Control, 39(12), 2370-2381.
 [@Dejonckheere-2003]: Dejonckheere, J., Disney, S., Lambrecht, M. & Towill, D. (2003). Measuring and avoiding the bullwhip effect: a control theoretic approach. European Journal of Operational Research, 147(3), 567-590.
 [@Dejonckheere-2004]: Dejonckheere, J., Disney, S., Lambrecht, M. & Towill, D. (2004). The impact of information enrichment on the bullwhip effect in supply chains: a control engineering perspective. European Journal of Operational Research, 153(3), 727-750.
-[@Dekker-2011]: Dekker, S. (2011). Drift into Failure. Ashgate.
+[@Dekker-2011]: Dekker, S. (2011). Drift into Failure: From Hunting Broken Components to Understanding Complex Systems. Ashgate.
 [@Disney-2004-golden]: Disney, S., Towill, D. & Van de Velde, W. (2004). Variance amplification and the golden ratio in production and inventory control. International Journal of Production Economics, 90(3), 295-309.
 [@Disney-2008]: Disney, S. (2008). Supply chain aperiodicity, bullwhip and stability analysis with Jury's inners. IMA Journal of Management Mathematics.
 [@Disney-Towill-2002]: Disney, S. & Towill, D. (2002). A discrete transfer function model to determine the dynamic stability of a vendor managed inventory supply chain. IJPR.
@@ -605,7 +605,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Gibson-2013]: Gibson, T., Annaswamy, A. & Lavretsky, E. (2013). On adaptive control with closed-loop reference models: transients, oscillations, and peaking. IEEE Access.
 [@Gijsbrechts-2022]: Gijsbrechts, J., Boute, R., Van Mieghem, J. & Zhang, D. (2022). Can deep reinforcement learning improve inventory management? M&SOM.
 [@Graves-Tomlin-2003]: Graves, S. & Tomlin, B. (2003). Process flexibility in supply chains. Management Science.
-[@Haykin-1996]: Haykin, S. (1996). Adaptive Filter Theory. Prentice Hall.
+[@Haykin-1996]: Haykin, S. (1996). Adaptive Filter Theory (3rd ed.). Prentice Hall.
 [@Helbing-2004]: Helbing, D., Lammer, S., Witt, U. & Brenner, T. (2004). Network-induced oscillatory behavior in material flow networks. Physical Review E.
 [@Hopp-Spearman-2008]: Hopp, W. & Spearman, M. (2008). Factory Physics (3rd ed.). Waveland.
 [@Hosoda-Disney-2006]: Hosoda, T. & Disney, S. (2006). On variance amplification in a three-echelon supply chain. Omega.
