@@ -580,7 +580,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Alfaro-2025]: Alfaro, L., Brussevich, M., Minoiu, C. & Presbitero, A. (2025). Bank financing of global supply chains. NBER Working Paper 33754.
 [@Anderson-2000]: Anderson, E., Fine, C. & Parker, G. (2000). Upstream volatility in the supply chain: the machine tool industry. Production and Operations Management.
 [@Anderson-Meyer-1994]: Anderson, P. & Meyer, B. (1994). The effects of unemployment insurance taxes and benefits on layoffs using firm and individual data. NBER Working Paper 4960.
-[@Boute-2006]: Boute, R., Disney, S., Lambrecht, M. & Van Houdt, B. (2006). An integrated production and inventory model to dampen upstream demand variability. European Journal of Operational Research.
+[@Boute-2006]: Boute, R., Disney, S., Lambrecht, M. & Van Houdt, B. (2007). An integrated production and inventory model to dampen upstream demand variability in the supply chain. European Journal of Operational Research, 178(1), 121-142.
 [@Boute-2022]: Boute, R., Disney, S., Gijsbrechts, J. & Van Mieghem, J. (2022). Dual sourcing and smoothing under non-stationary demand time series: re-shoring with SpeedFactories. Management Science, 68(2), 1039-1057.
 [@Bozarth-2009]: Bozarth, C., Warsing, D., Flynn, B. & Flynn, E. (2009). The impact of supply chain complexity on manufacturing plant performance. Journal of Operations Management, 27(1), 78-93.
 [@Bray-Mendelson-2012]: Bray, R. & Mendelson, H. (2012). Information transmission and the bullwhip effect: an empirical investigation. Management Science, 58(5), 860-875.
