@@ -625,13 +625,13 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Nepal-2012]: Nepal, B., Murat, A. & Chinnam, R. (2012). The bullwhip effect in capacitated supply chains with consideration for product life-cycle aspects. International Journal of Production Economics, 136(2), 318-331.
 [@Ning-2023]: Ning, A., Tziantzioulis, G. & Wentzlaff, D. (2023). Supply chain aware computer architecture. ISCA.
 [@Novak-Eppinger-2001]: Novak, S. & Eppinger, S. (2001). Sourcing by design: product complexity and the supply chain. Management Science.
-[@Oliva-Sterman-2001]: Oliva, R. & Sterman, J. (2001). Cutting corners and working overtime: quality erosion in the service industry. Management Science.
+[@Oliva-Sterman-2001]: Oliva, R. & Sterman, J. (2001). Cutting corners and working overtime: quality erosion in the service industry. Management Science, 47(7), 894-914.
 [@Oroojlooyjadid-2022]: Oroojlooyjadid, A., Nazari, M., Snyder, L. & Takac, M. (2022). A deep Q-network for the beer game. M&SOM.
 [@Osadchiy-2016]: Osadchiy, N., Gaur, V. & Seshadri, S. (2016). Systematic risk in supply chain networks. Management Science.
 [@Ouyang-Daganzo-2006]: Ouyang, Y. & Daganzo, C. (2006). Characterization of the bullwhip effect in linear, time-invariant supply chains. Management Science.
 [@Plischke-Wirth-2008]: Plischke, E. & Wirth, F. (2008). Duality results for the joint spectral radius and transient behavior. LAA.
 [@Rasmussen-1997]: Rasmussen, J. (1997). Risk management in a dynamic society. Safety Science.
-[@Repenning-Sterman-2001]: Repenning, N. & Sterman, J. (2001). Nobody ever gets credit for fixing problems that never happened. California Management Review.
+[@Repenning-Sterman-2001]: Repenning, N. & Sterman, J. (2001). Nobody ever gets credit for fixing problems that never happened: creating and sustaining process improvement. California Management Review, 43(4), 64-88.
 [@Repenning-Sterman-2002]: Repenning, N. & Sterman, J. (2002). Capability traps and self-confirming attribution errors. Administrative Science Quarterly.
 [@Saricioglu-2025]: Saricioglu, A., Erol Genevois, M. & Cedolin, M. (2025). Impact of COVID-19 on the bullwhip effect across U.S. industries. International Journal of Industrial Engineering: Theory, Applications and Practice, 32(3), 751-769.
 [@Serdarasan-2013]: Serdarasan, S. (2013). A review of supply chain complexity drivers. Computers & Industrial Engineering.
