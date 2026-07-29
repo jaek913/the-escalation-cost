@@ -628,7 +628,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Oliva-Sterman-2001]: Oliva, R. & Sterman, J. (2001). Cutting corners and working overtime: quality erosion in the service industry. Management Science, 47(7), 894-914.
 [@Oroojlooyjadid-2022]: Oroojlooyjadid, A., Nazari, M., Snyder, L. & Takac, M. (2022). A deep Q-network for the beer game: deep reinforcement learning for inventory optimization. Manufacturing & Service Operations Management, 24.
 [@Osadchiy-2016]: Osadchiy, N., Gaur, V. & Seshadri, S. (2016). Systematic risk in supply chain networks. Management Science.
-[@Ouyang-Daganzo-2006]: Ouyang, Y. & Daganzo, C. (2006). Characterization of the bullwhip effect in linear, time-invariant supply chains. Management Science.
+[@Ouyang-Daganzo-2006]: Ouyang, Y. & Daganzo, C. (2006). Characterization of the bullwhip effect in linear, time-invariant supply chains: some formulae and tests. Management Science, 52(10), 1544-1556.
 [@Plischke-Wirth-2008]: Plischke, E. & Wirth, F. (2008). Duality results for the joint spectral radius and transient behavior. Linear Algebra and its Applications, 428(10), 2368-2384.
 [@Rasmussen-1997]: Rasmussen, J. (1997). Risk management in a dynamic society: a modelling problem. Safety Science, 27(2-3), 183-213.
 [@Repenning-Sterman-2001]: Repenning, N. & Sterman, J. (2001). Nobody ever gets credit for fixing problems that never happened: creating and sustaining process improvement. California Management Review, 43(4), 64-88.
