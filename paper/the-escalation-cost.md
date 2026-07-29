@@ -604,7 +604,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Gaalman-Disney-2009]: Gaalman, G. & Disney, S. (2009). On bullwhip in a family of order-up-to policies with ARMA(2,2) demand and arbitrary lead-times. International Journal of Production Economics, 121(2), 454-463.
 [@Gibson-2013]: Gibson, T., Annaswamy, A. & Lavretsky, E. (2013). On adaptive control with closed-loop reference models: transients, oscillations, and peaking. IEEE Access.
 [@Gijsbrechts-2022]: Gijsbrechts, J., Boute, R., Van Mieghem, J. & Zhang, D. (2022). Can deep reinforcement learning improve inventory management? Performance on lost sales, dual-sourcing, and multi-echelon problems. Manufacturing & Service Operations Management, 24(3), 1349-1368.
-[@Graves-Tomlin-2003]: Graves, S. & Tomlin, B. (2003). Process flexibility in supply chains. Management Science.
+[@Graves-Tomlin-2003]: Graves, S. & Tomlin, B. (2003). Process flexibility in supply chains. Management Science, 49(7), 907-919.
 [@Haykin-1996]: Haykin, S. (1996). Adaptive Filter Theory (3rd ed.). Prentice Hall.
 [@Helbing-2004]: Helbing, D., Lammer, S., Witt, U. & Brenner, T. (2004). Network-induced oscillatory behavior in material flow networks and irregular business cycles. Physical Review E, 70(5), 056118.
 [@Hopp-Spearman-2008]: Hopp, W. & Spearman, M. (2008). Factory Physics (3rd ed.). Waveland.
