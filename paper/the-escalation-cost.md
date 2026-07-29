@@ -643,7 +643,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Wang-2013]: Wang, X., Disney, S. & Wang, J. (2012). Stability analysis of constrained inventory systems with transportation delay. European Journal of Operational Research, 223(1), 86-95.
 [@Warburton-2004]: Warburton, R., Disney, S., Towill, D. & Hodgson, J. (2004). Further insights into the stability of supply chains. IJPR.
 [@Warburton-Disney-2007]: Warburton, R. & Disney, S. (2007). Order and inventory variance amplification: the equivalence of discrete and continuous time analyses. IJPE.
-[@Werner-1997]: Werner, R. (1997). Towards a new monetary paradigm: a quantity theorem of disaggregated credit. Kredit und Kapital.
+[@Werner-1997]: Werner, R. (1997). Towards a new monetary paradigm: a quantity theorem of disaggregated credit, with evidence from Japan. Kredit und Kapital, 30(2), 276-309.
 [@Werner-2005]: Werner, R. (2005). New Paradigm in Macroeconomics: Solving the Riddle of Japanese Macroeconomic Performance. Palgrave Macmillan.
 [@Werner-2014a]: Werner, R. (2014a). Can banks individually create money out of nothing? The theories and the empirical evidence. International Review of Financial Analysis, 36, 1-19.
 [@Werner-2014b]: Werner, R. (2014b). How do banks create money, and why can other firms not do the same? An explanation for the coexistence of lending and deposit-taking. International Review of Financial Analysis, 36, 71-77.
