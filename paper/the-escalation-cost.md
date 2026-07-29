@@ -608,7 +608,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Haykin-1996]: Haykin, S. (1996). Adaptive Filter Theory (3rd ed.). Prentice Hall.
 [@Helbing-2004]: Helbing, D., Lammer, S., Witt, U. & Brenner, T. (2004). Network-induced oscillatory behavior in material flow networks and irregular business cycles. Physical Review E, 70(5), 056118.
 [@Hopp-Spearman-2008]: Hopp, W. & Spearman, M. (2008). Factory Physics (3rd ed.). Waveland.
-[@Hosoda-Disney-2006]: Hosoda, T. & Disney, S. (2006). On variance amplification in a three-echelon supply chain. Omega.
+[@Hosoda-Disney-2006]: Hosoda, T. & Disney, S. (2006). On variance amplification in a three-echelon supply chain with minimum mean square error forecasting. Omega, 34(4), 344-358.
 [@Jungers-2009]: Jungers, R. (2009). The Joint Spectral Radius: Theory and Applications. Lecture Notes in Control and Information Sciences 385. Springer.
 [@Kim-AdaptationRate]: Kim, J. (2026). The Adaptation Rate of Trailing Averages. Zenodo (companion, cited by title).
 [@Kim-AdaptationTax]: Kim, J. (2026). The Adaptation Tax. Zenodo (companion, cited by title).
