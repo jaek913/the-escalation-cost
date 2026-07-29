@@ -586,7 +586,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Bray-Mendelson-2012]: Bray, R. & Mendelson, H. (2012). Information transmission and the bullwhip effect: an empirical investigation. Management Science, 58(5), 860-875.
 [@Bray-Mendelson-2015]: Bray, R. & Mendelson, H. (2015). Production smoothing and the bullwhip effect. Manufacturing & Service Operations Management, 17(2), 208-220.
 [@Cachon-2007]: Cachon, G., Randall, T. & Schmidt, G. (2007). In search of the bullwhip effect. Manufacturing & Service Operations Management, 9(4), 457-479.
-[@Chen-2000]: Chen, F., Drezner, Z., Ryan, J. & Simchi-Levi, D. (2000). Quantifying the bullwhip effect in a simple supply chain. Management Science.
+[@Chen-2000]: Chen, F., Drezner, Z., Ryan, J. & Simchi-Levi, D. (2000). Quantifying the bullwhip effect in a simple supply chain: the impact of forecasting, lead times, and information. Management Science, 46(3), 436-443.
 [@Choi-2001]: Choi, T., Dooley, K. & Rungtusanatham, M. (2001). Supply networks and complex adaptive systems: control versus emergence. Journal of Operations Management, 19(3), 351-366.
 [@Costantino-2014]: Costantino, F., Di Gravio, G., Shaban, A. & Tronci, M. (2014). SPC-based inventory control policy to improve supply chain dynamics. International Journal of Production Research.
 [@Datta-Ioannou-1994]: Datta, A. & Ioannou, P. (1994). Performance analysis and improvement in model reference adaptive control. IEEE Transactions on Automatic Control, 39(12), 2370-2381.
@@ -615,7 +615,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Kim-MeasurementTrap]: Kim, J. (2026). The Measurement Trap. Zenodo (companion, cited by title).
 [@Krstic-Kokotovic-1993]: Krstic, M., Kokotovic, P. & Kanellakopoulos, I. (1993). Transient-performance improvement with a new class of adaptive controllers. Systems & Control Letters, 21(6), 451-461.
 [@Lee-1997a]: Lee, H., Padmanabhan, V. & Whang, S. (1997a). Information distortion in a supply chain: the bullwhip effect. Management Science, 43(4), 546-558.
-[@Lee-1997b]: Lee, H., Padmanabhan, V. & Whang, S. (1997b). The bullwhip effect in supply chains. Sloan Management Review.
+[@Lee-1997b]: Lee, H., Padmanabhan, V. & Whang, S. (1997b). The bullwhip effect in supply chains. Sloan Management Review, 38(3), 93-102.
 [@Leng-2025]: Leng, Y., Liu, E., Ren, Y. & Tsyvinski, A. (2025). The bullwhip: time-to-build and sectoral fluctuations. NBER Working Paper 33638.
 [@Li-2023]: Li, Q., Gaalman, G. & Disney, S. (2023). On the equivalence of the proportional and damped trend order-up-to policies: an eigenvalue analysis. International Journal of Production Economics, 265, 109005.
 [@Li-Dorfler-2024]: Li, S. H. Q. & Dorfler, F. (2024). Mitigating transient bullwhip effects under imperfect demand forecasts. arXiv:2404.01090.
