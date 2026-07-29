@@ -621,7 +621,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Li-Dorfler-2024]: Li, S. H. Q. & Dorfler, F. (2024). Mitigating transient bullwhip effects under imperfect demand forecasts. arXiv:2404.01090.
 [@Lin-2020]: Lin, J., Naim, M. & Spiegler, V. (2020). Delivery time dynamics in an assemble-to-order inventory and order based production control system. International Journal of Production Economics, 223, 107531.
 [@Minsky-1986]: Minsky, H. (1986). Stabilizing an Unstable Economy. Yale University Press.
-[@Monch-2011]: Monch, L., Fowler, J. & Dauzere-Peres, S. (2011). A survey of semiconductor supply chain planning. EJOR.
+[@Monch-2011]: Monch, L., Fowler, J., Dauzere-Peres, S., Mason, S. & Rose, O. (2011). A survey of problems, solution techniques, and future challenges in scheduling semiconductor manufacturing operations. Journal of Scheduling, 14(6), 583-599.
 [@Nepal-2012]: Nepal, B., Murat, A. & Chinnam, R. (2012). The bullwhip effect in capacitated supply chains with consideration for product life-cycle aspects. International Journal of Production Economics, 136(2), 318-331.
 [@Ning-2023]: Ning, A., Tziantzioulis, G. & Wentzlaff, D. (2023). Supply chain aware computer architecture. ISCA.
 [@Novak-Eppinger-2001]: Novak, S. & Eppinger, S. (2001). Sourcing by design: product complexity and the supply chain. Management Science, 47(1), 189-204.
