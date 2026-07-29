@@ -457,7 +457,7 @@ Why should some sectors carry structurally higher persistence than others? The c
 
 ### 8.4 Werner-CHIPS Nexus
 
-One financing question follows naturally and is raised here as exploration rather than result. If a supplier ecosystem's instability is structural, stabilizing it requires investment in the tiers that carry the persistence, not only in the visible final-assembly stage - and the composition of credit, not merely its quantity, determines whether such investment happens. The directed-credit tradition argues exactly this, that where newly created credit is channeled shapes real outcomes in ways aggregate monetary measures conceal [@Werner-1997; @Werner-2005; @Werner-2014a; @Werner-2014b], and recent work on industrial-policy financing raises the same composition question for semiconductor programs specifically [@Alfaro-2025; @Ahn-Tan-2025]. Whether that channel operates as the tradition claims is well outside anything this paper tests; the nexus is flagged as a direction, explicitly labeled exploratory, and carries no ledgered quantity.
+One financing question follows naturally and is raised here as exploration rather than result. If a supplier ecosystem's instability is structural, stabilizing it requires investment in the tiers that carry the persistence, not only in the visible final-assembly stage - and the composition of credit, not merely its quantity, determines whether such investment happens. The directed-credit tradition argues exactly this, that where newly created credit is channeled shapes real outcomes in ways aggregate monetary measures conceal [@Werner-1997; @Werner-2005; @Werner-2014a; @Werner-2014b], and recent work on supply-chain finance and reconfiguration raises a related composition question - that bank credit relationships and diversification choices shape which supplier links firms can form and where [@Alfaro-2025; @Ahn-Tan-2025]. Whether that channel operates as the tradition claims is well outside anything this paper tests; the nexus is flagged as a direction, explicitly labeled exploratory, and carries no ledgered quantity.
 
 ## 9 Cross-Domain Extensions
 
@@ -576,8 +576,8 @@ Two process failures during the rebuild are disclosed here because they bear on 
 ## References
 
 
-[@Ahn-Tan-2025]: Ahn, J. & Tan, B. (2025). Supply chain resilience and diversification. IMF Working Paper 2025/102.
-[@Alfaro-2025]: Alfaro, L., Brussevich, M., Minoiu, C. & Presbitero, A. (2025). Bank financing of global supply chains. NBER Working Paper.
+[@Ahn-Tan-2025]: Ahn, J. & Tan, B. J. (2025). Supply chain diversification and resilience. IMF Working Paper 2025/102.
+[@Alfaro-2025]: Alfaro, L., Brussevich, M., Minoiu, C. & Presbitero, A. (2025). Bank financing of global supply chains. NBER Working Paper 33754.
 [@Anderson-2000]: Anderson, E., Fine, C. & Parker, G. (2000). Upstream volatility in the supply chain: the machine tool industry. Production and Operations Management.
 [@Anderson-Meyer-1994]: Anderson, P. & Meyer, B. (1994). The effects of unemployment insurance taxes and benefits on layoffs. NBER.
 [@Boute-2006]: Boute, R., Disney, S., Lambrecht, M. & Van Houdt, B. (2006). An integrated production and inventory model to dampen upstream demand variability. European Journal of Operational Research.
@@ -616,14 +616,14 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Krstic-Kokotovic-1993]: Krstic, M. & Kokotovic, P. (1993). Transient-performance improvement with a new class of adaptive controllers. Systems & Control Letters.
 [@Lee-1997a]: Lee, H., Padmanabhan, V. & Whang, S. (1997a). Information distortion in a supply chain: the bullwhip effect. Management Science.
 [@Lee-1997b]: Lee, H., Padmanabhan, V. & Whang, S. (1997b). The bullwhip effect in supply chains. Sloan Management Review.
-[@Leng-2025]: Leng, K., Liu, Y., Ren, S. & Tsyvinski, A. (2025). Persistence-driven amplification in production networks. NBER Working Paper 33638.
+[@Leng-2025]: Leng, Y., Liu, E., Ren, Y. & Tsyvinski, A. (2025). The bullwhip: time-to-build and sectoral fluctuations. NBER Working Paper 33638.
 [@Li-2023]: Li, Q., Gaalman, G. & Disney, S. (2023). On the equivalence of proportional and damped-trend order-up-to policies. IJPE.
-[@Li-Dorfler-2024]: Li, Z. & Dorfler, F. (2024). Transient bullwhip via robust control. Working paper.
+[@Li-Dorfler-2024]: Li, S. H. Q. & Dorfler, F. (2024). Mitigating transient bullwhip effects under imperfect demand forecasts. arXiv:2404.01090.
 [@Lin-2020]: Lin, J., Naim, M. & Spiegler, V. (2020). Delivery-time dynamics in supply chains. IJPR.
 [@Minsky-1986]: Minsky, H. (1986). Stabilizing an Unstable Economy. Yale University Press.
 [@Monch-2011]: Monch, L., Fowler, J. & Dauzere-Peres, S. (2011). A survey of semiconductor supply chain planning. EJOR.
 [@Nepal-2012]: Nepal, B., Murat, A. & Chinnam, R. (2012). The bullwhip effect in capacitated supply chains. IJPE.
-[@Ning-2023]: Ning, Z., Tziantzioulis, G. & Wentzlaff, D. (2023). Supply chain aware computer architecture. ISCA.
+[@Ning-2023]: Ning, A., Tziantzioulis, G. & Wentzlaff, D. (2023). Supply chain aware computer architecture. ISCA.
 [@Novak-Eppinger-2001]: Novak, S. & Eppinger, S. (2001). Sourcing by design: product complexity and the supply chain. Management Science.
 [@Oliva-Sterman-2001]: Oliva, R. & Sterman, J. (2001). Cutting corners and working overtime: quality erosion in the service industry. Management Science.
 [@Oroojlooyjadid-2022]: Oroojlooyjadid, A., Nazari, M., Snyder, L. & Takac, M. (2022). A deep Q-network for the beer game. M&SOM.
@@ -633,7 +633,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Rasmussen-1997]: Rasmussen, J. (1997). Risk management in a dynamic society. Safety Science.
 [@Repenning-Sterman-2001]: Repenning, N. & Sterman, J. (2001). Nobody ever gets credit for fixing problems that never happened. California Management Review.
 [@Repenning-Sterman-2002]: Repenning, N. & Sterman, J. (2002). Capability traps and self-confirming attribution errors. Administrative Science Quarterly.
-[@Saricioglu-2025]: Saricioglu, P., Erol Genevois, M. & Cedolin, M. (2025). Bullwhip amplification under COVID-19. Working paper.
+[@Saricioglu-2025]: Saricioglu, A., Erol Genevois, M. & Cedolin, M. (2025). Impact of COVID-19 on the bullwhip effect across U.S. industries. International Journal of Industrial Engineering: Theory, Applications and Practice, 32(3), 751-769.
 [@Serdarasan-2013]: Serdarasan, S. (2013). A review of supply chain complexity drivers. Computers & Industrial Engineering.
 [@Shan-2014]: Shan, J., Yang, S., Yang, S. & Zhang, J. (2014). An empirical study of the bullwhip effect in China. Production and Operations Management.
 [@Spiegler-2016]: Spiegler, V., Potter, A., Naim, M. & Towill, D. (2016). The value of nonlinear control theory in investigating the underlying dynamics of a production and inventory system. IJPR.
