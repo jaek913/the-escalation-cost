@@ -641,8 +641,8 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Udenio-2015]: Udenio, M., Fransoo, J. & Peels, R. (2015). Destocking, the bullwhip effect, and the credit crisis. IJPE.
 [@Udenio-2017]: Udenio, M., Vatamidou, E., Fransoo, J. & Dellaert, N. (2017). Behavioral causes of the bullwhip effect: an analysis using linear control theory. IISE Transactions.
 [@Wang-2013]: Wang, X., Disney, S. & Wang, J. (2012). Stability analysis of constrained inventory systems with transportation delay. European Journal of Operational Research, 223(1), 86-95.
-[@Warburton-2004]: Warburton, R., Disney, S., Towill, D. & Hodgson, J. (2004). Further insights into the stability of supply chains. IJPR.
-[@Warburton-Disney-2007]: Warburton, R. & Disney, S. (2007). Order and inventory variance amplification: the equivalence of discrete and continuous time analyses. IJPE.
+[@Warburton-2004]: Warburton, R., Disney, S., Towill, D. & Hodgson, J. (2004). Further insights into 'the stability of supply chains'. International Journal of Production Research, 42(3), 639-648.
+[@Warburton-Disney-2007]: Warburton, R. & Disney, S. (2007). Order and inventory variance amplification: the equivalence of discrete and continuous time analyses. International Journal of Production Economics, 110(1-2), 128-137.
 [@Werner-1997]: Werner, R. (1997). Towards a new monetary paradigm: a quantity theorem of disaggregated credit, with evidence from Japan. Kredit und Kapital, 30(2), 276-309.
 [@Werner-2005]: Werner, R. (2005). New Paradigm in Macroeconomics: Solving the Riddle of Japanese Macroeconomic Performance. Palgrave Macmillan.
 [@Werner-2014a]: Werner, R. (2014a). Can banks individually create money out of nothing? The theories and the empirical evidence. International Review of Financial Analysis, 36, 1-19.
