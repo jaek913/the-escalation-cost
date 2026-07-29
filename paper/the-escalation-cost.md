@@ -598,7 +598,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Disney-Towill-2002]: Disney, S. & Towill, D. (2002). A discrete linear control theory model to determine the dynamic stability of vendor managed inventory supply chains. International Journal of Production Research, 40(1), 179-204.
 [@Disney-Towill-2003]: Disney, S. & Towill, D. (2003). On the bullwhip and inventory variance produced by an ordering policy. Omega, 31(3), 157-167.
 [@Dooley-2010]: Dooley, K., Yan, T., Mohan, S. & Gopalakrishnan, M. (2010). Inventory management and the bullwhip effect during the 2007-2009 recession: evidence from the manufacturing sector. Journal of Supply Chain Management, 46(1), 12-18.
-[@Fath-Fuest-2002]: Fath, J. & Fuest, C. (2002). Experience rating of unemployment insurance in the US: a model for Europe? CESifo.
+[@Fath-Fuest-2002]: Fath, J. & Fuest, C. (2005). Experience rating of unemployment insurance in the US: a model for Europe? CESifo DICE Report, 3(2), 45-50.
 [@Ferri-1999]: Ferri, G., Liu, L.-G. & Stiglitz, J. (1999). The procyclical role of rating agencies: evidence from the East Asian crisis. Economic Notes, 28(3), 335-355.
 [@Gaalman-2022]: Gaalman, G., Disney, S. & Wang, X. (2022). When bullwhip increases in the lead time: an eigenvalue analysis of ARMA demand. International Journal of Production Economics, 250, 108623.
 [@Gaalman-Disney-2009]: Gaalman, G. & Disney, S. (2009). On bullwhip in a family of order-up-to policies with ARMA(2,2) demand and arbitrary lead-times. International Journal of Production Economics, 121(2), 454-463.
