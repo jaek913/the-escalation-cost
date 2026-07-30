@@ -1,8 +1,18 @@
-# The Escalation Cost
-
-## Intensity, Duration, and the Growing Damage of Regime Change
-
-Jae Kim (ORCID 0009-0005-3260-7880) - jae@laggingtruth.com
+---
+title: |
+  The Escalation Cost:\
+  Intensity, Duration, and the Growing Damage of Regime Change
+author: |
+  Jae Kim\
+  Independent Researcher\
+  ORCID: [0009-0005-3260-7880](https://orcid.org/0009-0005-3260-7880)\
+  jae@laggingtruth.com
+date: |
+  *This version: July 2026*\
+  *Working paper --- preliminary; comments welcome.*\
+  DOI: [10.5281/zenodo.21331771](https://doi.org/10.5281/zenodo.21331771)
+license: "CC BY-NC-ND 4.0"
+---
 
 <!-- Rendered numbers: every double-braced LB-id token below is substituted by the committed renderer (analysis/render_paper.py) from analysis/claims.lock. No figure is retyped by hand. -->
 
@@ -1102,3 +1112,5 @@ brute force, independent of the approximations. If the grid contradicts the
 formula's location, the Proposition - not the grid - is amended, dated.
 
 ---
+
+(c) 2026 Jae Kim. This paper is licensed under Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0). You may share it with attribution, for non-commercial purposes, without modification. The accompanying plain-English companion is released under CC BY-NC 4.0, and the analysis and verification code is released separately under the MIT License; see the repository LICENSE.
