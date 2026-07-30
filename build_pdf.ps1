@@ -102,16 +102,6 @@ $Header = @'
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{longtable}
-% --- SERIES DEVIATION (2 of 2, this paper only): wide numeric tables ---
-% This paper reports its statistics at full precision as a matter of discipline
-% (an unrounded p-value at the decision boundary is one of its findings), so some
-% cells carry 17-19 significant digits and the default table setting pushed them
-% past the text block by up to 16pt. Rounding is not available; breaking a number
-% across lines invites mis-transcription. Shrinking the table body is the only
-% meaning-preserving fix, and it is scoped to tables so body type is untouched.
-\usepackage{etoolbox}
-\AtBeginEnvironment{longtable}{\small}
-\setlength{\tabcolsep}{4pt}
 % --- code blocks: wrap long lines if any paper has code ---
 \usepackage{fvextra}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
@@ -174,6 +164,26 @@ $man = [regex]::Replace($man, '(?<=[A-Z0-9]),(?=[A-Z])', ',\allowbreak ')
 $ManTmp = Join-Path $Tmp "lt_manuscript_pdf.md"
 [System.IO.File]::WriteAllText($ManTmp, $man, $utf8NoBom)
 Write-Host "[ OK ] PDF-only transforms applied -> $ManTmp"
+
+# --- PDF-only citation transform ---------------------------------------
+# The manuscript carries pandoc-style [@key] citations and [@key]: definitions.
+# Those keys are load-bearing: verify.py ties them both ways and fails on any
+# orphan or dangling citation, which is how the reference list is proved clean.
+# The build has no --citeproc step, so without this transform the keys reach the
+# PDF verbatim - the body printing "[@Lee-1997a]" and the reference list printing
+# as a run-on block with "[@Key]:" prefixes, neither of which matches the series.
+# The transform rewrites them to the series' author-year form for the PDF ONLY;
+# the committed artifacts keep their keys and the gate stays green. It fails the
+# build rather than degrading silently on any unparseable, undefined or
+# ambiguous citation.
+$CiteTmp = Join-Path $Tmp "lt_manuscript_cited.md"
+$CiteScript = Join-Path $PSScriptRoot "verification\pdf_citations.py"
+& python $CiteScript $ManTmp $CiteTmp
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "=== BUILD FAILED === citation transform reported an error above." -ForegroundColor Red
+    exit 1
+}
+$ManTmp = $CiteTmp
 $Inputs = @($ManTmp)
 if ($Appendix -and (Test-Path $Appendix)) {
     $apx = [System.IO.File]::ReadAllText($Appendix, $utf8NoBom)   # UTF-8 read (Get-Content defaults to ANSI on PS 5.1 and mangles em/en-dashes)
