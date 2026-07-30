@@ -632,7 +632,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Plischke-Wirth-2008]: Plischke, E. & Wirth, F. (2008). Duality results for the joint spectral radius and transient behavior. Linear Algebra and its Applications, 428(10), 2368-2384.
 [@Rasmussen-1997]: Rasmussen, J. (1997). Risk management in a dynamic society: a modelling problem. Safety Science, 27(2-3), 183-213.
 [@Repenning-Sterman-2001]: Repenning, N. & Sterman, J. (2001). Nobody ever gets credit for fixing problems that never happened: creating and sustaining process improvement. California Management Review, 43(4), 64-88.
-[@Repenning-Sterman-2002]: Repenning, N. & Sterman, J. (2002). Capability traps and self-confirming attribution errors. Administrative Science Quarterly.
+[@Repenning-Sterman-2002]: Repenning, N. & Sterman, J. (2002). Capability traps and self-confirming attribution errors in the dynamics of process improvement. Administrative Science Quarterly, 47(2), 265-295.
 [@Saricioglu-2025]: Saricioglu, A., Erol Genevois, M. & Cedolin, M. (2025). Impact of COVID-19 on the bullwhip effect across U.S. industries. International Journal of Industrial Engineering: Theory, Applications and Practice, 32(3), 751-769.
 [@Serdarasan-2013]: Serdarasan, S. (2013). A review of supply chain complexity drivers. Computers & Industrial Engineering, 66(3), 533-540.
 [@Shan-2014]: Shan, J., Yang, S., Yang, S. & Zhang, J. (2014). An empirical study of the bullwhip effect in China. Production and Operations Management, 23(4), 537-551.
@@ -647,7 +647,7 @@ Two process failures during the rebuild are disclosed here because they bear on 
 [@Werner-2005]: Werner, R. (2005). New Paradigm in Macroeconomics: Solving the Riddle of Japanese Macroeconomic Performance. Palgrave Macmillan.
 [@Werner-2014a]: Werner, R. (2014a). Can banks individually create money out of nothing? The theories and the empirical evidence. International Review of Financial Analysis, 36, 1-19.
 [@Werner-2014b]: Werner, R. (2014b). How do banks create money, and why can other firms not do the same? An explanation for the coexistence of lending and deposit-taking. International Review of Financial Analysis, 36, 71-77.
-[@Woodbury-2004]: Woodbury, S. (2004). Layoffs and experience rating of the unemployment insurance payroll tax. Upjohn Institute.
+[@Woodbury-2004]: Woodbury, S. (2004). Layoffs and experience rating of the unemployment insurance payroll tax: panel data analysis of employers in three states. W.E. Upjohn Institute for Employment Research.
 [@Zang-Bitmead-1994]: Zang, Z. & Bitmead, R. (1994). Transient bounds for adaptive control systems. IEEE Transactions on Automatic Control, 39(1), 171-175.
 
 
