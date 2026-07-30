@@ -102,6 +102,25 @@ $Header = @'
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{longtable}
+% --- SERIES DEVIATION (2 of 2, this paper only): wide numeric tables ---
+% This paper's sector tables carry 14-character FRED codes (R4238IM163SCEN,
+% MRTSIR452USS) in a narrow column. Those codes contain no break opportunity, so
+% at full body size they overrun their cell and print ON TOP of the next column:
+% "MRTSIR452USS" and "0.0650" interleaved as MRTSIR4520U.S0S650 on page 32, 44
+% overlapping character pairs on that page alone. Shrinking the table body is the
+% fix; it is scoped to tables so body type is untouched.
+%
+% This was removed once, on the reasoning that four-decimal display rounding had
+% eliminated the width pressure. That was wrong: rounding fixed the NUMERIC
+% columns, and the driver here is the SECTOR NAMES, which rounding cannot touch.
+% The regression shipped because the collision check in use at the time compared
+% WORDS, and overlap severe enough to interleave characters is extracted as a
+% single word token - so the check had nothing to compare and reported zero. It
+% was caught by the author reading the page. Collision detection must be
+% CHARACTER-level; word-level is structurally blind to the worst case.
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\small}
+\setlength{\tabcolsep}{4pt}
 % --- code blocks: wrap long lines if any paper has code ---
 \usepackage{fvextra}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
@@ -161,6 +180,16 @@ $man = [regex]::Replace($man, '(?<=\d)/(?=\d+\.\d)', '/\allowbreak ')
 #    The trailing space after \allowbreak is consumed by TeX as the control-word
 #    terminator, so no visible space is introduced - same idiom as the line above.
 $man = [regex]::Replace($man, '(?<=[A-Z0-9]),(?=[A-Z])', ',\allowbreak ')
+#  - allow line breaks INSIDE long FRED sector codes (R4238IM163SCEN,
+#    MRTSIR452USS). These are 12-14 characters of unbroken capitals and digits
+#    with no natural break point, and the Sector column in TBL-2 and TBL-4 is
+#    about 56pt where the code needs about 62pt - so xelatex cannot wrap them and
+#    sets them straight over the next column, printing "MRTSIR452USS" and
+#    "0.0650" interleaved as MRTSIR4520U.S0S650. Shrinking the table body was not
+#    enough on its own. A break opportunity is inserted at the digit-to-letter
+#    boundary (R4238IM163|SCEN, MRTSIR452|USS), which is used ONLY if the line
+#    needs it and is invisible otherwise; the characters themselves are unchanged.
+$man = [regex]::Replace($man, '(?<=^|[^A-Za-z0-9])([A-Z]{1,6}\d{2,4}[A-Z]{0,3}\d{0,3})(?=[A-Z]{2,4}(?![a-z]))', '$1\allowbreak ')
 $ManTmp = Join-Path $Tmp "lt_manuscript_pdf.md"
 [System.IO.File]::WriteAllText($ManTmp, $man, $utf8NoBom)
 Write-Host "[ OK ] PDF-only transforms applied -> $ManTmp"
