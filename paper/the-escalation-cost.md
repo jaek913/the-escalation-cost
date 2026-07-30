@@ -129,12 +129,15 @@ The window is the decision variable, and it is the source of the tension the res
 
 ### 4.2 Theorem 1: The Compound Damage Bound
 
-When true persistence steps from phi_1 to phi_2 at some moment, a trailing estimator does not notice immediately. For a stretch of time it continues to report the old regime, and the policy keeps applying a rule calibrated to conditions that no longer hold. This is the blind period, and its length is the estimator's adaptation time tau(W) = kappa * W, proportional to the window (A5). The theorem prices what happens inside it.
+When true persistence steps from $\phi_1$ to $\phi_2$ at some moment, a trailing estimator does not notice immediately. For a stretch of time it continues to report the old regime, and the policy keeps applying a rule calibrated to conditions that no longer hold. This is the blind period, and its length is the estimator's adaptation time $\tau(W) = \kappa W$, proportional to the window (A5). The theorem prices what happens inside it.
 
 <!-- anchor: THM-1 -->
-THM-1 (Compound Damage Bound): blind-period damage is bounded by D = (rho_2/rho_1)^tau.
+THM-1 (Compound Damage Bound): blind-period damage is bounded by
+
+$$D = \left(\frac{\rho_2}{\rho_1}\right)^{\tau}.$$
+
 <!-- anchor: EQ-2 -->
-EQ-2 states the bound. The structure is the paper's central claim in one line: damage is not additive in the delay, it is exponential in it, with the base set by how much more unstable the new regime is (rho_2/rho_1) and the exponent set by how long the institution stays blind (tau). Intensity and duration multiply rather than add, so a modest increase in instability paired with a long measurement window produces damage that neither factor predicts alone. Both inputs are quantities institutions already estimate, which is what makes the bound a diagnostic rather than an abstraction. S-3 restricts the domain to step-change regime transitions; compound multi-channel shocks are outside the model. The full written proof is P-THM-1 in Appendix G; the machine legs are the symbolic step-check ({{LB-T1-bound-symbolic}}) and the numeric stress grid (in-domain cells {{LB-T1-bound-numeric-indomain}}, counterexamples {{LB-T1-bound-numeric-counterexamples}}, all-pass {{LB-T1-bound-numeric-allpass}}).
+EQ-2 states the bound. The structure is the paper's central claim in one line: damage is not additive in the delay, it is exponential in it, with the base set by how much more unstable the new regime is ($\rho_2/\rho_1$) and the exponent set by how long the institution stays blind ($\tau$). Intensity and duration multiply rather than add, so a modest increase in instability paired with a long measurement window produces damage that neither factor predicts alone. Both inputs are quantities institutions already estimate, which is what makes the bound a diagnostic rather than an abstraction. S-3 restricts the domain to step-change regime transitions; compound multi-channel shocks are outside the model. The full written proof is P-THM-1 in Appendix G; the machine legs are the symbolic step-check ({{LB-T1-bound-symbolic}}) and the numeric stress grid (in-domain cells {{LB-T1-bound-numeric-indomain}}, counterexamples {{LB-T1-bound-numeric-counterexamples}}, all-pass {{LB-T1-bound-numeric-allpass}}).
 
 ### 4.3 Theorem 2: The Optimal Measurement Window
 
