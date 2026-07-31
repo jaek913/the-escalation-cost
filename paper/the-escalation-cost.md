@@ -934,49 +934,49 @@ To be re-verified operator-by-operator in step 3.
 ### G.3 Theorem 2 (Optimal Measurement Window)
 
 Cost model (as in the source): total expected loss
-    L(W) = c_D * rho_2^{kappa * W} + c_E * (1 - phi^2) / W,   W in [1, infinity),
-where c_D > 0 scales expected regime-change damage (it absorbs the regime-change
-probability p and the unit damage cost), c_E > 0 scales estimation loss, and
-(1 - phi^2)/W is the Cramer-Rao asymptotic variance rate for the AR(1) coefficient
-from a window of W observations. Write a := kappa * ln(rho_2) > 0 (A5, A6).
+    $L(W) = c_D \rho_2^{\kappa W} + c_E (1 - \phi^2)/W$,   $W \in [1, \infty)$,
+where $c_D > 0$ scales expected regime-change damage (it absorbs the regime-change
+probability $p$ and the unit damage cost), $c_E > 0$ scales estimation loss, and
+$(1 - \phi^2)/W$ is the Cramer-Rao asymptotic variance rate for the AR(1) coefficient
+from a window of $W$ observations. Write $a := \kappa \ln(\rho_2) > 0$ (A5, A6).
 
 STATEMENT (as proved - SHARPENED with an explicit interiority condition).
-(i) L is strictly convex on (0, infinity).
-(ii) If condition (C):  c_E * (1 - phi^2)  >  c_D * a * rho_2^{kappa}
-holds, then L has a unique interior minimizer W* in (1, infinity), characterized by
+(i) $L$ is strictly convex on $(0, \infty)$.
+(ii) If condition (C):  $c_E (1 - \phi^2) > c_D\, a\, \rho_2^{\kappa}$
+holds, then $L$ has a unique interior minimizer $W^{*} \in (1, \infty)$, characterized by
 the first-order condition
-    (FOC)  c_D * a * exp(a * W)  =  c_E * (1 - phi^2) / W^2.
-If (C) fails, L' >= 0 on [1, infinity) and the constrained optimum is the boundary
-W* = 1.
-(iii) Closed form: the interior W* is
-    W* = (2/a) * W_L( (a/2) * sqrt( c_E * (1 - phi^2) / (c_D * a) ) ),
-where W_L is the principal branch of the Lambert W function. (The source's
+    (FOC)  $c_D\, a \exp(a W) = c_E (1 - \phi^2)/W^2$.
+If (C) fails, $L' \geq 0$ on $[1, \infty)$ and the constrained optimum is the boundary
+$W^{*} = 1$.
+(iii) Closed form: the interior $W^{*}$ is
+    $W^{*} = (2/a) W_L((a/2)\sqrt{c_E (1 - \phi^2)/(c_D\, a)})$,
+where $W_L$ is the principal branch of the Lambert $W$ function. (The source's
 "(1/(kappa ln rho_2)) * W_L(kappa ln rho_2 * Q)" is the same family with the
-parameter bundle Q left unspecified; the form above makes Q explicit. SHARPENED.)
+parameter bundle $Q$ left unspecified; the form above makes $Q$ explicit. SHARPENED.)
 
-PROOF. (i) rho_2^{kappa W} = exp(a W) is strictly convex in W (positive second
-derivative a^2 exp(aW)); (1 - phi^2)/W has second derivative
-2(1 - phi^2)/W^3 > 0 on W > 0; a positive combination of strictly convex functions
+PROOF. (i) $\rho_2^{\kappa W} = \exp(a W)$ is strictly convex in $W$ (positive second
+derivative $a^2 \exp(a W)$); $(1 - \phi^2)/W$ has second derivative
+$2(1 - \phi^2)/W^3 > 0$ on $W > 0$; a positive combination of strictly convex functions
 is strictly convex.
-(ii) L'(W) = c_D * a * exp(a W) - c_E * (1 - phi^2)/W^2. As W -> infinity the first
-term diverges and the second vanishes, so L'(W) -> +infinity; in particular L' > 0
-for all large W. At the left end, L'(1) = c_D * a * exp(a) - c_E * (1 - phi^2)
-= c_D * a * rho_2^{kappa} - c_E * (1 - phi^2), which is negative exactly under (C).
-If (C) holds: L' is continuous, L'(1) < 0, L' > 0 for large W, so by the
-intermediate value theorem a root exists in (1, infinity); strict convexity makes L'
+(ii) $L'(W) = c_D\, a \exp(a W) - c_E (1 - \phi^2)/W^2$. As $W \to \infty$ the first
+term diverges and the second vanishes, so $L'(W) \to +\infty$; in particular $L' > 0$
+for all large $W$. At the left end, $L'(1) = c_D\, a \exp(a) - c_E (1 - \phi^2)$
+$= c_D\, a\, \rho_2^{\kappa} - c_E (1 - \phi^2)$, which is negative exactly under (C).
+If (C) holds: $L'$ is continuous, $L'(1) < 0$, $L' > 0$ for large $W$, so by the
+intermediate value theorem a root exists in $(1, \infty)$; strict convexity makes $L'$
 strictly increasing, so the root is unique and is the global minimizer. If (C)
-fails: L'(1) >= 0 and L' strictly increasing give L' >= 0 on [1, infinity), so L is
-nondecreasing there and the constrained minimum sits at W = 1. (The source sketch's
+fails: $L'(1) \geq 0$ and $L'$ strictly increasing give $L' \geq 0$ on $[1, \infty)$, so $L$ is
+nondecreasing there and the constrained minimum sits at $W = 1$. (The source sketch's
 "the estimation derivative is large and negative at W = 1" is a parameter claim,
 not a theorem; (C) is the exact condition. SHARPENED.)
-(iii) Rearrange (FOC): exp(a W) * W^2 = c_E (1 - phi^2) / (c_D a) =: B > 0.
-Take square roots of both sides of W^2 exp(aW) = B:
-W * exp(aW/2) = sqrt(B). Multiply both sides by a/2:
-(aW/2) * exp(aW/2) = (a/2) * sqrt(B). By definition of the Lambert W function
-(z = u e^u iff u = W_L(z), principal branch since both sides are positive),
-aW/2 = W_L( (a/2) sqrt(B) ), i.e. W* = (2/a) * W_L( (a/2) sqrt(B) ). Substituting
-B completes the form. Positivity of the argument puts us on the principal branch,
-where W_L is single-valued, consistent with uniqueness in (ii). QED.
+(iii) Rearrange (FOC): $\exp(a W) W^2 = c_E (1 - \phi^2)/(c_D a) =: B > 0$.
+Take square roots of both sides of $W^2 \exp(a W) = B$:
+$W \exp(a W/2) = \sqrt{B}$. Multiply both sides by $a/2$:
+$(a W/2) \exp(a W/2) = (a/2)\sqrt{B}$. By definition of the Lambert $W$ function
+($z = u e^u$ iff $u = W_L(z)$, principal branch since both sides are positive),
+$a W/2 = W_L((a/2)\sqrt{B})$, i.e. $W^{*} = (2/a) W_L((a/2)\sqrt{B})$. Substituting
+$B$ completes the form. Positivity of the argument puts us on the principal branch,
+where $W_L$ is single-valued, consistent with uniqueness in (ii). QED.
 
 ---
 
