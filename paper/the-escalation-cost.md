@@ -770,43 +770,43 @@ Full written proofs for the paper's theorem-bearing claims, upgraded from the so
 
 ### G.0 Standing Assumptions and Notation
 
-(A1) DYNAMICS. The managed variable y_t follows AR(1) dynamics with persistence
-phi in (0, 1): y_t = phi * y_{t-1} + epsilon_t, with epsilon_t zero-mean noise.
-At t = 0 the true persistence steps from phi_1 to phi_2 with phi_2 > phi_1
+(A1) DYNAMICS. The managed variable $y_t$ follows AR(1) dynamics with persistence
+$\phi \in (0, 1)$: $y_t = \phi y_{t-1} + \epsilon_t$, with $\epsilon_t$ zero-mean noise.
+At $t = 0$ the true persistence steps from $\phi_1$ to $\phi_2$ with $\phi_2 > \phi_1$
 (the dangerous direction).
 
-(A2) CLOSED LOOP. A trailing-average estimator of window W >= 2 computes
-y_bar_t = (1/W) * sum_{j=0}^{W-1} y_{t-j}; a feedback policy adjusts the system at
-rate beta*gamma > 0 on the gap between y_bar_t and a target. The linearized closed
-loop is the W x W companion matrix A(phi, W, beta*gamma) with the persistence and
-feedback structure in its first row and an identity shift below. rho(A) denotes its
-spectral radius. Write rho_1 = rho(A(phi_1, W, beta*gamma)) and
-rho_2 = rho(A(phi_2, W, beta*gamma)).
+(A2) CLOSED LOOP. A trailing-average estimator of window $W \geq 2$ computes
+$\bar{y}_t = (1/W)\sum_{j=0}^{W-1} y_{t-j}$; a feedback policy adjusts the system at
+rate $\beta\gamma > 0$ on the gap between $\bar{y}_t$ and a target. The linearized closed
+loop is the $W \times W$ companion matrix $A(\phi, W, \beta\gamma)$ with the persistence and
+feedback structure in its first row and an identity shift below. $\rho(A)$ denotes its
+spectral radius. Write $\rho_1 = \rho(A(\phi_1, W, \beta\gamma))$ and
+$\rho_2 = \rho(A(\phi_2, W, \beta\gamma))$.
 
-(A3) MONOTONICITY. For fixed W and beta*gamma > 0, rho(A(phi, W, beta*gamma)) is
-strictly increasing in phi. (Carried from the companion papers; verified numerically on the T1 grid - see the three-way record.)
+(A3) MONOTONICITY. For fixed $W$ and $\beta\gamma > 0$, $\rho(A(\phi, W, \beta\gamma))$ is
+strictly increasing in $\phi$. (Carried from the companion papers; verified numerically on the T1 grid - see the three-way record.)
 
 (A4) DOMINANT-MODE DEVIATION (scope condition - SHARPENED from the sketch).
-The damage state d_t >= 0 is the magnitude of the system deviation tracked along the
+The damage state $d_t \geq 0$ is the magnitude of the system deviation tracked along the
 dominant mode of the closed loop: per cycle, the deviation is amplified by the
-spectral radius of the matrix in force at that cycle, d_{t+1} = rho(A_t) * d_t,
-where A_t is the closed-loop matrix under the policy in force at time t.
+spectral radius of the matrix in force at that cycle, $d_{t+1} = \rho(A_t) d_t$,
+where $A_t$ is the closed-loop matrix under the policy in force at time $t$.
 Remark G.0.1 states exactly what is and is not lost relative to full matrix
 generality, and Lemma G.1 supplies the matrix-general bound.
 
 (A5) ADAPTATION TIME. For the simple moving average, the estimator converges to
-within detection tolerance epsilon of the new persistence in
-tau(W) = W * (1 - epsilon/Delta_phi) periods, where Delta_phi = phi_2 - phi_1 > 0
-and 0 < epsilon < Delta_phi, so kappa := 1 - epsilon/Delta_phi is in (0, 1) and
-tau = kappa * W. (Carried from the trailing-average companions.)
+within detection tolerance $\epsilon$ of the new persistence in
+$\tau(W) = W(1 - \epsilon/\Delta\phi)$ periods, where $\Delta\phi = \phi_2 - \phi_1 > 0$
+and $0 < \epsilon < \Delta\phi$, so $\kappa := 1 - \epsilon/\Delta\phi$ is in $(0, 1)$ and
+$\tau = \kappa W$. (Carried from the trailing-average companions.)
 
 (A6) REGIME CONFIGURATION. The old regime is stable and the new regime unstable:
-rho_1 < 1 < rho_2. (Theorem 2 and the statics require only rho_2 > 1; Theorem 3
-requires only rho_1 > 0.)
+$\rho_1 < 1 < \rho_2$. (Theorem 2 and the statics require only $\rho_2 > 1$; Theorem 3
+requires only $\rho_1 > 0$.)
 
 Remark G.0.1 (why A4 is stated, and what the matrix-general truth is). For a general
-matrix A and a generic vector norm, ||A x|| <= rho(A) * ||x|| is FALSE; the spectral
-radius controls asymptotic growth, not single-step growth (rho(A) <= ||A|| for every
+matrix $A$ and a generic vector norm, $\|A x\| \leq \rho(A)\|x\|$ is FALSE; the spectral
+radius controls asymptotic growth, not single-step growth ($\rho(A) \leq \|A\|$ for every
 induced norm, with a possibly large gap). The sketch's per-step inequality is
 therefore not a theorem about arbitrary norms of the state; it is exact along the
 dominant mode, which is what A4 tracks, and it is the standard Cardiff-school
@@ -816,7 +816,7 @@ time-varying product of DIFFERENT matrices (the adaptive-policy case), even the 
 statement requires care - the joint spectral radius of the family, not the maximum
 individual spectral radius, governs worst-case products in general [@Jungers-2009]. Under A4 the scalar recursion sidesteps the JSR issue;
 outside A4 the adaptive-policy bound in Theorem 1 is stated with the constant from
-Lemma G.1 applied to the fixed-policy envelope. E1-E12 use D as an ordinal ranking
+Lemma G.1 applied to the fixed-policy envelope. E1-E12 use $D$ as an ordinal ranking
 and threshold metric, which is invariant to the constant; the alignment review
 (step 3) re-checks this experiment by experiment.
 
