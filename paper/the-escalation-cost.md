@@ -1071,41 +1071,41 @@ $D(W)$ retains its reading as the worst-case regime-change cost multiplier.
 ### G.6 Proposition (Optimal Safety Factor k*) - derivation with approximations
 labeled
 
-SETTING. The speed limit from the companion papers is S(phi, W) * beta*gamma =
-pi^2/2, giving beta*gamma_max = (pi^2/2) / S(phi_hat, W), calibrated to the
-ESTIMATED persistence phi_hat. During a blind period the true phi exceeds phi_hat,
-so operating exactly at beta*gamma_max risks a breach. Choose an operating fraction
-k in (0, 1]: beta*gamma_op = k * beta*gamma_max.
+SETTING. The speed limit from the companion papers is $S(\phi, W)\, \beta\gamma = \pi^2/2$,
+giving $\beta\gamma_{\max} = (\pi^2/2)/S(\hat{\phi}, W)$, calibrated to the
+ESTIMATED persistence $\hat{\phi}$. During a blind period the true $\phi$ exceeds $\hat{\phi}$,
+so operating exactly at $\beta\gamma_{\max}$ risks a breach. Choose an operating fraction
+$k \in (0, 1]$: $\beta\gamma_{\mathrm{op}} = k\, \beta\gamma_{\max}$.
 
 STATEMENT (approximation - stated as a Proposition, not a Theorem). Under (i)
-first-order expansion of S in phi around phi_hat, (ii) Gaussian estimation error
-phi - phi_hat ~ N(0, Var(phi_hat)) with the regime-change contribution entering as
-an inflation of effective estimation risk proportional to p * W (probability p of a
-change during a window of length W), and (iii) a breach-avoidance criterion that
+first-order expansion of $S$ in $\phi$ around $\hat{\phi}$, (ii) Gaussian estimation error
+$\phi - \hat{\phi} \sim N(0, \mathrm{Var}(\hat{\phi}))$ with the regime-change contribution entering as
+an inflation of effective estimation risk proportional to $p W$ (probability $p$ of a
+change during a window of length $W$), and (iii) a breach-avoidance criterion that
 holds the operating point at approximately two standard deviations of the induced
-uncertainty in S * beta*gamma / (pi^2/2), the optimal fraction is approximately
-    k* ~= 1 - (1/(pi^2/2)) * sqrt( 2 * p * W * Var(phi_hat) ),
+uncertainty in $S \beta\gamma/(\pi^2/2)$, the optimal fraction is approximately
+    $k^{*} \approx 1 - (1/(\pi^2/2))\sqrt{2 p W\,\mathrm{Var}(\hat{\phi})}$,
 matching the source's stated form. For typical manufacturing parameters
-(phi ~ 0.96, W in [8, 12], regime changes every 5-7 years) this evaluates in the
+($\phi \approx 0.96$, $W \in [8, 12]$, regime changes every 5-7 years) this evaluates in the
 0.85-0.95 range; the exact numbers are re-earned by the committed T3 grid, not
 quoted from the source.
 
-DERIVATION. Let u := S(phi, W) * beta*gamma_op / (pi^2/2) be the utilization of the
-speed limit at the TRUE phi; stability requires u < 1. With beta*gamma_op =
-k * (pi^2/2)/S(phi_hat, W), u = k * S(phi, W)/S(phi_hat, W). Expanding S to first
-order in (phi - phi_hat) (approximation i): S(phi, W)/S(phi_hat, W) ~= 1 +
-s_1 * (phi - phi_hat), with s_1 = (dS/dphi)/S evaluated at phi_hat. Under
-(approximation ii) the term s_1 (phi - phi_hat) is Gaussian with variance
-s_1^2 * Var_eff, Var_eff = 2 p W Var(phi_hat) collecting the estimation variance
-inflated by the chance and length of a blind window (the factor 2pW is the source's
+DERIVATION. Let $u := S(\phi, W)\, \beta\gamma_{\mathrm{op}}/(\pi^2/2)$ be the utilization of the
+speed limit at the TRUE $\phi$; stability requires $u < 1$. With $\beta\gamma_{\mathrm{op}} =$
+$k (\pi^2/2)/S(\hat{\phi}, W)$, $u = k\, S(\phi, W)/S(\hat{\phi}, W)$. Expanding $S$ to first
+order in $(\phi - \hat{\phi})$ (approximation i): $S(\phi, W)/S(\hat{\phi}, W) \approx 1 +$
+$s_1 (\phi - \hat{\phi})$, with $s_1 = (dS/d\phi)/S$ evaluated at $\hat{\phi}$. Under
+(approximation ii) the term $s_1 (\phi - \hat{\phi})$ is Gaussian with variance
+$s_1^2 \mathrm{Var}_{\mathrm{eff}}$, $\mathrm{Var}_{\mathrm{eff}} = 2 p W \mathrm{Var}(\hat{\phi})$ collecting the estimation variance
+inflated by the chance and length of a blind window (the factor $2 p W$ is the source's
 parameterization of that inflation and is retained as-is; it is a modeling
 constant, not a derived quantity - labeled explicitly as such for the 5a review).
-The breach-avoidance criterion (approximation iii) sets k so that u stays below 1
-at the sqrt(Var_eff) scale normalized by the limit: k* = 1 - sqrt(Var_eff) /
-(pi^2/2) after absorbing s_1 into the normalization of Var(phi_hat) (the source
-states the formula with s_1 = 1, i.e., variance quoted directly in speed-limit
+The breach-avoidance criterion (approximation iii) sets $k$ so that $u$ stays below 1
+at the $\sqrt{\mathrm{Var}_{\mathrm{eff}}}$ scale normalized by the limit: $k^{*} = 1 - \sqrt{\mathrm{Var}_{\mathrm{eff}}}/$
+$(\pi^2/2)$ after absorbing $s_1$ into the normalization of $\mathrm{Var}(\hat{\phi})$ (the source
+states the formula with $s_1 = 1$, i.e., variance quoted directly in speed-limit
 units; retained for continuity and flagged as a units convention). Substituting
-Var_eff gives the stated k*. QED (as an approximation chain; each step labeled).
+$\mathrm{Var}_{\mathrm{eff}}$ gives the stated $k^{*}$. QED (as an approximation chain; each step labeled).
 
 STATUS. G.6 is deliberately a PROPOSITION with an explicit approximation chain: the
 source provides the formula with no derivation, and the three approximation steps
