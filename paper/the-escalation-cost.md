@@ -167,7 +167,7 @@ The fourth static reverses the direction claimed by the source this rebuild repl
 
 Machine verification: symbolic legs {{LB-T2-statics-symbolic}}; numeric monotonicity counters {{LB-T2-statics-numeric-monophi-fail}} ($\phi$) and {{LB-T2-statics-numeric-monobg-fail}} ($bg$) failures.
 
-### 4.6 The pi^2/2 Speed Limit and Optimal Safety Factor
+### 4.6 The $\pi^2/2$ Speed Limit and Optimal Safety Factor
 
 The stability boundary itself is not this paper's result; it is the foundation's, and it takes a compact form. A single loop is stable when the product of the estimator's amplification and the feedback aggressiveness stays below a fixed constant - the $\pi^2/2$ speed limit. Read as engineering advice it says something simple: there is a maximum rate at which a system can chase a measurement it takes time to form, and exceeding it converts correction into oscillation.
 
@@ -980,7 +980,7 @@ where $W_L$ is single-valued, consistent with uniqueness in (ii). QED.
 
 ---
 
-### G.4 Comparative Statics of W* (CORRECTED - replaces source Section 4.5)
+### G.4 Comparative Statics of $W^{*}$ (CORRECTED - replaces source Section 4.5)
 
 Let $G(W, \theta) := L'(W) = c_D\, a \exp(a W) - c_E (1 - \phi^2)/W^2$, so the
 interior optimum solves $G(W^{*}, \theta) = 0$, and by strict convexity
@@ -1068,7 +1068,7 @@ $D(W)$ retains its reading as the worst-case regime-change cost multiplier.
 
 ---
 
-### G.6 Proposition (Optimal Safety Factor k*) - derivation with approximations
+### G.6 Proposition (Optimal Safety Factor $k^{*}$) - derivation with approximations
 labeled
 
 SETTING. The speed limit from the companion papers is $S(\phi, W)\, \beta\gamma = \pi^2/2$,
