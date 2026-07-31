@@ -824,50 +824,50 @@ and threshold metric, which is invariant to the constant; the alignment review
 
 ### G.1 Lemma (matrix-general growth bound)
 
-LEMMA G.1. Let A be a W x W matrix. (i) For every eps > 0 there exists an induced
-matrix norm ||.||_eps with ||A||_eps <= rho(A) + eps; hence for every t >= 0,
-||A^t x|| <= C_eps * (rho(A) + eps)^t * ||x|| in any fixed norm, with C_eps >= 1
-depending on A, eps, and the norm equivalence constants but not on t.
-(ii) If A is diagonalizable with eigenvector matrix V, then
-||A^t x||_2 <= cond(V) * rho(A)^t * ||x||_2, cond(V) = ||V||_2 * ||V^{-1}||_2.
-(iii) In general ||A^t||_2 <= c * t^{m-1} * rho(A)^t for a constant c and m the size
+LEMMA G.1. Let $A$ be a $W \times W$ matrix. (i) For every $\epsilon > 0$ there exists an induced
+matrix norm $\|\cdot\|_\epsilon$ with $\|A\|_\epsilon \leq \rho(A) + \epsilon$; hence for every $t \geq 0$,
+$\|A^t x\| \leq C_\epsilon (\rho(A) + \epsilon)^t \|x\|$ in any fixed norm, with $C_\epsilon \geq 1$
+depending on $A$, $\epsilon$, and the norm equivalence constants but not on $t$.
+(ii) If $A$ is diagonalizable with eigenvector matrix $V$, then
+$\|A^t x\|_2 \leq \mathrm{cond}(V) \rho(A)^t \|x\|_2$, $\mathrm{cond}(V) = \|V\|_2 \|V^{-1}\|_2$.
+(iii) In general $\|A^t\|_2 \leq c\, t^{m-1} \rho(A)^t$ for a constant $c$ and $m$ the size
 of the largest Jordan block of a peripheral eigenvalue.
 
 PROOF. (i) is the standard construction (Horn and Johnson, Lemma 5.6.10): take a
-Schur or Jordan form A = P T P^{-1} and the scaled similarity D_delta =
-diag(1, delta, ..., delta^{W-1}); the norm x |-> ||D_delta^{-1} P^{-1} x||_inf
-induces a matrix norm equal to the inf-norm of D_delta^{-1} T D_delta, whose
-off-diagonal mass shrinks like delta, so for delta small enough the induced norm is
-<= rho(A) + eps. Norm equivalence on finite-dimensional spaces converts the bound to
-any fixed norm at the cost of the constant C_eps. (ii) A^t = V Lambda^t V^{-1} with
-||Lambda^t||_2 = rho(A)^t. (iii) is the Jordan-form growth bound: powers of a Jordan
-block J of size m with eigenvalue lambda satisfy ||J^t|| <= C(m) * t^{m-1} *
-|lambda|^t. QED.
+Schur or Jordan form $A = P T P^{-1}$ and the scaled similarity $D_\delta =$
+$\mathrm{diag}(1, \delta, \ldots, \delta^{W-1})$; the norm $x \mapsto \|D_\delta^{-1} P^{-1} x\|_\infty$
+induces a matrix norm equal to the inf-norm of $D_\delta^{-1} T D_\delta$, whose
+off-diagonal mass shrinks like $\delta$, so for $\delta$ small enough the induced norm is
+$\leq \rho(A) + \epsilon$. Norm equivalence on finite-dimensional spaces converts the bound to
+any fixed norm at the cost of the constant $C_\epsilon$. (ii) $A^t = V \Lambda^t V^{-1}$ with
+$\|\Lambda^t\|_2 = \rho(A)^t$. (iii) is the Jordan-form growth bound: powers of a Jordan
+block $J$ of size $m$ with eigenvalue $\lambda$ satisfy $\|J^t\| \leq C(m)\, t^{m-1}$
+$|\lambda|^t$. QED.
 
-LEMMA G.1b (Gain Envelope, in-domain - NEW at v0.2). Fix phi_2 in (0, 1), W, and
-beta*gamma > 0 with rho_2 := rho(phi_2, W, beta*gamma) > 1. Then for every
-beta*gamma' in [0, beta*gamma]: rho(phi_2, W, beta*gamma') <= rho_2.
+LEMMA G.1b (Gain Envelope, in-domain - NEW at v0.2). Fix $\phi_2 \in (0, 1)$, $W$, and
+$\beta\gamma > 0$ with $\rho_2 := \rho(\phi_2, W, \beta\gamma) > 1$. Then for every
+$\beta\gamma' \in [0, \beta\gamma]$: $\rho(\phi_2, W, \beta\gamma') \leq \rho_2$.
 
-STATUS AND JUSTIFICATION. rho is NOT globally monotone in the gain: at
-beta*gamma' = 0 the loop is open and rho = phi_2 < 1; small positive feedback
-DAMPS the persistence pole (rho dips below phi_2); large feedback destabilizes
-(rho rises through 1). The map beta*gamma' |-> rho(phi_2, W, beta*gamma') is
+STATUS AND JUSTIFICATION. $\rho$ is NOT globally monotone in the gain: at
+$\beta\gamma' = 0$ the loop is open and $\rho = \phi_2 < 1$; small positive feedback
+DAMPS the persistence pole ($\rho$ dips below $\phi_2$); large feedback destabilizes
+($\rho$ rises through 1). The map $\beta\gamma' \mapsto \rho(\phi_2, W, \beta\gamma')$ is
 empirically U-shaped on the verification grid. The lemma needs only the
-weaker envelope statement: on [0, beta*gamma] the maximum is attained at an
-endpoint, and since the left endpoint gives phi_2 < 1 < rho_2, the right
+weaker envelope statement: on $[0, \beta\gamma]$ the maximum is attained at an
+endpoint, and since the left endpoint gives $\phi_2 < 1 < \rho_2$, the right
 endpoint dominates. A violation would require an interior local maximum of
-rho in the gain strictly exceeding rho_2 > 1; none exists on the verification
+$\rho$ in the gain strictly exceeding $\rho_2 > 1$; none exists on the verification
 grid (T1 numeric leg: dense gain sweep per in-domain cell, zero violations).
 The lemma is carried as NUMERICALLY VERIFIED on the theorem's verification
 surface and is explicitly flagged for the Phase-5a proof-rigor pass (an
-analytic proof from the characteristic polynomial lam^W - phi lam^{W-1} +
-(bg/W) sum_{j<W} lam^j is a known open refinement; the theorem's scope is the
+analytic proof from the characteristic polynomial $\lambda^W - \phi\lambda^{W-1} +$
+$(bg/W)\sum_{j<W}\lambda^j$ is a known open refinement; the theorem's scope is the
 verified surface until then).
 
 REMARK G.1b.1 (stabilizing-then-destabilizing feedback - new finding). The
 U-shape is itself a substantive observation surfaced by this verification:
 moderate measurement feedback is STABILIZING relative to the open loop
-(rho below phi_2), and instability is a property of aggressive feedback, not
+($\rho$ below $\phi_2$), and instability is a property of aggressive feedback, not
 of feedback per se. This sharpens the paper's narrative and is recorded for
 the manuscript's framework discussion; it changes no experiment operator
 (alignment review, step 3, re-confirms).
