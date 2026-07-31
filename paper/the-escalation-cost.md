@@ -877,54 +877,54 @@ the manuscript's framework discussion; it changes no experiment operator
 <!-- anchor: P-THM-1 -->
 ### G.2 Theorem 1 (Compound Damage Bound)
 
-STATEMENT (as proved). Let the regime change occur at t = 0 with initial deviation
-d_0 > 0, and let the blind period be t = 0, 1, ..., tau - 1 (A5). Consider a policy
-whose closed-loop matrix at time t during the blind period is
-A_t = A(phi_2, W, beta*gamma_t), where beta*gamma_t <= beta*gamma is the (possibly
+STATEMENT (as proved). Let the regime change occur at $t = 0$ with initial deviation
+$d_0 > 0$, and let the blind period be $t = 0, 1, \ldots, \tau - 1$ (A5). Consider a policy
+whose closed-loop matrix at time $t$ during the blind period is
+$A_t = A(\phi_2, W, \beta\gamma_t)$, where $\beta\gamma_t \leq \beta\gamma$ is the (possibly
 adaptively reduced) feedback in force.
 
 (a) Under A4 (dominant-mode tracking), the deviation at the end of the blind period
 satisfies
-    d_tau = d_0 * product_{t=0}^{tau-1} rho(A_t) <= d_0 * rho_2^tau,
-with equality iff the policy does not adapt (beta*gamma_t = beta*gamma for all t).
+    $d_\tau = d_0 \prod_{t=0}^{\tau-1} \rho(A_t) \leq d_0 \rho_2^{\tau}$,
+with equality iff the policy does not adapt ($\beta\gamma_t = \beta\gamma$ for all $t$).
 
 (b) Matrix-general version (SHARPENED): for the non-adaptive policy the state
-satisfies x_tau = A_2^tau x_0 and, by Lemma G.1, ||x_tau|| <= C * rho_2^tau * ||x_0||
-with C = cond(V) when A_2 is diagonalizable and C = C_eps (rate rho_2 + eps)
-otherwise. The exponential RATE rho_2 is exact: lim_{t->inf} ||A_2^t||^{1/t} = rho_2
+satisfies $x_\tau = A_2^{\tau} x_0$ and, by Lemma G.1, $\|x_\tau\| \leq C \rho_2^{\tau} \|x_0\|$
+with $C = \mathrm{cond}(V)$ when $A_2$ is diagonalizable and $C = C_\epsilon$ (rate $\rho_2 + \epsilon$)
+otherwise. The exponential RATE $\rho_2$ is exact: $\lim_{t\to\infty} \|A_2^t\|^{1/t} = \rho_2$
 (Gelfand). For the adaptive time-varying case outside A4, the product of the family
-{A_t} is governed by its joint spectral radius, and the bound is stated only through
-the fixed-policy envelope A_2 with the constant of Lemma G.1.
+$\{A_t\}$ is governed by its joint spectral radius, and the bound is stated only through
+the fixed-policy envelope $A_2$ with the constant of Lemma G.1.
 
-(c) Substituting tau = kappa * W (A5) gives the window form
-    D_SMA(W) := rho_2^{kappa * W},
-strictly increasing and strictly log-linear (hence convex) in W.
+(c) Substituting $\tau = \kappa W$ (A5) gives the window form
+    $D_{\mathrm{SMA}}(W) := \rho_2^{\kappa W}$,
+strictly increasing and strictly log-linear (hence convex) in $W$.
 
 PROOF. (a) During the blind period the estimator has not yet detected the change
-(A5), so the persistence in force in the true dynamics is phi_2 while any adaptive
-reduction acts only through beta*gamma_t <= beta*gamma. Fix t in {0, ..., tau-1}.
-The matrix in force is A_t = A(phi_2, W, beta*gamma_t). Two facts bound rho(A_t):
-(i) by construction rho(A_t) = rho(phi_2, W, beta*gamma_t); (ii) by the Gain-
-Envelope Lemma G.1b (in-domain, rho_2 > 1 per A6), beta*gamma_t in
-[0, beta*gamma] implies rho(A_t) <= rho(phi_2, W, beta*gamma) = rho_2. (The
-v0.1 draft invoked global gain monotonicity here; that claim is FALSE - rho is
+(A5), so the persistence in force in the true dynamics is $\phi_2$ while any adaptive
+reduction acts only through $\beta\gamma_t \leq \beta\gamma$. Fix $t \in \{0, \ldots, \tau-1\}$.
+The matrix in force is $A_t = A(\phi_2, W, \beta\gamma_t)$. Two facts bound $\rho(A_t)$:
+(i) by construction $\rho(A_t) = \rho(\phi_2, W, \beta\gamma_t)$; (ii) by the Gain-
+Envelope Lemma G.1b (in-domain, $\rho_2 > 1$ per A6), $\beta\gamma_t \in$
+$[0, \beta\gamma]$ implies $\rho(A_t) \leq \rho(\phi_2, W, \beta\gamma) = \rho_2$. (The
+v0.1 draft invoked global gain monotonicity here; that claim is FALSE - $\rho$ is
 U-shaped in the gain - and the step now rests on G.1b.) Under A4,
-d_{t+1} = rho(A_t) * d_t
-with d_t >= 0, so by induction d_tau = d_0 * product_{t<tau} rho(A_t). Each factor
-is <= rho_2, giving d_tau <= d_0 * rho_2^tau. If the policy does not adapt, every
-factor equals rho_2 exactly and the bound is attained; the attainment direction
+$d_{t+1} = \rho(A_t) d_t$
+with $d_t \geq 0$, so by induction $d_\tau = d_0 \prod_{t<\tau} \rho(A_t)$. Each factor
+is $\leq \rho_2$, giving $d_\tau \leq d_0 \rho_2^{\tau}$. If the policy does not adapt, every
+factor equals $\rho_2$ exactly and the bound is attained; the attainment direction
 needs no strictness claim about intermediate gains (equality holds along the
 non-adaptive path by construction, which is all the theorem's "achieved when
 the policy does not adapt" asserts). (b) Immediate from Lemma G.1
-applied to A_2, plus Gelfand's formula for the rate; the JSR caveat for time-varying
-products is Remark G.0.1. (c) Substitute tau = kappa * W into rho_2^tau:
-D_SMA(W) = exp(kappa * ln(rho_2) * W) with kappa * ln(rho_2) > 0 under A6, which is
-strictly increasing, log-linear, and convex in W. QED.
+applied to $A_2$, plus Gelfand's formula for the rate; the JSR caveat for time-varying
+products is Remark G.0.1. (c) Substitute $\tau = \kappa W$ into $\rho_2^{\tau}$:
+$D_{\mathrm{SMA}}(W) = \exp(\kappa \ln(\rho_2) W)$ with $\kappa \ln(\rho_2) > 0$ under A6, which is
+strictly increasing, log-linear, and convex in $W$. QED.
 
 NOTE FOR THE ALIGNMENT REVIEW (step 3). The sketch asserted the per-step inequality
 for the raw deviation with no norm qualification; the proof shows it is exact under
 A4 and holds matrix-generally at the same exponential rate up to a constant. Every
-experiment that consumes D uses it ordinally (rankings, correlations) or as a
+experiment that consumes $D$ uses it ordinally (rankings, correlations) or as a
 ratio threshold; constants cancel in the ratio of Theorem 3 and do not move ranks.
 To be re-verified operator-by-operator in step 3.
 
