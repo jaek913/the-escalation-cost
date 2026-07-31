@@ -1036,35 +1036,35 @@ economic reading of Theorem 2 and provides a sign check for the T2 numeric grid.
 ### G.5 Theorem 3 (The Adaptation-Stability Identity)
 
 STATEMENT (as proved). Let the blind-period amplification of Theorem 1 (under A4,
-non-adaptive envelope) be d_tau = d_0 * rho_2^tau, and let the counterfactual
-deviation had the regime not changed be d_tau^0 = d_0 * rho_1^tau (the same
-recursion under rho_1, with rho_1 > 0). Then the damage amplification FACTOR -
+non-adaptive envelope) be $d_\tau = d_0 \rho_2^{\tau}$, and let the counterfactual
+deviation had the regime not changed be $d_\tau^0 = d_0 \rho_1^{\tau}$ (the same
+recursion under $\rho_1$, with $\rho_1 > 0$). Then the damage amplification FACTOR -
 realized deviation relative to the no-regime-change counterfactual over the same
 blind window - is exactly
-    D(W) = d_tau / d_tau^0 = ( rho(phi_2, W, beta*gamma) /
-                                rho(phi_1, W, beta*gamma) )^{tau(W)},
-with both rho and tau functions of the single design parameter W. D(W) > 1 whenever
-rho_2 > rho_1 and tau > 0; log D(W) = tau(W) * [ln rho_2(W) - ln rho_1(W)]
-factorizes damage into DURATION (tau) times INTENSITY (the log spectral-radius
+    $D(W) = d_\tau / d_\tau^0 =$
+    $(\rho(\phi_2, W, \beta\gamma) / \rho(\phi_1, W, \beta\gamma))^{\tau(W)}$,
+with both $\rho$ and $\tau$ functions of the single design parameter $W$. $D(W) > 1$ whenever
+$\rho_2 > \rho_1$ and $\tau > 0$; $\log D(W) = \tau(W)[\ln \rho_2(W) - \ln \rho_1(W)]$
+factorizes damage into DURATION ($\tau$) times INTENSITY (the log spectral-radius
 gap), which is the intensity-times-duration reading in the text.
 
-PROOF. Both trajectories satisfy the A4 recursion from the same d_0 > 0: the
-realized blind-period path compounds at rho_2 per cycle (Theorem 1a, non-adaptive
-envelope, where the bound is attained), giving d_tau = d_0 rho_2^tau; the
-counterfactual path compounds at rho_1 per cycle, giving d_tau^0 = d_0 rho_1^tau,
-strictly positive since rho_1 > 0. The ratio is (rho_2/rho_1)^tau; d_0 cancels, so
+PROOF. Both trajectories satisfy the A4 recursion from the same $d_0 > 0$: the
+realized blind-period path compounds at $\rho_2$ per cycle (Theorem 1a, non-adaptive
+envelope, where the bound is attained), giving $d_\tau = d_0 \rho_2^{\tau}$; the
+counterfactual path compounds at $\rho_1$ per cycle, giving $d_\tau^0 = d_0 \rho_1^{\tau}$,
+strictly positive since $\rho_1 > 0$. The ratio is $(\rho_2/\rho_1)^{\tau}$; $d_0$ cancels, so
 the factor is initial-condition-free, and by Lemma G.1(b) any matrix-general
-constants C are common to numerator and denominator's growth-rate reading at rate
-level. Positivity/exceedance: rho_2 > rho_1 > 0 and tau > 0 give the ratio > 1.
-Taking logs gives the stated factorization. Both arguments are functions of W alone
-once (phi_1, phi_2, beta*gamma, epsilon) are fixed: rho_i = rho(phi_i, W,
-beta*gamma) by A2 and tau = kappa W by A5. QED.
+constants $C$ are common to numerator and denominator's growth-rate reading at rate
+level. Positivity/exceedance: $\rho_2 > \rho_1 > 0$ and $\tau > 0$ give the ratio $> 1$.
+Taking logs gives the stated factorization. Both arguments are functions of $W$ alone
+once $(\phi_1, \phi_2, \beta\gamma, \epsilon)$ are fixed: $\rho_i =$
+$\rho(\phi_i, W, \beta\gamma)$ by A2 and $\tau = \kappa W$ by A5. QED.
 
 REMARK G.5.1 (bound vs identity). Theorem 1 is an upper BOUND on the realized
 deviation (adaptive policies do strictly better); Theorem 3 is an exact IDENTITY
 for the non-adaptive envelope's amplification factor - the quantity every
-experiment ranks on. Under an adaptive policy the realized factor is <= D(W), so
-D(W) retains its reading as the worst-case regime-change cost multiplier.
+experiment ranks on. Under an adaptive policy the realized factor is $\leq D(W)$, so
+$D(W)$ retains its reading as the worst-case regime-change cost multiplier.
 
 ---
 
