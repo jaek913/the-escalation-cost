@@ -982,23 +982,23 @@ where $W_L$ is single-valued, consistent with uniqueness in (ii). QED.
 
 ### G.4 Comparative Statics of W* (CORRECTED - replaces source Section 4.5)
 
-Let G(W, theta) := L'(W) = c_D * a * exp(a W) - c_E * (1 - phi^2) / W^2, so the
-interior optimum solves G(W*, theta) = 0, and by strict convexity
-G_W = L''(W*) > 0. Implicit differentiation gives, for any parameter theta,
-    dW*/dtheta = - G_theta / G_W,  so  sign(dW*/dtheta) = - sign(G_theta).
+Let $G(W, \theta) := L'(W) = c_D\, a \exp(a W) - c_E (1 - \phi^2)/W^2$, so the
+interior optimum solves $G(W^{*}, \theta) = 0$, and by strict convexity
+$G_W = L''(W^{*}) > 0$. Implicit differentiation gives, for any parameter $\theta$,
+    $dW^{*}/d\theta = -G_\theta/G_W$,  so  $\mathrm{sign}(dW^{*}/d\theta) = -\mathrm{sign}(G_\theta)$.
 
-(a) theta = rho_2 (holding kappa, phi, costs fixed). a = kappa ln(rho_2) is
-increasing in rho_2, and G depends on rho_2 only through the damage term
-c_D * a * exp(a W), which is strictly increasing in a for W > 0 (both the
-coefficient and the exponent rise). Hence G_{rho_2} > 0 and dW*/d(rho_2) < 0.
+(a) $\theta = \rho_2$ (holding $\kappa$, $\phi$, costs fixed). $a = \kappa \ln(\rho_2)$ is
+increasing in $\rho_2$, and $G$ depends on $\rho_2$ only through the damage term
+$c_D\, a \exp(a W)$, which is strictly increasing in $a$ for $W > 0$ (both the
+coefficient and the exponent rise). Hence $G_{\rho_2} > 0$ and $dW^{*}/d\rho_2 < 0$.
 CONFIRMS the source: higher instability intensity favors shorter windows.
 
-(b) theta = phi (holding rho_2 fixed; direct estimation-cost channel). phi enters G
-only through -c_E (1 - phi^2)/W^2:
-    G_phi = + 2 * c_E * phi / W^2 > 0,  hence  dW*/dphi < 0.
-This REVERSES the source's claim (b) [dW*/dphi > 0, "coefficients near 1.0 require
+(b) $\theta = \phi$ (holding $\rho_2$ fixed; direct estimation-cost channel). $\phi$ enters $G$
+only through $-c_E (1 - \phi^2)/W^2$:
+    $G_\phi = +2 c_E \phi/W^2 > 0$,  hence  $dW^{*}/d\phi < 0$.
+This REVERSES the source's claim (b) [$dW^{*}/d\phi > 0$, "coefficients near 1.0 require
 more data"]. The reversal is forced by the model's own cost term: the Cramer-Rao
-asymptotic variance of the AR(1) estimator is (1 - phi^2)/W, which FALLS as phi
+asymptotic variance of the AR(1) estimator is $(1 - \phi^2)/W$, which FALLS as $\phi$
 rises toward 1 - high-persistence coefficients are, under this variance model,
 estimated MORE precisely per observation, not less. The source's verbal
 justification contradicts its own formula; this is the known defect pre-registered
@@ -1007,27 +1007,27 @@ comparative static is: higher steady-state persistence REDUCES estimation pressu
 and therefore favors SHORTER optimal windows, holding the regime-change intensity
 fixed.
 
-(b') Total effect of phi (decomposition). In the full model phi also moves rho_2
-(A3: rho increasing in phi), so the TOTAL derivative is
-    dW*/dphi |_total = dW*/dphi |_direct  +  dW*/d(rho_2) * d(rho_2)/dphi,
+(b') Total effect of $\phi$ (decomposition). In the full model $\phi$ also moves $\rho_2$
+(A3: $\rho$ increasing in $\phi$), so the TOTAL derivative is
+    $dW^{*}/d\phi\,|_{\mathrm{total}} = dW^{*}/d\phi\,|_{\mathrm{direct}} + (dW^{*}/d\rho_2)(d\rho_2/d\phi)$,
 and BOTH terms are negative by (a) and (b): under this cost model the total effect
-is unambiguously dW*/dphi < 0. Any restoration of the source's intuition would
+is unambiguously $dW^{*}/d\phi < 0$. Any restoration of the source's intuition would
 require a different estimation-cost model (for example, one in which the QUANTITY
 of interest is a level forecast or a unit-root boundary test, whose difficulty
-rises with phi); that is a modeling choice outside the pinned cost function and is
+rises with $\phi$); that is a modeling choice outside the pinned cost function and is
 NOT adopted here. Flagged for the manuscript's Section 4.5 prose and for the
-alignment review: no experiment consumes the sign of dW*/dphi (checked in step 3),
+alignment review: no experiment consumes the sign of $dW^{*}/d\phi$ (checked in step 3),
 so the correction changes exposition, not operators - to be re-verified.
 
-(c) theta = Delta_phi (through kappa = 1 - epsilon/Delta_phi). dkappa/d(Delta_phi)
-= epsilon / Delta_phi^2 > 0, and G depends on kappa through a = kappa ln(rho_2):
-    G_kappa = c_D * ln(rho_2) * exp(a W) * (1 + a W) > 0,
-hence dW*/dkappa < 0 and dW*/d(Delta_phi) = (dW*/dkappa)(dkappa/dDelta_phi) < 0.
+(c) $\theta = \Delta\phi$ (through $\kappa = 1 - \epsilon/\Delta\phi$). $d\kappa/d\Delta\phi$
+$= \epsilon/\Delta\phi^2 > 0$, and $G$ depends on $\kappa$ through $a = \kappa \ln(\rho_2)$:
+    $G_\kappa = c_D \ln(\rho_2) \exp(a W)(1 + a W) > 0$,
+hence $dW^{*}/d\kappa < 0$ and $dW^{*}/d\Delta\phi = (dW^{*}/d\kappa)(d\kappa/d\Delta\phi) < 0$.
 CONFIRMS the source: larger expected regime changes favor shorter windows.
 
-(d) theta = c_E / c_D (cost ratio; new, for completeness). Scaling c_E up raises
--G by c_E's term, i.e. G_{c_E} = -(1 - phi^2)/W^2 < 0, so dW*/dc_E > 0: dearer
-estimation error favors longer windows. Symmetrically dW*/dc_D < 0. Matches the
+(d) $\theta = c_E/c_D$ (cost ratio; new, for completeness). Scaling $c_E$ up raises
+$-G$ by $c_E$'s term, i.e. $G_{c_E} = -(1 - \phi^2)/W^2 < 0$, so $dW^{*}/dc_E > 0$: dearer
+estimation error favors longer windows. Symmetrically $dW^{*}/dc_D < 0$. Matches the
 economic reading of Theorem 2 and provides a sign check for the T2 numeric grid.
 
 ---
