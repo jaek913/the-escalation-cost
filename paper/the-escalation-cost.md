@@ -141,10 +141,10 @@ EQ-2 states the bound. The structure is the paper's central claim in one line: d
 
 ### 4.3 Theorem 2: The Optimal Measurement Window
 
-The trade-off is now explicit and has two opposing arms, and both are driven by the SAME parameter. Lengthening the window lowers estimation error - the asymptotic variance of the AR(1) estimate falls like (1 - phi^2)/W - while raising the exponential damage term, because the adaptation time is increasing in the window: a longer window means a longer blind period. That the two effects share one control is what makes this a genuine optimization rather than a preference. Minimizing the sum of the two costs gives a first-order condition with a transcendental solution, and that solution is exactly the Lambert W function's domain.
+The trade-off is now explicit and has two opposing arms, and both are driven by the SAME parameter. Lengthening the window lowers estimation error - the asymptotic variance of the AR(1) estimate falls like $(1 - \phi^2)/W$ - while raising the exponential damage term, because the adaptation time is increasing in the window: a longer window means a longer blind period. That the two effects share one control is what makes this a genuine optimization rather than a preference. Minimizing the sum of the two costs gives a first-order condition with a transcendental solution, and that solution is exactly the Lambert $W$ function's domain.
 
 <!-- anchor: THM-2 -->
-THM-2: a unique interior optimal window W* exists in closed form via the Lambert W function [@Warburton-Disney-2007].
+THM-2: a unique interior optimal window $W^{*}$ exists in closed form via the Lambert $W$ function [@Warburton-Disney-2007].
 <!-- anchor: EQ-3 -->
 EQ-3 states the closed form. The optimum is interior and unique under strict convexity of the loss (proved in Appendix G.3), which matters practically: there is one right window, not a range of defensible ones, and it can be computed from parameters an institution can estimate rather than chosen by convention. Written proof P-THM-2 in Appendix G; machine legs {{LB-T2-wstar-symbolic}}, brute-force agreement {{LB-T2-wstar-numeric-match}} (match rate {{LB-T2-wstar-numeric-matchrate}}), unimodality failures {{LB-T2-wstar-numeric-unimodal-failures}}.
 
