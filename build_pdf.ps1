@@ -190,6 +190,23 @@ $man = [regex]::Replace($man, '(?<=[A-Z0-9]),(?=[A-Z])', ',\allowbreak ')
 #    boundary (R4238IM163|SCEN, MRTSIR452|USS), which is used ONLY if the line
 #    needs it and is invisible otherwise; the characters themselves are unchanged.
 $man = [regex]::Replace($man, '(?<=^|[^A-Za-z0-9])([A-Z]{1,6}\d{2,4}[A-Z]{0,3}\d{0,3})(?=[A-Z]{2,4}(?![a-z]))', '$1\allowbreak ')
+#  - TBL-4 column rebalance (author-reported, 2026-07-31): the delimiter row
+#    weights all eight columns equally, so pandoc gives the Sector column
+#    ~55pt of content width while the wrapped code segments measure 57.3pt -
+#    each cell overflows its box by 1-2.3pt, consuming the entire inter-column
+#    gutter and touching the Mean-exceedance numbers (10 rows measured, gaps
+#    to -2.28pt). This sat BELOW the 2.5pt collision threshold, so the
+#    character-level probe correctly reported zero collisions while the
+#    columns visually merged: sub-threshold overlap ACROSS columns is a
+#    defect even where the same overlap within a word is kerning. Cure:
+#    pandoc sets relative longtable column widths from the delimiter-row
+#    dash counts, so the PDF-only copy reweights TBL-4 to 4/9/6/5/7/7/7/7 -
+#    Rank shrinks (it holds two digits), Sector grows to ~73pt content
+#    (fits MRTSIR452USS unbroken; R4238IM163SCEN wraps at the break hint
+#    above), and every other column keeps more than its widest fixed
+#    content (dates ~44pt, never-above ~48pt). Anchored to TBL-4's unique
+#    header row; the committed manuscript and renderer are untouched.
+$man = [regex]::Replace($man, '(?m)(^\| Rank \| Sector \| Mean exceedance \| Share > 1 \| GFC \(SPEC-M\) \| GFC first crossing \| COVID \(SPEC-M\) \| COVID first crossing \|\r?\n)\| --- \| --- \| --- \| --- \| --- \| --- \| --- \| --- \|', '$1| ---- | --------- | ------ | ----- | ------- | ------- | ------- | ------- |')
 $ManTmp = Join-Path $Tmp "lt_manuscript_pdf.md"
 [System.IO.File]::WriteAllText($ManTmp, $man, $utf8NoBom)
 Write-Host "[ OK ] PDF-only transforms applied -> $ManTmp"
