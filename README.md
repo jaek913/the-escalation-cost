@@ -42,7 +42,7 @@ it on demand. Done = `verify.py` exits green AND the outline reconciliation gate
 - `data/SOURCES.md`, `data/pull.py` - data dictionary + pull/verify (documentation-only; raw data not committed).
 - `analysis/`, `analysis/outputs/` - analysis scripts and their JSON outputs.
 - `claims.lock`, `verify.py` - the load-bearing-number ledger and the mechanical checker.
-- `paper/` - the manuscript and its plain-English companion.
+- `paper/` - the manuscript, its rendered form, and the renderer's inputs.
 - `verification/` - the adversarial-review transcript and the three-way proof record.
 - `DECISIONS.md` (append-only), `CORRECTIONS.md` (public, from 5c), `requirements.txt`.
 
@@ -53,8 +53,8 @@ project-local data store for restricted/large data (location and per-file SHA256
 ## Licensing
 
 - Code (analysis, verification, builders, renderers): MIT (see `LICENSE`).
-- Paper: CC BY-NC-ND 4.0. Plain-English companion: CC BY-NC 4.0 (stated in those documents).
+- Paper: CC BY-NC-ND 4.0. Plain-English companion: CC BY-NC 4.0 (canonical home: LaggingTruth.com).
 
 ## Status
 
-Phase 0 (Conceive) - pre-registration. See `DECISIONS.md` for the phase log.
+Phase 5 (Launch) - published as a pre-print with the full verification apparatus. See `DECISIONS.md` for the phase log.

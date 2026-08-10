@@ -3,10 +3,10 @@ MIT License
 Copyright (c) 2026 Jae Kim
 
 This license applies to the CODE in this repository (analysis scripts,
-verification code, builders, and renderers). The manuscript and its
-plain-English companion are released separately: the paper under
-CC BY-NC-ND 4.0 and the companion under CC BY-NC 4.0, as stated in
-those documents. See README.md.
+verification code, builders, and renderers). The manuscript is released
+separately under CC BY-NC-ND 4.0, as stated in the manuscript; its
+plain-English companion is published at LaggingTruth.com (canonical home)
+under CC BY-NC 4.0. See README.md.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

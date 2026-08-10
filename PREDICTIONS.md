@@ -19,7 +19,7 @@ Carried from the pinned source, locked April 2026; restated and re-registered at
 
 **Claim.** Any firm can compute the closed-loop spectral radius rho from three quantities it already holds -- its estimated demand persistence phi (estimator `ols_ar1_intercept`, the paper's pre-registered choice, Section 6.3), its measurement window W, and its feedback gain -- via the companion-matrix construction of EQ-1. Above the threshold **1.0**, the firm's response to its next demand shock AMPLIFIES (bullwhip); below it, the response DECAYS.
 
-- **Calculator.** A public implementation is at LaggingTruth.com/diagnostic.
+- **Calculator.** A public implementation will be provided at LaggingTruth.com/diagnostic in the near future.
 - **FALSIFIED** by systematic decay in above-threshold systems, or systematic amplification in below-threshold systems, under the stated computation.
 - **Weight.** Prediction A is the standing engineering claim: it is what makes the theorem usable by someone who never reads the proof.
 

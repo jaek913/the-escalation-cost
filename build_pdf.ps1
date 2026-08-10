@@ -124,6 +124,7 @@ $Header = @'
 % --- code blocks: wrap long lines if any paper has code ---
 \usepackage{fvextra}
 \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{breaklines,breakanywhere}
 % --- title rule under the title ---
 \usepackage{titling}
 \pretitle{\begin{center}\LARGE}
@@ -247,6 +248,7 @@ Write-Host "Building PDF -> $Output" -ForegroundColor Cyan
     --pdf-engine=xelatex `
     --metadata-file="$MetadataPath" `
     --include-in-header="$HeaderPath" `
+    --resource-path="$PaperDir" `
     --shift-heading-level-by=-1 `
     --output="$Output"
 
