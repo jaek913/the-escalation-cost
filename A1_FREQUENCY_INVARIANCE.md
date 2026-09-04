@@ -153,3 +153,141 @@ That the method works on quarterly firm data; that a public company can be
 graded from filings; that the pilot is unnecessary. It answers one question:
 does E1's reading survive when the same series is sampled three times more
 coarsely.
+
+---
+
+# RESULT — appended 2026-09-04. Append-only; nothing above this line edited.
+
+## Verdict: NOT RUN ON REAL DATA. The validation suite's separation
+## precondition FAILED, and that failure is the result.
+
+### What happened
+
+The suite (`analysis/suites/a1_suite.py`) passed legs 1–5 on the first run:
+aggregation exact, constant patching exact and restored, planted effect
+positive, planted null not SUPPORT, rank component correctly wired.
+
+But legs 3 and 4 were one-sided, and their numbers exposed the problem:
+
+    planted EFFECT   pooled S = +0.0672   p = 0.0130
+    planted NULL     pooled S = +0.0696   p = 0.0170
+
+The null scored HIGHER than the effect. Both legs still passed, because a
+completely blind pipeline satisfies "effect is positive" and "null is not
+SUPPORT". A statistic whose effect and null distributions coincide cannot
+produce a verdict in either direction, and a real-data number from it would
+be uninterpretable.
+
+Leg 6 was added to measure separation directly (12 independent effect panels
+vs 12 null panels, both frequencies, AUC = P(a random effect panel outscores
+a random null panel); 0.50 = no information). The pre-registered decision
+rule and its thresholds were NOT touched — strengthening the suite adds a
+precondition on running the experiment, it does not change what
+PASS/PARTIAL/FAIL mean.
+
+    monthly    effect +0.1069 +/- 0.0615 | null +0.0033 +/- 0.1100 | AUC 0.812
+    quarterly  effect +0.0936 +/- 0.0174 | null +0.0821 +/- 0.0209 | AUC 0.667
+
+    [PASS] monthly control separates (AUC >= 0.75)
+    [FAIL] quarterly separates well enough to interpret (AUC >= 0.70)
+
+### What broke, and it is not what was predicted
+
+Section 5 predicted attenuation of the SIGNAL through lost power. That is
+not what happened. The effect barely moved: +0.1069 -> +0.0936.
+
+**The null moved.** Monthly, data with no mechanism scores +0.0033 —
+essentially zero, as a null should. Quarterly, the SAME no-mechanism data
+scores +0.0821. Averaging three months into one MANUFACTURES a positive
+rank association out of nothing.
+
+Mechanism: temporal aggregation of the series raises measured AR(1)
+persistence and induces moving-average structure; the predictor D and the
+outcome are both built from trailing windows of the same smoothed series and
+therefore inherit shared structure, correlating for reasons unrelated to the
+theory. A quarterly reading of ~+0.10 on real data would be roughly 80%
+artifact.
+
+Worse, the pre-registered circular block bootstrap does not catch it: it
+returned p = 0.0170 on the planted null. The bootstrap breaks the pairing
+between D and outcome and should centre the null at zero; at quarterly
+resolution its null distribution sits BELOW the true null, so it reports
+significance that is not there.
+
+### Why the monthly control matters
+
+Same generators, same estimator, three times the resolution, AUC 0.812. The
+machinery works. The loss is localised to aggregation. A quarterly-only
+study would have no such control — the reporting calendar aggregates before
+the analyst sees the series — and every diagnostic it would think to run,
+including a block bootstrap, would have passed.
+
+### Caveats on this result
+
+12 replicates per arm makes the AUC estimate itself noisy (roughly +/-0.11),
+so 0.667 is not cleanly distinguishable from 0.50 nor from the 0.70 line.
+What is solid is the direction and the cause: the null mean moved from
++0.003 to +0.082, a bias visible in every replicate, not sampling noise.
+
+The decisive point is n = 1. A1 has exactly one real panel. An AUC of 0.667
+describes an average over many panels; a single panel cannot be classified
+at that separation.
+
+No search was performed for a specification that would pass. W was fixed at
+3 and the second aggregation scheme was forbidden in Section 4 precisely so
+this moment could not become one.
+
+### Relation to the existing literature (checked 2026-09-04)
+
+Temporal aggregation is a known confound in bullwhip measurement, but the
+known direction is the OPPOSITE of what was found here:
+
+- Chen & Lee (2012, "Bullwhip Effect Measurement and Its Implications")
+  show analytically that temporal and product aggregation MASK the bullwhip
+  ratio — "a positive bullwhip ratio tends to decrease as the aggregation
+  period increases." Aggregation is treated as a CONSERVATIVE bias.
+- Cachon, Randall & Schmidt (2007) used quarterly INDUSTRY data and found
+  amplification in wholesale but not in manufacturing or retail, citing
+  aggregation as a possible reason for the nulls.
+- Bray & Mendelson (2012) used quarterly FIRM-level data and found a mean
+  bullwhip of 15.8%; their robustness section tests 1-, 2- and 3-month
+  aggregation and reports estimates qualitatively unchanged.
+- Yao et al. (2020) and later work report the masking is not monotone —
+  aggregation can increase, decrease or preserve the ratio by context.
+
+Every one of those results concerns the bullwhip RATIO, a variance ratio.
+A1's statistic is not a variance ratio: it is a rank correlation between a
+predicted-damage index and a realized-deviation outcome. For that statistic
+the aggregation bias runs the other way — ANTI-conservative, inflating the
+null toward a false positive. The literature's guidance ("aggregation makes
+bullwhip harder to see") does not protect this estimator; it would have
+encouraged treating a quarterly positive as conservative evidence.
+
+This appears to be the useful finding of A1, and it is worth stating
+regardless of the verdict: **for a trailing-window rank statistic, temporal
+aggregation induces a spurious positive of roughly +0.08 that a circular
+block bootstrap does not remove.**
+
+### Consequences
+
+1. A1 is FAILED as specified. No `a1_frequency_invariance.json` exists,
+   because the experiment was correctly never run on the panel.
+2. Nothing published in *The Escalation Cost* is affected. E1 and every
+   other experiment are monthly. This is a robustness boundary on a monthly
+   method, found and recorded.
+3. The public-company (quarterly filings) path is CLOSED IN THIS FORM. It is
+   not closed in principle: the artifact has a measurable floor, so a
+   sufficiently large real effect across many firms could clear it. Any such
+   study must first build a null calibrated on AGGREGATED SURROGATES —
+   series with matched autocorrelation and no regime dynamics, put through
+   the identical aggregation — rather than assume a bootstrap centres at
+   zero. That is a separate pre-registered study, not this appendix.
+4. The pilot is unaffected and mildly reinforced: monthly resolution is
+   where this measurement lives, and pilot participants supply exactly that.
+
+### Artifacts
+
+`analysis/a1_frequency_invariance.py` (written, never run on real data) and
+`analysis/suites/a1_suite.py` (the suite whose leg 6 produced this result)
+are committed as the record. The suite exits non-zero by design.
+
